@@ -8,13 +8,11 @@
     "dark": "#927bce"
   },
   "favicon": "/favicon.svg",
-
   "integrations": {
     "heap": {
       "appId": "3366888728"
     }
   },
-
   "navigation": {
     "tabs": [
       {
@@ -59,6 +57,12 @@
                   "messaging/group"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Migration",
+            "pages": [
+              "migration/messagedesk-reach-to-inbox"
             ]
           },
           {
