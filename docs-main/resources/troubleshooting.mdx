@@ -1,0 +1,111 @@
+---
+title: "Troubleshooting"
+description: "Troubleshoot potential issues in your MessageDesk account."
+---
+
+# Troubleshooting SMS Delivery
+
+Short, direct fixes to keep your texts reaching customers.
+
+## Quick triage (60 seconds)
+
+- **Check status:** In MessageDesk, look at the message status badge. If it’s `Failed`, click to open the error details.
+- **Retry smartly:** Send a short plain-text follow-up without links or images.
+- **Try another route:** If urgent, call or email while you troubleshoot.
+
+## Message Status & Troubleshoot Guide
+
+<AccordionGroup>
+  <Accordion title="Delivered" description="but customer says “I didn’t get it”" icon="check">
+    Silent failures happen when carriers identify potenial SPAM or Misleading content.
+
+    We suggest retrying the message but make sure to:
+
+    - Remove links/shorteners, cut marketing language, send a short, transactional message.
+    - Include your business name and opt-out line. Then retry.
+  </Accordion>
+  <Accordion title="Queued" description="Message has not been sent yet" icon="clock">
+    MessageDesk queues messages in a "line" for each inbox. If your using the inbox alongside many teammates at once, it's possible your messages stay in the queue for extended periods of time
+
+    - **Why do we queue messages?** It improves overall deliverability since the carrier network can only process a certain number of text messages per second for each phone number.
+  </Accordion>
+  <Accordion title="Failed" description=" Message was sent but did not get delivered" icon="exclamation" iconType="regular">
+    A failed message means the carrier network returned an error to MessageDesk and notified us that the message was **not delivered** to the recipient.
+
+    **Troubleshoot failed message:**
+
+    1. Retry sending a simple message to the recipient. Sometimes messages with large media attachments, long paragraphs of text or links fail to get delivered.
+    2. Send a message to a different recipient to confirm messaging works
+
+    [******If step 1 or 2 fail to deliver, take a screenshot of both messages & conversations andemail them to \*\* support@messagedesk.com******](mailto:support@messagedesk.com) \*\*for further assistance
+
+    - Include Recipient phone numbers
+    - Include date/time of message sends
+    - Include message content (copy the failed message)
+    - Include which phone number you sent the message from
+  </Accordion>
+  <Accordion title="Sent" description="Message was sent to carriers" icon="reply" iconType="regular">
+    A sent message may be delivered. MessageDesk will maintain a `Sent` status until one of 2 things happen:
+
+    1. Carrier network returns a `Failed` status. When this happens MessageDesk will update message status from `sent` -\> `failed`
+    2. Carrier network returns a `Delivered` status. When this happens, MessageDesk will update the message status from `sent` -\> `delivered`
+
+    <Info>
+      **\_NOTE: \_**Carriers do not always return a status. This can happen when the recipient is traveling or moving between multiple cell towers. When a status is not returned, MessageDesk maintains a `Sent` status.
+    </Info>
+  </Accordion>
+</AccordionGroup>
+
+## Common Messaging Scenarios
+
+- **Failed — Destination number unknown/no longer exists:**
+  - Verify the number, check for typos, confirm it’s still active.
+  - Ask the contact for an updated number if issues persist.
+- **Failed — Destination handset unavailable:**
+  - Phone is off, out of coverage, or network is congested.
+  - Wait a few minutes and retry, or call if urgent.
+- **Failed — Destination blocked from receiving message:**
+  - Recipient may have blocked you or carrier filtered.
+  - Ask recipient to unblock/whitelist your number. Call if needed.
+- **Failed — Unable to receive message — Landline or unreachable:**
+  - You’re texting a landline or non‑SMS number.
+  - Call the number or get a mobile-enabled number from the contact.
+- **Failed — Content flagged/violates carrier guidelines:**
+  - Remove spammy words, avoid ALL CAPS/excess punctuation.
+  - Don’t use URL shorteners. Clearly identify your business and include opt‑out.
+  - Ensure your A2P 10DLC or Toll‑Free registration is approved and accurate.
+- **Not receiving messages from specific senders or short codes:**
+  - Many services block virtual numbers for verification. Short codes (5–6 digits) may not work.
+  - Use a personal mobile for initial account verification, or ask the sender for a 10‑digit alternative.
+
+## After porting or hosting your number
+
+- **0–24 hours:** SMS/MMS may be inconsistent while carriers update routes.
+- **24–48 hours:** Most issues resolve.
+- **48\+ hours:** Collect examples and contact support.
+- 
+
+<Info>
+  **Tip:** Test with 2–3 contacts across different carriers (e.g., Verizon, AT&T, T‑Mobile) and capture timestamps and screenshots.
+</Info>
+
+## Content & compliance checklist (deliverability boosters)
+
+- **Identify yourself:** “Hi [Name], it’s [Business]…”
+- **Get consent, honor opt-out:** Include “Reply STOP to opt out.”
+- **Keep it short:** One clear purpose per message.
+- **No link shorteners:** Use full, reputable URLs.
+- **Avoid spam triggers:** “FREE,” “WINNER,” excessive punctuation, ALL CAPS.
+
+## MMS & media tips
+
+- **Use small files:** Keep images under ~1 MB; compress before sending.
+- **Prefer static images:** Videos are more likely to fail or compress poorly.
+- **If it fails repeatedly:** Share a link to a file (Drive/Dropbox) instead of an attachment.
+
+## What to send MessageDesk Support for faster fixes
+
+- **Three\+ failed examples** with dates/times and recipient phone numbers.
+- **Exact error details** from MessageDesk (screenshots help).
+- **Recipient carriers** if known.
+- **Your recent message content** (copy/paste), including any links.

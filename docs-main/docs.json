@@ -1,0 +1,137 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "palm",
+  "name": "Inbox by MessageDesk",
+  "colors": {
+    "primary": "#6142b0",
+    "light": "#46405c",
+    "dark": "#927bce"
+  },
+  "favicon": "/favicon.svg",
+
+  "integrations": {
+    "heap": {
+      "appId": "3366888728"
+    }
+  },
+
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "index",
+              "get-started/add-phone",
+              "get-started/import-contacts",
+              "get-started/teammates",
+              "get-started/roles-permissions"
+            ]
+          },
+          {
+            "group": "Phone Numbers",
+            "icon": "phone",
+            "pages": [
+              {
+                "group": "Basics",
+                "pages": [
+                  "phone-numbers/phone-types",
+                  "phone-numbers/hosting-porting",
+                  "phone-numbers/naming"
+                ]
+              },
+              {
+                "group": "Compliance",
+                "pages": [
+                  "a2p-registration/a2p-overview",
+                  "a2p-registration/a2p-privacy",
+                  "a2p-registration/a2p-spam",
+                  "a2p-registration/a2p-submit",
+                  "a2p-registration/compliance-center"
+                ]
+              },
+              {
+                "group": "Messaging Types",
+                "pages": [
+                  "messaging/group"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "contact-us",
+              "resources/downloads",
+              "resources/support",
+              "resources/troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API reference",
+        "icon": "square-terminal",
+        "groups": [
+          {
+            "group": "API documentation",
+            "pages": [
+              "api-reference/introduction"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "href": "https://www.messagedesk.com/",
+          "icon": "house"
+        },
+        {
+          "anchor": "Free Tools",
+          "href": "https://www.messagedesk.com/free-tools",
+          "icon": "wrench"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/logo-light.png",
+    "dark": "/logo/logo-dark.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Sign In",
+        "href": "https://inbox.messagedesk.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Create Account",
+      "href": "https://inbox.messagedesk.com/#/create-account"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "footer": {
+    "socials": {
+      "linkedin": "https://linkedin.com/company/messagedesk"
+    }
+  }
+}
