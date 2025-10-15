@@ -28,11 +28,7 @@
               "get-started/join-workspace",
               "get-started/install-apps",
               "get-started/phone-number-configuration",
-              "get-started/carrier-registration",
-              "get-started/add-phone",
-              "get-started/import-contacts",
-              "get-started/teammates",
-              "get-started/roles-permissions"
+              "get-started/carrier-registration"
             ]
           },
           {
