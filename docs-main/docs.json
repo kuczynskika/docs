@@ -22,7 +22,6 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
               "get-started/introduction",
               "get-started/sign-up",
               "get-started/join-workspace",
