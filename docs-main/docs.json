@@ -98,9 +98,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Home",
-          "href": "https://www.messagedesk.com/",
-          "icon": "house"
+          "anchor": "Status",
+          "href": "https://status.messagedesk.com/",
+          "icon": "clock"
+        },
+        {
+          "anchor": "Changelog",
+          "href": "https://app.getbeamer.com/messagedesk/",
+          "icon": "timer"
         },
         {
           "anchor": "Free Tools",
@@ -117,14 +122,18 @@
   "navbar": {
     "links": [
       {
-        "label": "Sign In",
+        "label": "MessageDesk.com",
+        "href": "https://www.messagedesk.com"
+      },
+      {
+        "label": "Log In",
         "href": "https://inbox.messagedesk.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Create Account",
-      "href": "https://inbox.messagedesk.com/#/create-account"
+      "label": "Start free trial",
+      "href": "https://www.messagedesk.com/get-started"
     }
   },
   "contextual": {
