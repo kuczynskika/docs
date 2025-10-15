@@ -23,6 +23,12 @@
             "group": "Getting started",
             "pages": [
               "index",
+              "get-started/introduction",
+              "get-started/sign-up",
+              "get-started/join-workspace",
+              "get-started/install-apps",
+              "get-started/phone-number-configuration",
+              "get-started/carrier-registration",
               "get-started/add-phone",
               "get-started/import-contacts",
               "get-started/teammates",
