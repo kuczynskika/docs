@@ -26,38 +26,35 @@
               "get-started/sign-up",
               "get-started/join-workspace",
               "get-started/install-apps",
-              "get-started/phone-number-configuration",
-              "get-started/carrier-registration"
+              "get-started/phone-numbers",
+              "get-started/carrier-registration",
+              {
+                "group": "Phone Numbers",
+                "pages": [
+                  "phone-numbers/overview",
+                  "phone-numbers/landline-voip",
+                  "phone-numbers/purchase-new",
+                  "phone-numbers/toll-free",
+                  "phone-numbers/twilio",
+                  "phone-numbers/naming"
+                ]
+              }
             ]
           },
           {
-            "group": "Phone Numbers",
-            "icon": "phone",
+            "group": "Compliance",
             "pages": [
-              {
-                "group": "Basics",
-                "pages": [
-                  "phone-numbers/phone-types",
-                  "phone-numbers/hosting-porting",
-                  "phone-numbers/naming"
-                ]
-              },
-              {
-                "group": "Compliance",
-                "pages": [
-                  "a2p-registration/a2p-overview",
-                  "a2p-registration/a2p-privacy",
-                  "a2p-registration/a2p-spam",
-                  "a2p-registration/a2p-submit",
-                  "a2p-registration/compliance-center"
-                ]
-              },
-              {
-                "group": "Messaging Types",
-                "pages": [
-                  "messaging/group"
-                ]
-              }
+              "a2p-registration/a2p-overview",
+              "a2p-registration/a2p-privacy",
+              "a2p-registration/a2p-spam",
+              "a2p-registration/a2p-submit",
+              "a2p-registration/compliance-center"
+            ]
+          },
+          {
+            "group": "Messaging Types",
+            "pages": [
+              "messaging/group"
             ]
           },
           {
