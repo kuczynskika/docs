@@ -30,20 +30,18 @@
                 "group": "Connect phone numbers",
                 "icon": "phone",
                 "pages": [
-                  "get-started/phone-numbers",
-                  "phone-numbers/overview",
-                  "phone-numbers/landline-voip",
-                  "phone-numbers/purchase-new",
-                  "phone-numbers/toll-free",
-                  "phone-numbers/twilio",
-                  "phone-numbers/naming"
+                  "get-started/phone-numbers/overview",
+                  "get-started/phone-numbers/landline-voip",
+                  "get-started/phone-numbers/purchase-new",
+                  "get-started/phone-numbers/toll-free",
+                  "get-started/phone-numbers/twilio",
+                  "get-started/phone-numbers/naming"
                 ]
               },
               {
                 "group": "Carrier registration",
                 "icon": "shield-check",
                 "pages": [
-                  "get-started/carrier-registration",
                   "a2p-registration/a2p-overview",
                   "a2p-registration/a2p-privacy",
                   "a2p-registration/a2p-spam",
