@@ -22,22 +22,49 @@
           {
             "group": "Getting started",
             "pages": [
-              "get-started/introduction",
-              "get-started/sign-up",
-              "get-started/join-workspace",
-              "get-started/install-apps",
-              "get-started/phone-numbers",
-              "get-started/carrier-registration",
               {
-                "group": "Phone Numbers",
+                "group": "Introduction",
+                "icon": "compass",
+                "pages": ["get-started/introduction"]
+              },
+              {
+                "group": "Sign up",
+                "icon": "user-plus",
+                "pages": ["get-started/sign-up"]
+              },
+              {
+                "group": "Join an existing workspace",
+                "icon": "users",
+                "pages": ["get-started/join-workspace"]
+              },
+              {
+                "group": "Download & install",
+                "icon": "download",
+                "pages": ["get-started/install-apps"]
+              },
+              {
+                "group": "Connect phone numbers",
+                "icon": "phone",
                 "pages": [
-                  "phone-numbers/overview",
-                  "phone-numbers/landline-voip",
-                  "phone-numbers/purchase-new",
-                  "phone-numbers/toll-free",
-                  "phone-numbers/twilio",
-                  "phone-numbers/naming"
+                  "get-started/phone-numbers",
+                  {
+                    "group": "Phone Numbers",
+                    "icon": "phone",
+                    "pages": [
+                      "phone-numbers/overview",
+                      "phone-numbers/landline-voip",
+                      "phone-numbers/purchase-new",
+                      "phone-numbers/toll-free",
+                      "phone-numbers/twilio",
+                      "phone-numbers/naming"
+                    ]
+                  }
                 ]
+              },
+              {
+                "group": "Carrier registration",
+                "icon": "shield-check",
+                "pages": ["get-started/carrier-registration"]
               }
             ]
           },
