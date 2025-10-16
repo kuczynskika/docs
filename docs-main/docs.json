@@ -31,18 +31,12 @@
                 "icon": "phone",
                 "pages": [
                   "get-started/phone-numbers",
-                  {
-                    "group": "Phone Numbers",
-                    "icon": "phone",
-                    "pages": [
-                      "phone-numbers/overview",
-                      "phone-numbers/landline-voip",
-                      "phone-numbers/purchase-new",
-                      "phone-numbers/toll-free",
-                      "phone-numbers/twilio",
-                      "phone-numbers/naming"
-                    ]
-                  }
+                  "phone-numbers/overview",
+                  "phone-numbers/landline-voip",
+                  "phone-numbers/purchase-new",
+                  "phone-numbers/toll-free",
+                  "phone-numbers/twilio",
+                  "phone-numbers/naming"
                 ]
               },
               {
