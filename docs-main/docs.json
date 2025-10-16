@@ -8,6 +8,7 @@
     "dark": "#927bce"
   },
   "favicon": "/favicon.svg",
+  "style": "/style.css",
   "integrations": {
     "heap": {
       "appId": "3366888728"
