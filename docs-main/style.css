@@ -1,38 +1,26 @@
-/* ===== Move Mintlify sidebar group chevron to the right ===== */
-
-/* 1) Generic group toggles that are buttons with aria-expanded */
-aside nav [aria-expanded][role="button"] {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* text left, chevron right */
+/* Target the expandable group buttons in the left sidebar */
+aside nav button[aria-expanded][aria-label^="Toggle"] {
   width: 100%;
+  display: flex;            /* already present, but safe to enforce */
+  align-items: center;
+  gap: 0.75rem;             /* matches your gap-x-3 */
 }
 
-/* Push the chevron icon to the right */
-aside nav [aria-expanded][role="button"] svg {
-  margin-left: auto;
+/* 1) Move the first SVG (the little chevron) to the far right */
+aside nav button[aria-expanded][aria-label^="Toggle"] > svg:first-child {
+  order: 3;                 /* put it after the icon + text */
+  margin-left: auto;        /* consume remaining space and hug right */
 }
 
-/* 2) If groups are rendered using <details><summary>…</summary></details> */
-aside nav details > summary {
+/* 2) Keep the icon (2nd child) before the text */
+aside nav button[aria-expanded][aria-label^="Toggle"] > svg:nth-child(2) {
+  order: 0;                 /* default, but explicit is fine */
+}
+
+/* 3) Make the label row expand so it naturally pushes the chevron right */
+aside nav button[aria-expanded][aria-label^="Toggle"] > .flex-1 {
+  order: 2;                 /* comes before the chevron */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-/* Hide the default disclosure triangle (Safari/Chrome for <summary>) */
-aside nav details > summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Ensure any inline SVG chevron sits on the far right */
-aside nav details > summary svg {
-  margin-left: auto;
-}
-
-/* Optional: keep text from jumping on hover/focus */
-aside nav [aria-expanded][role="button"],
-aside nav details > summary {
   gap: 0.5rem;
-  line-height: 1.25;
 }
