@@ -1,26 +1,24 @@
-/* Target the expandable group buttons in the left sidebar */
-aside nav button[aria-expanded][aria-label^="Toggle"] {
+/* Scope to the left sidebar area; widen if needed */
+.sidebar-group-header ~ * button[aria-label^="Toggle"][aria-expanded] {
   width: 100%;
-  display: flex;            /* already present, but safe to enforce */
-  align-items: center;
-  gap: 0.75rem;             /* matches your gap-x-3 */
-}
-
-/* 1) Move the first SVG (the little chevron) to the far right */
-aside nav button[aria-expanded][aria-label^="Toggle"] > svg:first-child {
-  order: 3;                 /* put it after the icon + text */
-  margin-left: auto;        /* consume remaining space and hug right */
-}
-
-/* 2) Keep the icon (2nd child) before the text */
-aside nav button[aria-expanded][aria-label^="Toggle"] > svg:nth-child(2) {
-  order: 0;                 /* default, but explicit is fine */
-}
-
-/* 3) Make the label row expand so it naturally pushes the chevron right */
-aside nav button[aria-expanded][aria-label^="Toggle"] > .flex-1 {
-  order: 2;                 /* comes before the chevron */
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;               /* matches gap-x-3 */
+}
+
+/* Make the chevron (first svg) the LAST item and push it right */
+.sidebar-group-header ~ * button[aria-label^="Toggle"][aria-expanded] > svg:first-child {
+  order: 99 !important;       /* put after icon + text */
+  margin-left: auto !important;
+  margin-right: 0 !important; /* override -mr-0.5 */
+}
+
+/* Keep the label block flexible so it fills space */
+.sidebar-group-header ~ * button[aria-label^="Toggle"][aria-expanded] > .flex-1 {
+  min-width: 0;               /* prevent overflow issues */
+}
+
+/* (Optional) ensure the middle icon (2nd svg) stays before the label */
+.sidebar-group-header ~ * button[aria-label^="Toggle"][aria-expanded] > svg:nth-child(2) {
+  order: 0 !important;
 }
