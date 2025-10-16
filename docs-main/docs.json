@@ -22,26 +22,10 @@
           {
             "group": "Getting started",
             "pages": [
-              {
-                "group": "Introduction",
-                "icon": "compass",
-                "pages": ["get-started/introduction"]
-              },
-              {
-                "group": "Sign up",
-                "icon": "user-plus",
-                "pages": ["get-started/sign-up"]
-              },
-              {
-                "group": "Join an existing workspace",
-                "icon": "users",
-                "pages": ["get-started/join-workspace"]
-              },
-              {
-                "group": "Download & install",
-                "icon": "download",
-                "pages": ["get-started/install-apps"]
-              },
+              "get-started/introduction",
+              "get-started/sign-up",
+              "get-started/join-workspace",
+              "get-started/install-apps",
               {
                 "group": "Connect phone numbers",
                 "icon": "phone",
@@ -64,18 +48,15 @@
               {
                 "group": "Carrier registration",
                 "icon": "shield-check",
-                "pages": ["get-started/carrier-registration"]
+                "pages": [
+                  "get-started/carrier-registration",
+                  "a2p-registration/a2p-overview",
+                  "a2p-registration/a2p-privacy",
+                  "a2p-registration/a2p-spam",
+                  "a2p-registration/a2p-submit",
+                  "a2p-registration/compliance-center"
+                ]
               }
-            ]
-          },
-          {
-            "group": "Compliance",
-            "pages": [
-              "a2p-registration/a2p-overview",
-              "a2p-registration/a2p-privacy",
-              "a2p-registration/a2p-spam",
-              "a2p-registration/a2p-submit",
-              "a2p-registration/compliance-center"
             ]
           },
           {
