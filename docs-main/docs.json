@@ -53,22 +53,84 @@
             ]
           },
           {
-            "group": "Messaging Types",
+            "group": "Send & receive messages",
+            "icon": "message",
             "pages": [
-              "messaging/group"
+              "overview",
+              "messaging/new-message-compose",
+              "messaging/message-types",
+              "messaging/inbound-replies",
+              "messaging/delivery-status-errors"
+            ]
+          },
+          {
+            "group": "Manage inbox conversations",
+            "icon": "inbox",
+            "pages": [
+              "overview",
+              "inbox/open-close-assign",
+              "inbox/labels",
+              "inbox/filters-search-sort"
+            ]
+          },
+          {
+            "group": "Collaborate with your team",
+            "icon": "users",
+            "pages": [
+              "collaboration/comments-mentions"
+            ]
+          },
+          {
+            "group": "Manage contacts",
+            "icon": "book-user",
+            "pages": [
+              "contacts/overview",
+              "contacts/create-import",
+              "contacts/anonymous-opt-out-blocked"
+            ]
+          },
+          {
+            "group": "Automate with Relays",
+            "icon": "zap",
+            "pages": [
+               "relays/coming-soon"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "link",
+            "pages": [
+               "integrations/coming-soon"
+            ]
+          },
+          {
+            "group": "Settings",
+            "icon": "gear",
+            "pages": [
+              "settings/personal",
+              {
+                "group": "Workspace",
+                "icon": "buildings",
+                "pages": [
+                  "settings/team-management",
+                  "settings/phone-management"
+                ]
+              },
+              "settings/compliance-center"
             ]
           },
           {
             "group": "Migration",
+            "icon": "arrows-turn-to-dots",
             "pages": [
               "migration/messagedesk-reach-to-inbox"
             ]
           },
           {
-            "group": "Resources",
+            "group": "Additional resources",
+            "icon": "book-open",
             "pages": [
               "contact-us",
-              "resources/downloads",
               "resources/support",
               "resources/troubleshooting"
             ]
