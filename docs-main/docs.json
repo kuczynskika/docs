@@ -84,7 +84,6 @@
             "group": "Manage contacts",
             "icon": "book-user",
             "pages": [
-              "contacts/overview",
               "contacts/create-import",
               "contacts/anonymous-opt-out-blocked"
             ]
