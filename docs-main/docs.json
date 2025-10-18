@@ -110,7 +110,6 @@
               "settings/personal",
               {
                 "group": "Workspace",
-                "icon": "buildings",
                 "pages": [
                   "settings/team-management",
                   "settings/phone-management"
