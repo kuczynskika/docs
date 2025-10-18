@@ -1,31 +1,85 @@
 ---
-title: "Import Contacts"
-description: "Use a .csv file to import contacts into MessageDesk"
-sidebarTitle: Create & import contacts
+title: "Create & Import Contacts"
+description: "Add contacts individually or in bulk using a .csv file."
+sidebarTitle: "Create & import contacts"
 ---
 
-<Steps>
-  <Step title="Navigate to Contacts">
-    - Click `Contacts` in the navigation
-  </Step>
-  <Step title="Click Import Contacts">
-    - Click `Import Contacts` in the top right of Contacts
+# Add Individual Contacts One-by-One, or Import Many Contacts at Once via CSV File.
 
-      ![Clean Shot2025 08 26at12 14 33 Pn](/images/CleanShot2025-08-26at12.14.33.png)
-  </Step>
-  <Step title="Select a File">
-    ![CleanShot 2025-08-26 at 12.16.41.png](/images/CleanShot2025-08-26at12.16.41.png)
-  </Step>
-  <Step title="Map Fields">
-    - Fields will auto map if they have the same name as an existing MessageDesk field.
-    - You can manually update mapping or include custom properties.
+## How to add individual contacts
 
-    ![Clean Shot2025 08 26at12 17 54 Pn](/images/CleanShot2025-08-26at12.17.54.png)
-  </Step>
-  <Step title="Resolve Duplicates & Errors">
-    - MessageDesk will scan for duplicates and errors before importing.
-    - Any duplicates/errors will be skipped  during the import process.
+### 1. Navigate to the contacts module in MessageDesk
 
-    ![Clean Shot2025 08 26at12 18 42 Pn](/images/CleanShot2025-08-26at12.18.42.png)
-  </Step>
-</Steps>
+Then, click the + Add contacts button.
+
+![Add Contact Individual Pn](/docs-main/images/add-contact-individual.png)
+
+### 2. Add First Name, Last Name, and phone number
+
+Once you've added the contact details, click + Create Contact.
+
+<Note>
+  First Name and Last Name fields are NOT required when creating a contact. Contacts without a First or Last Name are considered [anonymous contacts in MessageDesk](/contacts/anonymous-opt-out-blocked).
+</Note>
+
+<Warning>
+  If the number is already assigned to a contact, you'll see an error message. Phone numbers in MessageDesk are considered unique identifiers and may only be tied to one contact, but a contact can have multiple phone numbers.
+</Warning>
+
+![Create Contact Save Pn](/docs-main/images/create-contact-save.png)
+
+### 3. View and edit contact details
+
+Once you've saved your contact, you'll see a panel displaying the contact's details. Here you can take several actions, including:
+
+1. Add/associate additional phone numbers with the contact.
+2. Copy the contact's phone number to your clipboard.
+3. Send a message to the contact from the inbox.
+4. Unlink or "delete" the contact's phone number from their contact profile.
+5. [Block the contact's phone number](/contacts/anonymous-opt-out-blocked) from sending additional messages to your workspace.
+
+<Warning>
+  Changing a contact's phone number may unlink existing conversations with that contact and their profile, as it is saved in MessageDesk.
+</Warning>
+
+![Contact Details Pn](/docs-main/images/contact-details.png)
+
+## How to Import Contacts in Bulk via .CSV File
+
+### 1. Navigate to the Contacts Module
+
+Click `Import Contacts` in the top right of Contacts
+
+![Clean Shot2025 08 26at12 14 33 Pn](/images/CleanShot2025-08-26at12.14.33.png)
+
+### 2. Select a file or download our .csv template to get started
+
+<Warning>
+  Requirements:
+
+  - The first row of your .csv file must contain a column that acts as a header.
+  - Include at least first name, last name, and one email/phone column.
+  - Your .csv should use a standard .csv format.
+</Warning>
+
+<Note>
+  [Download our sample contact import .csv template here](https://docs.google.com/spreadsheets/d/1P8JIfQngIJnMRo5cfCEf8gdxvIKpzmoeLEAfImYII58/edit?gid=0#gid=0).
+</Note>
+
+![CleanShot 2025-08-26 at 12.16.41.png](/images/CleanShot2025-08-26at12.16.41.png)
+
+### 3. Map contact data (columns in your file) to contact properties in MessageDesk
+
+Your fields will auto-map if they have the same name as an existing MessageDesk field.
+
+You can also manually update mapping or include custom properties.
+
+![Clean Shot2025 08 26at12 17 54 Pn](/images/CleanShot2025-08-26at12.17.54.png)
+
+### 4. Resolve any duplicates or errors
+
+MessageDesk will scan for duplicates and errors before importing.
+
+Any duplicates/errors will be skipped  during the import process.
+
+![Clean Shot2025 08 26at12 18 42 Pn](/images/CleanShot2025-08-26at12.18.42.png)
