@@ -59,7 +59,6 @@
               "messaging/overview",
               "messaging/new-message-compose",
               "messaging/message-types",
-              "messaging/inbound-replies",
               "messaging/delivery-status-errors"
             ]
           },
@@ -83,17 +82,15 @@
             ]
           },
           {
-            "group": "Relays",
+            "group": "Relays (Coming Soon)",
             "icon": "zap",
             "pages": [
-               "relays/coming-soon"
             ]
           },
           {
-            "group": "Integrations",
+            "group": "Integrations (Coming Soon)",
             "icon": "link",
             "pages": [
-               "integrations/coming-soon"
             ]
           },
           {
