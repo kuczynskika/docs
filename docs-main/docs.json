@@ -70,14 +70,8 @@
               "inbox/overview",
               "inbox/open-close-assign",
               "inbox/labels",
-              "inbox/filter-search-sort"
-            ]
-          },
-          {
-            "group": "Comments & mentions",
-            "icon": "users",
-            "pages": [
-              "collaboration/comments-mentions"
+              "inbox/filter-search-sort",
+              "inbox/comments-mentions"
             ]
           },
           {
