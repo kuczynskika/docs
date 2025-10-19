@@ -53,10 +53,10 @@
             ]
           },
           {
-            "group": "Send & receive messages",
+            "group": "Messaging",
             "icon": "message",
             "pages": [
-              "overview",
+              "messaging/overview",
               "messaging/new-message-compose",
               "messaging/message-types",
               "messaging/inbound-replies",
@@ -64,24 +64,24 @@
             ]
           },
           {
-            "group": "Manage inbox conversations",
+            "group": "Inbox",
             "icon": "inbox",
             "pages": [
-              "overview",
+              "inbox/overview",
               "inbox/open-close-assign",
               "inbox/labels",
               "inbox/filter-search-sort"
             ]
           },
           {
-            "group": "Collaborate with your team",
+            "group": "Comments & mentions",
             "icon": "users",
             "pages": [
               "collaboration/comments-mentions"
             ]
           },
           {
-            "group": "Manage contacts",
+            "group": "Contacts",
             "icon": "book-user",
             "pages": [
               "contacts/create-import",
@@ -89,7 +89,7 @@
             ]
           },
           {
-            "group": "Automate with Relays",
+            "group": "Relays",
             "icon": "zap",
             "pages": [
                "relays/coming-soon"
