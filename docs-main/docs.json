@@ -58,7 +58,7 @@
             "pages": [
               "messaging/overview",
               "messaging/new-message-compose",
-              "messaging/message-types",
+              "messaging/media",
               "messaging/delivery-status-errors"
             ]
           },
