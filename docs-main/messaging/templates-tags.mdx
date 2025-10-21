@@ -1,6 +1,182 @@
 ---
-title: 'Templates and personalization tags'
-description: 'Description of your new file.'
+title: "Templates and personalization tags"
+description: "Learn more about how to create and edit pre-saved message templates and insert personalization tags."
 sidebarTitle: "Templates and personalization tags"
 ---
 
+# Save Time & Personalize Messages with Pre-saved Templates and Personalized Tags
+
+Templates keep your wording consistent and fast. Personalization tags pull in contact and workspace details automatically. Together, you get speed and personalized messages—at scale.
+
+## Why You Should Use Templates and Tags
+
+- **Save time:** Stop re-typing common messages—apply a template in one click.
+- **Keep messaging consistent:** Standardize language across your entire team.
+- **Personalize at scale:** Use tags to insert names, emails, phone numbers, and more.
+- **Reduce errors:** Pre-approved text means fewer typos and missed details.
+
+## What Are Message Templates?
+
+Templates are reusable messages you can apply anywhere you compose a text in MessageDesk.\
+They can include plain text, **emoji**, [**media (MMS)**](/messaging/media), and **personalization tags**.
+
+## What are personalization tags?
+
+Tags are placeholders—like `{{ ContactFirstName }}`—that auto-fill with real contact info or other saved information at send time. You can use them in templates **and** one-off messages to personalize every text message.
+
+## Apply, create, and edit templates
+
+You can work with templates from any message compose box.
+
+### Apply a template
+
+1. Click the **TT** icon.
+2. Search for or select a template.
+3. The template fills your message field—you can still edit before sending.
+
+![Template Insert Pn](/docs-main/images/template-insert.png)
+
+### Create a new template
+
+1. Click the **TT** icon → **\+ Create Template**.
+2. **Name** your template clearly (so teammates can find it later).
+3. **Type your message** content.
+4. Optional: **Add media**, **emoji**, and **personalization tags**.
+5. Click **Save**.
+
+### Edit an existing template
+
+1. Click the **TT** icon.
+2. Hover a template and click the **pencil (edit)** icon.
+3. Update the **name** and/or **content**.
+4. Click **Save**.
+
+<Note>
+  **Tip:** Keep template names short and specific (e.g., “Appt reminder – 24h,” “Invoice past due – 7d”). That makes searching faster and prevents accidental misuse.
+</Note>
+
+![Template Create Edit](/docs-main/images/template-create-edit.png)
+
+---
+
+## Organize your message templates (workspace settings)
+
+Admins and managers can manage all templates from Settings.
+
+1. Go to **Account → Settings**.
+2. Under **Workspace Settings**, choose **Inbox Settings → Templates**.
+3. **Search**, **create**, or **edit** templates from this tab.
+
+> **Best practice:** Use a simple naming system (Prefix: Purpose – Timing). Example:
+>
+> - **Billing:** Invoice paid – receipt
+> - **Scheduling:** Appt reminder – 24h
+> - **Onboarding:** Welcome – docs request
+
+![Settings Templates Pn](/docs-main/images/settings-templates.png)
+
+---
+
+## Insert a personalization tag
+
+You can insert tags in any message—template or one-off.
+
+1. Click the **#** icon in the message compose box.
+2. Search for or select a **Tag**.
+3. (Recommended) **Set a fallback** value so your message still reads well if data is missing.
+4. Continue composing, then **Send** or **Schedule**.
+
+![Tag Insert Pn](/docs-main/images/tag-insert.png)
+
+### Available tags
+
+**Contact**
+
+- `{{ ContactEmail }}` – contact’s email address
+- `{{ ContactFirstName }}` – contact’s first name
+- `{{ ContactLastName }}` – contact’s last name
+- `{{ ContactPhone }}` – contact’s phone number
+
+**Your user profile**
+
+- `{{ UserEmail }}` – your MessageDesk user email
+- `{{ UserFirstName }}` – your first name
+- `{{ UserLastName }}` – your last name
+- `{{ UserPhone }}` – your personal phone number saved in your user profile
+
+**Workspace**
+
+- `{{ WorkspaceName }}` – your MessageDesk workspace name
+- `{{ WorkspaceEmail }}` – your workspace’s primary email
+- `{{ WorkspacePhone }}` – your workspace’s primary phone
+
+<Note>
+  **Note:** Tags resolve at send time. In broadcasts, each recipient gets their own personalized version.
+</Note>
+
+---
+
+## Set a fallback (important)
+
+A fallback is the default text used **when a tag has no data**—for example, when you text a raw phone number that isn’t saved as a contact yet, or when some contacts are missing first names.
+
+**Why it matters:**
+
+- Prevents awkward blanks like “Hi ,”
+- Keeps broadcasts and other messages clean when data varies across recipients
+
+**How to set a fallback**
+
+1. Insert a tag via the **#** icon.
+2. Click on the tag to add a **Fallback** value for that tag (e.g., “there” for first names).
+3. Save or send.
+
+**Example with fallbacks**
+
+- Message: `Hi {{ ContactFirstName }}!`
+- With data: **“Hi Alex!”**
+- Without data (fallback “there”): **“Hi there!”**
+
+![Tag Set Fallback Pn](/docs-main/images/tag-set-fallback.png)
+
+<Warning>
+  Note: tags without a fallback set will appear as red when inserted into a message. A tag with a fallback set will appear in light purple.
+
+  ![Tag No Fallback Pn](/docs-main/images/tag-no-fallback.png)
+</Warning>
+
+## Tips & best practices
+
+- **Use short, specific templates.** Create separate versions for common scenarios (24h reminder vs day-of).
+- **Personalize the first line.** Use `{{ ContactFirstName }}` with a fallback like “there.”
+- **Combine with scheduling.** Queue reminders and follow-ups during business hours.
+- **Keep compliance in mind.** For non-conversational or promotional sends, include opt-out language (e.g., “Reply STOP to opt out”).
+- **Review periodically.** Archive low-performers and refine wording based on replies.
+
+---
+
+## Frequently Asked Template and Tag Questions
+
+<AccordionGroup>
+  <Accordion title="What other kinds of info can I use with tags?">
+    Right now, you can use the **preset tags** listed above.
+  </Accordion>
+  <Accordion title="Do tags work with custom properties saved on a contact?">
+    Not yet. **Custom properties as tags** are planned for a future update.
+  </Accordion>
+  <Accordion title="Where do templates and tags work?">
+    Anywhere you compose a message: 1-on-1, broadcasts, group SMS (tags personalize per recipient), and templates.
+  </Accordion>
+  <Accordion title="Can you add media to a template?">
+    Yes. Templates can include **media (MMS)**, **emoji**, and **tags**.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+- **My tag didn’t resolve.**\
+  Check that the contact has data for that field and that you set a **fallback**. Make sure the braces and tag name are correct (e.g., `{{ ContactFirstName }}`).
+- **I can’t find a template.**\
+  Try a simpler search or confirm the template name in **Workspace Settings → Inbox Settings → Templates**.
+- **A template needs updating for everyone.**\
+  Edit it from the **TT** menu (pencil icon) or from **Workspace Settings** so the change applies to all users.
