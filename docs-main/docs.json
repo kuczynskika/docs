@@ -59,6 +59,7 @@
               "messaging/overview",
               "messaging/new-message-compose",
               "messaging/media",
+              "messaging/templates-tags",
               "messaging/delivery-status-errors"
             ]
           },
