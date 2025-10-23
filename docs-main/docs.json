@@ -71,6 +71,7 @@
               "inbox/open-close-assign",
               "inbox/labels",
               "inbox/filter-search-sort",
+              "inbox/multi-select-quick-actions",
               "inbox/comments-mentions"
             ]
           },
