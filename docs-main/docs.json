@@ -107,6 +107,7 @@
                   "settings/phone-management"
                 ]
               },
+              "settings/user-roles-permissions",
               "settings/compliance-center"
             ]
           },
