@@ -1,85 +1,168 @@
 ---
 title: "Create & Import Contacts"
-description: "Add contacts individually or in bulk using a .csv file."
+description: "Add contacts individually or in bulk using a .csv file. Includes limits, required formats, and validation rules."
 sidebarTitle: "Create & import contacts"
 ---
 
-# Add Individual Contacts One-by-One, or Import Many Contacts at Once via CSV File.
+# Add Individual Contacts One-by-One, or Import Many via CSV
 
-## How to add individual contacts
+You can quickly create a single contact or bring in thousands at once with a CSV—here’s exactly how (and the limits to avoid errors).
 
-### 1. Navigate to the contacts module in MessageDesk
+---
 
-Then, click the + Add contacts button.
+## Add an Individual Contact
+
+### 1. Go to **Contacts**
+
+Click **\+ Add contacts**.
 
 ![Add Contact Individual Pn](/docs-main/images/add-contact-individual.png)
 
-### 2. Add First Name, Last Name, and phone number
+### 2. Enter details
 
-Once you've added the contact details, click + Create Contact.
+Add **First name**, **Last name**, and **Phone** (email optional), then click **\+ Create Contact**.
 
 <Note>
-  First Name and Last Name fields are NOT required when creating a contact. Contacts without a First or Last Name are considered [anonymous contacts in MessageDesk](/contacts/anonymous-opt-out-blocked).
+  First and last name are **not required**. Contacts without names are treated as **anonymous contacts** until you add details later.
 </Note>
 
 <Warning>
-  If the number is already assigned to a contact, you'll see an error message. Phone numbers in MessageDesk are considered unique identifiers and may only be tied to one contact, but a contact can have multiple phone numbers.
+  If the phone number already belongs to another contact, you’ll see an error. Phone numbers are **unique identifiers** in MessageDesk (one number → one contact). A single contact can have **multiple** numbers.
 </Warning>
 
 ![Create Contact Save Pn](/docs-main/images/create-contact-save.png)
 
-### 3. View and edit contact details
+### 3. View & edit the contact
 
-Once you've saved your contact, you'll see a panel displaying the contact's details. Here you can take several actions, including:
+From the contact panel, you can:
 
-1. Add/associate additional phone numbers with the contact.
-2. Copy the contact's phone number to your clipboard.
-3. Send a message to the contact from the inbox.
-4. Unlink or "delete" the contact's phone number from their contact profile.
-5. [Block the contact's phone number](/contacts/anonymous-opt-out-blocked) from sending additional messages to your workspace.
+1. Add additional phone numbers.
+2. Copy the contact’s number.
+3. Send a message from the Inbox.
+4. Unlink (“delete”) a number from the profile.
+5. Block the contact from messaging your workspace.
 
 <Warning>
-  Changing a contact's phone number may unlink existing conversations with that contact and their profile, as it is saved in MessageDesk.
+  Changing a contact’s primary phone may **unlink** past conversations from the profile.
 </Warning>
 
 ![Contact Details Pn](/docs-main/images/contact-details.png)
 
-## How to Import Contacts in Bulk via .CSV File
+---
 
-### 1. Navigate to the Contacts Module
+## Import Contacts in Bulk via CSV
 
-Click `Import Contacts` in the top right of Contacts
+### CSV limits & requirements (read first)
+
+<Note>
+  **TL;DR**
+
+  - **Row count:** up to **5,000 rows** per CSV (hard limit)
+  - **File size:** up to **10 MB**
+  - **Platform:** **Web-only** (imports aren’t supported on mobile/desktop apps)
+  - **Format:** must use **.csv** files **with a header row**, **UTF-8** encoding
+  - **Required per row:** **Email** _or_ **Phone** (at least one)
+</Note>
+
+<Warning>
+  **Your CSV must:**
+
+  - Include a **header row** (first line).
+  - Use **consistent columns** on every row (same number of columns as the header).
+  - Include at least one contact method: **Email** _or_ **Phone** per row.
+  - Use **E.164** format for phone numbers (e.g., `+15551234567`).
+</Warning>
+
+<Tip>
+  Download: [**Use our sample contact import .csv template here**](https://docs.google.com/spreadsheets/d/1P8JIfQngIJnMRo5cfCEf8gdxvIKpzmoeLEAfImYII58/edit?gid=0#gid=0).
+</Tip>
+
+---
+
+### 1. Go to **Contacts** → **Import Contacts**
+
+Click **Import Contacts** (top-right).
 
 ![Clean Shot2025 08 26at12 14 33 Pn](/images/CleanShot2025-08-26at12.14.33.png)
 
-### 2. Select a file or download our .csv template to get started
+### 2. Select your CSV (or download the template)
 
-<Warning>
-  Requirements:
-
-  - The first row of your .csv file must contain a column that acts as a header.
-  - Include at least first name, last name, and one email/phone column.
-  - Your .csv should use a standard .csv format.
-</Warning>
+Pick your `.csv` file from your computer.
 
 <Note>
-  [Download our sample contact import .csv template here](https://docs.google.com/spreadsheets/d/1P8JIfQngIJnMRo5cfCEf8gdxvIKpzmoeLEAfImYII58/edit?gid=0#gid=0).
+  File picker accepts **CSV only**.
 </Note>
 
 ![CleanShot 2025-08-26 at 12.16.41.png](/images/CleanShot2025-08-26at12.16.41.png)
 
-### 3. Map contact data (columns in your file) to contact properties in MessageDesk
+### 3. Map columns to MessageDesk fields
 
-Your fields will auto-map if they have the same name as an existing MessageDesk field.
-
-You can also manually update mapping or include custom properties.
+Fields auto-map when names match. You can adjust mapping and include **custom properties**.
 
 ![Clean Shot2025 08 26at12 17 54 Pn](/images/CleanShot2025-08-26at12.17.54.png)
 
-### 4. Resolve any duplicates or errors
+### 4. Fix duplicates & errors (preview step)
 
-MessageDesk will scan for duplicates and errors before importing.
-
-Any duplicates/errors will be skipped  during the import process.
+MessageDesk validates your data and flags issues **before** import. Invalid rows are **skipped**.
 
 ![Clean Shot2025 08 26at12 18 42 Pn](/images/CleanShot2025-08-26at12.18.42.png)
+
+---
+
+## Validation rules (what we check)
+
+- **Email**: must be a valid email address (`name@example.com`).
+- **Phone**: must be **E.164** (e.g., `+15551234567`).
+- **Custom properties**: must match defined **types** and constraints.
+- **Duplicates**: checked by **email** and **phone** to prevent dupes.
+
+---
+
+## How imports run (under the hood)
+
+- **Batching**: processed in batches up to **5,000** (aligned with the row limit).
+- **Async processing**: large uploads are staged and processed server-side for reliability.
+- **CSV only**: the importer accepts **.csv**; other formats aren’t supported.
+
+---
+
+## Common Errors & Fixes
+
+- **“CSV file is too large.”**\
+  Split your file so each CSV has **≤ 5,000 rows** and **≤ 10 MB**.
+- **“CSV imports are only supported on web platform. Please use the web interface for importing contacts.”**\
+  Switch to the **web app** to run the import.
+- **“Invalid phone format.”**\
+  Convert to **E.164** (country code + number, no spaces).
+- **“Invalid email address.”**\
+  Correct typos or remove invalid emails.
+- **“Row has inconsistent number of columns.”**\
+  Ensure every row matches the header’s column count.
+- **“Missing contact method.”**\
+  Add **Email** or **Phone** for that row.
+
+---
+
+## Best practices
+
+- **Normalize phones to E.164** before uploading.
+- **Deduplicate** by email/phone first to avoid partial merges.
+- **Test with 25 rows** to confirm mapping and validation.
+- **Use custom properties** intentionally—ensure data types match your definitions.
+- **Keep under limits** (≤ **5,000** rows, ≤ **10 MB**) for smooth importing.
+
+---
+
+## FAQ
+
+**Can I import from my phone or desktop app?**\
+No. CSV imports are **web-only**.
+
+**Can I import other data (conversations, labels, messages, opt-outs)?**\
+The import pipeline supports other entities via dedicated tooling. This doc covers **Contacts CSV**.
+
+**What happens to skipped rows?**\
+Invalid rows are **skipped**. Fix the CSV and re-import those rows separately.
+
+**Can I update existing contacts?**\
+Yes—when an email or phone matches an existing contact, MessageDesk applies your mapping rules and validation to update fields.
