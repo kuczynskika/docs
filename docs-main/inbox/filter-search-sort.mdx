@@ -1,22 +1,152 @@
 ---
 title: "Filter, search & sort conversations"
-description: "Learn how to filter, searcha and sort conversations in MessageDesk."
+description: "Find the right threads fast. This guide shows you how to search messages, sort your list, and build custom filters you can share with your team."
 sidebarTitle: "Filter, search & sort"
 ---
 
-**Basic Conversation Filters**
+# Search, Sort & Filter Conversations in Your Inbox
 
-- **Newest**: The most recent conversations in your inbox
-- **Oldest:** The oldest conversations in your inbox
-- **Waiting Longest**: Conversations with the greatest inactivity period
-- **Unread First**: A view of all unread conversations
+## Quick Sorting
 
-## How to Apply a Custom Filter to an Inbox View
+Use the **Sort** menu to change the order of your conversation list:
 
-You can filter a conversation based on its applied labels, assignee, or the phone line on which the conversation took place.
+- **Newest** – most recent activity at the top
+- **Oldest** – oldest activity at the top (great for closing out stragglers)
+- **Waiting Longest** – threads with the longest inactivity (prevents misses)
+- **Unread First** – shows conversations with unread messages first
 
-### 1. Select "Match ALL Filters" or "Match ANY Filters"
+<Tip>
+  **Tip:** Sorting changes the order of the list you’re already viewing (Open, Closed, or a filtered view). You can combine **Sort** with **Filters** for powerful inbox views.
+</Tip>
 
-### 2. Select a conversation property to filter by
+## Search Conversations and Messages
 
-### 3. Share your filtered view with other teammates
+Search in the **Inbox** is scoped to **conversations and their messages**.
+
+- Use the **search bar** at the top of the app and type your query.
+- You’ll see **recent searches**, plus quick actions to **Compose** or **Create a contact**.
+- There’s also a shortcut to **Search in Contacts** if you’re looking for a person.
+
+**Why aren’t contacts in the Inbox search:**\
+MessageDesk treats **conversations** and **contacts** as separate entities. That’s how you can text **anonymous contacts** (numbers without a saved contact record) and still find those threads later by message content or conversation.
+
+**How to narrow your search results:**\
+Toggle the search scope to focus on **Messages** (specific words inside messages) or **Conversations** (by thread).
+
+<Tip>
+  **Tip:** Searching for a person? Jump to the [**Contacts module**](/contacts/anonymous-opt-out-blocked) to search by name and other contact details.
+</Tip>
+
+## Sort conversations in any Inbox view
+
+1. Click the **Sort** icon above your conversation list.
+2. Choose **Newest**, **Oldest**, **Waiting Longest**, or **Unread First**.
+3. Your list updates immediately.
+
+**When to use which:**
+
+- **Newest** for real-time triage
+- **Oldest** to finish and close out older work
+- **Waiting Longest** for follow-ups and SLAs
+- **Unread First** for “what needs doing right now”
+
+---
+
+## How to Apply a Custom Filter to Your Inbox View
+
+Filter by **Labels**, **Assignee**, or **Workspace phone** to build focused inbox views.
+
+1. From any Inbox view, click the **Filter** icon.
+2. Choose **Match ALL filters** or **Match ANY filters**:
+   - **ALL** = a conversation must meet **every** condition
+   - **ANY** = a conversation can meet **any** one of the conditions
+3. Pick a **property** to filter by:
+   - **Labels** – select one or more labels
+   - **Assignee** – select one or more teammates
+   - **Workspace phone** – select one or more numbers
+4. Click **Apply Filter** to update your list, or **Clear Filters** to reset.
+
+<Tip>
+  **Tip:** Start broad with **ANY**, then tighten to **ALL** as your inbox view shrinks.
+</Tip>
+
+---
+
+## Combine Sort + Filters (Compound Queries)
+
+You can layer **Sort** on top of an active **Filter** to create compound views.\
+Examples:
+
+- **Filter:** Labels = Support + Urgent → **Sort:** Waiting Longest
+- **Filter:** Assignee = You → **Sort:** Unread First
+- **Filter:** Workspace phone = (555) 555-0100 → **Sort:** Oldest
+
+---
+
+## Share a filtered view with teammates
+
+1. After applying filters (and choosing a sort), click the **Share** icon.
+2. The **unique URL** will be copied directly to your clipboard, and you can send it to any MessageDesk user in your workspace.
+3. They’ll land on the exact same filtered/sorted view.
+
+<Note>
+  Great for daily stand-ups: “Work from this filtered view today.”
+</Note>
+
+---
+
+## Examples: Ways to Sort and Filter Conversations
+
+**Close-out an old list of conversations**
+
+- Filter: Assignee = You
+- Sort: Oldest
+- Goal: Close or comment on everything older than 48h
+
+**Catch-up on urgent support requests**
+
+- Filter: Labels = Support, Urgent (Match ANY)
+- Sort: Waiting Longest
+- Goal: First response within target time
+
+**Triage new messages by phone number**
+
+- Filter: Workspace phone = Front desk line
+- Sort: Unread First
+- Goal: Keep the public line clear and responsive
+
+---
+
+## FAQ
+
+**Can I save a filter permanently as a named view?**\
+You can share a link to a filtered/sorted view. (If you use the same filters often, bookmark those URLs.)
+
+**Why didn’t my person’s name appear in the Inbox search?**\
+Inbox search looks at conversations/messages. To search **by contact name**, use **Search** in the **Contacts** module.
+
+**Do filters change what my teammates see?**\
+No. Filters affect **your** current view only—unless you share the link.
+
+**Can I filter by multiple labels, assignees, etc.?**\
+Yes. Select as many as you need and choose **ALL** or **ANY** to control matching.
+
+---
+
+## Troubleshooting
+
+- **My results look empty.**\
+  Check if **Match ALL** is too strict. Try **Match ANY** or clear one condition.
+- **I can’t find a conversation I’m sure exists.**\
+  Confirm you’re searching **Messages** vs **Conversations** appropriately. Clear filters and try again.
+- **The share link sent my teammate to a different list.**\
+  Make sure they have access to the same workspace numbers/labels and that the link wasn’t altered.
+
+---
+
+## Best practices
+
+- **Search first, then filter.** A quick keyword search can narrow the conversation haystack.
+- **Use consistent labels.** Filters are only as good as your labeling habits.
+- **Work oldest-first on close-out.** Then switch back to **Newest** for live triage.
+- **Share your filters.** Drop a link in a [Comment](/inbox/comments-mentions) so everyone’s working the same list.
