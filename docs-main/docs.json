@@ -84,7 +84,7 @@
             ]
           },
           {
-            "group": "Relays (Coming Soon)",
+            "group": "Relays (Beta)",
             "icon": "zap",
             "pages": [
               "/relays/overview",
