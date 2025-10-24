@@ -1,0 +1,193 @@
+---
+title: "Relays: Setup & Technical Guide"
+description: "Create, configure, and troubleshoot Relays—triggers, conditions, actions, schedules, examples, FAQ."
+sidebarTitle: "Relays: Setup & technical"
+---
+
+# How to Create & Edit Relays
+
+Build reliable automations with a clear flow: **Trigger → Conditions → Actions → (Scheduling/Active Hours)**. This guide shows you how to configure, test, and troubleshoot.
+
+---
+
+## Create a Relay (quick start)
+
+1. **Visit the Relay Module**
+2. Click **New Relay** → add **Name**, optional **Description**, **Color**, **Icon**.
+3. Add a **Trigger** (e.g., **MessageReceived**).
+4. Add **Conditions** (e.g., _IsNewConversation_, _IsAnonymousConversation_, _OutboundChannelEquals = Support_).
+5. Add **Actions** in order:
+   - **assignTeammates** (select user IDs)
+   - **addLabelsToConversation** (select label IDs)
+   - **sendMessage** (text, optional media, tag fallbacks)
+6. (Optional) Configure **Active Hours** and/or **Delays**.
+7. Set **Order** (lower number runs earlier) and **Save**.
+8. **Test** with a real message; adjust conditions or delays as needed.
+
+---
+
+## Triggers
+
+- **MessageReceived** (primary): Fires when an inbound message is received.
+- Additional system events (e.g., **ConversationCreated**, **ContactCreated**, etc.) are supported for expansion and may appear as templates as Relays evolve.
+
+**Relay types**
+
+- **Workspace Relays** – run for the entire workspace.
+- **User Relays** – run only for the specified user.
+
+---
+
+## Conditions
+
+Use **AND/OR** logic to combine criteria.
+
+- **OutboundChannelEquals**
+  - Operators: `equals`, `notEquals`, `contains`, `startsWith`, `endsWith`
+  - Value: channel (phone line) identifier
+- **IsAnonymousConversation**
+  - True when no contact is linked to the thread
+- **IsNewConversation**
+  - True when the thread has a single inbound message
+
+> Start simple (one condition). Add more as your automation matures.
+
+---
+
+## Actions
+
+Actions run **top-to-bottom**. You can add **Delays** and choose **Stop on success**.
+
+- **assignTeammates**
+  - Data: `userIds: string[]`
+  - Assigns one or more teammates to the conversation
+- **addLabelsToConversation**
+  - Data: `labelIds: string[]`
+  - Applies one or more labels to the conversation
+- **sendMessage**
+  - Data: `text`, optional `media[]`, optional `tagFallbacks`
+  - Sends an outbound SMS/MMS (respects media limits and link behavior)
+
+**Delays & smart checks**
+
+- Delay units: **minute, hour, day, week, month, year**
+- Smart delay avoids repeat sends if a relay message was sent recently
+
+**Stop on success**
+
+- If enabled, later Relays won’t run after any action succeeds (prevents collisions).
+
+---
+
+## Scheduling & active hours
+
+- **Timezone-aware**
+- **Per-day** configuration:
+  - `openAllDay` (runs all day)
+  - `closedAllDay` (does not run)
+  - `timeRange` (specific hours)
+- **Flip logic** to run _only when normally inactive_ (great for after-hours replies).
+
+---
+
+## Execution flow (what happens under the hood)
+
+1. **Trigger event** (e.g., MessageReceived) hits the event bus.
+2. Relays for the workspace are **discovered** and **sorted by Order** (ascending).
+3. For each Relay: skip if **Paused** or **outside Active Hours**.
+4. Evaluate **Conditions** (AND/OR).
+5. If true, **execute Actions** sequentially; honor **Delays** and **Stop on success**.
+6. On error, execution stops and logs for review.
+
+**Relay states**: **Active**, **Paused**, **Deleted (soft)**.
+
+---
+
+## Practical examples
+
+**Auto-assignment (Support line)**
+
+- Trigger: MessageReceived
+- Conditions: IsNewConversation **AND** OutboundChannelEquals _(Support)_
+- Actions: assignTeammates _(Support team)_, addLabelsToConversation _(Support)_
+
+**Anonymous capture**
+
+- Trigger: MessageReceived
+- Conditions: IsAnonymousConversation
+- Actions: sendMessage _(“Thanks for texting —what’s your name?”)_, addLabelsToConversation _(Anonymous)_
+
+**After-hours reply**
+
+- Trigger: MessageReceived
+- Active hours: Mon–Fri 9a–5p
+- Flip logic: **on** (run outside hours)
+- Actions: sendMessage _(“We’re away now but will reply at 9am.”)_
+
+---
+
+## FAQ
+
+**Do Relays respect roles & permissions?**\
+Yes. Actions like **assignTeammates** and **addLabelsToConversation** follow your **Roles & Permissions**.
+
+**Can multiple Relays run on the same event?**\
+Yes—unless **Stop on success** is enabled, or conditions are mutually exclusive.
+
+**Can I include media in auto-replies?**\
+Yes. Keep each file **≤ 10 MB** (files \> **500 KB** send as links). See **Media** guide.
+
+**What’s the difference between Workspace and User Relays?**\
+Workspace Relays apply to everyone; User Relays run only for the selected user.
+
+**Can I pause a Relay without deleting it?**\
+Yes. Use **Paused** to temporarily disable.
+
+**How do I avoid duplicate automated replies?**\
+Add a **Delay** with smart checks and/or apply a **“Auto-replied”** label, then require **NOT labeled Auto-replied** as a condition.
+
+---
+
+## Troubleshooting
+
+**A Relay didn’t fire.**
+
+- Confirm the **Trigger** was the right event (e.g., inbound vs outbound).
+- Check **Paused** and **Active Hours**.
+- Loosen **Conditions** (try removing an AND condition temporarily).
+- Ensure the Relay’s **Order** isn’t blocked by an earlier Relay with **Stop on success**.
+
+**It fired, but the wrong person was assigned.**
+
+- Verify **OutboundChannelEquals** value and label logic.
+- Confirm the selected **userIds** are correct and active.
+
+**Auto-reply sent multiple times.**
+
+- Add a **Delay** and a guard label (e.g., _Auto-replied_).
+- Make conditions stricter (e.g., **IsNewConversation**).
+
+**Actions didn’t run after conditions matched.**
+
+- Check for **permission limits** (roles) on assignees/labels.
+- Remove long **Delays** while testing.
+- Review logs for the specific action error.
+
+---
+
+## Best practices
+
+- **Name clearly:** “After-hours reply – Support line” beats “Relay 1”.
+- **Start simple:** One trigger, one condition, one action—then iterate.
+- **Guard rails:** Add a label like **Routed**/**Auto-replied** to prevent repeats.
+- **Document owner:** Note who maintains each Relay in the description.
+- **Review quarterly:** Confirm Orders, Active Hours, and Stop-on-success across your stack.
+
+---
+
+## Related guides
+
+- **Relays (overview):** [/relays/overview](/relays/overview)
+- **Labels for routing:** [/inbox/labels](/inbox/labels)
+- **Roles & permissions:** [/settings/roles-permissions](/settings/roles-permissions)
+- **Media limits & delivery:** [/messaging/media](/messaging/media)

@@ -1,0 +1,62 @@
+---
+title: "Relays Overview"
+description: "High-level concepts for MessageDesk Relays—what they are, why they matter, and common automation examples."
+sidebarTitle: "Relays: Overview"
+---
+
+# Relays Overview
+
+## What are Relays?
+
+Relays are **inbox automations** for MessageDesk. They listen for **events**, check **conditions**, and run **actions**—so the right conversation reaches the right person at the right time.
+
+---
+
+## Why Use Relays?
+
+- **Scale without chaos:** Auto-assign and auto-label to keep queues clean as volume grows.
+- **Respond faster:** Send **after-hours** or **first-touch** replies automatically.
+- **Reduce busywork:** Route by **phone line**, **label**, or **teammate** so people start where they can help most.
+- **Stay consistent:** Use the same rules every time—no missed handoffs.
+
+---
+
+## How Relays Work (at a glance)
+
+**Trigger → Conditions → Actions (→ optional Scheduling)**
+
+- **Trigger:** When should this run? (e.g., when a new message arrives)
+- **Conditions:** Should it run for _this_ conversation? (e.g., line = Support, is anonymous)
+- **Actions:** What should happen? (assign teammate, add label, send message)
+- **Scheduling/Active Hours:** When is it allowed to run? (e.g., after-hours auto-reply)
+
+---
+
+## What Relays are Great at
+
+- **Office hours auto-reply** → Example: “We’ll reply at 9 am.”
+- **Anonymous capture** → Example: “What’s your name?” + label “Anonymous.”
+- **Channel routing** → Example: Messages to a Support line auto-assign to the Support team.
+- **Priority labeling** → Example: Add labels like _Urgent_ or _VIP_ to fast-track triage.
+
+---
+
+## Starter patterns (copy these ideas to get started)
+
+**After-hours reply**
+
+- Trigger: inbound message
+- Condition: outside active hours
+- Action: send message (set expectations)
+
+**New conversation on a Support line**
+
+- Trigger: inbound message
+- Conditions: is new **AND** line = Support
+- Actions: assign teammates (Support), add label (Support)
+
+**Anonymous contact capture**
+
+- Trigger: inbound message
+- Condition: conversation is anonymous
+- Actions: send message asking name, add label (Anonymous)

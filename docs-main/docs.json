@@ -87,6 +87,8 @@
             "group": "Relays (Coming Soon)",
             "icon": "zap",
             "pages": [
+              "/relays/overview",
+              "/relays/create-edit"
             ]
           },
           {
