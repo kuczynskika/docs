@@ -1,145 +1,125 @@
 ---
-title: "Message delivery status and errors"
-description: "Learn more about message delivery status and errors in MessageDesk."
-sidebarTitle: "Delivery status & errors"
+title: "Message Delivery Errors & Troubleshooting"
+description: "Fix delivery issues fast. Understand statuses, pinpoint causes, and know exactly what to do next."
+sidebarTitle: "Troubleshooting Delivery Errors"
 ---
 
-# Message Delivery Status & Errors
+# Message Delivery Errors & Troubleshooting
 
-See what’s happening with every outbound message—and know exactly how to manage message delivery failures.
-
----
-
-## TL;DR
-
-- **Outbound messages** show a status next to the timestamp (e.g., **Sent**, **Delivered**, **Failed**).
-- **Inbound messages** show a **timestamp only** (no delivery status).
-- **Failed** messages include a **reason** and quick actions: **Resend**, **Contact support**, **Delete**.
+Get messages through, fast. This guide shows you **what each status means**, **how to fix failures**, and **what to send support** if you need help.
 
 ---
 
-## Individual Message Statuses (1:1, Group SMS, or “Send Individually” Broadcasts)
+## TL;DR — Your Fastest Path to Fix Messaging Problems
 
-| Status (UI)   | What it means                               |
-| ------------- | ------------------------------------------- |
-| **Created**   | Message created and preparing to send.      |
-| **Queued**    | Message queued for delivery.                |
-| **Sent**      | Handed off to carriers.                     |
-| **Delivered** | Carrier confirmed handset delivery.         |
-| **Failed**    | Could not deliver. Click for error details. |
+1. **Open the status badge.** If it’s **Failed**, tap to see the error reason.
+2. **Retry smartly.** Send a short, **plain-text** message **without links or media**.
+3. **Check the basics.** Is the number **mobile** and formatted **E.164** (`+15551234567`)?
+4. **Registration matters.** Make sure your line is **A2P 10DLC-registered** (local) or **verified** (toll-free).
+5. **If urgent, use another channel** (call/email) while you troubleshoot.
+
+---
+
+## What Message Delivery Statuses Mean + What to Do
+
+| Status        | What it means                               | What you should do                                                                                                 |
+| ------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Delivered** | Carrier confirmed delivery.                 | If your contact says “didn’t get your message,” resend a short message **without links or media**.                 |
+| **Sent**      | Handed to carriers; final delivery pending. | Wait for an update. Carriers don’t always reply with a delivery status; if it stays “Sent,” try a short follow-up. |
+| **Queued**    | Throttled to protect deliverability.        | Leave it; the queue clears automatically. Heavy team usage on one line may extend queue time.                      |
+| **Failed**    | Carrier/network rejected delivery.          | Use the **error reason** below → fix → **Resend**.                                                                 |
 
 <Note>
-  **Note:** Status appears on **outbound** messages. **Inbound** messages don’t display delivery states.
+  **Inbound** messages show a **timestamp only** (no delivery status).
 </Note>
 
-## The most common reasons messages fail (and how to fix them)
+---
 
-1. **Texting a landline that's not text-enabled**\
-   A text to a **landline** will fail because the destination isn’t SMS-capable. Verify the number is a **mobile** number and format it in **E.164** (e.g., `+15551234567`).
+## Top 3 Reasons Messages Fail + Fixes
 
-   _Related errors:_ **Invalid Number** (Code 2), **Destination Unreachable** (Code 5).\
-   [When you text a landline, typically nothing happens.](https://www.messagedesk.com/blog/text-to-landline)
-2. **Carriers are flagging content they believe is spammy or in violation of your campaign terms**\
-   Carriers may reject messages flagged as **spam**—common triggers include generic short links, all caps, repetitive promos, or missing consent/opt-out language.
-
-   _Related errors:_ **Anti-spam** (Code 4), **Invalid Message** (Code 3), **Invalid Short Link** (Code 13).\
-   Follow [TCPA guidelines and best practices](https://www.messagedesk.com/blog/tcpa-compliance), include **Reply STOP to opt out**, and prefer full or branded URLs.
-3. **Carrier network or throughput limits**\
-   High send volume or unregistered numbers can hit **rate limits** or encounter **carrier errors**.
-
-   _Related errors:_ **Carrier Error** (Code 7), **Rate Limit Exceeded** (Code 16), **Unregistered 10DLC** (Code 14), **Pending Registration** (Code 17), **Campaign Suspended** (Code 18).\
-   **Tip:** For higher volume, register your local number for **A2P 10DLC**, or ask about using a **verified toll-free** number. Verified toll-free often supports higher throughput and fewer filters.
+1. **Landline or unreachable number**
+   - Signs: **Invalid Number (2)**, **Destination Unreachable (5)**
+   - Fix: Confirm it’s a **mobile** number; correct formatting to **E.164**; request an updated number if needed.
+2. **Content filtered as spam / out of campaign scope**
+   - Signs: **Anti-spam (4)**, **Invalid Message (3)**, **Invalid Short Link (13)**
+   - Fix: Remove short links, ALL CAPS, and promo buzzwords. Add identity + **“Reply STOP to opt out.”** Use full or branded URLs.
+3. **Throughput or registration limits**
+   - Signs: **Carrier Error (7)**, **Rate Limit Exceeded (16)**, **Unregistered 10DLC (14)**, **Pending Registration (17)**, **Campaign Suspended (18)**
+   - Fix: Complete **10DLC** or **toll-free verification**. **Schedule** large sends in waves. Contact support if suspended.
 
 ---
 
-## Failure Reasons (Error Codes) & What to Do
+## Error Reasons (codes) — Quick Fixes
 
-Click a **Failed** status to see the specific reason and take action.
+Click a **Failed** badge to see a reason why your message failed to send. Use this table to resolve and resend.
 
-| Code   | Error text (UI)         | What it means                                                          | What you should do                                                               |
-| -----: | ----------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| **1**  | Unknown Error           | Generic failure.                                                       | Retry once. If it persists, **Contact support** with the conversation link/time. |
-| **2**  | Invalid Number          | The number isn’t associated with any carrier (often landline or typo). | Verify the number is mobile or text-enabled; fix to **E.164** format.            |
-| **3**  | Invalid Message         | Carrier marked content invalid.                                        | Remove blocked phrases/formatting; ensure compliance; resend.                    |
-| **4**  | Anti-spam               | Carrier flagged as spam.                                               | Add opt-out, reduce links/ALL-CAPS, segment sends; ensure 10DLC.                 |
-| **5**  | Destination Unreachable | Number not valid on the network.                                       | Confirm with the contact; update or remove.                                      |
-| **6**  | Insufficient Funds      | Billing/credits issue.                                                 | Update payment; retry after funds post.                                          |
-| **7**  | Carrier Error           | Downstream carrier/network issue.                                      | Retry later; if recurring, **Contact support**.                                  |
-| **8**  | Media Error             | Unsupported or corrupt media.                                          | Re-attach supported types; keep each file ≤ **10 MB**.                           |
-| **10** | Opted Out               | Recipient opted out.                                                   | Do **not** resend. Re-opt-in via a compliant flow if appropriate.                |
-| **11** | Blocked                 | Recipient or your workspace blocked messaging.                         | Unblock only if appropriate and compliant.                                       |
-| **12** | Unverified Toll-Free    | Toll-free line not verified.                                           | Complete **toll-free verification**, then resend.                                |
-| **13** | Invalid Short Link      | Generic short link blocked.                                            | Use full or branded links; avoid generic shorteners.                             |
-| **14** | Unregistered 10DLC      | Local number not A2P-registered.                                       | Register your **10DLC** campaign/brand; resend post-approval.                    |
-| **15** | Media Too Large         | Attachment exceeds size limits.                                        | Compress; keep each file ≤ **10 MB** (files \> **500 KB** send as links).        |
-| **16** | Rate Limit Exceeded     | Throughput/daily caps hit.                                             | Schedule in waves; upgrade throughput via carrier registration.                  |
-| **17** | Pending Registration    | Awaiting 10DLC association.                                            | Wait until your registration status is confirmed complete, then resend.          |
-| **18** | Campaign Suspended      | 10DLC campaign suspended.                                              | **Contact support**, fix compliance, and reinstate.                              |
-
----
-
-## How statuses appear in the UI
-
-- **Outbound:** `10:42 AM | Delivered ✓` (timestamp **|** status + icon).
-- **Failed:** Error styling; click to open details and **Resend**.
-- **Media:** Status shows even without text content.
-- **Inbound:** Timestamp only (no status).
+| Code   | UI message              | What it means               | What you should do                                                            |
+| -----: | ----------------------- | --------------------------- | ----------------------------------------------------------------------------- |
+| **1**  | Unknown Error           | Generic failure.            | Retry once; if it persists, **contact support** with thread link/time.        |
+| **2**  | Invalid Number          | Landline/invalid/typo.      | Use a **mobile** number; fix to **E.164**.                                    |
+| **3**  | Invalid Message         | Content blocked.            | Remove blocked phrases/formatting; comply with campaign terms; resend.        |
+| **4**  | Anti-spam               | Filtered as spam.           | Add opt-out, reduce links/ALL-CAPS; segment; ensure **10DLC**.                |
+| **5**  | Destination Unreachable | Not valid on network.       | Confirm with contact; update or remove.                                       |
+| **6**  | Insufficient Funds      | Billing/credits issue.      | Update payment; retry after funds post.                                       |
+| **7**  | Carrier Error           | Downstream network issue.   | Retry later; if recurring, contact support.                                   |
+| **8**  | Media Error             | Unsupported/corrupt media.  | Re-attach supported types; keep **≤ 10 MB** each.                             |
+| **10** | Opted Out               | Recipient opted out.        | **Do not** resend; re-opt-in via a compliant path only.                       |
+| **11** | Blocked                 | Recipient/workspace block.  | Unblock only if compliant and intended.                                       |
+| **12** | Unverified Toll-Free    | Toll-free not verified.     | Complete verification; resend.                                                |
+| **13** | Invalid Short Link      | Generic shortener blocked.  | Use full or branded links.                                                    |
+| **14** | Unregistered 10DLC      | Local number unregistered.  | Register brand/campaign; resend post-approval.                                |
+| **15** | Media Too Large         | Attachment too big.         | Compress; keep **≤ 10 MB** (files \> **500 KB** send as links automatically). |
+| **16** | Rate Limit Exceeded     | Throughput/daily caps hit.  | **Schedule** in waves; upgrade throughput via registration.                   |
+| **17** | Pending Registration    | Awaiting 10DLC association. | Wait (up to **24h**), then resend.                                            |
+| **18** | Campaign Suspended      | Registration suspended.     | **Contact support**; fix compliance; reinstate.                               |
 
 ---
 
-## What you can do (quick actions)
+## Deliverability Checklist
 
-- **Resend message:** Try again after fixing the cause.
-- **Contact support:** Opens a pre-filled path with thread details.
-- **Delete message:** Removes the failed item from the thread (history remains).
-
----
-
-## Best practices to avoid failures
-
-- **Register your numbers:** Use **A2P 10DLC** for local lines; **verify toll-free** for higher volume.
-- **Compliant content:** Include opt-out language on non-conversational sends; avoid spammy wording and generic short links.
-- **Clean data:** Store numbers in **E.164** and confirm the destination is **mobile**, not landline.
-- **Right-size media:** Keep each file ≤ **10 MB**; files \> **500 KB** are sent as links automatically.
-- **Throttle large sends:** Use **Schedule** to send in waves and prevent rate limiting.
+- **Identify yourself:** “Hi [Name], it’s [Business] …”
+- **Consent & opt-out:** Include “Reply STOP to opt out.”
+- **Keep it short:** One clear purpose per message.
+- **Avoid shorteners:** Use full/branded URLs.
+- **Right-size media:** ≤ **10 MB** each; prefer images over video.
 
 ---
 
-## Frequently Asked Message Delivery Questions
+## After porting or hosting a number with MessageDesk
 
-**Do inbound messages ever show a delivery status?**\
-No. Only outbound messages display delivery states.
+- **0–24 hours:** SMS/MMS may be inconsistent while routes update.
+- **24–48 hours:** Most issues resolve.
+- **48+ hours:** Collect examples and **contact support**.
 
-**What’s the difference between “Sent” and “Delivered”?**\
-**Sent** = handed to the carrier. **Delivered** = carrier confirmed handset receipt.
-
-**How can I tell if I texted a landline?**\
-Failures with an **Invalid Number** or **Destination Unreachable** often indicate a landline or bad number. Confirm with the contact and update.
-
-**Why do short links get blocked?**\
-Carriers frequently filter generic shorteners. Use **full** or **branded** links.
-
-**Does 10DLC apply to me?**\
-Yes for most US local business texting. Register to improve deliverability and reduce filtering.
-
-**How long does “Pending Registration” last?**\
-Typically **up to 24 hours** for association and carrier propagation.
+<Info>
+  Test with 2–3 contacts on different carriers (Verizon, AT&T, T-Mobile) and save timestamps/screenshots.
+</Info>
 
 ---
 
-## Troubleshooting Message Delivery
+## What to Send MessageDesk Support for Help
 
-**Status shows “Unknown.”**\
-Retry once. If repeated, **Contact support** with the conversation link/time.
+Email [**support@messagedesk.com**](mailto:support@messagedesk.com) with:
 
-**Delivered, but no reply.**\
-Delivery ≠ read. Consider a concise follow-up; verify the number and opt-out status.
+- **3+ failed examples** (dates/times, recipient numbers)
+- **Exact error details** (screenshots of status/reason)
+- **Recipient carriers** (if known)
+- **Your message content** (including any links)
+- **Which sending number** you used
 
-**Spike in failed sends during a blast.**\
-Review content for compliance, ensure **10DLC/toll-free** registration, and **schedule** in smaller batches.
+---
 
-**Uploading and sending media keeps failing.**\
-Confirm file type/size (≤ **10 MB**). Re-attach or compress; avoid corrupted files.
+## Reference (additional details)
 
-**Consistent Invalid Number errors.**\
-Normalize numbers to **E.164** and validate country codes. Landlines will fail; request a mobile number.
+### How statuses appear in the UI
+
+- **Outbound:** `10:42 AM | Delivered ✓` (timestamp **|** status + icon)
+- **Failed:** Red/error styling; click to open details and **Resend**
+- **Media:** Status shows even without text content
+- **Inbound:** Timestamp only (no status)
+
+### MMS & media tips
+
+- Keep images under ~**1 MB** (hard max **10 MB**)
+- If repeated failures occur, **share a file link** instead of attaching video
+- HEIC/JPG/PNG/GIF/PDF supported; files \> **500 KB** send as links automatically
