@@ -10,7 +10,7 @@ sidebarTitle: "Relays: Overview"
 
 ## What are Relays?
 
-Relays are **inbox automations** for MessageDesk. They listen for **events**, check **conditions**, and run **actions**—so the right conversation reaches the right person at the right time.
+Relays are **automations** for MessageDesk. They listen for **events**, check **conditions**, and run **actions**. They help you and your team get the right conversation to the right person at the right time.
 
 ---
 
@@ -30,8 +30,8 @@ Relays are **inbox automations** for MessageDesk. They listen for **events**, ch
 **Trigger → Conditions → Actions**
 
 - **Trigger:** When should this run? (e.g., when a new message arrives)
-- **Conditions:** 
-  - Should it run for _this_ conversation? (e.g., line = Support, is anonymous)
+- **Conditions:**
+  - Should it run for _this_ conversation? (e.g., phoneline = Support, is anonymous)
   - When is it allowed to run? (e.g., after-hours auto-reply)
 - **Actions:** What should happen? (assign teammate, add label, send message)
 
@@ -40,28 +40,6 @@ Relays are **inbox automations** for MessageDesk. They listen for **events**, ch
 ## What Relays are Great at
 
 - **Out-of-office auto-replies** → Example: “We’ll reply at 9 am.”
-- **Capture** **anonymous contacts **→ Example: “What’s your name?” + label “Anonymous.”
-- **Route to teammates **→ Example: Messages to a Support line are auto-assigned to a member of the Support team.
+- **Capture** \*\*anonymous contacts \*\*→ Example: “What’s your name?” + label “Anonymous.”
+- \*\*Route to teammates \*\*→ Example: Messages to a Support line are auto-assigned to a member of the Support team.
 - **Route to labels** → Example: Add labels like _Urgent_ or _VIP_ to fast-track triage.
-
----
-
-## Starter patterns (copy these ideas to get started)
-
-**After-hours reply**
-
-- Trigger: inbound message
-- Condition: outside active hours
-- Action: send message (set expectations)
-
-**New conversation on a Support line**
-
-- Trigger: inbound message
-- Conditions: is new **AND** line = Support
-- Actions: assign teammates (Support), add label (Support)
-
-**Anonymous contact capture**
-
-- Trigger: inbound message
-- Condition: conversation is anonymous
-- Actions: send message asking name, add label (Anonymous)
