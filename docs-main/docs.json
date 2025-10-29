@@ -100,12 +100,20 @@
             "group": "Settings",
             "icon": "gear",
             "pages": [
-              "settings/personal",
+              {
+                "group": "Personal",
+                "pages": [
+                  "settings/personal/overivew",
+                  "settings/personal/inbox-preferences"
+                ]
+              },
               {
                 "group": "Workspace",
                 "pages": [
+                  "settings/overview",
+                  "settings/phone-management",
                   "settings/team-management",
-                  "settings/phone-management"
+                  "settings/workspace/user-roles-permissions"
                 ]
               },
               {
