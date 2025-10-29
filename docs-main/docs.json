@@ -94,8 +94,7 @@
           {
             "group": "Integrations (Coming Soon)",
             "icon": "link",
-            "pages": [
-            ]
+            "pages": []
           },
           {
             "group": "Settings",
@@ -107,6 +106,14 @@
                 "pages": [
                   "settings/team-management",
                   "settings/phone-management"
+                ]
+              },
+              {
+                "group": "Account",
+                "pages": [
+                  "settings/account/billing-subscriptions",
+                  "settings/account/workspace-details",
+                  "settings/account/trial-terms"
                 ]
               },
               "settings/user-roles-permissions",
@@ -125,6 +132,7 @@
             "icon": "book-open",
             "pages": [
               "contact-us",
+              "resources/pricing",
               "resources/support",
               "resources/security-compliance-hipaa",
               "resources/keyboard-shortcuts"
@@ -202,5 +210,11 @@
     "socials": {
       "linkedin": "https://linkedin.com/company/messagedesk"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/resources/downloads",
+      "destination": "/get-started/install-apps"
+    }
+  ]
 }
