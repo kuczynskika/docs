@@ -94,8 +94,7 @@
           {
             "group": "Integrations (Coming Soon)",
             "icon": "link",
-            "pages": [
-            ]
+            "pages": []
           },
           {
             "group": "Settings",
@@ -211,5 +210,11 @@
     "socials": {
       "linkedin": "https://linkedin.com/company/messagedesk"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/resources/downloads",
+      "destination": "/get-started/install-apps"
+    }
+  ]
 }
