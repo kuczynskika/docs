@@ -133,6 +133,7 @@
             "icon": "book-open",
             "pages": [
               "contact-us",
+              "resources/pricing",
               "resources/support",
               "resources/security-compliance-hipaa",
               "resources/keyboard-shortcuts"
