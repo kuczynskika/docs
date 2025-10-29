@@ -109,6 +109,14 @@
                   "settings/phone-management"
                 ]
               },
+              {
+                "group": "Account",
+                "pages": [
+                  "settings/account/billing-subscriptions",
+                  "settings/account/workspace-details",
+                  "settings/account/trial-terms"
+                ]
+              },
               "settings/user-roles-permissions",
               "settings/compliance-center"
             ]
