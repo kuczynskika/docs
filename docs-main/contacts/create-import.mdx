@@ -165,4 +165,4 @@ The import pipeline supports other entities via dedicated tooling. This doc cove
 Invalid rows are **skipped**. Fix the CSV and re-import those rows separately.
 
 **Can I update existing contacts?**\
-Yes—when an email or phone matches an existing contact, MessageDesk applies your mapping rules and validation to update fields.
+By default, CSV imports will **not overwrite** existing contacts. Contacts are deduplicated by phone number, and duplicates are flagged rather than updated. To update existing contacts (e.g., fix a misspelled name or update contact details), you need to use the import flow that supports updates.
