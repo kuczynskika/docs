@@ -1,7 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "palm",
-  "name": "Inbox by MessageDesk",
+  "name": "MessageDesk Support Docs",
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.messagedesk.com",
+      "robots": "index, follow"
+    }
+  },
   "colors": {
     "primary": "#6142b0",
     "light": "#46405c",
@@ -43,11 +49,11 @@
                 "group": "Carrier registration",
                 "icon": "shield-check",
                 "pages": [
-                  "a2p-registration/a2p-overview",
-                  "a2p-registration/a2p-privacy",
-                  "a2p-registration/a2p-spam",
-                  "a2p-registration/a2p-submit",
-                  "a2p-registration/compliance-center"
+                  "carrier-registration/overview",
+                  "carrier-registration/privacy-policy-terms-conditions",
+                  "a2p-registration/carrier-registration/messaging-restrictions",
+                  "a2p-registration/carrier-registration/submit",
+                  "settings/compliance-center"
                 ]
               }
             ]
@@ -90,11 +96,6 @@
               "/relays/overview",
               "/relays/create-edit"
             ]
-          },
-          {
-            "group": "Integrations (Coming Soon)",
-            "icon": "link",
-            "pages": []
           },
           {
             "group": "Settings",
@@ -223,6 +224,26 @@
     {
       "source": "/resources/downloads",
       "destination": "/get-started/install-apps"
+    },
+    {
+      "source": "/a2p-registration/a2p-overview",
+      "destination": "/carrier-registration/overview"
+    },
+    {
+      "source": "/a2p-registration/a2p-privacy",
+      "destination": "/carrier-registration/privacy-policy-terms-conditions"
+    },
+    {
+      "source": "/a2p-registration/a2p-spam",
+      "destination": "/carrier-registration/messaging-restrictions"
+    },
+    {
+      "source": "/a2p-registration/a2p-submit",
+      "destination": "/carrier-registration/submit"
+    },
+    {
+      "source": "/a2p-registration/compliance-center",
+      "destination": "/settings/compliance-center"
     }
   ]
 }
