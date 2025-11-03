@@ -1,62 +1,110 @@
 ---
 title: "Data Security, Compliance & HIPAA"
-description: "Understanding security protocols, compliance standards, and HIPAA."
+description: "What you can safely send by SMS, HIPAA do’s & don’ts, and how MessageDesk secures your data—including our SOC 2 roadmap and Trust Center."
+sidebarTitle: "Data Security, Compliance & HIPAA"
 ---
 
-## Is MessageDesk HIPAA Compliant?
+# Data Security, Compliance & HIPAA
 
-Text messaging is a fundamentally unsecure channel. Text messages are stored on servers at the carrier network level, making it impossible to have true end-to-end encryption at all stages of a message's journey.
+We protect your data and help you use SMS responsibly. This page explains **what you can send**, **what to avoid**, and how to access our **security documentation**.
 
-However, healthcare providers can use SMS to communicate with patients as long as they **do not share any PHI (Personal Health Information)** via text.
+---
 
-### What you can send
+## TL;DR
 
-- Appointment reminders without health details
-- General practice information
+- **SMS isn’t end-to-end encrypted.** Use it for **non-PHI** communications only.
+- **HIPAA:** You **may not** send PHI by text via MessageDesk. MessageDesk **cannot sign BAAs** at this time.
+- **SOC 2:** Audit **in progress**; targeted completion **January 2026**.
+- **Trust Center:** Get policies, control mappings, and audit materials: [**security.messagedesk.com**](security.messagedesk.com).
+- **Legal:** See our [**Privacy Policy**](https://www.messagedesk.com/privacy-policy), [**Terms of Service**](https://www.messagedesk.com/terms), and [**Use Agreement**](https://www.messagedesk.com/use-agreement).
+
+---
+
+## HIPAA & Texting: What’s Allowed (And What Isn’t)
+
+SMS is a carrier-routed channel and cannot be made fully end-to-end encrypted. That means **don’t send PHI** (Protected Health Information) over SMS.
+
+### What you **can** send (non-PHI)
+
+- Appointment reminders **without** health details
+- General practice information (address, parking, directions)
 - Office hours and contact information
-- Non-specific follow-up messages
+- Non-specific follow-ups (“Thanks for visiting—complete your post-visit survey”)
 
-### What you should not send
+### What you **should not** send (PHI)
 
-- Diagnosis information
-- Treatment details
-- Prescription information
-- Test results
-- Any other PHI
+- Diagnoses or symptoms
+- Treatment or care plan details
+- Prescriptions or medication names/dosages
+- Lab or test results
+- Any other **patient-identifying health information**
 
-### Business Associate Agreements (BAA)
+<Warning>
+  **No BAA:** MessageDesk is **not currently in a legal position to sign BAAs**. If your organization requires a BAA, MessageDesk may not be the right fit for PHI-related workflows today.
+</Warning>
 
-MessageDesk is not currently in a legal position to sign Business Associate Agreements (BAAs). If your clinic or practice requires a signed BAA for vendor relationships, MessageDesk may not be the right solution at this time.
+### Best practices for healthcare teams
 
-### Best practices for healthcare providers
+1. **Train your staff** on PHI restrictions and when to switch channels.
+2. [**Use templates**](/messaging/templates-tags) that exclude PHI and include clear, neutral language.
+3. **Keep reminders generic** (date/time/location only).
+4. **Redirect PHI** to secure portals, phone calls, or in-network tools.
+5. **Document your policy** for when SMS is appropriate vs. not.
+6. Reference our [**Privacy Policy**](https://www.messagedesk.com/privacy-policy) for how we handle personal information.
 
-If you're a healthcare provider using MessageDesk:
+---
 
-1. Train your team on PHI restrictions
-2. Create message templates that avoid sending PHI in messages
-3. Use generic language for appointment reminders
-4. Never include patient health details in messages
-5. Consider alternative secure channels for PHI communication
+## Our Security Posture (At a Glance)
 
-## 
+- **Hosting:** AWS (US).
+- **Encryption:** **AES-256 at rest**, **TLS in transit**.
+- **Access controls:** MFA support; **RBAC** with granular permissions (Admin, Manager, Operator + resource-level controls).
+- **Vulnerability management:** SLAs to remediate Critical/High/Medium findings within defined windows.
+- **Segregation:** Separate staging/production; change management and rollback procedures.
+- **Monitoring & logs:** Auth and configuration events logged and retained.
+- **Pen test:** Most recent third-party test reported **no critical/high** findings.
 
-## SOC 2 & Data Security & Compliance
+<Info>
+  For full details (policies, controls, audit artifacts), request access to our [**Trust Center**](security.messagedesk.com).
+</Info>
 
-MessageDesk is currently undergoing a SOC 2 audit, with completion slated for January 2026.
+---
 
-If you need to review MessageDesk's security documentation, you can request access to our Trust Center through Vanta.
+## SOC 2, Compliance & Trust Center
 
-### How to request access to our Trust Center
+MessageDesk is undergoing **SOC 2 Type I & II** audit (target **January 2026**). We align operations with industry standards and maintain GDPR/CCPA-aligned processes.
 
-1. Visit the MessageDesk Trust Center
-2. Click the **"Request Access"** button
-3. Fill out the access request form with your information
-4. Submit your request
+Legal references: [**Terms of Service**](https://www.messagedesk.com/terms) and [**Use Agreement**](https://www.messagedesk.com/use-agreement).
 
-Your request will be automatically sent to the MessageDesk team for review.
+### Request access to our Trust Center
+
+1. Visit [**security.messagedesk.com**](https://security.messagedesk.com/)
+2. Click **Request Access**
+3. Complete the form and submit
+4. We’ll email you once access is approved
 
 <Card title="Trust Center" icon="lock" iconType="regular" href="https://security.messagedesk.com/">
-  Visit the MessageDesk Trust Center for a breakdown of all security standards and protocols.
+  Get policies, control mappings, and audit materials in the MessageDesk Trust Center.
 </Card>
 
 ---
+
+## Frequently Asked Data & Compliance Questions
+
+**Is MessageDesk HIPAA compliant?**\
+We **do not** transmit PHI by SMS and **do not** sign BAAs currently. You can use MessageDesk for **non-PHI** communications (e.g., generic reminders).
+
+**Can I include links in reminders?**\
+Yes—use links to your **secure patient portal** for PHI. Keep the SMS itself generic.
+
+**Do you have SOC 2 today?**\
+We’re **in audit**. Target completion is **January 2026**. Interim materials are in the **Trust Center**.
+
+**Where is our data stored?**\
+In the **United States** on AWS. Data is encrypted **at rest** and **in transit**. See our [**Privacy Policy**](https://www.messagedesk.com/privacy-policy) for more on data handling.
+
+**Can we enable SSO and MFA?**\
+Yes. We support SSO (SAML/OIDC) and MFA. See our **Trust Center** and [**Use Agreement**](https://www.messagedesk.com/use-agreement) for additional terms.
+
+**How do Terms apply to my workspace?**\
+Your use of MessageDesk is governed by our [**Terms of Service**](https://www.messagedesk.com/terms) and [**Use Agreement**](https://www.messagedesk.com/use-agreement).
