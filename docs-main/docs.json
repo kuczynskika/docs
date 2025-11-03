@@ -50,10 +50,8 @@
                 "icon": "shield-check",
                 "pages": [
                   "carrier-registration/overview",
-                  "carrier-registration/privacy-policy-terms-conditions",
-                  "a2p-registration/carrier-registration/messaging-restrictions",
-                  "a2p-registration/carrier-registration/submit",
-                  "settings/compliance-center"
+                  "carrier-registration/submit",
+                  "carrier-registration/privacy-policy-terms-conditions"
                 ]
               }
             ]
@@ -66,7 +64,8 @@
               "messaging/new-message-compose",
               "messaging/media",
               "messaging/templates-tags",
-              "messaging/delivery-status-errors"
+              "messaging/delivery-status-errors",
+              "messaging/restrictions"
             ]
           },
           {
@@ -104,7 +103,7 @@
               {
                 "group": "Personal",
                 "pages": [
-                  "settings/personal/overivew",
+                  "settings/personal/overview",
                   "settings/personal/inbox-preferences"
                 ]
               },
@@ -113,20 +112,18 @@
                 "pages": [
                   "settings/overview",
                   "settings/phone-management",
-                  "settings/team-management",
-                  "settings/workspace/user-roles-permissions"
+                  "settings/team-management"
                 ]
               },
               {
                 "group": "Account",
                 "pages": [
                   "settings/account/billing-subscriptions",
-                  "settings/account/workspace-details",
                   "settings/account/trial-terms"
                 ]
               },
-              "settings/user-roles-permissions",
-              "settings/compliance-center"
+              "settings/compliance-center",
+              "settings/data-center"
             ]
           },
           {
