@@ -1,148 +1,252 @@
 ---
-title: "Team management"
-description: "Learn the basics of managing your team and setting roles and permisssions."
-sidebarTitle: Team management
+title: "Team Management"
+description: "How to invite teammates, accept invitations, and manage access with roles and permissions in MessageDesk."
+sidebarTitle: "Team management"
 ---
 
-## How to Invite Teammates
+# Team Management: Invite Teammates & Set Roles with Permissions
 
-<Steps>
-  <Step title="Navigate to Settings" iconType="regular" titleSize="h3">
-    - Click your profile image In the top right of MessageDesk
-    - Click "Settings" from the dropdown menu
-  </Step>
-  <Step title="Select Team Management" iconType="regular" titleSize="h3">
-    - From the left hand navigation, select "Team Management" under Workspace Settings
-      - \*\*note:  \*\*if you don't see `Team Management` you may not have access. Speak with your account administrator for more details.
-  </Step>
-  <Step title="Complete Invite Teammates Form" iconType="regular" titleSize="h3">
-    - Click "Invite Teammate" button from Team Management screen.
-    - Add Teammate email addresses to the dialog shown
-    - Select a role for the teammates
-      - \*\*Note: Roles can be updated at any point in the \*\*
-  </Step>
-</Steps>
+Get your team on board fast, then control who can see, edit, and delete what—without slowing anyone down.
 
-![Invite Teammates dialog](/images/CleanShot2025-08-26at09.22.59.png)
+---
 
-## Accepting an Invitation
+## TL;DR
 
-When a teammate is invited, they'll receive an email from MessageDesk. This email will route them to `inbox.messagedesk.com/#/create-account`
+- **Invite teammates:** **Settings → Team Management → Invite Teammate**
+- **Accept invite:** Teammate creates an account with the **same email** from the invite
+- **Access:** Use **Roles** (Admin/Manager/Operator/Custom) + **feature permissions**
+- **Permission levels:** **Owner** (view/edit/delete), **Editor** (view/edit), **Viewer** (view), **No Access** (blocked)
 
-To accept their invitation, they just need to create an account with the same email address they were invited with.
+---
 
-Upon account creation, they'll be automatically added to any inboxes they've been invited to.
+## How to invite & manage teammates
 
-## Teammate FAQs
+### Invite teammates
 
-<AccordionGroup>
-  <Accordion title="Can I invite unlimited Teammates?" icon="question" iconType="regular">
-    Yes, you can unlimited teammates to your inbox. Each teammate will be counted as a seat in your subscription.
-  </Accordion>
-  <Accordion title="Can I create unlimited custom roles?" icon="question" iconType="regular">
-    Yes, you can create an unlimited number of custom roles for your team.
-  </Accordion>
-</AccordionGroup>
+1. Go to **Settings** → click your profile image (top right).
+2. Open **Team Management** under **Workspace Settings**.\\
 
+   <Note>
+     Don’t see Team Management? Ask your workspace admin—your role may not include access.
+   </Note>
+3. Click **Invite Teammate** → enter one or more **email addresses** → select a **Role** → **Send**.
 
-## Grant and Revoke Access
+![Settings Team Management Pn](/docs-main/images/settings-team-management.png)
 
-You can create custom user roles to grant or revoke access to specific teammate inboxes
+<Warning>
+  Inviting teammates increases your **seat count** and updates your **subscription** automatically. Learn more: [Billing & Subscription](/settings/account/billing-subscriptions).
+</Warning>
 
-![CleanShot 2025-08-26 at 11.49.49.png](/images/CleanShot2025-08-26at11.49.49.png)
+![Settings Invite Teammate Pn](/docs-main/images/settings-invite-teammate.png)
 
+### Accept an invitation
 
-## Edit a Teammate's Permissions
+- The invite email links to `inbox.messagedesk.com/#/create-account`.
+- The teammate must sign up with the **same email** that received the invite.
+- After signup, they’re automatically added to your workspace and any assigned inboxes.
 
-When you invite teammates you'll assign them a `Role`. Roles determine what conversations, inboxes and features a teammate has access to.
+### Update a user’s role or details
 
-### How to Change a Teammate's Role
+1. **Team Management** → select the user.
+2. Click **Edit Details** or **Change User Role**.
+3. Choose a new **Role** from the dropdown.
+4. Changes **save automatically** and apply immediately (refresh may be required).
 
-<Steps>
-  <Step title="Navigate to Settings">
-    - Click the profile icon in top-right corner of MessageDesk
-    - Select `Settings` from the dropdown
-  </Step>
-  <Step title="Select Team Management">
-    - Navigate to `Team Management` in the left hand navigation
-    - You should see a list of teammates
-  </Step>
-  <Step title="Edit Specific Teammate">
-    - Click the 3 dots next to a teammate's name
-    - Select `Change Role` 
-      - _Note: If you don't see _`change role` you may not have access to this feature. Please speak with your administrator.
-    - Select the desired `Role`
-  </Step>
-</Steps>
+### Remove a user from your workspace
 
-![CleanShot 2025-08-26 at 11.55.00.png](/images/CleanShot2025-08-26at11.55.00.png)
+1. **Team Management** → select the user.
+2. Click **Remove Member** → **Confirm**.
+3. Access is revoked immediately.
 
-## Teammate Roles & Permissions
+### Manage invitations
 
-### Default Roles:
+After sending invites, you’ll see each user’s status:
 
-By default, each inbox comes with 3 roles:
+- ❌ **Pending** — User hasn’t created an account yet.
+- ✅ **Joined** — User created an account and joined your workspace.
 
-1. **Admin: **full access to the inbox, all phone numbers and all conversations. Full account level access for billing, teammates and phone number management. They can create, edit and delete anything in MessageDesk.
-2. **Manager**: Full access to the inbox, all phone numbers and all conversations. Full access to team management (invite and remove teammates) and phone management (add/remove phone numbers). **_Read-only access to account information like billing & workspace details. _**
-3. **Operator:** Full access to the inbox, all phone numbers and all conversations. View only access to workspace information, team management and phone management.
+To **resend** an invite: **Team Management** → **⋯ (More)** → **Resend Invitation**.
 
-You can also create custom roles with custom permissions. This is how you can customize which teammates have access to which conversations or features within the Inbox.
+![Settings Team Management Resend Invite Pn](/docs-main/images/settings-team-management-resend-invite.png)
 
-### Custom Roles & Permissions:
+---
 
-![Clean Shot2025 08 26at09 37 40 Pn](/images/CleanShot2025-08-26at09.37.40.png)
+## User Roles & Permissions
 
-### Create a Custom Role:
+**Roles** are a collection of **Permissions** (access levels for features/settings).
 
-<Steps>
-  <Step title="Navigate to Settings" titleSize="h3">
-    - Click your profile icon in the top right corner
-    - Select `Settings` from the dropdown
-  </Step>
-  <Step title="Navigate to Team Management" titleSize="h3">
-    - Navigate to `Team Management` on the left side navigation
-    - Click Roles & Permissions
-  </Step>
-  <Step title="Complete the Create Form" titleSize="h3">
-    - Name the custom role
-    - _optional: copy permissions from an existing role_
-  </Step>
-</Steps>
+![Team Management Roles Permissions Default Pn](/docs-main/images/team-management-roles-permissions-default.png)
 
-## Role Permissions Explained
+### Default user roles (x3)
 
-Each role has a series of "Permissions". Permissions are organized into 2 categories:
+**1) Admin — full access**
 
-- **Inbox Access**: Controls what conversations the teammate has access to
-- **Workspace Access**: Controls the feature access & configuration access for the teammate.
+- All features & resources (incl. account/billing): **Owner**
+- Cannot be removed by Managers/Operators
+- Not editable/deletable (copy to customize)
 
-### Inbox Access
+**2) Manager — lead access**
 
-MessageDesk supports 3 types of inboxes:
+- Most features: **Editor**
+- **Billing**, **Workspace Profile**, **Workspace Settings**: **Viewer**
+- **Team Management**, **Phone Numbers**: **Editor**
 
-1. Phone Number Inboxes: Conversations with a specific phone number.
-2. Label Inboxes: Conversations labeled with a specific label. 
-3. Teammate Inboxes: Conversations assigned to a specific teammate.
+**3) Operator — frontline access**
 
-Each Role can grant access to phone numbers, labels and teammate inboxes individually. Or you can set a role to grant access to all labels, all phone numbers, all teammates. 
+- **Contacts**, **Contact Properties**, **Labels**, **Message Templates**: **Editor**
+- Everything else: **Viewer**
 
-<Note>
-  In the example below, this Role grants **no access** to any label, phone number or teammate. Users with this role will only see conversations if they are assigned to them.
-</Note>
+---
 
-<Info>
-  Teammates always have access to conversation assigned directly to them
-</Info>
+## Default Roles and Permissions Assignments
 
-![CleanShot 2025-08-26 at 11.58.31.png](/images/CleanShot2025-08-26at11.58.31.png)
+### Default role/permission feature assignment/access
 
-### Workspace Permissions
+| Feature                     | Purpose                                                                                        | **Admin** | **Manager** | **Operator** |
+| --------------------------- | ---------------------------------------------------------------------------------------------- | :-------: | :---------: | :----------: |
+| **Phone number inboxes**    | View, create, edit, and phone number views in the inbox                                        | Owner     | Editor      | Editor       |
+| **Label inboxes**           | View, create, edit, and label views in the inbox                                               | Owner     | Editor      | Editor       |
+| **Teammate inboxes**        | View, create, edit, and teammate views in the inbox                                            | Owner     | Editor      | Editor       |
+| **Workspace profile**       | View/update workspace name, address, and info.                                                 | Owner     | Viewer      | Viewer       |
+| **Inbox settings**          | Apply, edit, and create templates and labels                                                   | Owner     | Viewer      | Viewer       |
+| **Billing & subscriptions** | View and manage workspace subscription, update billing information, and add/remove user seats. | Owner     | Viewer      | Viewer       |
+| **Team management**         | Invite teammates, create and update user roles, and update user information.                   | Owner     | Editor      | Viewer       |
+| **Phone Management**        | View and manage workspace phone numbers                                                        | Owner     | Editor      | Viewer       |
 
-Workspace permissions determine what settings each teammate has access to. By default, all teammates have access to "my settings".
+### What each permission level grants access to
 
-![CleanShot 2025-08-26 at 12.03.35.png](/images/CleanShot2025-08-26at12.03.35.png)
+Permissions allow a user to create, read, update, and delete information in MessageDesk. MessageDesk offers four distinct permission levels: **Owner**, **Editor**, **Viewer**, and **No Access**.
 
-But Workspace Access lets you control who has access to each workspace setting.
+| Feature                     | Owner                                                                                                                                                       | Editor                                                                                                    | Viewer                                                                                                            | No Access                                                                                 |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Phone number inboxes**    | Full access and ownership for every conversation in this Inbox. Ability to import and export conversations in bulk.                                         | Can create conversations, interact with, and view conversations for this Inbox. No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them.       | Blocked from viewing, editing, or deleting conversations in this Inbox.                   |
+| **Label inboxes**           | Full access and ownership for every conversation in this Inbox. Ability to import and export conversations in bulk.                                         | Can create conversations, interact with, and view conversations for this Inbox. No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them.       | Blocked from viewing, editing, or deleting conversations in this Inbox.                   |
+| **Teammate inboxes**        | Full access and ownership for every conversation in this Inbox. Ability to import and export conversations in bulk.                                         | Can create conversations, interact with, and view conversations for this Inbox. No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them.       | Blocked from viewing, editing, or deleting conversations in this Inbox.                   |
+| **Workspace profile**       | Designated owner who can edit and override workspace profile information, including name, address, and company details.                                     | Can edit workspace profile information, including name, address, and company details.                     | Can view workspace profile information, but cannot make changes.                                                  | Blocked from workspace profile.                                                           |
+| **Inbox settings**          | Designated owner who can edit and override all inbox settings, including appearance, Labels, message templates, and configuration.                          | Can create, edit, and delete Templates and Labels for the workspace.                                      | Can select existing Templates or Labels within the Inbox. Cannot create new or edit existing Templates or Labels. | Blocked from accessing Templates or Labels within the Inbox. No access to Inbox settings. |
+| **Billing & subscriptions** | Designated owner who can fully manage billing, subscriptions, payment methods, and user seat allocations. Can upgrade, downgrade, and cancel subscriptions. | Can update billing information, manage subscriptions, and modify user seats.                              | Can view billing information and subscription details, but cannot make changes.                                   | Blocked from access to billing information and subscription details.                      |
+| **Team management**         | Designated owner who cannot be removed from the workspace. They can fully manage team members, invite users, create/edit roles, and reset passwords.        | Can invite teammates, remove teammates,  manage user roles, and perform team administration.              | Can view team member information and roles, but cannot make changes.                                              | Blocked from team management with no ability to remove teammates.                         |
+| **Phone Management**        | Designated owner who can fully manage phone numbers, including adding, removing, and configuring all phone settings.                                        | Can manage phone number settings and configuration for the workspace.                                     | Can view phone number information, but cannot modify phone settings.                                              | Blocked from accessing phone management settings and number information.                  |
 
-![CleanShot 2025-08-26 at 12.04.13.png](/images/CleanShot2025-08-26at12.04.13.png)
+## Custom Roles & Permissions
+
+Here's how to create custom roles for users within your workspace.
+
+### How to create a custom role
+
+1. **Account → Settings → Team Management**
+2. Click **Create new role** → name it → (optional).
+
+<Tip>
+  **Tip:** Use **Copy permissions from an existing role** as a starting point.
+</Tip>
+
+![Roles Permissions Name Copy Pn](/docs-main/images/roles-permissions-name-copy.png)
+
+3. Set per-feature access (**Owner / Editor / Viewer / No Access**).
+4. Adjust **feature** access for specific **Phone Lines**, **Labels**, **Teammate** Inboxes, and other **Workspace Settings**.
+
+<Tip>
+  **Tip:** Uncheck **Select all** to grant/remove access to **specific** phone lines, labels, or teammate inboxes.
+</Tip>
+
+![Roles Permissions Select Access Pn](/docs-main/images/roles-permissions-select-access.png)
+
+5. **Save changes** and apply your new role to teammates.
+
+---
+
+## Custom Role Templates (Examples You Can Copy)
+
+**Support Agent (Frontline)**
+
+- Features: Contacts/Labels/Templates = **Editor**; Broadcasts = **Viewer**; Billing/Settings = **Viewer**
+- Resource-level: Editor on **Support line(s)** and **Support labels** only
+
+**Dispatcher (Operations/Logistics)**
+
+- Features: Contacts/Labels/Templates = **Editor**; Phone Numbers = **Viewer**; Relays = **Viewer**
+- Resource-level: Editor on **Dispatch line**, **Region labels** (e.g., West/East)
+
+**HR Coordinator (Internal Comms)**
+
+- Features: Broadcasts = **Editor**; Contacts/Labels/Templates = **Editor**; Billing/Phone Numbers = **Viewer**
+- Resource-level: Editor on **HR labels** (Benefits, New Hire), Viewer elsewhere
+
+**View-Only Auditor (Read-Only)**
+
+- Features: Everything = **Viewer**
+- Resource-level: Viewer on **All**; No Access to Billing if needed
+
+---
+
+## Frequently asked questions
+
+**I invited the wrong email. What now?**\
+Remove the pending invite from **Team Management** and send a new invite to the correct email.
+
+**Unlimited teammates and roles?**\
+Yes. You can invite unlimited teammates and create unlimited custom roles. Each teammate counts as a **seat**.
+
+**Role vs. Permission?**\
+A **Role** is a collection of **Permissions**. A **Permission** is the access level for a specific feature or resource.
+
+**Can I delete a custom role?**\
+Not yet—role deletion isn’t supported (updates planned). You can edit or stop assigning it.
+
+**Can Managers delete things?**\
+No. **The editor** cannot delete. Only the **Owner** can delete.
+
+**Limit someone to one phone line?**\
+Grant **Editor** on that **Phone Number** and set others to **Viewer/No Access**.
+
+**See a conversation without line/label access?**\
+Yes—**assignment** to the conversation grants **Editor** on that thread.
+
+**Restrict to certain labels (e.g., Support: Urgent)?**\
+Grant **Editor** on that label; set others to **Viewer/No Access**.
+
+**Do changes apply immediately?**\
+Yes—have users **refresh** to see the updated UI.
+
+---
+
+## Troubleshooting
+
+**Invite not received**
+
+- Check **spam/junk** and verify the **email address**.
+- Resend: **Team Management → ⋯ → Resend Invitation**.
+- Still missing? Ask IT to allowlist `messagedesk.com` and try again.
+
+**User can’t see Team Management**
+
+- Their role likely has **Viewer/No Access** for **Team Management**. An **Admin** or **Manager** (Editor) must adjust.
+
+**Buttons are greyed out**
+
+- The user is likely a **Viewer** on that feature, or the action requires **Owner**. Hover for the tooltip; upgrade access if appropriate.
+
+**User sees conversations they shouldn’t**
+
+- Check for **assignment** (assignment grants Editor).
+- Review **resource-level** permissions (wildcards `*` on Labels or Phone Numbers).
+- Remove any **user override** that elevates access.
+
+**Role changes didn’t “stick”**
+
+- Ask the user to **refresh**.
+- Confirm there isn’t a conflicting **override** or **resource-level** restriction.
+
+---
+
+## Team management best practices
+
+- **Least privilege first:** Start with **Operator**, elevate only as needed.
+- **Prefer roles over overrides:** Keep exceptions rare and documented.
+- **Mirror your routing:** If you route by **phone line** or **label**, set permissions the same way.
+- **Quarterly audits:** Review who has **Owner** on **Billing**, **Phone Numbers**, and **Team Management**.
+- **Onboarding checklist:** Invite → assign role → confirm resource-level access → share key labels/lines → verify login.
+- **Offboarding checklist:** Remove member → reassign conversations → review resource permissions → audit roles.
+
+---
