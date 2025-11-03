@@ -235,7 +235,7 @@
     },
     {
       "source": "/a2p-registration/a2p-spam",
-      "destination": "/carrier-registration/messaging-restrictions"
+      "destination": "/messaging/restrictions"
     },
     {
       "source": "/a2p-registration/a2p-submit",
