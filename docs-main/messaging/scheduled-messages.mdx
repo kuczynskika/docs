@@ -1,5 +1,121 @@
 ---
 title: "Scheduled Messages"
-description: "Description of your new file."
+description: "Schedule texts for minutes, days, or months ahead—then manage, edit, or cancel them from your Inbox."
 sidebarTitle: "Scheduled messages"
 ---
+
+# Scheduled messages
+
+Send the right message at the right time—without babysitting your inbox. MessageDesk lets you schedule any outbound text and manage all upcoming sends in one place.
+
+---
+
+## What is Text Message Scheduling?
+
+Scheduling is a lightweight automation that sends your message **at a future date/time**. You can schedule from any **Message Compose** box for:
+
+- **1-on-1** conversations
+- **Broadcasts (Send Individually)** to **up to 100** recipients
+- **Group SMS** (small collaborative groups)
+
+<Note>
+  **Note:** Scheduling respects carrier registration/throughput limits. If compliance blocks delivery, the scheduled send will [**fail with an error**](/messaging/delivery-status-errors) you can review in the thread.
+</Note>
+
+---
+
+## How to Schedule a Message
+
+1. In any **Message Compose** box, write your message (add media/templates/tags if needed).
+2. Click the **Calendar** icon.
+3. Choose a **preset time** (e.g., “Later today,” “Tomorrow morning”) or pick a **custom date & time**.
+4. Click **Schedule Message** to confirm.
+
+![Messaging Schedule Pn](/docs-main/images/messaging-schedule.png)
+
+<Note>
+  **Timezone:** Scheduling uses your **device's local timezone** at the time of scheduling, not the timezone associated with your workspace. If you travel or your device’s timezone changes later, the message will still be sent based on the originally selected time in that original timezone.
+</Note>
+
+---
+
+## How to View, Edit, or Cancel Scheduled Messages
+
+1. In the Inbox, open the **My Conversations drop-down**.
+2. Click **Scheduled** to see all your upcoming sends.
+3. Select a scheduled item to:
+   - **See next send date/time**
+   - **See who created it**
+   - **Preview/edit message content**
+   - **Reschedule** or **Send now**
+   - **Delete** (cancels the schedule)
+
+![Messaging Scheduled Manage Pn](/docs-main/images/messaging-scheduled-manage.png)
+
+<Note>
+  **Note:** Editing a scheduled **Broadcast (Send Individually)** updates the template/content for **all recipients** in that scheduled send.
+</Note>
+
+---
+
+## Where Scheduling Works
+
+- **1-on-1 messages in the Inbox:** Sends once to the single contact.
+- **New Message Compose Broadcasts (Send Individually):** Sends one text per recipient (max **100** recipients per scheduled broadcast). Replies stay **private** in each thread.
+- **Group SMS:** Sends to the whole group thread at the scheduled time; all recipients see follow-ups.
+
+---
+
+## Limits & Behavior
+
+- **Recipient cap:** Broadcasts are limited to **100** recipients per scheduled send.
+- **Media:** You can schedule messages with attachments; files **\> 500 KB** send as **links** automatically.
+- **Throughput:** High-volume windows may queue briefly to meet carrier limits.
+- **Opt-outs:** If a contact **opts out** before the scheduled time, that send will **not** deliver to that contact.
+- **Closed threads:** Scheduling in a **closed** conversation will **reopen** it when the message sends.
+- **Permissions:** Users need **Editor** access on the feature/line to schedule and manage future sends.
+
+---
+
+## Best Practices
+
+- **Mind compliance windows:** Avoid late-night hours where recipients might view messages as intrusive.
+- **Double-check your timezone:** Confirm the scheduled time matches your messaging intent, especially around **Daylight Savings Time** changes.
+
+---
+
+## Frequently Asked Scheduled Messages Questions
+
+**Can I schedule recurring messages?**\
+Recurring schedules aren’t supported yet. You can duplicate and schedule again.
+
+**What happens if I change my device's timezone after scheduling?**\
+The message is sent according to the **original timezone** set at scheduling time.
+
+**Can I edit a schedule after it’s created?**\
+Yes—open **My Conversations → Scheduled**, select the item, then edit content, **Reschedule**, **Send now**, or **Delete**.
+
+**Do scheduled messages include media?**\
+Yes. Attachments are supported. Files **\> 500 KB** will send as **clickable links**.
+
+**What if my number isn’t registered (10DLC/toll-free)?**\
+Delivery may be limited or filtered. Complete **carrier registration** for best results before scheduling large sends.
+
+**Will I be notified if a scheduled message fails?**\
+Failures show in the conversation with a **Failed** status and an error reason. You can **Resend** after fixing the cause.
+
+---
+
+## Troubleshooting
+
+**I don’t see the Scheduled view.**\
+Open **My Conversations** and look for **Scheduled**. If it’s missing, refresh or check your role/permissions.
+
+**My scheduled broadcast didn’t reach everyone.**\
+Review the thread statuses. Common causes: **opt-outs**, **invalid numbers**, **rate limits**, or **unregistered lines**.
+
+**I can’t schedule on this phone line.**\
+You may have **Viewer** access only, or the line requires **registration**. Ask an Admin/Manager to adjust permissions or complete registration.
+
+**A time I picked already passed.**\
+If your selected time is in the past (due to timezone shift/DST), MessageDesk will prompt you to choose a future time.
