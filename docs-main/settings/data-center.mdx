@@ -1,12 +1,12 @@
 ---
 title: "Data center"
-description: "Import contacts and manage data workflows for your MessageDesk workspace."
+description: "Import contacts and historical messages for your MessageDesk workspace."
 sidebarTitle: "Data center"
 ---
 
 # Data Center
 
-The **Data Center** is your hub for importing data into MessageDesk—starting with **contacts**. Use it to upload a CSV, map fields, resolve duplicates, and monitor import progress.
+The **Data Center** is your hub for importing data into MessageDesk—starting with **contacts** and **historical messages**. Upload a CSV, map fields, resolve duplicates, and monitor progress in one place.
 
 ---
 
@@ -15,44 +15,81 @@ The **Data Center** is your hub for importing data into MessageDesk—starting w
 Go to **Account → Settings → Data Center** (under **Workspace Settings**).
 
 <Note>
-  **Note:** Don’t see **Data Center**? Your role may not include access. Ask an Admin or Manager to adjust your permissions.
+  **Don’t see Data Center?** Your role may not include access. Ask an Admin or Manager to adjust your permissions.
 </Note>
 
-![Data Center Pn](/docs-main/images/data-center.png)
+![Data Center Import Pn](/docs-main/images/data-center-import.png)
 
 ---
 
-## Contact Import
+## How to Import Contacts
 
 Quickly build your contact list by uploading a **CSV** and mapping it to MessageDesk fields.
 
 ### Start an import
 
 1. Open **Settings → Data Center**.
-2. Click **Import Contacts**.
+2. Click **Start Import**.
 3. Choose your **.csv** file and upload.
 
 ### Map your columns
 
-- Columns with names that match MessageDesk fields will **auto-map**.
-- Adjust any field mapping manually.
-- You can include **custom properties** (make sure the data type matches your property definition).
+- Columns that match MessageDesk field names **auto-map**.
+- Adjust mapping manually as needed.
+- You can map **custom properties** (ensure the CSV data type matches the property type).
 
 ### Review duplicates & errors
 
-MessageDesk validates your file before import:
-
-- **Duplicates** (by email or phone) are flagged—choose to **skip** or update.
+- **Duplicates** (by **email** or **phone**) are flagged—choose to **skip** or update.
 - **Invalid data** (e.g., bad phone/email format) is reported so you can fix and re-upload.
-- Rows with issues are **skipped** during processing.
+- Problem rows are **skipped** during processing.
 
 ### Monitor progress
 
-After you start the import, you’ll see real-time status. When complete, a summary shows total **processed**, **imported**, **skipped**, and any **error reasons**.
+After you start the import, you’ll see the real-time status. When complete, a summary shows total **processed**, **imported**, **skipped**, and any **error reasons**.
 
 <Note>
-  **Note:** Need a walkthrough? See [**Create & Import Contacts**](/contacts/create-import) for a step-by-step guide and screenshots.
+  **Note:** Need a walkthrough? See [**Create & Import Contacts**](/contacts/create-import) for step-by-step guidance.
 </Note>
+
+---
+
+## How to Import Messages
+
+Preserve conversation context by importing **past SMS** from any platform or service into MessageDesk.
+
+### Start a message import
+
+1. Open **Settings → Data Center**.
+2. Click **Start Import**.
+3. Upload your **.csv** file.
+
+### Map your data
+
+- Map CSV columns to MessageDesk **message fields** (e.g., timestamp, direction, phone number, text, channel/line).
+- Review and confirm the mapping for accuracy.
+
+### Validate, review, and import
+
+- Preview parsed messages and fix any errors the validator surfaces.
+- Click **Import** to start processing. A bottom banner shows pre-import issues (if any).
+
+### Supported message types
+
+- **Outbound (sent)** messages
+- **Inbound (received)** messages
+- **1-on-1** conversations
+- **Group** conversations
+
+<Warning>
+  **Note: Not supported for message import:** media attachments (images, videos, files) and internal comments.
+</Warning>
+
+### How message import works
+
+- **Automatic conversation creation:** If a conversation doesn’t exist for a row, MessageDesk creates it.
+- **Existing conversations:** Rows match into existing threads when possible.
+- **Channel requirement:** Messages can only be imported into **outbound channels that already exist** in your workspace.
 
 ---
 
@@ -62,91 +99,26 @@ After you start the import, you’ll see real-time status. When complete, a summ
 
 - **CSV only** (`.csv`)
 - **UTF-8** encoding
-- Must include a **header row**
+- Include a **header row**
 - Each row must have the **same number of columns** as the header
 
 **Required data**
 
-- Each contact must include **at least one** contact method: **email** _or_ **phone**
-- Phone numbers should be in **E.164** format (e.g., `+15551234567`)
+- For **contacts**: At least one method — **email** _or_ **phone**
+- For **messages**: Required fields typically include **timestamp**, **direction** (inbound/outbound), **phone number(s)**, **message text**, and **channel/line identifier**
 
 **Validation**
 
-## Message Import
-
-Import historical messages into your MessageDesk workspace to maintain conversation continuity and preserve important communication records.
-
-### How to Import Messages
-
-<Steps>
-  <Step title="Navigate to Settings">
-    - Click your profile image in the top right of MessageDesk
-    - Click "Settings" from the dropdown menu
-  </Step>
-  <Step title="Select Data Center">
-    - From the left hand navigation, select "Data Center" under Workspace Settings
-    - **Note:** If you don't see `Data Center`, you may not have access. Speak with your account administrator for more details.
-  </Step>
-  <Step title="Start Message Import">
-    - Click the "Import Messages" button
-    - Follow the prompts to upload your message file
-  </Step>
-  <Step title="Map your data">
-    - Map your CSV columns to MessageDesk message fields
-    - Review the mapping to ensure accuracy
-  </Step>
-  <Step title="Review and import">
-    - Preview your messages and fix any errors
-    - Click "Import" to complete the process
-  </Step>
-</Steps>
-
-### Message Import Requirements
-
-<Note>
-  **Message import limits:**
-  
-  - **Row count:** up to **5,000 rows** per file
-  - **File size:** up to **10 MB**
-  - **Format:** must use **.csv** files with a header row
-  - **Channel requirement:** Messages can only be imported for **outbound channels that already exist** in your workspace
-</Note>
-
-### Supported Message Types
-
-Message import supports:
-
-- **1-on-1 messages** (individual conversations)
-- **Group messages** (group conversations)
-- **Inbound messages** (messages received from contacts)
-- **Outbound messages** (messages sent to contacts)
-
-<Warning>
-  **Not supported:**
-  
-  - Media attachments (images, videos, files)
-  - Comments (internal team notes)
-</Warning>
-
-### How Message Import Works
-
-- **Automatic conversation creation:** If a conversation doesn't exist for the message being imported, one will be created automatically
-- **Existing conversations:** Messages can be imported into existing conversations to maintain continuity
-- **Error handling:** Errors that occur during the pre-import workflow appear in the bottom banner for easy troubleshooting
-
-## Import Workflows
-
-The Data Center supports various import workflows to help you manage your data efficiently. Additional import options will be added over time.
 - Emails must be valid email format
-- Phones must be valid **E.164**
+- Phone numbers must be valid **E.164** (e.g., `+15551234567`)
 - Custom properties must match their **defined type**
-- Duplicate detection runs on **email** and **phone**
+- Duplicate detection runs on **email** and **phone** (contact imports)
 
 **Limits**
 
 - **Max rows per file:** **5,000**
 - **Max file size:** **10 MB**
-- **Platform:** **Web only** (imports aren’t supported on mobile/desktop apps)
+- **Platform:** **Web only** (imports aren’t supported on mobile or desktop apps)
 
 If a limit is exceeded, you’ll see errors like **“CSV file is too large”** or **“Imports are only supported on web.”**
 
@@ -154,36 +126,37 @@ If a limit is exceeded, you’ll see errors like **“CSV file is too large”**
 
 ## What Gets Imported
 
-- **Contacts** (primary)
+- **Contacts**
 - **Custom properties** (when mapped)
+- **Messages** (text content only; no media or internal comments)
 
 <Info>
-  **Coming soon:** additional import workflows (e.g., labels, opt-outs). Timelines may change—watch the Data Center for new options.
+  **Coming soon:** additional workflows (e.g., labels, opt-outs). Watch the Data Center for new options.
 </Info>
 
 ---
 
-## FAQs
+## Frequently Asked Data Import Questions
 
 ### What file types can I upload?
 
-**CSV only.** Excel files (`.xlsx`) aren’t supported—export to **CSV** first.
+**CSV only.** Export Excel files (`.xlsx`) to CSV first.
 
-### Do I need both email and phone?
+### Do contacts need both email and phone?
 
-No. Each row must include **at least one** (email **or** phone). You can include both.
+No. Each row must include **at least one**: **email** _or_ **phone** (you can include both).
 
-### How are duplicates handled?
+### How are duplicates handled on contact import?
 
-We check for duplicates on **email** and **phone**. Duplicates are **skipped** by default and listed in the results.
+We check **email** and **phone**. Duplicates are **skipped** by default and listed in the results.
 
 ### Why did some rows fail?
 
-Common reasons: invalid email/phone format, missing required data, or custom property type mismatch. Fix the rows and re-upload.
+Common reasons: invalid email/phone format, missing required fields, custom property type mismatch, or a channel that doesn’t exist (for message imports). Fix and re-upload.
 
-### Can I import more than 5,000 contacts?
+### Can I import more than 5,000 rows?
 
-Split your list into multiple CSV files. Each file can contain **up to 5,000 rows** and **≤ 10 MB**.
+Split your data into multiple CSV files. Each file can contain **up to 5,000 rows** and **≤ 10 MB**.
 
 ### Can I import from mobile?
 
@@ -191,9 +164,9 @@ No. Imports are **web-only**. Use a desktop browser.
 
 ---
 
-## Best Practices
+## Best practices
 
 - **Normalize phone numbers** to **E.164** before upload.
 - **Clean your data** (dedupe, validate emails) to minimize skips.
-- **Test with a small CSV** (e.g., 10 rows) to confirm mapping and validation.
-- Keep a **backup of your source CSV** and the **import results** for audit.
+- **Test with a small CSV** (10–20 rows) to confirm mapping and validation.
+- Keep a **backup** of your source CSV and **import results** for audit.
