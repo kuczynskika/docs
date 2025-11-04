@@ -103,7 +103,8 @@
                 "group": "Personal",
                 "pages": [
                   "settings/personal/overview",
-                  "settings/personal/inbox-preferences"
+                  "settings/personal/inbox-preferences",
+                  "settings/personal/notifications"
                 ]
               },
               {

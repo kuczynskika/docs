@@ -1,45 +1,134 @@
 ---
 title: "Data center"
-description: "Manage data imports and workflows in your MessageDesk workspace."
-sidebarTitle: Data center
+description: "Import contacts and manage data workflows for your MessageDesk workspace."
+sidebarTitle: "Data center"
 ---
 
-## Overview
+# Data Center
 
-The Data Center is your central hub for managing data imports and workflows in MessageDesk. Use this workspace setting to import contacts and other data into your account.
+The **Data Center** is your hub for importing data into MessageDesk—starting with **contacts**. Use it to upload a CSV, map fields, resolve duplicates, and monitor import progress.
+
+---
+
+## Access the Data Center
+
+Go to **Account → Settings → Data Center** (under **Workspace Settings**).
+
+<Note>
+  **Note:** Don’t see **Data Center**? Your role may not include access. Ask an Admin or Manager to adjust your permissions.
+</Note>
+
+![Data Center Pn](/docs-main/images/data-center.png)
+
+---
 
 ## Contact Import
 
-Import contacts into your MessageDesk workspace to quickly build your contact list.
+Quickly build your contact list by uploading a **CSV** and mapping it to MessageDesk fields.
 
-### How to Import Contacts
+### Start an import
 
-<Steps>
-  <Step title="Navigate to Settings">
-    - Click your profile image in the top right of MessageDesk
-    - Click "Settings" from the dropdown menu
-  </Step>
-  <Step title="Select Data Center">
-    - From the left hand navigation, select "Data Center" under Workspace Settings
-    - **Note:** If you don't see `Data Center`, you may not have access. Speak with your account administrator for more details.
-  </Step>
-  <Step title="Start Contact Import">
-    - Click the "Import Contacts" button
-    - Follow the prompts to upload your contact file
-  </Step>
-</Steps>
+1. Open **Settings → Data Center**.
+2. Click **Import Contacts**.
+3. Choose your **.csv** file and upload.
 
-## Import Workflows
+### Map your columns
 
-The Data Center will support various import workflows to help you manage your data efficiently. Additional import options will be added over time.
+- Columns with names that match MessageDesk fields will **auto-map**.
+- Adjust any field mapping manually.
+- You can include **custom properties** (make sure the data type matches your property definition).
+
+### Review duplicates & errors
+
+MessageDesk validates your file before import:
+
+- **Duplicates** (by email or phone) are flagged—choose to **skip** or update.
+- **Invalid data** (e.g., bad phone/email format) is reported so you can fix and re-upload.
+- Rows with issues are **skipped** during processing.
+
+### Monitor progress
+
+After you start the import, you’ll see real-time status. When complete, a summary shows total **processed**, **imported**, **skipped**, and any **error reasons**.
+
+<Note>
+  **Note:** Need a walkthrough? See [**Create & Import Contacts**](/contacts/create-import) for a step-by-step guide and screenshots.
+</Note>
+
+---
+
+## File Requirements & Limits
+
+**Format**
+
+- **CSV only** (`.csv`)
+- **UTF-8** encoding
+- Must include a **header row**
+- Each row must have the **same number of columns** as the header
+
+**Required data**
+
+- Each contact must include **at least one** contact method: **email** _or_ **phone**
+- Phone numbers should be in **E.164** format (e.g., `+15551234567`)
+
+**Validation**
+
+- Emails must be valid email format
+- Phones must be valid **E.164**
+- Custom properties must match their **defined type**
+- Duplicate detection runs on **email** and **phone**
+
+**Limits**
+
+- **Max rows per file:** **5,000**
+- **Max file size:** **10 MB**
+- **Platform:** **Web only** (imports aren’t supported on mobile/desktop apps)
+
+If a limit is exceeded, you’ll see errors like **“CSV file is too large”** or **“Imports are only supported on web.”**
+
+---
+
+## What Gets Imported
+
+- **Contacts** (primary)
+- **Custom properties** (when mapped)
+
+<Info>
+  **Coming soon:** additional import workflows (e.g., labels, opt-outs). Timelines may change—watch the Data Center for new options.
+</Info>
+
+---
 
 ## FAQs
 
-<AccordionGroup>
-  <Accordion title="What file formats are supported for contact imports?" icon="question" iconType="regular">
-    Contact import supports standard CSV and Excel file formats. Make sure your file includes columns for phone numbers and contact names.
-  </Accordion>
-  <Accordion title="Who can access the Data Center?" icon="question" iconType="regular">
-    Access to the Data Center is controlled by workspace permissions. Admins and Managers have access by default. Custom roles can be configured to grant or restrict access.
-  </Accordion>
-</AccordionGroup>
+### What file types can I upload?
+
+**CSV only.** Excel files (`.xlsx`) aren’t supported—export to **CSV** first.
+
+### Do I need both email and phone?
+
+No. Each row must include **at least one** (email **or** phone). You can include both.
+
+### How are duplicates handled?
+
+We check for duplicates on **email** and **phone**. Duplicates are **skipped** by default and listed in the results.
+
+### Why did some rows fail?
+
+Common reasons: invalid email/phone format, missing required data, or custom property type mismatch. Fix the rows and re-upload.
+
+### Can I import more than 5,000 contacts?
+
+Split your list into multiple CSV files. Each file can contain **up to 5,000 rows** and **≤ 10 MB**.
+
+### Can I import from mobile?
+
+No. Imports are **web-only**. Use a desktop browser.
+
+---
+
+## Best Practices
+
+- **Normalize phone numbers** to **E.164** before upload.
+- **Clean your data** (dedupe, validate emails) to minimize skips.
+- **Test with a small CSV** (e.g., 10 rows) to confirm mapping and validation.
+- Keep a **backup of your source CSV** and the **import results** for audit.
