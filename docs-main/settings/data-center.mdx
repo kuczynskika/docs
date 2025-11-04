@@ -72,6 +72,71 @@ After you start the import, you’ll see real-time status. When complete, a summ
 
 **Validation**
 
+## Message Import
+
+Import historical messages into your MessageDesk workspace to maintain conversation continuity and preserve important communication records.
+
+### How to Import Messages
+
+<Steps>
+  <Step title="Navigate to Settings">
+    - Click your profile image in the top right of MessageDesk
+    - Click "Settings" from the dropdown menu
+  </Step>
+  <Step title="Select Data Center">
+    - From the left hand navigation, select "Data Center" under Workspace Settings
+    - **Note:** If you don't see `Data Center`, you may not have access. Speak with your account administrator for more details.
+  </Step>
+  <Step title="Start Message Import">
+    - Click the "Import Messages" button
+    - Follow the prompts to upload your message file
+  </Step>
+  <Step title="Map your data">
+    - Map your CSV columns to MessageDesk message fields
+    - Review the mapping to ensure accuracy
+  </Step>
+  <Step title="Review and import">
+    - Preview your messages and fix any errors
+    - Click "Import" to complete the process
+  </Step>
+</Steps>
+
+### Message Import Requirements
+
+<Note>
+  **Message import limits:**
+  
+  - **Row count:** up to **5,000 rows** per file
+  - **File size:** up to **10 MB**
+  - **Format:** must use **.csv** files with a header row
+  - **Channel requirement:** Messages can only be imported for **outbound channels that already exist** in your workspace
+</Note>
+
+### Supported Message Types
+
+Message import supports:
+
+- **1-on-1 messages** (individual conversations)
+- **Group messages** (group conversations)
+- **Inbound messages** (messages received from contacts)
+- **Outbound messages** (messages sent to contacts)
+
+<Warning>
+  **Not supported:**
+  
+  - Media attachments (images, videos, files)
+  - Comments (internal team notes)
+</Warning>
+
+### How Message Import Works
+
+- **Automatic conversation creation:** If a conversation doesn't exist for the message being imported, one will be created automatically
+- **Existing conversations:** Messages can be imported into existing conversations to maintain continuity
+- **Error handling:** Errors that occur during the pre-import workflow appear in the bottom banner for easy troubleshooting
+
+## Import Workflows
+
+The Data Center supports various import workflows to help you manage your data efficiently. Additional import options will be added over time.
 - Emails must be valid email format
 - Phones must be valid **E.164**
 - Custom properties must match their **defined type**
