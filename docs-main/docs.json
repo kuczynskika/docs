@@ -27,7 +27,7 @@
         "icon": "book",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
               "get-started/introduction",
               "get-started/sign-up",
@@ -107,7 +107,14 @@
                   "settings/personal/notifications"
                 ]
               },
-
+              {
+                "group": "Workspace",
+                "pages": [
+                  "settings/workspace/overview",
+                  "settings/workspace/team-management",
+                  "settings/workspace/phone-management"
+                ]
+              },
               {
                 "group": "Account",
                 "pages": [
