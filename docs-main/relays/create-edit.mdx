@@ -12,51 +12,72 @@ Build reliable automations with a clear flow: **Trigger → Conditions → Actio
 
 ## How to Create or Edit a Relay
 
-### **1. Visit the Relay Module**
+### **1. Visit the Relays Module**
 
-Select a **template** to start building a new Relay or edit an existing Relay. You can choose from pre-built templates or start with a **Custom** template to build from scratch.
+When you first visit the Relay's module, you can get started by selecting a **template.**
 
-![Relays Pn](/docs-main/images/relays.png)
+![Relays Templates Pn](/docs-main/images/relays-templates.png)
 
-### 2. Name your Relay and give it a description
+Templates give you an idea of what's possible with Relays, but you can customize each template to your liking or start from scratch to create your own Relay. Just click Add Relay to get started.
 
-Give your Relay a descriptive **name** and add a **description**. You can also add an icon.
+Once you add a Relay, you'll see it listed in the Relays tab. Each Relay has a toggle state for on/off. you can also delete individual Relays from this view as well.
 
-![Relay Name Pn](/docs-main/images/relay-name.png)
+<Note>
+  **Note:** By default, all Relays start in the paused state.
+</Note>
+
+![Relays Tab Pn](/docs-main/images/relays-tab.png)
+
+### 2. Give your Relay a name and description
+
+Click the three dot icon for "more" (next to the toggle) then edit the Relay name and description. You can also delete the Relay. 
+
+<Tip>
+  **Tip:** Copy/paste/add emojis to visually distinguish Relays in your list.
+</Tip>
+
+![Relay Name Description Pn](/docs-main/images/relay-name-description.png)
 
 ### 3. Set a trigger
 
-Currently, MessageDesk only supports the **Message Received** trigger. We plan on adding more trigger types in the near future.
+Currently, MessageDesk only supports the **Message Received** trigger. We plan on adding more trigger types in the near future. For all templates, this trigger will appear as a default and is not currently editable.
 
 ![Relay Message Received Trigger Pn](/docs-main/images/relay-message-received-trigger.png)
 
-### 4. Add conditions
+### 4. Add or edit conditions
 
-#### **Select a logical operator:**
+Conditions have two parts: a logical operator (AND/OR) and conditions themselves.
+
+#### Select a logical operator:
 
 - Selecting AND means all conditions must be met for the Relay to run.
-
-  Selecting OR means any condition must be met for the Relay to run.
+- Selecting OR means any condition must be met for the Relay to run.
 
 **Select a condition:**
 
 - **Message contains text** (any specified keyword like SUPPORT or HELP)
-- **My phone number equals** (a phone line connected to your MessageDesk workspace) 
+- **My phone number equals** (a phone line connected to your MessageDesk workspace)
 - **Is anonymous conversation** (a conversation with an anonymous contact)
 - **Is new conversation** (any new conversation)
 - **Active hours** (times of the day when your Relay is active)
 
 <Tip>
-  **Tip**: Select **Trigger outside of business hours** to flip the active hours logic to run _outside of the specified timeframe _(this works great for after-hours replies).
+  **Tip**: Select **Trigger outside of business hours** to flip the active hours logic to run \_outside of the specified timeframe \_(this works great for after-hours replies).
 </Tip>
 
 ![Relay Condition Pn](/docs-main/images/relay-condition.png)
 
 ### 5. Add actions
 
-- **Reply to message** (sends an outbound SMS/MMS)
+Actions are things that happen once conditions are met. Currently, MessageDesk offers three actions, but we plan on adding more in the future:
+
+- **Reply to message** (sends an outbound SMS/MMS message)
 - **Assign teammates to the conversation** (assigns one or more teammates to the conversation)
 - **Add labels to the conversation** (Applies one or more labels to the conversation)
+
+<Note>
+  Note: You can add multiple actions to a Relay, not just one. For example, you can reply to a message, assign a teammate to the conversation, and label the conversation all in one Relay.
+</Note>
 
 <Tip>
   **Tip**: Set a **Delay** for the Reply to message action to delay sending your message for a time after the Relay conditions are met. Delays can help you avoid repeated message sends if a Relay message was sent recently.
@@ -64,9 +85,11 @@ Currently, MessageDesk only supports the **Message Received** trigger. We plan o
 
 ![Relay Action Pn](/docs-main/images/relay-action.png)
 
-### 6. Click Activate to Save your Relay
+### 6. Toggle to activate and save your relay
 
-Once you save your Relay, you'll see it in a list of all active Relays for your workspace.
+Once you're ready, save and activate your Relay by toggling it on.
+
+![Relay Toggle Pn](/docs-main/images/relay-toggle.png)
 
 ---
 
@@ -77,7 +100,7 @@ Once you save your Relay, you'll see it in a list of all active Relays for your 
 You can **pause** a Relay at any time to temporarily disable it without deleting your configuration. This is useful when you need to stop an automation temporarily but plan to use it again later.
 
 - **From the Relays list:** Use the pause/resume toggle next to each Relay to quickly enable or disable it.
-- **From the Relay profile:** Open any Relay and use the active/paused toggle at the top of the profile to change its status.
+- **From the Relay details view:** Open any Relay and use the active/paused toggle at the top of the profile to change its status.
 
 When a Relay is paused, it will not trigger or run any actions until you resume it.
 
@@ -86,7 +109,7 @@ When a Relay is paused, it will not trigger or run any actions until you resume 
 To permanently remove a Relay:
 
 1. Open the Relay profile
-2. Click the hamburger menu (three dots)
+2. Click the menu (three dots)
 3. Select **Delete**
 
 <Warning>
@@ -103,14 +126,14 @@ Set keywords like SUPPORT to trigger automatic text message responses. You can u
 
 > **Trigger:** Message received
 >
-> **Conditions: **Message contains text = SUPPORT
+> \*\*Conditions: \*\*Message contains text = SUPPORT
 >
 > **Actions:** Reply to message
 >
 > T**ext:** "Thanks, this looks like an issue we need to route to support. Are there any other important details we should know here before we start investigating?"
 
 <Tip>
-  **Tip:** keep your **keywords** short and memorable 
+  **Tip:** keep your **keywords** short and memorable
 </Tip>
 
 ### Identify unknown conversations and contact
@@ -157,7 +180,7 @@ Text an autoresponse outside of operating/office hours.
 >
 > **Text:** Hey, thanks for texting us! We're away right now, but we'll be back soon.
 
-## FAQ
+## Frequently Asked Relay Questions
 
 **Do Relays respect roles & permissions?**\
 Yes. Actions like **Assign Teammates** and **Add Labels to Conversation** follow your **Roles & Permissions**.

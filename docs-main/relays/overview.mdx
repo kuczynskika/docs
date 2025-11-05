@@ -4,44 +4,69 @@ description: "High-level concepts for MessageDesk Relays—what they are, why th
 sidebarTitle: "Overview"
 ---
 
-# Relays Overview
+# How to Automate with Relays
 
-![Relays Pn](/docs-main/images/relays.png)
+Relays are **automations** for MessageDesk. They listen for **events**, evaluate **conditions**, and run **actions**—so the right conversation reaches the right person at the right time.
 
-## What are Relays?
-
-Relays are **automations** for MessageDesk. They listen for **events**, check **conditions**, and run **actions**. They help you and your team get the right conversation to the right person at the right time.
+![Relays Templates Pn](/docs-main/images/relays-templates.png)
 
 ---
 
 ## Why Use Relays?
 
-- **Scale without chaos:** Auto-assign and auto-label to keep your inbox clean as volume grows.
-- **Respond faster:** Send **after-hours** or **first-touch** replies automatically.
-- **Reduce busywork:** Route by **phone line**, **label**, or **teammate** so people start where they can help most.
-- **Stay consistent:** Use the same rules every time—no missed handoffs.
+- **Scale without chaos:** Auto-assign and auto-label to keep your inbox tidy as volume grows.
+- **Respond faster:** Send **after-hours** and **first-touch** replies automatically.
+- **Reduce busywork:** Route by **phone line**, **label**, or **teammate** so work starts in the right place.
+- **Stay consistent:** Standardize rules so there are no missed handoffs.
 
 ---
 
-## How Relays Work (at a glance)
+## What You Can Do With Relays
+
+1. **Out-of-office auto-reply:** Send an automatic response outside your business hours.
+2. **Keyword replies:** Trigger a preset message when a contact texts a specific keyword.
+3. **Identify unknown contacts:** Detect anonymous conversations and request name/phone/email automatically.
+4. **Auto-assign:** Assign new conversations to one or more teammates as they arrive.
+5. **Auto-label:** Apply labels (e.g., _Support_, _HR: New Hire_, _Region: West_) based on line, content, or rules.
+6. **Custom Relays:** Combine your own conditions and actions to match your workflow.
+
+<Tip>
+  All Relay templates are customizable—you can adjust wording, labels, assignees, active hours, and more.
+</Tip>
+
+---
+
+## How Relays Work (At a Glance)
 
 ![Relay Example Pn](/docs-main/images/relay-example.png)
 
-**Trigger → Conditions → Actions**
+**Relays = Triggers → Conditions → Actions**
 
-- **Trigger:** When should this run? (e.g., when a new message arrives)
-- **Conditions:**
-  - Should it run for _this_ conversation? (e.g., phoneline = Support, is anonymous)
-  - When is it allowed to run? (e.g., after-hours auto-reply)
-- **Actions:** What should happen? (assign teammate, add label, send message)
+- **Triggers:** When it runs\
+  _Example:_ `MessageReceived` (a new inbound text starts the relay)
+- **Conditions:** Where/when it applies\
+  _Examples:_\
+  • **Phone line** equals _Support_\
+  • **Is anonymous** contact is **true**\
+  • **Active hours** = outside business hours
+- **Actions:** What happens\
+  _Examples:_\
+  • **Assign teammates**\
+  • **Add labels**\
+  • **Send message** (auto-reply with templates/tags)
 
-You can **pause and resume** Relays at any time without deleting them, making it easy to temporarily disable automations when needed.
+You can **pause** and **resume** any Relay without deleting it.
 
 ---
 
-## What Relays are Great at
+## Example Starter Relay Recipes
 
-- **Out-of-office auto-replies** → Example: “We’ll reply at 9 am.”
-- **Capture** \*\*anonymous contacts \*\*→ Example: “What’s your name?” + label “Anonymous.”
-- \*\*Route to teammates \*\*→ Example: Messages to a Support line are auto-assigned to a member of the Support team.
-- **Route to labels** → Example: Add labels like _Urgent_ or _VIP_ to fast-track triage.
+- **After-hours responder**\
+  _Trigger:_ MessageReceived → _Conditions:_ Outside business hours →\
+  _Actions:_ Send “We’ll reply at 8am PT. Reply STOP to opt out.”
+- **New lead triage**\
+  _Trigger:_ MessageReceived → _Conditions:_ Is anonymous = true →\
+  _Actions:_ Send info-capture prompt → Add label _Lead_ → Assign _Sales Queue_
+- **Phone Line-based routing**\
+  _Trigger:_ MessageReceived → _Conditions:_ Outbound channel = _Dispatch Line_ →\
+  _Actions:_ Assign _Dispatcher_ → Add label _Route Change_
