@@ -107,14 +107,7 @@
                   "settings/personal/notifications"
                 ]
               },
-              {
-                "group": "Workspace",
-                "pages": [
-                  "settings/overview",
-                  "settings/phone-management",
-                  "settings/team-management"
-                ]
-              },
+
               {
                 "group": "Account",
                 "pages": [
