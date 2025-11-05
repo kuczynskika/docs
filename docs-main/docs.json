@@ -111,6 +111,7 @@
                 "group": "Workspace",
                 "pages": [
                   "settings/workspace/overview",
+                  "settings/workspace/inbox-settings",
                   "settings/workspace/team-management",
                   "settings/workspace/phone-management"
                 ]
