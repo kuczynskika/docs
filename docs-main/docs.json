@@ -16,8 +16,8 @@
   "favicon": "/favicon.svg",
   "style": "/style.css",
   "integrations": {
-    "heap": {
-      "appId": "3366888728"
+    "segment": {
+      "key": "V42HI89SHLXv1eBnt6NPpZQ59ExIhiMu"
     }
   },
   "navigation": {
