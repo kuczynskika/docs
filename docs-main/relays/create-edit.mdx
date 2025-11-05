@@ -1,10 +1,10 @@
 ---
 title: "Relays: Setup & Technical Guide"
-description: "Create, configure, and troubleshoot Relays—triggers, conditions, actions, templates, FAQ."
+description: "Create, configure, and troubleshoot Relays—triggers, conditions, actions, delays, active hours, FAQ."
 sidebarTitle: "Create & edit"
 ---
 
-# How to Create & Edit Relays
+# How to Create, Edit & Delete Relays
 
 Build reliable automations with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays.
 
@@ -12,82 +12,80 @@ Build reliable automations with a clear flow: **Trigger → Conditions → Actio
 
 ## How to Create or Edit a Relay
 
-### **1. Visit the Relays Module**
+### 1. Visit the Relays module
 
-When you first visit the Relay's module, you can get started by selecting a **template.**
+When you first visit **Relays**, you’ll see **templates** you can use as a starting point, just click **Add Relay** to start building.
 
 ![Relays Templates Pn](/docs-main/images/relays-templates.png)
 
-Templates give you an idea of what's possible with Relays, but you can customize each template to your liking or start from scratch to create your own Relay. Just click Add Relay to get started.
-
-Once you add a Relay, you'll see it listed in the Relays tab. Each Relay has a toggle state for on/off. you can also delete individual Relays from this view as well.
+All Relays appear in the **Relays** tab with an **On/Off** toggle. You can delete Relays from the same view.
 
 <Note>
-  **Note:** By default, all Relays start in the paused state.
+  By default, new Relays are **paused**. Toggle them **On** when you’re ready.
 </Note>
 
 ![Relays Tab Pn](/docs-main/images/relays-tab.png)
 
-### 2. Give your Relay a name and description
+### 2. Name and describe your Relay
 
-Click the three dot icon for "more" (next to the toggle) then edit the Relay name and description. You can also delete the Relay. 
+Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit description**, or **Delete**.
 
 <Tip>
-  **Tip:** Copy/paste/add emojis to visually distinguish Relays in your list.
+  Add an emoji (e.g., 💤 for after-hours) to make Relays easy to scan.
 </Tip>
 
 ![Relay Name Description Pn](/docs-main/images/relay-name-description.png)
 
-### 3. Set a trigger
+### 3. Set a **Trigger**
 
-Currently, MessageDesk only supports the **Message Received** trigger. We plan on adding more trigger types in the near future. For all templates, this trigger will appear as a default and is not currently editable.
+Current supported trigger: **Message Received** (fires when a new inbound SMS arrives).
+
+<Note>
+  **Note:** Templates include the **message received** trigger by default.
+</Note>
 
 ![Relay Message Received Trigger Pn](/docs-main/images/relay-message-received-trigger.png)
 
-### 4. Add or edit conditions
+### 4. Add **Conditions**
 
-Conditions have two parts: a logical operator (AND/OR) and conditions themselves.
+Conditions control **where/when** a Relay runs. You can combine multiple conditions with **AND** or **OR**.
 
-#### Select a logical operator:
+**Available conditions:**
 
-- Selecting AND means all conditions must be met for the Relay to run.
-- Selecting OR means any condition must be met for the Relay to run.
-
-**Select a condition:**
-
-- **Message contains text** (any specified keyword like SUPPORT or HELP)
-- **My phone number equals** (a phone line connected to your MessageDesk workspace)
-- **Is anonymous conversation** (a conversation with an anonymous contact)
-- **Is new conversation** (any new conversation)
-- **Active hours** (times of the day when your Relay is active)
+- **Message contains text** — match keywords like `SUPPORT`, `HELP`
+- **My phone number equals** — run only on a specific outbound line
+- **Is anonymous conversation** — no saved contact yet
+- **Is new conversation** — first inbound in a thread
+- **Active hours** — restrict to a daily time window
 
 <Tip>
-  **Tip**: Select **Trigger outside of business hours** to flip the active hours logic to run \_outside of the specified timeframe \_(this works great for after-hours replies).
+  **Tip:** Turn on **“Trigger outside of business hours”** to invert the time window for after-hours replies.
 </Tip>
 
 ![Relay Condition Pn](/docs-main/images/relay-condition.png)
 
-### 5. Add actions
+### 5. Add **Actions**
 
-Actions are things that happen once conditions are met. Currently, MessageDesk offers three actions, but we plan on adding more in the future:
+Actions run when the conditions match. You can add **one or many** in the order you want them to execute.
 
-- **Reply to message** (sends an outbound SMS/MMS message)
-- **Assign teammates to the conversation** (assigns one or more teammates to the conversation)
-- **Add labels to the conversation** (Applies one or more labels to the conversation)
-
-<Note>
-  Note: You can add multiple actions to a Relay, not just one. For example, you can reply to a message, assign a teammate to the conversation, and label the conversation all in one Relay.
-</Note>
+- **Reply to message** — send an SMS/MMS (supports templates, tags, and media)
+- **Assign teammates to the conversation** — pick one or more users
+- **Add labels to the conversation** — apply one or more labels
 
 <Tip>
-  **Tip**: Set a **Delay** for the Reply to message action to delay sending your message for a time after the Relay conditions are met. Delays can help you avoid repeated message sends if a Relay message was sent recently.
+  **Tip:** You can chain multiple actions together—e.g., **Reply**, **Assign**, and **Label** in a single Relay.
 </Tip>
+
+**Delays (optional)**
+
+- Add a **Delay** to **Reply to message** to wait minutes/hours before sending.
+- Delays help prevent duplicate auto-replies if a message was sent recently.
 
 ![Relay Action Pn](/docs-main/images/relay-action.png)
 
-### 6. Toggle to activate and save your relay
+### 6. Activate your Relay
 
-Once you're ready, save and activate your Relay by toggling it on.
+Use the **toggle** to turn the Relay **On**. You can pause anytime without losing your setup.
 
 ![Relay Toggle Pn](/docs-main/images/relay-toggle.png)
 
@@ -95,131 +93,122 @@ Once you're ready, save and activate your Relay by toggling it on.
 
 ## Managing Relays
 
-### Pause and Resume Relays
+### Pause / resume
 
-You can **pause** a Relay at any time to temporarily disable it without deleting your configuration. This is useful when you need to stop an automation temporarily but plan to use it again later.
+- From the list: toggle **On/Off**
+- From details: use the status toggle at the top
 
-- **From the Relays list:** Use the pause/resume toggle next to each Relay to quickly enable or disable it.
-- **From the Relay details view:** Open any Relay and use the active/paused toggle at the top of the profile to change its status.
+Paused Relays do not evaluate triggers or run actions.
 
-When a Relay is paused, it will not trigger or run any actions until you resume it.
+### Delete
 
-### Delete a Relay
-
-To permanently remove a Relay:
-
-1. Open the Relay profile
-2. Click the menu (three dots)
-3. Select **Delete**
+Open the Relay → **⋯** → **Delete**.
 
 <Warning>
-  Deleting a Relay is permanent and cannot be undone. If you might need the Relay again, consider pausing it instead.
+  **Warning:** Deleting is permanent. If you might reuse the automation, **pause** instead.
 </Warning>
 
 ---
 
-## Relay Templates
+## Starter Relay Templates (Copy & Adapt)
 
-### Respond to a keyword
+### Keyword responder
 
-Set keywords like SUPPORT to trigger automatic text message responses. You can use any keyword you like to trigger your Relay.
-
-> **Trigger:** Message received
->
-> \*\*Conditions: \*\*Message contains text = SUPPORT
->
-> **Actions:** Reply to message
->
-> T**ext:** "Thanks, this looks like an issue we need to route to support. Are there any other important details we should know here before we start investigating?"
+**Trigger:** Message Received\
+**Conditions:** Message contains `SUPPORT`\
+**Actions:** Reply →\
+“Thanks for reaching out to support. Please share any extra details, and we’ll jump in.”
 
 <Tip>
-  **Tip:** keep your **keywords** short and memorable
+  **Tip:** Keep keywords short and memorable (e.g., `JOIN`, `BOOK`, `SUPPORT`).
 </Tip>
 
-### Identify unknown conversations and contact
+### Identify unknown contacts
 
-Use this Reply to anonymous conversations with a follow-up asking for info.
+**Trigger:** Message Received\
+**Conditions:** Is anonymous conversation\
+**Actions:** Reply →\
+“Thanks for texting us! What’s your first and last name so we know who to help?”
 
-> **Trigger:** Message received
->
-> **Conditions:** Is anonymous conversation
->
-> **Actions:** Reply to message
->
-> **Text:** "Hey thanks for texting us - real quick, can you reply with your first name/last name so I know who we're talking to?"
+### Assign new conversations
 
-### Assign new conversations to teammates
+**Trigger:** Message Received\
+**Conditions:** Is new conversation\
+**Actions:** Assign teammates → pick your queue owner(s)
 
-Use this Relay to assign new conversations to teammates.
+### Auto-label new threads
 
-> **Trigger:** Message received
->
-> **Conditions:** Is new conversation
->
-> **Actions:** Assign teammates to the conversation
+**Trigger:** Message Received\
+**Conditions:** Is new conversation\
+**Actions:** Add labels → e.g., `Support`, `Lead`, `Region: West`
 
-### Automatically label conversation
+### After-hours auto-reply
 
-Label new conversations automatically for better sorting within your Inbox.
+**Trigger:** Message Received\
+**Conditions:** Active hours (inverted for after-hours)\
+**Actions:** Reply →\
+“Thanks for texting! We’re away right now. We’ll reply at 8am PT. Reply STOP to opt out.”
 
-> **Trigger:** Message received
->
-> **Conditions:** Is new conversation
->
-> **Actions:** Add labels to the conversation
+---
 
-### Out-of-Office (Away) Autoreponse
+## Technical Notes & Behavior
 
-Text an autoresponse outside of operating/office hours.
+- **Action order:** Actions execute top-to-bottom in the order you add them.
+- **Delays:** Units include minutes/hours. Use to prevent duplicate “fast follow” replies.
+- **Active hours:** Configure daily windows; invert to run only outside business hours.
+- **Permissions aware:** Assign/Label actions respect **Roles & Permissions**.
+- **Testing tip:** Start with a single condition/action, confirm it fires, then layer on complexity.
 
-> **Trigger:** Message received
->
-> **Conditions:** Active hours
->
-> **Actions:** Reply to message
->
-> **Text:** Hey, thanks for texting us! We're away right now, but we'll be back soon.
+---
 
-## Frequently Asked Relay Questions
+## Frequetly Asked Relay Questions
 
 **Do Relays respect roles & permissions?**\
-Yes. Actions like **Assign Teammates** and **Add Labels to Conversation** follow your **Roles & Permissions**.
+Yes. Assign/Label actions follow your **Roles & Permissions** settings.
 
-**Can multiple Relays run on the same event?**\
-Yes
+**Can multiple Relays run on one inbound message?**\
+Yes. If conditions match for more than one Relay, each eligible Relay can run.
 
 **Can I include media in auto-replies?**\
-Yes. Keep each file **≤ 10 MB** (files \> **500 KB** send as links). See [**Media**](/messaging/media) guide.
+Yes. Keep each file **≤ 10 MB** (files **\> 500 KB** are sent as links). See [**Media**](/messaging/media).
 
-**Can I pause a Relay without deleting it?**\
-Yes. You can pause a Relay from the Relays list using the toggle, or from within the Relay profile. See [Managing Relays](#managing-relays) for details.
+**Can I pause without losing my setup?**\
+Yes—toggle **Off** to pause. Toggle **On** to resume.
 
 **How do I avoid duplicate automated replies?**\
-Add a **Delay** to your Reply to message action.
+Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new conversation”).
 
 ---
 
 ## Troubleshooting
 
-**A Relay didn’t fire.**
+**A Relay didn’t fire**
 
-- Confirm the **Trigger** is correct
-- Check to see if your Relay is **Paused**.
-- Loosen **Conditions** (try removing an AND condition temporarily).
+- Confirm it’s **On** (not paused).
+- Verify the **Trigger** is “Message Received”.
+- Temporarily loosen **Conditions** (switch `AND` to `OR`, remove a filter) to test.
 
-**Auto-reply sent multiple times.**
+**Auto-reply sent multiple times**
 
-- Add a **Delay** to your Relay.
+- Add a **Delay** to your **Reply** action so back-to-back messages don’t both trigger an instant response.
 
-**Actions didn’t run after conditions matched.**
+**Assign/Label didn’t apply**
 
-- Check for **permission limits** (roles) on assignees/labels.
-- Remove long **Delays** while testing.
+- Check the target user/label permissions.
+- Remove long **Delays** while testing to see results immediately.
+
+**Unexpected timing**
+
+- Review **Active hours** and the **invert** setting.
+- Check your workspace **timezone**.
 
 ---
 
-## Best practices
+## Best Practices
 
-- **Name your Relays clearly:** “After-hours reply – Support line” beats “Relay 1”.
-- **Start simple:** One trigger, one condition, one action—then iterate.
-- **Document the owner:** Note who maintains each Relay in the description.
+- **Be explicit:** Name Relays clearly (e.g., “After-hours reply — Support line”).
+- **Document ownership:** Add who maintains the Relay to the description.
+- **Start simple:** One trigger → one condition → one action. Expand gradually.
+- **Stay compliant:** Include opt-out language (e.g., “Reply **STOP** to opt out”) where appropriate.
+
+---
