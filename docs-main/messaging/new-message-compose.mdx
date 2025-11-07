@@ -10,8 +10,8 @@ You can send a quick 1-on-1, a small group text, or a one-to-many broadcast righ
 
 ## At a Glance: What Makes up a New Message
 
-- **Recipients** – who you’re sending to
-- **Send from** – which connected phone number you’re sending from
+- **Recipients** – who you're sending to
+- **Send from** – which connected phone number you're sending from
 - **Message** – your text, plus options for template, media, and emoji
 - **Send options** – send now or schedule for later
 
@@ -23,29 +23,55 @@ You can send a quick 1-on-1, a small group text, or a one-to-many broadcast righ
 
 ### 2. Add recipients
 
-Search and add people by **name** or **phone number**. As you add them, you’ll see each recipient appear as a **chip** beneath the field to confirm they’re included.
+Search and add people by **name**, **phone number**, **label**, or **assigned teammate**. As you add them, you'll see each recipient appear as a **chip** beneath the field to confirm they're included.
+
+#### Recipient types
+
+You can send messages to:
+
+- **Individual contacts** – Search by name or phone number to add specific people
+- **Labels** – Select a label to send to all conversations with that label attached (up to 100 conversations)
+- **Assigned teammates** – Select a teammate to send to all conversations assigned to them (up to 100 conversations)
+
+#### Filter your search
+
+Use the **filter icon** to narrow your search results. You can filter by:
+
+- Conversations (individual contacts)
+- Labels
+- Assigned teammates
+
+By default, all types appear in search results. You can select any combination of filters to focus your search.
+
+#### Recipient selection rules
+
+- **Only one label or assigned teammate** can be selected per message
+  - Once you select a label or assigned teammate, the search box is disabled
+  - The message will be sent to the first 100 conversations with that label or assigned to that teammate
+- **Once you select an individual contact**, labels and assigned teammates no longer appear in search results
+- **Mix individual contacts freely** – Add up to 100 individual contacts by name or phone number
 
 **Pro tips:**
 
 - **Copy/Paste a list of numbers:** You can copy/paste a list of phone numbers directly into the Recipients field. This works great for quick broadcasts.
-- **Per-send limit:** You can add **up to 100 recipients** to a single message send.
-- **Editing:** Remove anyone by clicking the “x” on their chip before you send.
+- **Per-send limit:** You can add **up to 100 recipients** to a single message send. When using labels or assigned teammates, only the first 100 conversations will receive the message.
+- **Editing:** Remove anyone by clicking the "x" on their chip before you send.
 - **More:** click + more to view all recipient phone numbers
 
 ![Message Recipients Pn](/docs-main/images/message-recipients.png)
 
 ### 3. Select the phone number you want to send from
 
-Choose the [**connected phone number**](/get-started/phone-numbers/overview) you want to send from. You’ll see a dropdown of the **active numbers** available in your workspace.
+Choose the [**connected phone number**](/get-started/phone-numbers/overview) you want to send from. You'll see a dropdown of the **active numbers** available in your workspace.
 
 - Pick the number your contacts expect to hear from.
-- If you don’t see a number, confirm it’s connected and active for your workspace.
+- If you don't see a number, confirm it's connected and active for your workspace.
 
 ![Message Number Pn](/docs-main/images/message-number.png)
 
 ### 4. Compose your message
 
-This is where you compose and configure what you’re sending.
+This is where you compose and configure what you're sending.
 
 #### Select a message type
 
@@ -95,28 +121,42 @@ Choose when your message goes out.
 
 - Recipients: Add a single contact
 - Send from: Your main business number
-- Message: “Hi Alex, we have you for 2:00 PM today. Reply YES to confirm or 1 to reschedule.”
+- Message: "Hi Alex, we have you for 2:00 PM today. Reply YES to confirm or 1 to reschedule."
 - Send: Now
 
 **Broadcast update (up to 100)**
 
-- Recipients: Paste your list of today’s appointments
+- Recipients: Paste your list of today's appointments
 - Send individually: On
-- Message: “Heads up: Our office is closing early today at 4 PM. Text us here with any questions.”
+- Message: "Heads up: Our office is closing early today at 4 PM. Text us here with any questions."
 - Schedule: 9:00 AM today
+
+**Broadcast to labeled conversations**
+
+- Recipients: Select the "VIP Customers" label
+- Send individually: On
+- Message: "Exclusive offer for our VIP customers: 20% off your next service. Reply to book!"
+- Send: Now
+
+**Broadcast to assigned conversations**
+
+- Recipients: Select teammate "Sarah"
+- Send individually: On
+- Message: "Quick reminder: Please follow up on your open conversations by end of day."
+- Send: Now
 
 **Group SMS (small team check-in)**
 
 - Recipients: Add your field techs
 - Send type: Group SMS
-- Message: “Quick update: job 1842 running 20 min behind. Anyone nearby to swap?”
+- Message: "Quick update: job 1842 running 20 min behind. Anyone nearby to swap?"
 - Send: Now
 
 ## Frequently Asked Message Compose Questions
 
 <AccordionGroup>
   <Accordion title="What happens if I try to add more than 100 recipients?">
-    You’ll be capped at 100 recipients per send. Create another message for the next batch.
+    You'll be capped at 100 recipients per send. Create another message for the next batch.
   </Accordion>
   <Accordion title="Do replies to a broadcast go to everyone?">
     No. Each reply creates a private 1-on-1 thread with you, not the whole list.
@@ -126,5 +166,11 @@ Choose when your message goes out.
   </Accordion>
   <Accordion title="Can I edit or cancel a scheduled message?">
     Yes—you visit the inbox and view Scheduled messages. Click to open the scheduled message to reschedule or cancel the message before its send time.
+  </Accordion>
+  <Accordion title="What happens if a label or assigned teammate has more than 100 conversations?">
+    Only the first 100 conversations with that label or assigned to that teammate will receive the message.
+  </Accordion>
+  <Accordion title="Can I select multiple labels or assigned teammates?">
+    No. You can only select one label or one assigned teammate per message. However, you can add multiple individual contacts (up to 100 total).
   </Accordion>
 </AccordionGroup>
