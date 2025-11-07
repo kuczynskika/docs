@@ -27,7 +27,7 @@ Get your team on board fast, then control who can see, edit, and delete what—w
 2. Open **Team Management** under **Workspace Settings**.\\
 
    <Note>
-     Don’t see Team Management? Ask your workspace admin—your role may not include access.
+     Don't see Team Management? Ask your workspace admin—your role may not include access.
    </Note>
 3. Click **Invite Teammate** → enter one or more **email addresses** → select a **Role** → **Send**.
 
@@ -43,9 +43,9 @@ Get your team on board fast, then control who can see, edit, and delete what—w
 
 - The invite email links to `inbox.messagedesk.com/#/create-account`.
 - The teammate must sign up with the **same email** that received the invite.
-- After signup, they’re automatically added to your workspace and any assigned inboxes.
+- After signup, they're automatically added to your workspace and any assigned inboxes.
 
-### Update a user’s role or details
+### Update a user's role or details
 
 1. **Team Management** → select the user.
 2. Click **Edit Details** or **Change User Role**.
@@ -60,9 +60,9 @@ Get your team on board fast, then control who can see, edit, and delete what—w
 
 ### Manage invitations
 
-After sending invites, you’ll see each user’s status:
+After sending invites, you'll see each user's status:
 
-- ❌ **Pending** — User hasn’t created an account yet.
+- ❌ **Pending** — User hasn't created an account yet.
 - ✅ **Joined** — User created an account and joined your workspace.
 
 To **resend** an invite: **Team Management** → **⋯ (More)** → **Resend Invitation**.
@@ -112,6 +112,7 @@ To **resend** an invite: **Team Management** → **⋯ (More)** → **Resend Inv
 | **Billing & subscriptions** | View and manage workspace subscription, update billing information, and add/remove user seats. | Owner     | Viewer      | Viewer       |
 | **Team management**         | Invite teammates, create and update user roles, and update user information.                   | Owner     | Editor      | Viewer       |
 | **Phone Management**        | View and manage workspace phone numbers                                                        | Owner     | Editor      | Viewer       |
+| **Relay Management**        | View, create, edit, and manage Relays (automations)                                            | Owner     | No Access   | No Access    |
 
 ### What each permission level grants access to
 
@@ -127,6 +128,7 @@ Permissions allow a user to create, read, update, and delete information in Mess
 | **Billing & subscriptions** | Designated owner who can fully manage billing, subscriptions, payment methods, and user seat allocations. Can upgrade, downgrade, and cancel subscriptions. | Can update billing information, manage subscriptions, and modify user seats.                              | Can view billing information and subscription details, but cannot make changes.                                   | Blocked from access to billing information and subscription details.                      |
 | **Team management**         | Designated owner who cannot be removed from the workspace. They can fully manage team members, invite users, create/edit roles, and reset passwords.        | Can invite teammates, remove teammates,  manage user roles, and perform team administration.              | Can view team member information and roles, but cannot make changes.                                              | Blocked from team management with no ability to remove teammates.                         |
 | **Phone Management**        | Designated owner who can fully manage phone numbers, including adding, removing, and configuring all phone settings.                                        | Can manage phone number settings and configuration for the workspace.                                     | Can view phone number information, but cannot modify phone settings.                                              | Blocked from accessing phone management settings and number information.                  |
+| **Relay Management**        | Designated owner who can fully manage Relays, including creating, editing, deleting, and configuring all automation settings.                               | Can create, edit, and manage Relays (automations) for the workspace.                                      | Can view Relay configurations, but cannot create, edit, or delete Relays.                                         | Blocked from accessing the Relays module. Cannot view, create, or manage Relays.          |
 
 ## Custom Roles & Permissions
 
@@ -192,7 +194,7 @@ Yes. You can invite unlimited teammates and create unlimited custom roles. Each 
 A **Role** is a collection of **Permissions**. A **Permission** is the access level for a specific feature or resource.
 
 **Can I delete a custom role?**\
-Not yet—role deletion isn’t supported (updates planned). You can edit or stop assigning it.
+Not yet—role deletion isn't supported (updates planned). You can edit or stop assigning it.
 
 **Can Managers delete things?**\
 No. **The editor** cannot delete. Only the **Owner** can delete.
@@ -212,6 +214,9 @@ Grant **Editor** on that label; set others to **Viewer/No Access**.
 **Do changes apply immediately?**\
 Yes—have users **refresh** to see the updated UI.
 
+**Who can access Relays by default?**\
+Only **Admin** users have access to Relays by default. Admins can grant **Relay Management** permissions to other roles via custom role configuration. Learn more: [Relays Overview](/relays/overview).
+
 ---
 
 ## Troubleshooting
@@ -222,24 +227,28 @@ Yes—have users **refresh** to see the updated UI.
 - Resend: **Team Management → ⋯ → Resend Invitation**.
 - Still missing? Ask IT to allowlist `messagedesk.com` and try again.
 
-**User can’t see Team Management**
+**User can't see Team Management**
 
 - Their role likely has **Viewer/No Access** for **Team Management**. An **Admin** or **Manager** (Editor) must adjust.
+
+**User can't see Relays**
+
+- By default, only **Admin** users have access to Relays. An **Admin** must grant **Relay Management** permissions to the user's role via custom role configuration.
 
 **Buttons are greyed out**
 
 - The user is likely a **Viewer** on that feature, or the action requires **Owner**. Hover for the tooltip; upgrade access if appropriate.
 
-**User sees conversations they shouldn’t**
+**User sees conversations they shouldn't**
 
 - Check for **assignment** (assignment grants Editor).
 - Review **resource-level** permissions (wildcards `*` on Labels or Phone Numbers).
 - Remove any **user override** that elevates access.
 
-**Role changes didn’t “stick”**
+**Role changes didn't "stick"**
 
 - Ask the user to **refresh**.
-- Confirm there isn’t a conflicting **override** or **resource-level** restriction.
+- Confirm there isn't a conflicting **override** or **resource-level** restriction.
 
 ---
 
