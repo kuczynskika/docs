@@ -1,0 +1,329 @@
+---
+title: "Import Conversations"
+description: "Import closed conversations in bulk using a CSV file or Google Sheets link. Includes format requirements, validation rules, and label handling."
+sidebarTitle: "Import conversations"
+---
+
+# Import Conversations in Bulk via CSV
+
+You can import closed conversations into MessageDesk using a CSV file or Google Sheets link. This is useful for migrating historical conversations from other platforms or bulk-creating conversation records.
+
+<Note>
+  **TL;DR**
+
+  - **Format:** CSV with exactly **3 columns** (Labels, Inbound address, Outbound address)
+  - **Phone format:** **E.164** required (e.g., `+15551234567`)
+  - **Status:** All imported conversations are set to **Closed**
+  - **Labels:** Automatically created if they don't exist
+  - **Source:** Google Sheets link or any HTTP-accessible CSV file
+  - **No row limit:** Unlike contact imports (5,000 row limit), conversation imports have no explicit row limit, but very large files may cause memory issues
+</Note>
+
+---
+
+## CSV File Format Requirements
+
+### Column structure
+
+Your CSV must have **exactly 3 columns** in this order:
+
+| Column | Field | Description | Required |
+|--------|-------|-------------|----------|
+| 0 | Labels | Comma-separated labels (e.g., `Support,Urgent`) | No |
+| 1 | Inbound address | Customer phone number in E.164 format | Yes |
+| 2 | Outbound address | Your workspace phone number in E.164 format | Yes |
+
+<Warning>
+  **Your CSV must:**
+
+  - Include a **header row** (first row is skipped; headers are not validated)
+  - Have **exactly 3 columns** on every row (including the header)
+  - Use **E.164 format** for all phone numbers (e.g., `+15551234567`)
+  - Reference an **outbound address** that already exists as an outbound channel in your workspace
+</Warning>
+
+### Example CSV format
+
+```csv
+Labels,Inbound Address,Outbound Address
+Support,+15551234567,+15559876543
+Sales,Urgent,+15552223333,+15559876543
+,+15554445555,+15559876543
+```
+
+In this example:
+- Row 1: Conversation with one label (`Support`)
+- Row 2: Conversation with two labels (`Sales`, `Urgent`)
+- Row 3: Conversation with no labels
+
+---
+
+## Phone Number Requirements
+
+### E.164 format
+
+All phone numbers must use **E.164 format**:
+- Start with `+` (plus sign)
+- Include country code
+- No spaces, dashes, or parentheses
+- Example: `+15551234567` (not `(555) 123-4567` or `555-123-4567`)
+
+### Outbound address (your workspace phone)
+
+- Must **already exist** as an outbound channel in your workspace
+- If the outbound address doesn't exist, that row will fail during import
+- The system will **not** create new outbound channels automatically
+
+### Inbound address (customer phone)
+
+- The system will **find or create** the inbound channel automatically
+- If the phone number doesn't exist as a contact, it will be created as an anonymous contact
+
+---
+
+## Label Handling
+
+### Multiple labels per conversation
+
+Add multiple labels by separating them with commas in column 0:
+
+```csv
+Labels,Inbound Address,Outbound Address
+Support,Urgent,Priority,+15551234567,+15559876543
+```
+
+This creates a conversation with three labels: `Support`, `Urgent`, and `Priority`.
+
+### Automatic label creation
+
+- Labels are **created automatically** if they don't exist in your workspace
+- No need to pre-create labels before importing
+- Labels will use default colors and icons
+
+### Empty labels
+
+If column 0 is empty, the conversation is still created but without any labels:
+
+```csv
+Labels,Inbound Address,Outbound Address
+,+15551234567,+15559876543
+```
+
+---
+
+## File Source Requirements
+
+### Supported sources
+
+- **Google Sheets link:** Provide a Google Sheets URL (automatically converted to CSV export format)
+- **Direct CSV file:** Any CSV file accessible via HTTP GET request
+- **File must be downloadable** from the provided link
+
+### Google Sheets setup
+
+1. Create your spreadsheet with the required 3-column format
+2. Set sharing to **"Anyone with the link can view"**
+3. Copy the Google Sheets URL (e.g., `https://docs.google.com/spreadsheets/d/...`)
+4. Provide the link during import (MessageDesk automatically converts it to `/export?format=csv`)
+
+<Tip>
+  **Tip:** Google Sheets is the recommended method for large imports because you can easily edit, validate, and share the data before importing.
+</Tip>
+
+---
+
+## Import Behavior
+
+### Conversation status
+
+- **All imported conversations are set to Closed status**
+- Conversations will **not** appear in your Open Inbox
+- They will appear in your **Closed Inbox** and conversation history
+- If a customer replies to an imported conversation, it will reopen automatically
+
+### Processing
+
+- **Async processing:** Imports run in the background
+- **Batch processing:** Rows are processed in batches for reliability
+- **No real-time updates:** AppSync is disabled during import to prevent UI performance issues
+- **Continues on error:** If a row fails (e.g., invalid phone, missing outbound channel), the import continues processing other rows
+
+### What gets created
+
+For each valid row:
+1. **Inbound channel** (customer phone) is found or created
+2. **Outbound channel** (your workspace phone) must already exist
+3. **Conversation** is created between the two channels
+4. **Labels** are applied (created if they don't exist)
+5. **Status** is set to Closed
+
+---
+
+## Row Validation & Error Handling
+
+### What causes a row to fail
+
+- **Wrong column count:** Row has more or fewer than 3 columns
+- **Invalid phone format:** Phone numbers not in E.164 format
+- **Missing outbound channel:** The outbound address doesn't exist in your workspace
+- **Empty required fields:** Missing inbound or outbound address
+
+### How errors are handled
+
+- **Individual row failures:** If a row fails, the import continues processing other rows
+- **No detailed error report:** The function returns successfully created conversations, but individual row failures are not detailed in the return value
+- **Empty rows:** May be processed but will likely fail validation
+
+<Warning>
+  **Important:** Because individual row failures are not reported in detail, it's critical to validate your CSV format before importing. Test with a small sample first.
+</Warning>
+
+---
+
+## File Size & Row Limits
+
+### No explicit row limit
+
+- Unlike contact imports (5,000 row limit), conversation imports have **no explicit row count limit**
+- However, the entire file is loaded into memory, so **very large files may cause memory issues**
+
+### Recommended limits
+
+- **Test with small batches first** (10–50 rows) to validate format
+- **For large imports** (1,000+ rows), consider splitting into multiple files
+- **Monitor import progress** and check for failures before importing additional batches
+
+---
+
+## Step-by-Step Import Process
+
+### 1. Prepare your CSV
+
+1. Create a CSV with exactly 3 columns: Labels, Inbound Address, Outbound Address
+2. Add a header row (content doesn't matter; it will be skipped)
+3. Format all phone numbers in E.164 format
+4. Verify your outbound addresses exist in your workspace
+
+### 2. Validate your data
+
+- **Check column count:** Every row must have exactly 3 columns
+- **Verify phone format:** All numbers must start with `+` and include country code
+- **Confirm outbound channels:** Log in to MessageDesk and verify your workspace phone numbers
+- **Test with a small sample:** Import 5–10 rows first to catch formatting issues
+
+### 3. Upload or link your file
+
+- **Google Sheets:** Share the sheet publicly and provide the URL
+- **Direct CSV:** Ensure the file is accessible via HTTP GET request
+
+### 4. Monitor the import
+
+- Imports run in the background
+- Check your **Closed Inbox** to verify imported conversations appear
+- Look for conversations with the labels you specified
+
+---
+
+## Common Errors & Fixes
+
+### "Row has wrong number of columns"
+
+**Cause:** Row has more or fewer than 3 columns.
+
+**Fix:** Ensure every row (including empty label rows) has exactly 3 columns:
+```csv
+Labels,Inbound Address,Outbound Address
+,+15551234567,+15559876543
+```
+
+### "Invalid phone format"
+
+**Cause:** Phone number is not in E.164 format.
+
+**Fix:** Convert all phone numbers to E.164:
+- ✅ Correct: `+15551234567`
+- ❌ Wrong: `(555) 123-4567`, `555-123-4567`, `5551234567`
+
+### "Outbound channel not found"
+
+**Cause:** The outbound address (column 2) doesn't exist in your workspace.
+
+**Fix:** 
+1. Go to **Settings → Workspace → Phone Management**
+2. Verify the phone number exists and is active
+3. If missing, connect the phone number first, then retry the import
+
+### "File not accessible"
+
+**Cause:** The CSV file or Google Sheets link is not publicly accessible.
+
+**Fix:**
+- **Google Sheets:** Set sharing to "Anyone with the link can view"
+- **Direct CSV:** Ensure the file URL is accessible via HTTP GET without authentication
+
+---
+
+## Best Practices
+
+- **Normalize phone numbers to E.164** before uploading (use a spreadsheet formula or script)
+- **Test with 5–10 rows** to validate format and catch errors early
+- **Use Google Sheets** for easy editing, validation, and sharing
+- **Pre-create important labels** with specific colors/icons (or let the import create them with defaults)
+- **Verify outbound channels exist** in your workspace before importing
+- **Split large imports** into batches of 500–1,000 rows for easier troubleshooting
+- **Document your import** (save the source CSV and note the import date/time)
+
+---
+
+## FAQ
+
+### Can I import open conversations?
+
+No. All imported conversations are set to **Closed** status. If a customer replies, the conversation will reopen automatically.
+
+### Can I import messages or conversation history?
+
+No. This import creates **conversation records only** (no message content). To import historical messages, use the [**Data Center**](/settings/data-center) message import feature.
+
+### What happens if the inbound phone number already has a conversation?
+
+A new conversation record is created. MessageDesk allows multiple conversations with the same contact.
+
+### Can I update existing conversations?
+
+No. This import only **creates new conversations**. It does not update or modify existing conversation records.
+
+### Can I import from mobile or desktop apps?
+
+The import feature availability depends on your workspace configuration. Check with your workspace admin or use the **web app** for the most reliable import experience.
+
+### How do I know which rows failed?
+
+Individual row failures are not reported in detail. To identify failures:
+1. Count the conversations in your Closed Inbox after import
+2. Compare to the number of rows in your CSV (minus header)
+3. Re-import any missing conversations after fixing format issues
+
+### Can I import conversations for multiple outbound channels at once?
+
+Yes. Include different outbound addresses in column 2 for different rows. Each row can reference a different workspace phone number (as long as all exist in your workspace).
+
+---
+
+## Related Documentation
+
+<Card title="Create & import contacts" icon="user-plus" iconType="solid" href="/contacts/create-import">
+  Learn how to import contacts in bulk via CSV
+</Card>
+
+<Card title="Data center" icon="database" iconType="solid" href="/settings/data-center">
+  Import historical messages and contacts through the Data Center
+</Card>
+
+<Card title="Inbox overview" icon="inbox" iconType="solid" href="/inbox/overview">
+  Learn how MessageDesk organizes conversations in your shared team inbox
+</Card>
+
+<Card title="Labels" icon="tag" iconType="solid" href="/inbox/labels">
+  Create and manage conversation labels
+</Card>
