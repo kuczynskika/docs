@@ -104,7 +104,8 @@
                 "pages": [
                   "settings/personal/overview",
                   "settings/personal/inbox-preferences",
-                  "settings/personal/notifications"
+                  "settings/personal/notifications",
+                  "settings/personal/account-security"
                 ]
               },
               {
