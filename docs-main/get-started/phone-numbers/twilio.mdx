@@ -1,7 +1,7 @@
 ---
 title: "Connect Twilio Phone Numbers to MessageDesk"
 description: "Learn how to connect your Twilio phone numbers and phone lines to MessageDesk."
-sidebarTitle: Connect Twilio numbers
+sidebarTitle: "Connect Twilio numbers"
 ---
 
 <Note>
@@ -33,13 +33,13 @@ sidebarTitle: Connect Twilio numbers
 - Click `Add Phone Number` button in the top right corner of the Phone Management screen
 - Select **Connect Twilio**
 
-![Add Phone Dialog Pn](/images/add-phone-dialog.png)
+![Add Phone Dialog Pn](/docs-main/connect-twilio.png)
 
 ### 4. Input your Twilio credentials
 
-Add your Twilio account SID and auth token as well as every Twilio-connected phone number you'd like to add to MessageDesk.
+Add your Twilio account SID and auth token, as well as every Twilio-connected phone number you'd like to add to MessageDesk.
 
-![Twilio Integration Pn](/docs-main/images/twilio-integration.png)
+![Twilio Integration Pn](/docs-main/twilio-credentials.png)
 
 ---
 
@@ -47,22 +47,27 @@ Add your Twilio account SID and auth token as well as every Twilio-connected pho
 
 When you connect Twilio numbers to MessageDesk, we use Twilio's Event Streams to sync messages without affecting your existing Twilio setup. This means you can continue using your current workflows, webhooks, and integrations exactly as before.
 
+![Twilio Events Pn](/docs-main/twilio-events.png)
+
 ### Event Streams integration
 
 MessageDesk leverages Twilio's Event Streams to listen for message events. This approach:
+
 - **Doesn't interfere with your existing setup** - Your current webhooks, integrations, and workflows remain unchanged
 - **Works alongside other systems** - You can use MessageDesk while maintaining other Twilio integrations
 - **Syncs all message activity** - Both inbound and outbound messages are captured natively
 
-You don't need to manually configure anything—just add your Twilio credentials and numbers, and we handle the Event Streams setup automatically.
+You don't need to configure anything manually—add your Twilio credentials and numbers, and we handle the Event Streams setup automatically.
 
 ### Message syncing behavior
 
 **Inbound messages:**
+
 - All inbound SMS and MMS messages are synced to MessageDesk in real-time
 - Your existing Twilio webhooks and integrations continue to receive messages as normal
 
 **Outbound messages:**
+
 - Messages sent from MessageDesk are synced automatically
 - Messages sent through external systems (like your API or other platforms) using your Twilio number are also synced to MessageDesk
 - This is especially powerful for broadcast users who want to send high-volume messages via API while maintaining visibility in MessageDesk
@@ -70,9 +75,11 @@ You don't need to manually configure anything—just add your Twilio credentials
 ### Delivery status tracking
 
 **Messages sent from MessageDesk:**
+
 - Full delivery status tracking (sent, delivered, failed, etc.)
 
 **Messages sent from external systems:**
+
 - Messages appear in MessageDesk with a **"Sent"** status
 - Delivery status updates from external sends are not currently synced
 - For complete delivery tracking, send messages directly from MessageDesk
