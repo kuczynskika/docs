@@ -130,6 +130,12 @@ These are transactional **codes typically sent from a 5- or 6-digit short code**
 **Limitations:**
 
 - MessageDesk connected phone numbers are only capable of receiving these types of text messages, not generating them or sending from a shortcode phone number.
+- **Major carriers block 2FA codes from large organizations** (e.g., Facebook, Amazon, Google, financial institutions) when sent to VoIP numbers. This is a carrier-level restriction, not a MessageDesk limitation.
+- **Test before relying on this workflow:** Send a test 2FA code to your MessageDesk number before committing to this use case. Smaller organizations and internal systems typically work fine, but codes from major platforms are often blocked.
+
+<Warning>
+  **Security note:** Using a shared team number for 2FA codes bypasses the security model of two-factor authentication. This workflow is best suited for business scenarios like bookkeeping access, audit teams, or internal system logins—not for personal account security.
+</Warning>
 
 ### Internal comments
 
