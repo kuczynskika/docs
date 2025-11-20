@@ -1,0 +1,163 @@
+---
+title: "Send webhook"
+description: "Send MessageDesk events to your webhook endpoints using the Send Webhook relay action."
+sidebarTitle: "Send webhook"
+"og:title": "Send Webhook Relay Action - MessageDesk Automation"
+"og:description": "Send MessageDesk events to your webhook endpoints using the Send Webhook relay action."
+"og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+---
+
+# Send Webhook Relay Action
+
+Use the **Send Webhook** action to send MessageDesk events directly to your webhook endpoints. This enables you to integrate MessageDesk with external systems, trigger custom workflows, and build powerful automations.
+
+<Note>
+  **Developer Settings required:** Before using webhooks, you need to configure your webhook endpoint and generate a signing secret in **Settings → Developer Settings**.
+</Note>
+
+---
+
+## Setting Up Webhooks
+
+### 1. Configure your webhook endpoint
+
+Navigate to **Settings → Developer Settings** to:
+
+- Add your webhook endpoint URL
+- Generate a signing secret for secure webhook validation
+- Manage your webhook configurations
+
+### 2. Add the Send Webhook action to a Relay
+
+When creating or editing a Relay:
+
+1. Choose your **Trigger** (e.g., Message Received)
+2. Add any **Conditions** to control when the webhook fires
+3. Add the **Send Webhook** action
+4. Select your configured webhook endpoint
+
+The webhook will fire whenever the Relay conditions are met.
+
+---
+
+## Webhook Payloads
+
+All webhook payloads from MessageDesk are delivered as **Event** objects. Each Event contains the data relevant to the specific trigger.
+
+<Tip>
+  The event name will match the trigger you configured on your relay.
+</Tip>
+
+### Example: MessageReceived event
+
+When a message is received, the webhook payload includes a `Message` object:
+
+```json
+{
+  "id": "01KAE88YX393N7SAE200000000",
+  "object": "Event",
+  "name": "MessageReceived",
+  "workspaceId": "01K6N5WEYHS5N0796000000000",
+  "createdAt": "2025-11-19T14:28:39.459465Z",
+  "dataType": "Message",
+  "data": {
+    "id": "01KAE88X48BS8D8D2D00000000",
+    "object": "Message",
+    "workspaceId": "01K6N5WEYHS5N0796000000000",
+    "conversationId": "01K6X3R5NNWKJCSZQY00000000",
+    "communicationType": "sms",
+    "to": [
+      "+17025550000"
+    ],
+    "from": "+17025551111",
+    "text": "The quick brown fox jumps over the lazy dog.",
+    "media": [
+      "https://example.com"
+    ],
+    "outbound": false,
+    "createdAt": "2025-11-19T14:28:39.459465Z"
+  }
+}
+```
+
+---
+
+## Validating Data Integrity
+
+Your webhook URL is publicly accessible, so you should treat all incoming requests as untrusted. Each webhook request sent by MessageDesk includes an `X-MessageDesk-Signature` header.
+
+### How signature validation works
+
+The signature is generated using the request body and your API secret:
+
+1. MessageDesk computes a Base64-encoded HMAC-SHA256 hash of the raw request body using your API secret as the key
+2. This hash is sent in the `X-MessageDesk-Signature` header
+3. You compute the same hash on your end and compare it to verify authenticity
+
+### Example validation code
+
+```javascript
+const crypto = require('crypto');
+const apiSecret = 'YOUR_API_SECRET';
+
+function validateMessageDeskSignature(headers, body) {
+    // Capture the X-MessageDesk-Signature header
+    const signature = headers['x-messagedesk-signature'];
+
+    // Compute HMAC SHA256
+    const hash = crypto.createHmac('sha256', apiSecret)
+                       .update(JSON.stringify(body))
+                       .digest('base64');
+
+    return crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature));
+}
+```
+
+<Warning>
+  **Always validate signatures:** Never trust webhook data without verifying the `X-MessageDesk-Signature` header matches your computed hash.
+</Warning>
+
+---
+
+## Use Cases
+
+- **CRM integration:** Sync new messages to your CRM automatically
+- **Custom notifications:** Send alerts to Slack, Discord, or other platforms
+- **Data warehousing:** Stream conversation data to your analytics platform
+- **Workflow automation:** Trigger custom business logic based on MessageDesk events
+- **Third-party integrations:** Connect MessageDesk to tools that don't have native integrations
+
+---
+
+## Best Practices
+
+- **Validate all requests:** Always verify the `X-MessageDesk-Signature` header
+- **Handle retries gracefully:** Implement idempotency to handle duplicate webhook deliveries
+- **Respond quickly:** Return a 2xx status code within 5 seconds to acknowledge receipt
+- **Use HTTPS:** Only configure webhook endpoints that use HTTPS
+- **Monitor failures:** Set up alerts for webhook delivery failures
+- **Test thoroughly:** Use test events to verify your webhook handler before going live
+
+---
+
+## Troubleshooting
+
+**Webhook not firing**
+
+- Verify the Relay is **On** (not paused)
+- Check that your webhook endpoint is configured in **Developer Settings**
+- Confirm the Relay conditions are being met
+
+**Signature validation failing**
+
+- Ensure you're using the correct API secret from **Developer Settings**
+- Verify you're hashing the raw request body (not parsed JSON)
+- Check that you're comparing the signature using a timing-safe comparison
+
+**Webhook endpoint not receiving requests**
+
+- Confirm your endpoint is publicly accessible via HTTPS
+- Check your server logs for incoming requests
+- Verify your firewall allows incoming connections
+
+---
