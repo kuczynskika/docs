@@ -92,7 +92,8 @@
             "icon": "zap",
             "pages": [
               "/relays/overview",
-              "/relays/create-edit"
+              "/relays/create-edit",
+              "/relays/webhooks"
             ]
           },
           {
