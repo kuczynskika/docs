@@ -13,7 +13,7 @@
     "light": "#46405c",
     "dark": "#927bce"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://cdn.prod.website-files.com/6349fd438ecb3a3594605225/63f40dc976ad75f583bb618e_md-favicon-32x32.png",
   "style": "/style.css",
   "integrations": {
     "segment": {
