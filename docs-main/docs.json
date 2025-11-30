@@ -97,6 +97,21 @@
             ]
           },
           {
+            "group": "Integrations",
+            "icon": "plug",
+            "pages": [
+              {
+                "group": "Zapier",
+                "icon": "bolt",
+                "pages": [
+                  "integrations/zapier/overview",
+                  "integrations/zapier/triggers",
+                  "integrations/zapier/actions"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Settings",
             "icon": "gear",
             "pages": [
