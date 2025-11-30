@@ -1,0 +1,72 @@
+---
+title: "Zapier actions"
+description: "Learn about the MessageDesk actions available in Zapier to control your messaging from other apps."
+sidebarTitle: "Actions"
+---
+
+# Zapier actions
+
+Actions are tasks that Zapier performs in MessageDesk when a trigger fires in another app.
+
+---
+
+## Create or update contact
+
+Add a new contact to MessageDesk or update an existing contact's information. If a contact with the same phone number already exists, their information will be updated.
+
+### Input fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| Phone number | Yes | The contact's phone number (used to match existing contacts) |
+| First name | No | The contact's first name |
+| Last name | No | The contact's last name |
+| Email | No | The contact's email address |
+| Custom fields | No | Any custom fields configured in your workspace |
+
+### Output data
+
+| Field | Description |
+|-------|-------------|
+| Contact ID | The unique identifier for the contact |
+| Created | Whether a new contact was created (true/false) |
+| Updated | Whether an existing contact was updated (true/false) |
+
+### Example use cases
+
+- Sync new leads from your CRM to MessageDesk
+- Add contacts when someone submits a web form
+- Update contact info when changes are made in your database
+
+---
+
+## Send message
+
+Send an SMS message to a contact through MessageDesk.
+
+### Input fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| To phone number | Yes | The recipient's phone number |
+| Message body | Yes | The text content to send |
+| From phone number | No | The MessageDesk phone number to send from (defaults to your primary number) |
+
+### Output data
+
+| Field | Description |
+|-------|-------------|
+| Message ID | The unique identifier for the sent message |
+| Status | The delivery status of the message |
+| Sent at | Timestamp when the message was sent |
+
+### Example use cases
+
+- Send a welcome message when a new customer is added to your CRM
+- Notify contacts when their order ships
+- Send appointment reminders from your scheduling tool
+- Follow up automatically after form submissions
+
+<Warning>
+  Messages sent via Zapier count toward your MessageDesk message limits and are subject to the same carrier restrictions as messages sent directly from MessageDesk.
+</Warning>
