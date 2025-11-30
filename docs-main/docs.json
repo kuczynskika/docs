@@ -100,7 +100,7 @@
             "group": "Integrations",
             "icon": "plug",
             "pages": [
-              "/zapier"
+              "/integrations/zapier"
             ]
           },
           {
