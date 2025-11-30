@@ -97,13 +97,6 @@
             ]
           },
           {
-            "group": "Integrations",
-            "icon": "plug",
-            "pages": [
-              "/integrations/zapier"
-            ]
-          },
-          {
             "group": "Settings",
             "icon": "gear",
             "pages": [
