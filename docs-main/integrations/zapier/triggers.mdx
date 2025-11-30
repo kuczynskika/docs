@@ -1,0 +1,78 @@
+---
+title: "Zapier triggers"
+description: "Learn about the MessageDesk triggers available in Zapier to start your automated workflows."
+sidebarTitle: "Triggers"
+---
+
+# Zapier triggers
+
+Triggers are events in MessageDesk that start your Zaps. When a trigger fires, Zapier runs the actions you've configured.
+
+---
+
+## Message received
+
+Fires when a new inbound message arrives in your MessageDesk inbox.
+
+### Trigger data
+
+| Field | Description |
+|-------|-------------|
+| Message ID | Unique identifier for the message |
+| Message body | The text content of the message |
+| From phone | The sender's phone number |
+| To phone | The MessageDesk phone number that received the message |
+| Received at | Timestamp when the message was received |
+| Contact ID | The MessageDesk contact ID (if known) |
+| Contact name | The contact's name (if available) |
+
+### Example use cases
+
+- Forward messages to a Slack channel for team visibility
+- Log inbound messages to a Google Sheet
+- Create support tickets in your helpdesk when keywords are detected
+
+---
+
+## New workspace
+
+Fires when a new workspace is created in your MessageDesk account.
+
+### Trigger data
+
+| Field | Description |
+|-------|-------------|
+| Workspace ID | Unique identifier for the workspace |
+| Workspace name | The name of the new workspace |
+| Created at | Timestamp when the workspace was created |
+
+### Example use cases
+
+- Notify your team in Slack when a new workspace is set up
+- Add the workspace to a tracking spreadsheet
+- Trigger onboarding workflows in your project management tool
+
+---
+
+## Message sent
+
+Fires when an outbound message is sent from MessageDesk.
+
+### Trigger data
+
+| Field | Description |
+|-------|-------------|
+| Message ID | Unique identifier for the message |
+| Message body | The text content of the message |
+| From phone | The MessageDesk phone number that sent the message |
+| To phone | The recipient's phone number |
+| Sent at | Timestamp when the message was sent |
+| Contact ID | The recipient's contact ID |
+| Contact name | The recipient's name (if available) |
+| Sent by | The user who sent the message |
+
+### Example use cases
+
+- Log all outbound messages to your CRM
+- Track message volume in a spreadsheet
+- Trigger follow-up tasks after sending specific messages
