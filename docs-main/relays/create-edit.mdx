@@ -122,42 +122,128 @@ Open the Relay → **⋯** → **Delete**.
 
 ## Starter Relay Templates (Copy & Adapt)
 
-### Keyword responder
+### Example 1: Delegation & Team Routing Relay
 
-**Trigger:** Message Received\
-**Conditions:** Message contains `SUPPORT`\
-**Actions:** Reply →\
-“Thanks for reaching out to support. Please share any extra details, and we’ll jump in.”
+Use this setup when multiple teammates need to view and reply on behalf of a manager.
+
+![Relay Delegation Routing Pn](/docs-main/images/relay-delegation-routing.png)
+
+| **Triggers**     | **Conditions**                            | **Actions x2**                               |
+| ---------------- | ----------------------------------------- | -------------------------------------------- |
+| Message Received | On the Manager's or Teammates' phone line | Assign Manager 1, Teammate 2, and Teammate 3 |
+|                  |                                           | Apply labels “Region 1” and “Region 2”       |
+
+**How it works:**\
+When a message comes in on the manager's number, MessageDesk automatically assigns the conversation to the manager and the two direct reports.
+
+The message is labeled by region, keeping everything organized by team and location.
 
 <Tip>
-  **Tip:** Keep keywords short and memorable (e.g., `JOIN`, `BOOK`, `SUPPORT`).
+  **Pro Tip:** Use delegation-style relays for managers who want their teams to reply on their behalf or monitor shared inboxes.
+
+  Each teammate assigned to the conversation will [receive notifications by default](/settings/personal/notifications).
 </Tip>
 
-### Identify unknown contacts
+---
 
-**Trigger:** Message Received\
-**Conditions:** Is anonymous conversation\
-**Actions:** Reply →\
-“Thanks for texting us! What’s your first and last name so we know who to help?”
+### Example 2: Out-of-Office & Weekend Autoresponder
 
-### Assign new conversations
+Use this when teammates want to automatically reply during vacations or after hours.
 
-**Trigger:** Message Received\
-**Conditions:** Is new conversation\
-**Actions:** Assign teammates → pick your queue owner(s)
+![Out Of Office Relay Pn](/docs-main/images/out-of-office-relay.png)
 
-### Auto-label new threads
+| **Triggers**     | **Conditions x2**  | **Actions x3**                                                                                               |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
+| Message Received | Active hours       | Send Auto Reply: “Thanks for reaching out! I’m currently out of the office. Please text [alternate number].” |
+|                  | My phone number is | Assign to teammates: Teammate 1, 2, and 3                                                                    |
+|                  |                    | Add labels to the conversation: Region 1, Region 2                                                           |
 
-**Trigger:** Message Received\
-**Conditions:** Is new conversation\
-**Actions:** Add labels → e.g., `Support`, `Lead`, `Region: West`
+**Steps to configure:**
 
-### After-hours auto-reply
+1. Create a new Relay and choose **Message Received** as the trigger.
+2. Under conditions, set **Active Hours** for each day to “Closed” or a select time span.
+3. Toggle "Trigger outside of active hours" **ON**.
+3. Add an **Action → Send Auto Reply** and compose your message.
+3. Add an **Action → Assign to teammates** and select teammates.
+3. Add an **Action → Add labels to the conversation** and select labels.
+4. Toggle the Relay **ON**.
 
-**Trigger:** Message Received\
-**Conditions:** Active hours (inverted for after-hours)\
-**Actions:** Reply →\
-“Thanks for texting! We’re away right now. We’ll reply at 8am PT. Reply STOP to opt out.”
+<Tip>
+  **Team Tip:** Each team member (Teammate 1, 2, and 3) can have their own relay(s). Be sure to give each Relay a clear descriptive name, like:
+
+  1. `Teammate 1 - Out of Office Autoreply`
+  2. `Teammate 2 - Weekend Autoreply`
+  3. `Teammate 3 - Vacation Autoreply`
+</Tip>
+
+---
+
+### Example 3: Identify unknown contacts/conversations
+
+Use this Relay to automatically collect names from new, anonymous conversations.\
+Perfect for teams who receive texts from unsaved numbers or new contacts.
+
+![Identify Relay Pn](/docs-main/images/identify-relay.png)
+
+| **Trigger**      | **Condition**                                        | **Actions**                                                                                       |
+| ---------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Message Received | Conversation is anonymous (contact not in directory) | Send Auto Reply: “Thanks for texting us! What’s your first and last name so we know who to help?” |
+
+**Steps to configure:**
+
+1. Create a new Relay and choose **Message Received** as the trigger.
+2. Under conditions, set **My phone number equals** to a connected phone line.
+3. Set another condition for **Is anonymous conversation**.
+3. Add an **Action → Reply to message** and compose your message.
+3. Add an **Action → Assign to teammates** and select teammates.
+3. Add an **Action → Add labels to the conversation** and select labels.
+4. Toggle the Relay **ON**.
+
+<Tip>
+  **Pro Tip:** Combine this Relay with [**Contact Imports**](/contacts/create-import) or [**Labels**](/inbox/labels) (e.g., “Unverified”) to easily track and update new numbers later.
+</Tip>
+
+---
+
+### Example 4: Keyword-based autoresponder
+
+Use this Relay to automatically respond when someone texts in a specific keyword — like **SUPPORT**, **JOIN**, or **BOOK**.
+
+When a contact sends a message containing the word “SUPPORT,” MessageDesk automatically replies with your chosen message. It’s ideal for auto-routing messages or triggering fast replies without manual effort.
+
+![Support Relay Pn](/docs-main/images/support-relay.png)
+
+| **Trigger**      | **Condition**                      | **Actions**                                                                                               |
+| ---------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Message Received | Message contains keyword “SUPPORT” | Send Auto Reply: “Thanks for reaching out to support. Please share any extra details, and we’ll jump in.” |
+
+**Steps to configure:**
+
+1. Create a new Relay and choose **Message Received** as the trigger.
+2. Under conditions, set **My phone number equals** to a connected phone line.
+3. Set another condition for **Message contains text SUPPORT**.
+3. Add an **Action → Reply to message** and compose your message.
+3. Add an **Action → Assign to teammates** and select teammates.
+3. Add an **Action → Add labels to the conversation** and select labels.
+4. Toggle the Relay **ON**.
+
+<Tip>
+  **Tips for Success:**
+
+  - Keep keywords **short and memorable** — e.g., `JOIN`, `HELP`, `SUPPORT`.
+  - Use **all caps** for clarity and easy recognition.
+  - Create separate keyword relays for each department (e.g., `BOOK` → Sales, `SUPPORT` → Service).
+</Tip>
+
+---
+
+## Relays Best Practices
+
+- **Start simple.** Test one Relay before scaling across teams.
+- **Name clearly.** Use descriptive titles like `Teammate 1 - Delegation Relay` or `Region X,Y, Z Autoresponder`.
+- **Test with your phone.** Send yourself a message to confirm behavior.
+- **Combine with templates.** Use pre-saved templates to standardize replies.
+- **Audit regularly.** Disable or update relays as team structure changes.
 
 ---
 
@@ -211,14 +297,3 @@ Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new c
 
 - Review **Active hours** and the **invert** setting.
 - Check your workspace **timezone**.
-
----
-
-## Best Practices
-
-- **Be explicit:** Name Relays clearly (e.g., “After-hours reply — Support line”).
-- **Document ownership:** Add who maintains the Relay to the description.
-- **Start simple:** One trigger → one condition → one action. Expand gradually.
-- **Stay compliant:** Include opt-out language (e.g., “Reply **STOP** to opt out”) where appropriate.
-
----
