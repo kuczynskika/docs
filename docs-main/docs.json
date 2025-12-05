@@ -61,6 +61,7 @@
             "pages": [
               "messaging/overview",
               "messaging/new-message-compose",
+              "messaging/scheduled-messages",
               "messaging/media",
               "messaging/templates-tags",
               "messaging/delivery-status-errors",
