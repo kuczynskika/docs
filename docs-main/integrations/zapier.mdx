@@ -1,7 +1,7 @@
 ---
 title: "Zapier Integration"
 description: "Connect MessageDesk to thousands of apps using Zapier to automate your messaging workflows."
-sidebarTitle: "Zapier"
+sidebarTitle: "Zapier (Beta)"
 ---
 
 # Zapier Integration
@@ -17,14 +17,16 @@ Connect MessageDesk to the rest of your stack with **Zapier**. Use triggers from
 - **When a workspace is created** → kick off onboarding in your PM tool.
 - **From your CRM or forms** → create/update contacts in MessageDesk or **send a text**.
 
-> **Prerequisites:** A Zapier account and a MessageDesk workspace. Outbound texting through Zapier follows the same [**registration**](/carrier-registration/overview), [**deliverability**](/messaging/delivery-status-errors), and [**compliance**](/settings/compliance-center) rules as sending inside MessageDesk.
+<Note>
+  **Prerequisites:** A Zapier account and a MessageDesk workspace. Outbound texting through Zapier follows the same [**registration**](/carrier-registration/overview), [**deliverability**](/messaging/delivery-status-errors), and [**compliance**](/settings/compliance-center) rules as sending inside MessageDesk.
+</Note>
 
 ---
 
 ## How Zapier Works (Two Building Blocks)
 
-- **Trigger** – the event that starts your Zap.
-- **Action** – what Zapier does after the trigger fires.
+- **Triggers** – the event that starts your Zap.
+- **Actions** – what Zapier does after the trigger fires.
 
 ---
 
@@ -89,14 +91,55 @@ Connect MessageDesk to the rest of your stack with **Zapier**. Use triggers from
 
 ---
 
-## Getting Started
+## Build Your First MessageDesk Zap
 
-1. Log in at [**zapier.com**](zapier.com).
-2. Search for **MessageDesk** in the app directory.
-3. Connect your MessageDesk account when prompted.
-4. Build a Zap using one of our **triggers** and/or **actions** above.
+### 1. Login or create your Zapier account
 
----
+Visit [**zapier.com**](zapier.com) to log in or create a new account.
+
+### 2. Click to create a new Zap
+
+![Create New Zap Pn](/docs-main/images/create-new-zap.png)
+
+### 3. Search for **MessageDesk** in the app directory
+
+<Warning>
+  **Warning:** Be sure to select the proper **app version (1.1.0)** for the beta release.
+</Warning>
+
+![Zapier Version Pn](/docs-main/images/zapier-version.png)
+
+<Note>
+  Note: You can use MessageDesk as both a **trigger** for your zap, as well as an **action**.
+</Note>
+
+![Trigger Or Action Pn](/docs-main/images/trigger-or-action.png)
+
+### 4. Select a Trigger and connect your MessageDesk account
+
+If using MessageDesk as a trigger for your zap, select from:
+
+1. **Message Received** (triggers when your MessageDesk workspace receives a message).
+2. **Message Sent** (triggers whenever a message is sent out of MessageDesk.
+
+Once you configure your trigger, you'll need to click **Select** to connect your MessageDesk account.
+
+![Zapier Trigger Select Pn](/docs-main/images/zapier-trigger-select.png)
+
+### 5. Configure your zap with your MessageDesk workspace and test.
+
+Select the workspace you'd like your zap to work with from the list of workspaces associated with your account. Once you select your workspace, click continue and test the trigger.
+
+![Zapier Select Workspace Pn](/docs-main/images/zapier-select-workspace.png)
+
+### 5. Select Actions
+
+MessageDesk currently supports two actions:
+
+1. **Create or Update Contact** (Creates a contact or updates a contact if it already exists)
+2. **Send Message** (Sends a message to an existing or new conversation)
+
+![Zapier Actions Pn](/docs-main/images/zapier-actions.png)
 
 ## Common Recipes (Copy These Ideas)
 
