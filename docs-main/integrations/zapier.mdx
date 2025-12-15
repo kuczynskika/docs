@@ -10,15 +10,16 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 # Zapier Integration (Beta)
 
 Connect MessageDesk to thousands of other apps using **Zapier**.\
-Automate workflows by triggering actions when messages are sent or received—or perform tasks like **creating contacts** and **sending messages** when events occur in other tools.
+Automate workflows by triggering actions when messages are sent or received—or perform tasks like **creating contacts**, **sending messages**, and **adding comments** when events occur in other tools.
 
 ---
 
 ## What You Can Automate
 
-- **When a message is received** → Create a helpdesk ticket, post to Slack, or log it to Google Sheets.
-- **When a message is sent** → Update a CRM, trigger a follow-up task, or notify your team.
-- **From your CRM or forms** → Automatically create or update contacts in MessageDesk and send personalized texts.
+- **When a message is received** → Create helpdesk tickets, send Slack or Teams notifications, or log messages to Google Sheets.
+- **When a message is sent** → Update CRM records, trigger a follow-up task, or post delivery updates.
+- **From your CRM, forms, or scheduling tools** → Automatically create or update contacts in MessageDesk and send personalized text messages.
+- **From payments or invoicing systems** → Send SMS confirmations when a customer pays or when a new invoice is issued.
 
 <Note>
   **Requirements:**
@@ -33,120 +34,104 @@ Automate workflows by triggering actions when messages are sent or received—or
 
 Each Zap has two main components:
 
-| Type         | Description                                                                                   |
-| ------------ | --------------------------------------------------------------------------------------------- |
-| **Triggers** | The events that start your Zap (e.g., a message received in MessageDesk).                     |
-| **Actions**  | The tasks Zapier performs after the trigger fires (e.g., send a message or create a contact). |
+| Type        | Description                                                                                  |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| **Trigger** | The event that starts your Zap (e.g., a message received in MessageDesk).                    |
+| **Action**  | The task Zapier performs after the trigger fires (e.g., send a message or create a contact). |
 
 ---
 
-## MessageDesk Triggers
+## Available MessageDesk Triggers
 
-MessageDesk currently supports two triggers in Zapier:
-
-| Trigger              | Description                                                       |
-| -------------------- | ----------------------------------------------------------------- |
-| **Message Received** | Triggers when your workspace receives a new inbound text message. |
-| **Message Sent**     | Triggers when a message is sent from your workspace.              |
-
-## MessageDesk Actions
-
-| Action                       | Description                                                           |
-| ---------------------------- | --------------------------------------------------------------------- |
-| **Create or Update Contact** | Creates or updates a contact in MessageDesk.                          |
-| **Send Message**             | Sends a message from a selected number in your MessageDesk workspace. |
-| **Create Comment**           | Creates a comment in a MessageDesk conversation thread.               |
+| Trigger              | Description                                                             |
+| -------------------- | ----------------------------------------------------------------------- |
+| **Message Received** | Fires when your workspace receives a new inbound text message.          |
+| **Message Sent**     | Fires when a message is sent from your workspace (manual or automated). |
 
 ---
 
-## Trigger: Message Received
+## Available MessageDesk Actions
 
-**Description:** Triggers whenever your MessageDesk workspace receives a new inbound text message.
+| Action                       | Description                                                          |
+| ---------------------------- | -------------------------------------------------------------------- |
+| **Create or Update Contact** | Adds a new contact or updates an existing one based on phone number. |
+| **Send Message**             | Sends a text message through your MessageDesk workspace.             |
+| **Create Comment**           | Posts a new comment in a MessageDesk conversation thread.            |
 
-### Input fields
+---
 
-| Fields Available in Zapier | Required | Description                            |
-| :------------------------- | :------- | :------------------------------------- |
-| **Workspace Name**         | ✅        | The name of your MessageDesk workspace |
+## Triggers
+
+### Message Received
+
+Fires when your MessageDesk workspace receives an inbound message.
+
+| Field              | Required | Description                             |
+| ------------------ | -------- | --------------------------------------- |
+| **Workspace Name** | ✅        | The name of your MessageDesk workspace. |
 
 ![Message Received](/images/message-received.png)
 
 ---
 
-## Trigger: Message Sent
+### Message Sent
 
-**Description:** Triggers when a message is sent from your workspace.
+Fires when your MessageDesk workspace sends an outbound message.
 
-### Input fields
-
-| Fields Available in Zapier | Required | Description                            |
-| :------------------------- | :------- | :------------------------------------- |
-| **Workspace Name**         | ✅        | The name of your MessageDesk workspace |
+| Field              | Required | Description                             |
+| ------------------ | -------- | --------------------------------------- |
+| **Workspace Name** | ✅        | The name of your MessageDesk workspace. |
 
 ![Message Sent](/images/message-sent.png)
 
 ---
 
-## Action: Send Message
+## Actions
 
-**Description:** Sends an outbound SMS message from your MessageDesk workspace. Each Zap run sends one message at a time.
+### Create or Update Contact
 
-### Input Fields
+Creates or updates a contact in your selected workspace. Perfect for syncing leads, form submissions, or new customer signups.
 
-| Fields Available in Zapier | Required | Description                                                |
-| :------------------------- | :------- | :--------------------------------------------------------- |
-| **To phone number**        | ✅        | Recipient number (use E.164 format, e.g., `+15551234567`). |
-| **Message body**           | ✅        | Text content of the message.                               |
-| **From phone number**      | ❌        | Optional; defaults to your workspace’s primary number.     |
-
----
-
-## Action: Create or Update Contact
-
-Description: Creates or updates a contact in your selected MessageDesk workspace.
-
-### Input fields
-
-| Input Fields Available in Zapier | Required | Description                                                                                                 |
-| -------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
-| **Workspace Name**               | ✅        | The name of your MessageDesk workspace                                                                      |
-| **Contact Phone Numbers**        | ✅        | The contact's phone numbers. The number must be formatted as a valid E.164 number **example: +15551234567** |
-| **Contact First Name**           | ❌        | The first name of the contact                                                                               |
-| **Contact Last Name**            | ❌        | The last name of the contact                                                                                |
+| Field                      | Required | Description                                                        |
+| -------------------------- | -------- | ------------------------------------------------------------------ |
+| **Workspace Name**         | ✅        | The name of your MessageDesk workspace.                            |
+| **Contact Phone Number**   | ✅        | The contact’s phone number in E.164 format (e.g., `+15551234567`). |
+| **First Name / Last Name** | ❌        | Optional contact name fields.                                      |
+| **Email**                  | ❌        | Optional email address.                                            |
 
 ![Create Update Contact](/images/create-update-contact.png)
 
 ---
 
-## Action:  Send Message
+### Send Message
 
-**Description:** Sends an outbound SMS message from your MessageDesk workspace. Each Zap run sends one message at a time.
+Sends an outbound text message from MessageDesk. Each Zap run sends one message at a time.
 
-### Input fields
-
-| Input Fields Available in Zapier  | Required | Description                                                                                                                                           |
-| :-------------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Workspace Name**                | ✅        | The name of your MessageDesk workspace.                                                                                                               |
-| **Workspace Number to Send From** | ✅        | The phone number in your workspace that you'll send the message from. The number must be formatted as a valid E.164 number, **example: +15551234567** |
-| **Number to Send Message To**     | ✅        | The phone number you'll send your message to. The number must be formatted as a valid E.164 number, **example: +15551234567**                         |
-| **Message Text**                  | ✅        | The text or body of your message.                                                                                                                     |
+| Field                             | Required | Description                                                   |
+| --------------------------------- | -------- | ------------------------------------------------------------- |
+| **Workspace Name**                | ✅        | The name of your MessageDesk workspace.                       |
+| **Workspace Number to Send From** | ✅        | The phone number you’ll send the message from (E.164 format). |
+| **Recipient Number**              | ✅        | The phone number to send your message to (E.164 format).      |
+| **Message Text**                  | ✅        | The body of your message.                                     |
 
 ![Send Message](/images/send-message.png)
 
 <Warning>
-  **Warning:** Messages sent through Zapier count toward your MessageDesk message usage and must follow the same carrier and compliance rules as messages sent directly from the Inbox.
+  **Warning:** Messages sent through Zapier count toward your MessageDesk usage and must follow the same carrier and compliance rules as messages sent from your Inbox.
 </Warning>
 
-## Action: Create Comment
+---
 
-**Description: **
+### Create Comment
 
-| Input Fields Available in Zapier       | Required | Description                                                                                                                                                                                                                     |
-| :------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Workspace Name                         | ✅        | The name of your MessageDesk workspace.                                                                                                                                                                                         |
-| Workspace Number To Create Comment For | ✅        | This field is used to identify which workspace phone number is tied to the comment. This is a phone number already connected to your workspace. The number must be formatted as a valid E.164 number, **example: +15551234567** |
-| To Number To Create Comment            | ✅        | This field is used to identify which contact/conversation to create a comment for. This should be the contact's phone number. The number must be formatted as a valid E.164 number, **example: +15551234567**                   |
-| Comment Text                           | ✅        | The text or body of your comment.                                                                                                                                                                                               |
+Posts a comment in an existing conversation thread. Use this action to add internal notes, mention teammates, or automate updates from other apps.
+
+| Field                | Required | Description                                                         |
+| -------------------- | -------- | ------------------------------------------------------------------- |
+| **Workspace Name**   | ✅        | The name of your MessageDesk workspace.                             |
+| **Workspace Number** | ✅        | The phone number tied to the workspace conversation (E.164 format). |
+| **Contact Number**   | ✅        | The contact’s phone number to identify the conversation.            |
+| **Comment Text**     | ✅        | The text body of your comment.                                      |
 
 ![Create Comment](/images/create-comment.png)
 
@@ -156,11 +141,11 @@ Description: Creates or updates a contact in your selected MessageDesk workspace
 
 ### 1. Gain early beta access
 
-[Complete this form and submit your information](https://messagedesk.typeform.com/to/C3cEgPAm) to gain early access to our Zapier integration.
+[Request access here](https://messagedesk.typeform.com/to/C3cEgPAm) to join the Zapier beta.
 
 ### 2. Log in to Zapier
 
-Once you receive your invitation, go to [**zapier.com**](http://zapier.com) and log in or create an account.
+Once invited, go to [**zapier.com**](https://zapier.com) and log in or create an account.
 
 ### 3. Create a new Zap
 
@@ -174,11 +159,11 @@ Search for **MessageDesk (Invite Only)** and select **version 1.2.0** from the d
 
 ![Zapier Version 1 2 0](/images/zapier-version-1.2.0.png)
 
-You can use MessageDesk as either a Zap trigger or a Zap action.
+You can use MessageDesk as either a **trigger** or an **action**.
 
 ![Trigger Or Action Pn](/docs-main/images/trigger-or-action.png)
 
-### 4. Choose a Trigger
+### 5. Choose a Trigger
 
 Select one of the following:
 
@@ -189,9 +174,9 @@ Then connect your MessageDesk account and select your workspace.
 
 ![Zapier Trigger Select Pn](/docs-main/images/zapier-trigger-select.png)
 
-### 5. Add an Action
+### 6. Add an Action
 
-Choose one of the following:
+Choose from:
 
 - **Create or Update Contact**
 - **Send Message**
@@ -203,31 +188,40 @@ Map your fields, test your Zap, and turn it on.
 
 ---
 
-## Common Zap Examples
+## Popular Zapier Workflows
 
-- **CRM → MessageDesk:** When a lead is created → Create/Update Contact → Send a welcome message.
-- **MessageDesk → Slack:** When a message is received → Post it to a team channel.
-- **MessageDesk → Google Sheets:** When a message is sent → Log message details and delivery status.
-- **Calendar → MessageDesk:** When an appointment is booked → Send a reminder text.
+Use these examples to get inspired and automate common MessageDesk tasks:
+
+| Workflow                                                        | Connected Apps                    | Description                                                                                                                 |
+| --------------------------------------------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **New CRM Lead → Add to MessageDesk**                           | HubSpot, Pipedrive, Zoho CRM      | When a new lead is created, automatically create or update the contact in MessageDesk and send a personalized welcome text. |
+| **Job or Appointment Booked → Send Reminder Text**              | Calendly, Google Calendar, Jobber | Send automated appointment reminders or confirmations directly from MessageDesk.                                            |
+| **New Message in MessageDesk → Notify Teammates**               | Slack, Microsoft Teams            | Post a notification with message details and contact info when a new message arrives in MessageDesk.                        |
+| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero                  | When a new invoice is issued or a payment is logged, send a text confirmation to the customer.                              |
+| **New Form Submission → Create Comment with Mention**           | Google Forms, Typeform            | Automatically post a comment when a new form or chatbot submission is received.                                             |
+| **Email or Message → Comment in Thread**                        | Outlook, Gmail, Teams             | Create an internal comment in MessageDesk when an external email or chat arrives, keeping your team aligned.                |
+| **Customer Review Received → Thank You Text**                   | Google Reviews, Mailchimp         | Automatically send a thank-you message when a customer leaves a new review or completes feedback.                           |
 
 ---
 
 ## Best Practices
 
 - ✅ **Include opt-out text:** “Reply STOP to opt out” for promotional or automated messages.
-- ✅ **Always use E.164 format for phone numbers:** `+15551234567` for all phone numbers.
+- ✅ **Always use E.164 format:** `+15551234567` for all phone numbers.
 - ✅ **Test with real data:** Before turning on your Zap.
-- ⚠️ **Avoid bulk sends:** Each Zap run sends one message. Use MessageDesk **Broadcasts** for campaigns.
-- 🧩 **Add filters or conditions:** Only trigger your Zap for relevant messages or keywords.
+- ⚠️ **Avoid bulk sends:** Each Zap run sends one message. Use MessageDesk **Broadcasts** for larger campaigns.
+- 🧩 **Use filters and conditions:** Limit your Zaps to relevant events (e.g., only messages containing “Support”).
 
 ---
 
 ## Troubleshooting
 
-| Issue                                                   | Solution                                                                                                              |
-| :------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------- |
-| **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you’re using the correct workspace and **Zap version, currently 1.2.0.** |
-| **Zap failes durring testing**                          | Make sure you're using the required **E.164 format** for all fields that require a phone number.                      |
-| **Message sent but not delivered**                      | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details.                                      |
-| **Zap not triggering**                                  | Verify your trigger and workspace setup. Send a test message to fire the event.                                       |
-| **Contact not updating correctly**                      | Check field mappings and ensure phone numbers are in **E.164 format**.                                                |
+| Issue                                                   | Solution                                                                                                   |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you’re using the correct workspace and **Zap version 1.2.0**. |
+| **Zap fails during testing**                            | Make sure all phone numbers are formatted correctly in **E.164**.                                          |
+| **Message sent but not delivered**                      | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details.                           |
+| **Zap not triggering**                                  | Verify the correct trigger and workspace setup. Send a test message to fire the event.                     |
+| **Contact not updating correctly**                      | Check field mappings and confirm the contact’s phone number matches existing records.                      |
+
+---
