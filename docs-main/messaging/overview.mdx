@@ -26,6 +26,18 @@ MessageDesk supports the following types of messages:
   **Import historical messages:** You can import past messages into MessageDesk to maintain conversation continuity. Learn more in the [Data Center](/settings/data-center) documentation.
 </Note>
 
+## SMS character limits and message segments
+
+Standard SMS messages are limited to **160 characters per segment**. If a message exceeds this limit, carriers automatically split it into multiple segments. Most modern phones display these as a single continuous message, but in rare cases they may appear as separate texts or arrive out of order.
+
+**Special characters reduce the limit:** Emojis and accented letters (like "á" or "ñ") use more data per character. When these are included, the effective limit per segment drops to around **70–80 characters**.
+
+**Automatic MMS conversion:** Once a message reaches approximately three segments, MessageDesk automatically converts it to MMS. This reduces carrier costs and ensures delivery as one complete message regardless of length.
+
+<Note>
+  **You don't need to worry about character counts.** MessageDesk includes unlimited messaging and automatic MMS conversion, so your contacts will almost always receive your message as one clean, professional text—even if it technically splits behind the scenes.
+</Note>
+
 ### 1-on-1 individual text messages
 
 Private, one-to-one messages with a single contact. Each conversation is its own thread in your shared inbox, so your team has full context and can assign, filter, and follow up without stepping on each other.
