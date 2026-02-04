@@ -90,3 +90,40 @@ You don't need to configure anything manually—add your Twilio credentials and 
 <Note>
   **For existing Twilio users:** If you added your Twilio numbers to MessageDesk before this update, your numbers are still using the previous webhook pattern and will continue to work normally. If you need to migrate to the new event-based system, contact [support@messagedesk.com](mailto:support@messagedesk.com) for assistance.
 </Note>
+
+---
+
+## Troubleshooting
+
+### Default webhook URL causing issues
+
+When you add a new number in Twilio, it automatically configures a default webhook URL. If you're experiencing issues sending messages from MessageDesk, this default configuration may be the cause.
+
+**To resolve this:**
+
+1. Log in to your [Twilio Console](https://console.twilio.com/)
+2. Navigate to your phone number's configuration
+3. Clear the webhook URL field (leave it blank)
+4. Save your changes
+
+This is safe to do because MessageDesk uses [Event Streams](https://www.twilio.com/docs/events)—not webhooks—to sync messages. Clearing the default webhook URL won't affect MessageDesk functionality.
+
+### Using multiple services with your Twilio number
+
+Since MessageDesk uses Event Streams, your Twilio number can work with multiple services simultaneously. If you need other applications to receive message webhooks:
+
+- **Event Streams subscriptions** - Add multiple subscribers to receive message events. See [Twilio Event Streams documentation](https://www.twilio.com/docs/events).
+- **TwiML functions** - Route webhooks to multiple endpoints. See [TwiML for Programmable Messaging](https://www.twilio.com/docs/messaging/twiml).
+- **Messaging webhooks** - Configure webhooks for other services as needed. See [Twilio Messaging Webhooks](https://www.twilio.com/docs/usage/webhooks/messaging-webhooks).
+
+MessageDesk won't interfere with any of these configurations.
+
+---
+
+## Learn more
+
+For advanced Twilio configuration, refer to Twilio's official documentation:
+
+- [Event Streams](https://www.twilio.com/docs/events) - How MessageDesk syncs with your Twilio numbers
+- [Messaging Webhooks](https://www.twilio.com/docs/usage/webhooks/messaging-webhooks) - Configure webhooks for other services
+- [TwiML for Programmable Messaging](https://www.twilio.com/docs/messaging/twiml) - Advanced message routing and multi-subscriber setups
