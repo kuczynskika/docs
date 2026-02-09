@@ -15,15 +15,41 @@ Add pictures, PDFs, GIFs, HEIC photos, and even contact cards to any message or 
 
 ## Supported Media File Types
 
+MessageDesk supports a wide range of file types for both **inbound** (received) and **outbound** (sent) media.
+
+### Images
 - **.jpg**
 - **.png**
 - **.gif**
-- **.pdf**
 - **.heic**
 - **.webp**
+
+### Audio
+- **.mp3**
+- **.wav**
+- **.m4a**
+
+### Video
+- **.mp4**
+- **.mov**
+
+### Documents
+- **.pdf**
 - **.doc**
 - **.docx**
 - **.vcf** (contact card) - coming soon
+
+---
+
+## In-app display behavior
+
+Different file types display differently within the MessageDesk app:
+
+| File type | In-app behavior |
+|-----------|-----------------|
+| **Photos** (jpg, png, gif, heic, webp) | Native preview with full in-app display |
+| **Audio** (mp3, wav, m4a) | Native audio player for in-app playback |
+| **Video & other files** (mp4, mov, pdf, doc, etc.) | Displays as a file placeholder bubble; clicking opens the file in a new browser tab |
 
 ---
 
@@ -90,6 +116,18 @@ Reusing a file you’ve already uploaded keeps things consistent and fast.
 - Use **.jpg** for photos and **.pdf** for documents/forms.
 - **HEIC** (common on iPhone) is supported; convert to **.jpg** if a recipient can’t open HEIC.
 - Preview before sending to ensure the right file is attached—remove with the **x** if needed.
+
+---
+
+## Known limitations
+
+<Warning>
+  **iOS voice messages (.amr files):** Voice messages sent from iOS devices use the `.amr` format, which is not natively supported by most browsers. These files cannot currently be played back in MessageDesk.
+</Warning>
+
+<Warning>
+  **Mobile file picker:** Selecting non-photo files (documents, audio, video) is only available on desktop. On mobile devices, the file picker currently supports photo selection only.
+</Warning>
 
 ---
 
