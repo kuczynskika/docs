@@ -56,8 +56,24 @@ Your new password must meet these requirements:
 - Contains at least one lowercase letter (a-z)
 - Contains at least one uppercase letter (A-Z)
 - Contains at least one number (0-9)
+- Contains at least one special character (!@#\## User Password Requirements
+
+Your new password must meet these requirements:
+
+- At least 8 characters long (maximum 99 characters)
+- Contains at least one lowercase letter (a-z)
+- Contains at least one uppercase letter (A-Z)
+- Contains at least one number (0-9)
 - Contains at least one special character (!@#\$&\_~)
 - No spaces allowed
+
+**Example of a valid password:** `MyP@ssw0rd123`\_~)
+- No spaces allowed
+- Cannot be any of your last 8 passwords
+
+<Note>
+  To meet SOC2 Access Management Policy requirements, MessageDesk prevents reusing your last 8 passwords when resetting your password.
+</Note>
 
 **Example of a valid password:** `MyP@ssw0rd123`
 
@@ -106,7 +122,7 @@ If you're unable to reset your password:
 
 ## Security Best Practices
 
-- **Use a unique password** – Don't reuse passwords from other accounts
+- **Use a unique password** – Don't reuse passwords from other accounts (MessageDesk enforces this by preventing reuse of your last 8 passwords)
 - **Keep codes private** – Never share your verification code with anyone
 - **Act promptly** – Complete the reset process soon after receiving the code
 - **Report suspicious activity** – If you didn't request a reset, contact support immediately
@@ -126,7 +142,7 @@ If you're unable to reset your password:
     The code expires after a set time (typically 15-60 minutes). If it expires, request a new one.
   </Accordion>
   <Accordion title="Can I use the same password I had before?">
-    Yes, you can reuse a previous password if it meets the requirements.
+    No. To comply with SOC2 Access Management Policy, you cannot reuse any of your last 8 passwords.
   </Accordion>
   <Accordion title="Can I reset my password multiple times?">
     Yes, there's no limit to how many times you can reset your password.
