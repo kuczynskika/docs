@@ -101,7 +101,8 @@
             "group": "Integrations",
             "icon": "link",
             "pages": [
-              "/integrations/zapier"
+              "/integrations/zapier",
+              "/integrations/grammarly"
             ]
           },
           {
