@@ -1,5 +1,5 @@
 ---
-title: "Create, Import & Delete Contacts"
+title: "Create, Delete, Filter & Import Contacts"
 description: "Add contacts individually or in bulk using a .csv file. Includes limits, required formats, and validation rules."
 sidebarTitle: "Create & import contacts"
 og:title: "Create and Import Contacts - MessageDesk"
@@ -17,9 +17,11 @@ You can quickly create a single contact or bring in thousands at once with a CSV
 
 ### 1. Go to **Contacts**
 
-Click **\+ Add contacts**.
+Click **\+ Add Contact**.
 
-![Add Contact Individual Pn](/docs-main/images/add-contact-individual.png)
+<Frame>
+  ![Contacts Add Contact](/images/contacts-add-contact.png)
+</Frame>
 
 ### 2. Enter details
 
@@ -33,7 +35,9 @@ Add **First name**, **Last name**, and **Phone**, then click **\+ Create Contact
   If the phone number already belongs to another contact, you’ll see an error. Phone numbers are **unique identifiers** in MessageDesk (one number → one contact). A single contact can have **multiple** numbers.
 </Warning>
 
-![Create Contact Save Pn](/docs-main/images/create-contact-save.png)
+<Frame>
+  ![Contacts Create Contact](/images/contacts-create-contact.png)
+</Frame>
 
 ### 3. View & edit the contact
 
@@ -63,16 +67,75 @@ To permanently remove a contact from your workspace:
 4. Confirm the deletion when prompted.
 
 <Warning>
-  Deleting a contact is **permanent** and cannot be undone. The contact's conversation history will be preserved but will appear as an anonymous contact.
+  Deleting a contact is **permanent** and cannot be undone. The contact's conversation history will be preserved, but will appear as an anonymous contact.
 </Warning>
 
 <Frame>
-  ![Contacts Delete](/images/contacts-delete.png)
+  ![Contacts Delete 1](/images/contacts-delete-1.png)
 </Frame>
 
 ---
 
+## Filter Contacts
+
+The contacts module makes it easy to filter contacts based on their properties saved in MessageDesk. You can use **Criteria** and **Conditions** to create various types of filters.
+
+<Frame>
+  ![Contacts Create Filter](/images/contacts-create-filter.png)
+</Frame>
+
+### Add Criteria
+
+Criteria are a set of conditions. You can add as many criteria as you like to a filter. As you add criteria, you'll see a filter preview. 
+
+Criteria work in two ways: creating AND and OR statements. 
+
+- **Selecting Match All (AND)** means all criteria must meet the filter's conditions. 
+- **Selecting Match ANY (OR)** means any criteria must meet the filter's conditions.
+
+### Add Conditions
+
+Conditions are based on data fields saved and populated as part of the contact's profile in MessageDesk.
+
+You set your filter on conditions on standard fields like:
+
+- First Name
+- Last Name
+- Last Outbound Message Time
+- Last Inbound Message Time
+
+<Tip>
+  You can also set filter conditions based on **custom properties** added to MessageDesk.
+</Tip>
+
+### Condition Operators
+
+Use Condition Operators to create logical expressions for your filters. The types of condition operators available will depend on the field's data type (true/false, dropdown, date, number, phone, and text).
+
+#### Available Condition Operators:
+
+- Contains
+- Equals
+- In
+- Is Empty
+- \> (greater than)
+- \>= (greater than or equal to)
+- \< (less than)
+- \<= (less than or equal to)
+- NOT Contains (does not contain)
+- NOT Equals (does not equal)
+
+Once you're satisfied with your filter, click **Apply Filter** to view a list of contacts matching your filter conditions and criteria.
+
+<Warning>
+  **Coming Soon: **You'll soon be able to save filters within the contacts module after creating them. This will make it easy to access pre-saved lists of contacts for faster messaging.
+</Warning>
+
+---
+
 ## Import Contacts in Bulk via CSV
+
+MessageDesk makes it easy to upload contact lists in bulk. This is a handy feature if you have a large amount of contact information that needs to live in MessageDesk.
 
 ### CSV limits & requirements (read first)
 
@@ -96,55 +159,69 @@ To permanently remove a contact from your workspace:
 </Warning>
 
 <Tip>
-  Download: [**Use our sample contact import .csv template here**](https://docs.google.com/spreadsheets/d/1P8JIfQngIJnMRo5cfCEf8gdxvIKpzmoeLEAfImYII58/edit?gid=0#gid=0).
+  Download: [**Make a copy of our sample contact import .csv template here**](https://docs.google.com/spreadsheets/d/1P8JIfQngIJnMRo5cfCEf8gdxvIKpzmoeLEAfImYII58/copy).
 </Tip>
-
----
 
 ### 1. Go to **Contacts** → **Import Contacts**
 
-Click **Import Contacts** (top-right).
-
-![Clean Shot2025 08 26at12 14 33 Pn](/images/CleanShot2025-08-26at12.14.33.png)
-
-### 2. Select your CSV
-
-Pick your `.csv` file from your computer.
+Click **Import Contacts**.
 
 <Note>
-  File picker accepts **CSV only**.
+  **Note:** You can also access the contact import feature from **Settings → Workspace Settings → [Data Center](/settings/data-center)**
 </Note>
 
-![CleanShot 2025-08-26 at 12.16.41.png](/images/CleanShot2025-08-26at12.16.41.png)
+<Frame>
+  ![Contacts Import](/images/contacts-import.png)
+</Frame>
 
-### 3. Map columns to MessageDesk fields
+### 2. Select your .CSV
 
-Fields auto-map when names match. You can adjust mapping and include **custom properties**.
+Select a `.csv` file from your computer or make a copy of our [**shared Google Sheet (MessageDesk Contact Import Template)**](https://docs.google.com/spreadsheets/d/1P8JIfQngIJnMRo5cfCEf8gdxvIKpzmoeLEAfImYII58/copy)
 
-![Clean Shot2025 08 26at12 17 54 Pn](/images/CleanShot2025-08-26at12.17.54.png)
+<Note>
+  **Note:** The file picker only accepts .**CSV type files**.
+</Note>
+
+<Frame>
+  ![Contacts Import Dialog](/images/contacts-import-dialog.png)
+</Frame>
+
+### 3. Identify contacts by mapping properties in MessageDesk to columns in your file
+
+You can adjust the field mapping manually, but in most cases, fields will auto-map when column names match properties in MessageDesk. 
+
+Click **\+ Add Custom Property** to map custom properties from your .csv file to custom properties in MessageDesk.
+
+<Warning>
+  **Note:** Email or Phone is a required property for every contact uploaded to MessageDesk.
+</Warning>
+
+<Frame>
+  ![Contacts Identify](/images/contacts-identify.png)
+</Frame>
 
 ### 4. Fix duplicates & errors (preview step)
 
-MessageDesk validates your data and flags issues **before** import. Invalid rows are **skipped**.
+Click Preview Import to confirm that your fields are properly matched. MessageDesk validates your data and flags issues **before** import. Invalid rows are **skipped**.
 
 ![Clean Shot2025 08 26at12 18 42 Pn](/images/CleanShot2025-08-26at12.18.42.png)
 
 ---
 
-## Validation rules (what we check)
+## Validation rules and what we check
 
 - **Email**: must be a valid email address (`name@example.com`).
-- **Phone**: must be **E.164** (e.g., `+15551234567`).
+- **Phone**: must be in **E.164** format (e.g., `+15551234567`).
 - **Custom properties**: must match defined **types** and constraints.
 - **Duplicates**: checked by **email** and **phone** to prevent dupes.
 
 ---
 
-## How imports run (under the hood)
+## How imports run
 
 - **Batching**: processed in batches up to **5,000** (aligned with the row limit).
-- **Async processing**: large uploads are staged and processed server-side for reliability.
-- **CSV only**: the importer accepts **.csv**; other formats aren’t supported.
+- **Async processing**: large uploads are staged and processed on the server for reliability.
+- **CSV only**: the importer accepts **.csv files**; other formats aren’t supported.
 
 ---
 
@@ -152,13 +229,13 @@ MessageDesk validates your data and flags issues **before** import. Invalid rows
 
 - **“CSV file is too large.”**\
   Split your file so each CSV has **≤ 5,000 rows** and **≤ 10 MB**.
-- **“CSV imports are only supported on web platform. Please use the web interface for importing contacts.”**\
+- **“CSV imports are only supported on the desktop web platform. Please use the web interface for importing contacts.”**\
   Switch to the **web app** to run the import.
 - **“Invalid phone format.”**\
-  Convert to **E.164** (country code + number, no spaces).
+  Convert to **E.164** (country code \+ number, no spaces).
 - **“Invalid email address.”**\
   Correct typos or remove invalid emails.
-- **“Row has inconsistent number of columns.”**\
+- **“Row has an inconsistent number of columns.”**\
   Ensure every row matches the header’s column count.
 - **“Missing contact method.”**\
   Add **Email** or **Phone** for that row.
