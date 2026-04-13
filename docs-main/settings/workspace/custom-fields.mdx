@@ -1,0 +1,121 @@
+---
+title: "Custom fields"
+description: "Create and manage custom fields to store additional contact data tailored to your business needs."
+sidebarTitle: "Custom fields"
+"og:title": "Custom Fields - MessageDesk"
+"og:description": "Create and manage custom fields to store additional contact data tailored to your business needs."
+"og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+---
+
+# Custom fields
+
+Custom fields let you store additional data on contacts beyond the standard fields (name, phone, email). Use them to track anything your business needs — customer IDs, account numbers, appointment dates, membership tiers, or any other structured data.
+
+---
+
+## Access custom fields
+
+1. Click your **profile icon** (top-right).
+2. Select **Settings**.
+3. Under **Workspace Settings**, click **Custom Fields**.
+
+<Note>
+  **Don't see Custom Fields?** Your role may not include access. Ask an Admin or Manager to adjust your [permissions](/settings/workspace/team-management).
+</Note>
+
+---
+
+## Create a custom field
+
+1. Go to **Settings → Workspace Settings → Custom Fields**.
+2. Click **Create Custom Field**.
+3. Enter a **name** for the field (e.g., "Customer ID", "Account Type").
+4. Select a **field type** (see supported types below).
+5. Click **Save**.
+
+<Warning>
+  Choose your field type carefully — the type determines what data can be stored and how it's validated during import and entry.
+</Warning>
+
+---
+
+## Supported field types
+
+| Type | Description | Example value |
+| --- | --- | --- |
+| **Text** | Free-form text input | `"Enterprise"` |
+| **Number** | Numeric values only | `12345` |
+| **Date** | Date values | `2026-04-13` |
+| **True/false** | Boolean toggle | `true` / `false` |
+| **Dropdown** | Select from predefined options | `"Gold"`, `"Silver"`, `"Bronze"` |
+
+---
+
+## Edit a custom field
+
+1. Go to **Settings → Workspace Settings → Custom Fields**.
+2. Find the field you want to update.
+3. Click to **edit** the field name or configuration.
+4. Click **Save**.
+
+---
+
+## Delete a custom field
+
+1. Go to **Settings → Workspace Settings → Custom Fields**.
+2. Find the field you want to remove.
+3. Click **Delete**.
+4. Confirm the deletion.
+
+<Warning>
+  Deleting a custom field **permanently removes** the field and its data from all contacts. This cannot be undone.
+</Warning>
+
+---
+
+## Where custom fields appear
+
+- **Contact details** — View and edit custom field values on any contact record from the [Inbox](/inbox/overview) or Contacts module.
+- **Contact filters** — Use custom fields as filter conditions when [filtering contacts](/contacts/create-import#filter-contacts).
+- **CSV import** — Map CSV columns to custom fields during [contact import](/contacts/create-import#import-contacts-in-bulk-via-csv). Values must match the field's defined type.
+
+---
+
+## Permissions
+
+Custom fields access is controlled through [roles and permissions](/settings/workspace/team-management):
+
+| Role | Default access |
+| --- | --- |
+| **Admin** | Owner (full access) |
+| **Manager** | Editor (create, edit, view) |
+| **Operator** | Viewer (view only) |
+| **Custom roles** | No access by default — must be granted explicitly |
+
+Users without custom fields access will see a **Blocked Resource** placeholder.
+
+---
+
+## Best practices
+
+- **Name fields clearly** — Use descriptive names so your team knows what data belongs in each field.
+- **Pick the right type** — Matching the type to your data (e.g., **Number** for IDs, **Date** for appointments) improves validation and filtering.
+- **Keep it lean** — Only create fields your team actively uses. Too many fields slow down data entry.
+- **Standardize before import** — When importing contacts via CSV, make sure your data matches the custom field types to avoid validation errors.
+
+---
+
+## FAQ
+
+**Can I use custom fields as personalization tags in messages?**\
+Not yet. Custom fields as personalization tags are planned for a future update.
+
+**What happens if I import data that doesn't match the field type?**\
+Rows with mismatched data types are flagged during the import preview and skipped if not corrected. See [Data Center](/settings/data-center) for details.
+
+**Is there a limit to how many custom fields I can create?**\
+{/* TODO: Verify if there's a hard limit on custom fields */}
+Contact limits depend on your plan. Reach out to [support](/resources/support) if you have questions about limits.
+
+**Can custom roles access custom fields?**\
+Yes, but custom roles don't have custom fields access by default. An Admin must explicitly grant the **Custom Fields** permission when configuring the role.

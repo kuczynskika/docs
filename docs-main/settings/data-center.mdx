@@ -39,7 +39,7 @@ Quickly build your contact list by uploading a **CSV** and mapping it to Message
 
 - Columns that match MessageDesk field names **auto-map**.
 - Adjust mapping manually as needed.
-- You can map **custom properties** (ensure the CSV data type matches the property type).
+- You can map **[custom fields](/settings/workspace/custom-fields)** (ensure the CSV data type matches the field type).
 
 ### Review duplicates & errors
 
@@ -114,7 +114,7 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 - Emails must be valid email format
 - Phone numbers must be valid **E.164** (e.g., `+15551234567`)
-- Custom properties must match their **defined type**
+- [Custom fields](/settings/workspace/custom-fields) must match their **defined type**
 - Duplicate detection runs on **email** and **phone** (contact imports)
 
 **Limits**
@@ -130,7 +130,7 @@ If a limit is exceeded, you’ll see errors like **“CSV file is too large”**
 ## What Gets Imported
 
 - **Contacts**
-- **Custom properties** (when mapped)
+- **[Custom fields](/settings/workspace/custom-fields)** (when mapped)
 - **Messages** (text content only; no media or internal comments)
 
 <Info>
@@ -155,7 +155,7 @@ We check **email** and **phone**. Duplicates are **skipped** by default and list
 
 ### Why did some rows fail?
 
-Common reasons: invalid email/phone format, missing required fields, custom property type mismatch, or a channel that doesn’t exist (for message imports). Fix and re-upload.
+Common reasons: invalid email/phone format, missing required fields, custom field type mismatch, or a channel that doesn’t exist (for message imports). Fix and re-upload.
 
 ### Can I import more than 5,000 rows?
 

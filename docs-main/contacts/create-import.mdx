@@ -117,7 +117,7 @@ You set your filter on conditions on standard fields like:
 - Last Inbound Message Time
 
 <Tip>
-  You can also set filter conditions based on **custom properties** added to MessageDesk.
+  You can also set filter conditions based on **[custom fields](/settings/workspace/custom-fields)** added to MessageDesk.
 </Tip>
 
 ### Condition Operators
@@ -218,7 +218,7 @@ Select a `.csv` file from your computer or make a copy of our [**shared Google S
 
 You can adjust the field mapping manually, but in most cases, fields will auto-map when column names match properties in MessageDesk.
 
-Click **\+ Add Custom Property** to map custom properties from your .csv file to custom properties in MessageDesk.
+Click **\+ Add Custom Field** to map [custom fields](/settings/workspace/custom-fields) from your .csv file to custom fields in MessageDesk.
 
 <Warning>
   **Note:** Email or Phone is a required property for every contact uploaded to MessageDesk.
@@ -240,7 +240,7 @@ Click Preview Import to confirm that your fields are properly matched. MessageDe
 
 - **Email**: must be a valid email address (`name@example.com`).
 - **Phone**: must be in **E.164** format (e.g., `+15551234567`).
-- **Custom properties**: must match defined **types** and constraints.
+- **Custom fields**: must match defined **types** and constraints. See [custom fields](/settings/workspace/custom-fields) for supported types.
 - **Duplicates**: checked by **email** and **phone** to prevent dupes.
 
 ---
@@ -275,7 +275,7 @@ Click Preview Import to confirm that your fields are properly matched. MessageDe
 - **Normalize phones to E.164** before uploading.
 - **Deduplicate** by email/phone first to avoid partial merges.
 - **Test with 25 rows** to confirm mapping and validation.
-- **Use custom properties** intentionally—ensure data types match your definitions.
+- **Use [custom fields](/settings/workspace/custom-fields)** intentionally—ensure data types match your definitions.
 - **Keep under limits** (≤ **5,000** rows, ≤ **10 MB**) for smooth importing.
 
 ---
