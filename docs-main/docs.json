@@ -122,6 +122,7 @@
                 "group": "Workspace",
                 "pages": [
                   "settings/workspace/overview",
+                  "settings/workspace/custom-fields",
                   "settings/workspace/inbox-settings",
                   "settings/workspace/team-management",
                   "settings/workspace/phone-management",
