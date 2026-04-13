@@ -1,15 +1,60 @@
 ---
-title: "Custom fields"
+title: "Custom Fields"
 description: "Create and manage custom fields to store additional contact data tailored to your business needs."
 sidebarTitle: "Custom fields"
-"og:title": "Custom Fields - MessageDesk"
-"og:description": "Create and manage custom fields to store additional contact data tailored to your business needs."
-"og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+og:title: "Custom Fields - MessageDesk"
+og:description: "Create and manage custom fields to store additional contact data tailored to your business needs."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# Custom fields
+# Custom Fields: Organize Contacts and Send Smarter Messages
 
-Custom fields let you store additional data on contacts beyond the standard fields (name, phone, email). Use them to track anything your business needs — customer IDs, account numbers, appointment dates, membership tiers, or any other structured data.
+Custom fields let you save the contact details that matter.
+
+Think region, location, membership type, assigned rep, renewal month, program, or any other contact detail you need to track.
+
+That matters because once the data is on the contact, you can use it. You can [filter contacts](/contacts/create-import) by a custom field, save that filter as a reusable list, and come back to it anytime. Then you can select that group and send the right message to the right people.
+
+Custom fields turn contact data into action.
+
+<Frame>
+  ![Settings Custom Fields](/images/settings-custom-fields.png)
+</Frame>
+
+---
+
+## What are custom fields?
+
+A custom field is a contact field you create yourself.
+
+Use custom fields when the default contact fields aren't enough for how your team works. They help you track the details you care about, keep your contacts organized, and build reusable groups for outreach.
+
+For example, you might create custom fields for:
+
+- Region
+- Store location
+- Customer type
+- Assigned rep
+- Renewal month
+- Membership status
+- Campus
+- Lead source
+
+---
+
+## Why custom fields matter
+
+Custom fields help you do more than store data.
+
+They help you group contacts in a way that matches your business. Once that data is saved, you can:
+
+- filter contacts by a specific field value
+- save that filter as a reusable list
+- return to that list anytime
+- select contacts in that list
+- send a message to that group fast
+
+That means less manual sorting, fewer mistakes, and faster outreach.
 
 ---
 
@@ -36,6 +81,10 @@ Custom fields let you store additional data on contacts beyond the standard fiel
 <Warning>
   Choose your field type carefully — the type determines what data can be stored and how it's validated during import and entry.
 </Warning>
+
+<Frame>
+  ![Settings Custom Fields Create](/images/settings-custom-fields-create.png)
+</Frame>
 
 ---
 
@@ -96,26 +145,252 @@ Users without custom fields access will see a **Blocked Resource** placeholder.
 
 ---
 
-## Best practices
+## Example: send a message to one region
 
-- **Name fields clearly** — Use descriptive names so your team knows what data belongs in each field.
-- **Pick the right type** — Matching the type to your data (e.g., **Number** for IDs, **Date** for appointments) improves validation and filtering.
-- **Keep it lean** — Only create fields your team actively uses. Too many fields slow down data entry.
-- **Standardize before import** — When importing contacts via CSV, make sure your data matches the custom field types to avoid validation errors.
+Let’s say you want to message everyone in the West region.
+
+First, create a custom field called **Region**.
+
+Then add a region value to each contact, like:
+
+- West
+- Midwest
+- South
+- Northeast
+
+Once your contacts have a region value, go to **Contacts** and filter for:
+
+`Region = West`
+
+Save that filter as **West Region**.
+
+Now you have a reusable contact list. Anytime you need to send a regional update, open the **West Region** filter, select the contacts in that view, and send your message.
+
+That’s the real power of custom fields. You set them up once, and your team can use them again and again.
 
 ---
 
-## FAQ
+## Ways to use custom fields
 
-**Can I use custom fields as personalization tags in messages?**\
-Not yet. Custom fields as personalization tags are planned for a future update.
+The best custom fields help you answer one question:
 
-**What happens if I import data that doesn't match the field type?**\
-Rows with mismatched data types are flagged during the import preview and skipped if not corrected. See [Data Center](/settings/data-center) for details.
+**Who do I need to message together later?**
 
-**Is there a limit to how many custom fields I can create?**\
-{/* TODO: Verify if there's a hard limit on custom fields */}
-Contact limits depend on your plan. Reach out to [support](/resources/support) if you have questions about limits.
+Here are a few common ways teams use them.
 
-**Can custom roles access custom fields?**\
-Yes, but custom roles don't have custom fields access by default. An Admin must explicitly grant the **Custom Fields** permission when configuring the role.
+### Regional outreach
+
+Create a custom field like **Region** or **Territory**.
+
+Use it to build saved filters for each region so you can send location-based updates, alerts, promotions, or reminders.
+
+**Example:**\
+Filter contacts where `Region = West`, save the filter, then use it whenever you need to send a message to that region.
+
+---
+
+### Multi-location businesses
+
+Create a custom field like **Store Location**, **Office**, or **Branch**.
+
+This makes it easy to group contacts by location and send updates that only matter to that site.
+
+**Example:**\
+Filter contacts where `Store Location = Mesa`, then send a message about that location's hours, staffing, or appointments.
+
+---
+
+### Staffing and recruiting
+
+Create fields like **Job Site**, **Candidate Stage**, or **Recruiter**.
+
+This helps you organize contacts by hiring workflow and send messages to the right group at the right time.
+
+**Examples:**
+
+- Filter `Candidate Stage = Interview Scheduled` to send reminders
+- Filter `Job Site = Reno` to send a site-specific update
+- Filter `Recruiter = Alex` to see and message one rep's contacts
+
+---
+
+### Membership and community groups
+
+Create fields like **Membership Type**, **Campus**, **Chapter**, or **Program**.
+
+This helps you send targeted reminders and announcements without rebuilding lists every time.
+
+**Example:**\
+Filter `Membership Type = Premium` to send updates only to that group.
+
+---
+
+### Sales and account management
+
+Create fields like **Assigned Rep**, **Renewal Month**, or **Customer Segment**.
+
+These fields help your team stay organized and follow up faster.
+
+**Examples:**
+
+- Filter `Assigned Rep = Jamie` so one rep can work their own book of business
+- Filter `Renewal Month = June` to send proactive renewal reminders
+- Filter `Customer Segment = Enterprise` to send messages to a specific account tier
+
+---
+
+## Best custom fields to create first
+
+If you're not sure where to start, begin with fields that help you segment contacts and act on that segment later.
+
+Good first custom fields include:
+
+- Region
+- Location
+- Customer type
+- Status
+- Assigned rep
+- Renewal month
+- Membership type
+- Lead source
+
+A good rule: create fields that help you group contacts for future messaging.
+
+---
+
+## What makes a good custom field?
+
+A good custom field is easy to understand, easy to keep updated, and useful for filtering.
+
+### Good custom field
+
+**Region**
+
+Why it works:
+
+- clear values
+- easy to assign
+- easy to filter
+- useful for saved lists and messaging
+
+### Less useful custom field
+
+**Notes from trade show conversation**
+
+Why it's less useful:
+
+- too inconsistent
+- hard to filter cleanly
+- not ideal for building reusable contact groups
+
+Use custom fields for structured information you want to organize and act on. Use notes for context.
+
+---
+
+## Tips for setting up custom fields
+
+Keep your custom fields simple.
+
+### Use consistent values
+
+If one contact says `West` and another says `Western Region`, your filters won't be as useful.
+
+Pick one format and stick with it.
+
+### Create fields your team will actually use
+
+Don't create fields just because you can. Create fields that support a real workflow.
+
+### Think ahead to filtering
+
+Before you create a field, ask:
+
+**Will I want to group contacts by this later?**
+
+If the answer is yes, it's probably a good custom field.
+
+### Start small
+
+You don't need to create everything at once. Start with one or two fields that support your most common messaging workflows.
+
+---
+
+## Common workflow: from custom field to message
+
+Here’s a simple way to think about it:
+
+**Custom field** → **Filter** → **Saved list** → **Message**
+
+For example:
+
+**Region** → **West** → **West Region** → **Send update to West contacts**
+
+That workflow saves time because your team doesn't need to rebuild the audience every time.
+
+---
+
+## When to use custom fields vs. labels
+
+Use **custom fields** when you want structured contact data that you can filter by later.
+
+Use **labels** when you want a more flexible way to tag or organize conversations.
+
+### Use a custom field when:
+
+- the value should live on the contact record
+- the field should stay consistent
+- you want to filter and build reusable lists from it
+
+### Use a label when:
+
+- you need something lightweight and flexible
+- the grouping is temporary or less structured
+- you don't need a formal field on the contact
+
+If you're deciding between the two, ask whether this is a structured property of the contact. If it is, use a custom field.
+
+---
+
+## FAQs
+
+### Can I use custom fields to build reusable contact lists?
+
+Yes. Once contacts have values in a custom field, you can filter by that field and save the filter for quick access later.
+
+---
+
+### Can I message contacts from a saved filter?
+
+Yes. After opening a saved filter in Contacts, you can select the contacts in that filtered view and send a message to that group.
+
+---
+
+### What kinds of custom fields should I create?
+
+Create fields that help you organize contacts in a way your team can use later.
+
+Good examples include region, location, assigned rep, status, membership type, and renewal month.
+
+---
+
+### Should I create a custom field for everything?
+
+No. Start with the fields that support a real workflow. Too many fields can make your contact data harder to manage.
+
+---
+
+### Do custom fields help with segmentation?
+
+Yes. That's one of their biggest benefits. Custom fields make it easier to group contacts, save those groups, and send more relevant messages.
+
+---
+
+## Next step
+
+Start with one simple field that supports a real messaging workflow.
+
+For most teams, **Region**, **Location**, or **Assigned Rep** is a good place to begin.
+
+Once that field is added to your contacts, build a saved filter from it. Then use that filter the next time you need to send a targeted message.
+
+That's where custom fields start to pay off.
