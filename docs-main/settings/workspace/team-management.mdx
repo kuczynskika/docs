@@ -19,6 +19,7 @@ Get your team on board fast, then control who can see, edit, and delete what—w
 - **Accept invite:** Teammate creates an account with the **same email** from the invite
 - **Access:** Use **Roles** (Admin/Manager/Operator/Custom) \+ **feature permissions**
 - **Permission levels:** **Owner** (view/edit/delete), **Editor** (view/edit), **Viewer** (view), **No Access** (blocked)
+- **Deleting messages from a thread:** Only users with **Owner** permission on a phone number's Inbox Access can delete messages. By default, only **Admins** have Owner access to all phone lines.
 
 ---
 
@@ -124,9 +125,9 @@ Permissions allow a user to create, read, update, and delete information in Mess
 
 | Feature | Owner | Editor | Viewer | No Access |
 | --- | --- | --- | --- | --- |
-| **Phone number inboxes** | Full access and ownership for every conversation in this Inbox. Ability to import and export conversations in bulk. | Can create conversations, interact with, and view conversations for this Inbox. No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them. | Blocked from viewing, editing, or deleting conversations in this Inbox. |
-| **Label inboxes** | Full access and ownership for every conversation in this Inbox. Ability to import and export conversations in bulk. | Can create conversations, interact with, and view conversations for this Inbox. No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them. | Blocked from viewing, editing, or deleting conversations in this Inbox. |
-| **Teammate inboxes** | Full access and ownership for every conversation in this Inbox. Ability to import and export conversations in bulk. | Can create conversations, interact with, and view conversations for this Inbox. No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them. | Blocked from viewing, editing, or deleting conversations in this Inbox. |
+| **Phone number inboxes** | Full access and ownership for every conversation in this Inbox. **Only Owners can delete individual messages from a conversation thread.** Ability to import and export conversations in bulk. | Can create conversations, interact with, and view conversations for this Inbox. **Cannot delete messages from a conversation thread.** No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them. **Cannot delete messages from a conversation thread.** | Blocked from viewing, editing, or deleting conversations in this Inbox. |
+| **Label inboxes** | Full access and ownership for every conversation in this Inbox. **Only Owners can delete individual messages from a conversation thread.** Ability to import and export conversations in bulk. | Can create conversations, interact with, and view conversations for this Inbox. **Cannot delete messages from a conversation thread.** No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them. **Cannot delete messages from a conversation thread.** | Blocked from viewing, editing, or deleting conversations in this Inbox. |
+| **Teammate inboxes** | Full access and ownership for every conversation in this Inbox. **Only Owners can delete individual messages from a conversation thread.** Ability to import and export conversations in bulk. | Can create conversations, interact with, and view conversations for this Inbox. **Cannot delete messages from a conversation thread.** No bulk import or export. | Can view and interact with conversations in this inbox, but cannot create new conversations or delete them. **Cannot delete messages from a conversation thread.** | Blocked from viewing, editing, or deleting conversations in this Inbox. |
 | **Workspace profile** | Designated owner who can edit and override workspace profile information, including name, address, and company details. | Can edit workspace profile information, including name, address, and company details. | Can view workspace profile information, but cannot make changes. | Blocked from workspace profile. |
 | **Inbox settings** | Designated owner who can edit and override all inbox settings, including appearance, Labels, message templates, and configuration. | Can create, edit, and delete Templates and Labels for the workspace. | Can select existing Templates or Labels within the Inbox. Cannot create new or edit existing Templates or Labels. | Blocked from accessing Templates or Labels within the Inbox. No access to Inbox settings. |
 | **Billing & subscriptions** | Designated owner who can fully manage billing, subscriptions, payment methods, and user seat allocations. Can upgrade, downgrade, and cancel subscriptions. | Can update billing information, manage subscriptions, and modify user seats. | Can view billing information and subscription details, but cannot make changes. | Blocked from access to billing information and subscription details. |
@@ -135,6 +136,16 @@ Permissions allow a user to create, read, update, and delete information in Mess
 | **Custom Fields** | Designated owner who can fully manage [custom fields](/settings/workspace/custom-fields), including creating, editing, and deleting all custom field definitions and values. | Can create, edit, and manage custom fields for the workspace. | Can view custom field values on contacts, but cannot create, edit, or delete custom fields. | Blocked from accessing custom fields. Users see a Blocked Resource placeholder. |
 | **Relay Management** | Designated owner who can fully manage Relays, including creating, editing, deleting, and configuring all automation settings. | Can create, edit, and manage Relays (automations) for the workspace. | Can view Relay configurations, but cannot create, edit, or delete Relays. | Blocked from accessing the Relays module. Cannot view, create, or manage Relays. |
 | **Analytics** | Full access to workspace analytics dashboard, including all metrics, channel-level stats, and user-level activity data. | Can view workspace analytics dashboard, including all metrics, channel-level stats, and user-level data. | Can view workspace analytics dashboard with read-only access to all metrics. | Blocked from accessing the analytics dashboard. |
+
+<Warning>
+  **Who can delete messages from a conversation thread?**
+
+  Only users with **Owner** permission on a phone number's Inbox Access can delete individual messages from a conversation thread. **Editors**, **Viewers**, and users with **No Access** cannot delete messages.
+
+  By default, only **Admin** users have **Owner** access to all phone lines connected to your MessageDesk workspace. **Managers** and **Operators** receive **Editor** access to phone number inboxes by default and **cannot** delete messages.
+
+  If you do not want a user to be able to delete messages from a conversation thread, make sure that user **does not have Owner permission** on the phone line. Adjust their role or use a [custom role](#custom-roles--permissions) to grant **Editor**, **Viewer**, or **No Access** on the relevant **Phone number inboxes**.
+</Warning>
 
 ## Custom Roles & Permissions
 
@@ -229,8 +240,11 @@ Yes. Go to **Settings → Team Management**, click **Edit** on the custom role, 
 **Can Managers delete things?**\
 No. **The editor** cannot delete. Only the **Owner** can delete.
 
+**Who can delete messages from a conversation thread?**\
+Only users with **Owner** permission on a phone number's Inbox Access can delete individual messages from a conversation thread. By default, only **Admin** users have **Owner** access to all phone lines. To prevent a user from deleting messages, make sure their role does **not** have **Owner** permission on that phone line—use **Editor**, **Viewer**, or **No Access** on **Phone number inboxes** instead.
+
 **What happens when a message is deleted?**\
-When a user deletes a message, it's a **soft delete**—the message is removed from the front end but MessageDesk retains the message history on the back end. This data is exportable for compliance and record-keeping purposes.
+When an Owner deletes a message, it's a **soft delete**—the message is removed from the front end but MessageDesk retains the message history on the back end. This data is exportable for compliance and record-keeping purposes.
 
 **Limit someone to one phone line?**\
 Grant **Editor** on that **Phone Number** and set others to **Viewer/No Access**.
