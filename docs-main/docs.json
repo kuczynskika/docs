@@ -133,6 +133,7 @@
                 "group": "Account",
                 "pages": [
                   "settings/account/billing-subscriptions",
+                  "settings/account/tenant-management",
                   "settings/account/trial-terms"
                 ]
               },
