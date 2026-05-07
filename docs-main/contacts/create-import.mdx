@@ -262,7 +262,17 @@ Click Preview Import to confirm that your fields are properly matched. MessageDe
 - **Email**: must be a valid email address (`name@example.com`).
 - **Phone**: must be in **E.164** format (e.g., `+15551234567`).
 - **Custom fields**: must match defined **types** and constraints. See [custom fields](/settings/workspace/custom-fields) for supported types.
-- **Duplicates**: checked by **email** and **phone** to prevent dupes.
+- **Duplicates**: checked by **email** and **phone**. Matching contacts are **updated** rather than skipped (see [How duplicate updates work](#how-duplicate-updates-work)).
+
+---
+
+## How duplicate updates work
+
+When an imported row matches an existing contact by **email** or **phone**, MessageDesk **updates** that contact instead of skipping the row:
+
+- Updates only apply to columns you **mapped** in the import.
+- A field is updated only when the mapped column has a **value** for that row—empty values leave the existing field unchanged.
+- Updates can apply to **standard fields** (first name, last name, email, phone, address, etc.) and **custom fields**.
 
 ---
 
@@ -313,4 +323,4 @@ Yes. You can import messages via the [Data Center](/settings/data-center). This 
 Invalid rows are **skipped**. Fix the CSV and re-import those rows separately.
 
 **Can I update existing contacts?**\
-By default, CSV imports will **not overwrite** existing contacts. Contacts are deduplicated by phone number, and duplicates are flagged rather than updated. To update existing contacts (e.g., fix a misspelled name or update contact details), you need to use the import flow that supports updates.
+Yes. CSV imports **update** existing contacts when an imported row matches an existing contact by **email** or **phone**. Only mapped columns with a value are updated—empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, etc.) and custom fields.
