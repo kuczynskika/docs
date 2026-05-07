@@ -50,7 +50,7 @@ Quickly build your contact list by uploading a **CSV** and mapping it to Message
 
 ### Review duplicates & errors
 
-- **Duplicates** (by **email** or **phone**) are flagged—choose to **skip** or update.
+- **Duplicates** (by **email** or **phone**) are **updated** with the values in the import. Only mapped columns with a value are updated; empty cells leave existing fields unchanged.
 - **Invalid data** (e.g., bad phone/email format) is reported so you can fix and re-upload.
 - Problem rows are **skipped** during processing.
 
@@ -158,7 +158,7 @@ No. Each row must include **at least one**: **email** _or_ **phone** (you can in
 
 ### How are duplicates handled on contact import?
 
-We check **email** and **phone**. Duplicates are **skipped** by default and listed in the results.
+We check **email** and **phone**. When a row matches an existing contact, that contact is **updated** with the values from the import. Updates only apply to columns you mapped, and only when the mapped column has a value—empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, etc.) and custom fields.
 
 ### Why did some rows fail?
 
