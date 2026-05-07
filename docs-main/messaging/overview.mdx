@@ -32,6 +32,13 @@ Standard SMS messages are limited to **160 characters per segment**. If a messag
 
 **Special characters reduce the limit:** Emojis and accented letters (like "á" or "ñ") use more data per character. When these are included, the effective limit per segment drops to around **70–80 characters**.
 
+**Maximum message length depends on encoding:** The compose box character counter automatically adjusts based on the characters in your message:
+
+- **Standard (GSM-7) messages:** Up to **1,600 characters** per send. Uses only standard ASCII characters (letters, numbers, and common punctuation).
+- **Unicode (UTF-16) messages:** Up to **800 characters** per send. Triggered by any non-ASCII character — for example, an emoji, an accented letter, curly quotes, or an em dash.
+
+The lower cap on Unicode messages prevents carrier failures from oversized payloads. If you add a single emoji to a long message, the counter will drop from 1,600 to 800 — trim the message or remove the special character to send it as one piece.
+
 **Automatic MMS conversion:** Once a message reaches approximately three segments, MessageDesk automatically converts it to MMS. This reduces carrier costs and ensures delivery as one complete message regardless of length.
 
 <Note>
