@@ -176,7 +176,7 @@ No. Imports are **web-only**. Use a desktop browser.
 
 ## Message History
 
-The **Message History** tab is a searchable, filterable archive of every message in your workspace. Use it to audit conversations, build reports, or export filtered slices to CSV.
+The **Message History** tab is a searchable, filterable archive of every message in your workspace. Use it to audit conversations, build reports, or export filtered slices to **CSV** or **PDF**.
 
 ### Access Message History
 
@@ -200,11 +200,25 @@ Use the **search bar** to run a free-text search across the messages currently s
 
 ### Export to CSV
 
-Click **Export** to download a CSV of the current view.
+Click **Export** to download a CSV of the current view. Use CSV exports for **data analysis, reporting, and bulk archiving**.
 
 <Warning>
   Exports include **only the messages that match your active filters and search**. Adjust filters before exporting if you need a broader set.
 </Warning>
+
+### Export to PDF
+
+Use PDF exports to create **shareable, human-readable records** of a conversation or a filtered slice of message history—useful for audits, compliance reviews, or sharing context with stakeholders.
+
+- **From a conversation:** Open the conversation in the Inbox and choose **Export to PDF** from the conversation menu.
+- **From Message History:** Apply your filters in **Settings → Data Center → Message History**, then choose **Export to PDF**.
+
+PDF exports include the full message thread with timestamps, participants, direction, and inline previews of supported media.
+
+**Media handling**
+
+- **Renderable media** (images and other formats supported in PDF) is embedded inline.
+- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview."** so the attachment remains accessible from the PDF.
 
 ### Permissions
 
@@ -216,10 +230,11 @@ Message History is available to roles with access to the Data Center (typically 
 The [**Inbox**](/inbox/filter-search-sort) is for working live conversations. **Message History** is the workspace-wide archive built for audit, reporting, and bulk export.
 
 **What format are exports in?**\
-CSV.
+**CSV** for data and reporting, or **PDF** for shareable conversation records.
 
 **Are media attachments included in exports?**\
-No. Exports contain message text and metadata only—media files are not included.
+- **CSV exports:** No. CSV files contain message text and metadata only.
+- **PDF exports:** Renderable media (e.g., images) is embedded inline. Non-renderable media (e.g., videos and other unsupported types) is replaced with a direct S3 link and a **"Could not load preview"** note.
 
 ---
 
