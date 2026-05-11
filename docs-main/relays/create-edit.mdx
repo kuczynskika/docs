@@ -1,6 +1,6 @@
 ---
 title: "Relays: Setup & Technical Guide"
-description: "Create, configure, and troubleshoot Relays—triggers, conditions, actions, delays, active hours, FAQ."
+description: "Build MessageDesk Relays step-by-step—configure triggers, conditions, actions, delays, and active hours. Troubleshooting tips and a complete FAQ included."
 sidebarTitle: "Create & edit"
 og:title: "Create & Edit Relays - MessageDesk Automation Guide"
 og:description: "Create, configure, and troubleshoot Relays—triggers, conditions, actions, delays, active hours, FAQ."
@@ -23,7 +23,7 @@ Build reliable automations with a clear flow: **Trigger → Conditions → Actio
 
 When you first visit **Relays**, you’ll see **templates** you can use as a starting point, just click **Add Relay** to start building.
 
-![Relays Templates Pn](/docs-main/images/relays-templates.png)
+![Relays Templates Pn](/images/relays-templates.png)
 
 All Relays appear in the **Relays** tab with an **On/Off** toggle. You can delete Relays from the same view.
 
@@ -31,7 +31,7 @@ All Relays appear in the **Relays** tab with an **On/Off** toggle. You can delet
   By default, new Relays are **paused**. Toggle them **On** when you’re ready.
 </Note>
 
-![Relays Tab Pn](/docs-main/images/relays-tab.png)
+![Relays Tab Pn](/images/relays-tab.png)
 
 ### 2. Name and describe your Relay
 
@@ -41,7 +41,7 @@ Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit de
   Add an emoji (e.g., 💤 for after-hours) to make Relays easy to scan.
 </Tip>
 
-![Relay Name Description Pn](/docs-main/images/relay-name-description.png)
+![Relay Name Description Pn](/images/relay-name-description.png)
 
 ### 3. Set a **Trigger**
 
@@ -51,7 +51,7 @@ Current supported trigger: **Message Received** (fires when a new inbound SMS ar
   **Note:** Templates include the **message received** trigger by default.
 </Note>
 
-![Relay Message Received Trigger Pn](/docs-main/images/relay-message-received-trigger.png)
+![Relay Message Received Trigger Pn](/images/relay-message-received-trigger.png)
 
 ### 4. Add **Conditions**
 
@@ -69,7 +69,7 @@ Conditions control **where/when** a Relay runs. You can combine multiple conditi
   **Tip:** Turn on **“Trigger outside of business hours”** to invert the time window for after-hours replies.
 </Tip>
 
-![Relay Condition Pn](/docs-main/images/relay-condition.png)
+![Relay Condition Pn](/images/relay-condition.png)
 
 ### 5. Add **Actions**
 
@@ -91,13 +91,13 @@ Actions run when the conditions match. You can add **one or many** in the order 
 - Add a **Delay** to **Reply to message** to wait minutes/hours before sending.
 - Delays help prevent duplicate auto-replies if a message was sent recently.
 
-![Relay Action Pn](/docs-main/images/relay-action.png)
+![Relay Action Pn](/images/relay-action.png)
 
 ### 6. Activate your Relay
 
 Use the **toggle** to turn the Relay **On**. You can pause anytime without losing your setup.
 
-![Relay Toggle Pn](/docs-main/images/relay-toggle.png)
+![Relay Toggle Pn](/images/relay-toggle.png)
 
 ---
 
@@ -126,7 +126,7 @@ Open the Relay → **⋯** → **Delete**.
 
 Use this setup when multiple teammates need to view and reply on behalf of a manager.
 
-![Relay Delegation Routing Pn](/docs-main/images/relay-delegation-routing.png)
+![Relay Delegation Routing Pn](/images/relay-delegation-routing.png)
 
 <table style={{ minWidth: "75px" }}>
   <colgroup>
@@ -187,7 +187,7 @@ The message is labeled by region, keeping everything organized by team and locat
 
 Use this when teammates want to automatically reply during vacations or after hours.
 
-![Out Of Office Relay Pn](/docs-main/images/out-of-office-relay.png)
+![Out Of Office Relay Pn](/images/out-of-office-relay.png)
 
 <table style={{ minWidth: "75px" }}>
   <colgroup>
@@ -267,7 +267,7 @@ Use this when teammates want to automatically reply during vacations or after ho
 
 Use this Relay to automatically collect names from new, anonymous conversations.<br />Perfect for teams who receive texts from unsaved numbers or new contacts.
 
-![Identify Relay Pn](/docs-main/images/identify-relay.png)
+![Identify Relay Pn](/images/identify-relay.png)
 
 | **Trigger**      | **Condition**                                        | **Actions**                                                                                       |
 | ---------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -295,7 +295,7 @@ Use this Relay to automatically respond when someone texts in a specific keyword
 
 When a contact sends a message containing the word “SUPPORT,” MessageDesk automatically replies with your chosen message. It’s ideal for auto-routing messages or triggering fast replies without manual effort.
 
-![Support Relay Pn](/docs-main/images/support-relay.png)
+![Support Relay Pn](/images/support-relay.png)
 
 | **Trigger**      | **Condition**                      | **Actions**                                                                                               |
 | ---------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -341,7 +341,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 
 ---
 
-## Frequetly Asked Relay Questions
+## Frequently Asked Relay Questions
 
 **Do Relays respect roles & permissions?**\
 Yes. Assign/Label actions follow your **Roles & Permissions** settings.

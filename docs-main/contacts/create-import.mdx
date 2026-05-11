@@ -1,6 +1,6 @@
 ---
 title: "Create, Delete, Filter & Import Contacts"
-description: "Add contacts individually or in bulk using a .csv file. Includes limits, required formats, and validation rules."
+description: "Create, delete, filter, and import MessageDesk contacts one at a time or in bulk via CSV. Covers required formats, validation rules, and import limits."
 sidebarTitle: "Create & import contacts"
 og:title: "Create and Import Contacts - MessageDesk"
 og:description: "Add contacts individually or in bulk using a .csv file. Includes limits, required formats, and validation rules."
@@ -69,14 +69,16 @@ From the contact panel, you can:
 
 ---
 
-## Delete a contact
+## Delete or Edit a contact
 
 To permanently remove a contact from your workspace:
 
 1. Go to **Contacts**.
-2. Find and select the contact(s) you want to delete. Multi-select is always available in the Contacts module — click any contact row to add it to your selection.
-3. Click the **trash can icon** in the multi-select toolbar to delete the selected contact(s).
-4. Confirm the deletion when prompted.
+2. Find and select the contact(s) you want to delete.
+3. Select your **items per page** (25, 50, 100, or 250)
+4. Hover and click to select individual contacts or multiselect the entire page
+5. Click the **vertical ellipse icon** to delete an individual contact.
+6. Confirm the deletion or edit when prompted.
 
 <Warning>
   Deleting a contact is **permanent** and cannot be undone. The contact's conversation history will be preserved, but will appear as an anonymous contact.
@@ -87,16 +89,20 @@ To permanently remove a contact from your workspace:
 </Tip>
 
 <Frame>
-  ![Contacts Delete 1](/images/contacts-delete-1.png)
+  ![Contacts Multi Select](/images/contacts-multi-select.png)
 </Frame>
-
-### Adjust contacts per page
-
-Use the page size selector at the bottom of the Contacts list to show **25**, **50**, **100**, or **250** contacts per page.
 
 ### Sort contacts
 
 Click the **Sort** dropdown menu above the contacts list to change the sort order.
+
+### Search contacts
+
+The search bar appears **only on filtered Contact views** (saved filters or any applied filter). To search, first apply or open a saved filter, then use the search bar to find contacts within that view.
+
+<Note>
+  The search bar is **not available on All Contacts**. Use a filter or saved filter to search a specific subset of your contacts.
+</Note>
 
 ---
 
@@ -129,7 +135,7 @@ You set your filter on conditions on standard fields like:
 - Last Inbound Message Time
 
 <Tip>
-  You can also set filter conditions based on **[custom fields](/settings/workspace/custom-fields)** added to MessageDesk.
+  You can also set filter conditions based on [**custom fields**](/settings/workspace/custom-fields) added to MessageDesk.
 </Tip>
 
 ### Condition Operators
@@ -164,6 +170,17 @@ After applying a filter, you can save it for quick access later:
 3. Click **Save**.
 
 Saved filters appear in the **side menu** of the Contacts module. Click any saved filter to instantly view the contacts that match its criteria.
+
+### Search saved filters
+
+Use the search widget in the Contacts side menu to quickly find a saved filter by name. Selecting a result navigates to Contacts with that filter applied.
+
+<Note>
+  Saved filter search is available on the **desktop web app only**. It is not available on tablet or mobile, since filters cannot currently be managed in Contacts on those platforms.
+</Note>
+
+- Search matches against the **filter name only** (not its criteria or conditions).
+- The widget follows the same design as the global search bar and the Contacts search bar for a consistent experience across MessageDesk.
 
 ### Delete a saved filter
 
@@ -253,7 +270,17 @@ Click Preview Import to confirm that your fields are properly matched. MessageDe
 - **Email**: must be a valid email address (`name@example.com`).
 - **Phone**: must be in **E.164** format (e.g., `+15551234567`).
 - **Custom fields**: must match defined **types** and constraints. See [custom fields](/settings/workspace/custom-fields) for supported types.
-- **Duplicates**: checked by **email** and **phone** to prevent dupes.
+- **Duplicates**: checked by **email** and **phone**. Matching contacts are **updated** rather than skipped (see [How duplicate updates work](#how-duplicate-updates-work)).
+
+---
+
+## How duplicate updates work
+
+When an imported row matches an existing contact by **email** or **phone**, MessageDesk **updates** that contact instead of skipping the row:
+
+- Updates only apply to columns you **mapped** in the import.
+- A field is updated only when the mapped column has a **value** for that row—empty values leave the existing field unchanged.
+- Updates can apply to **standard fields** (first name, last name, email, phone, address, etc.) and **custom fields**.
 
 ---
 
@@ -304,4 +331,4 @@ Yes. You can import messages via the [Data Center](/settings/data-center). This 
 Invalid rows are **skipped**. Fix the CSV and re-import those rows separately.
 
 **Can I update existing contacts?**\
-By default, CSV imports will **not overwrite** existing contacts. Contacts are deduplicated by phone number, and duplicates are flagged rather than updated. To update existing contacts (e.g., fix a misspelled name or update contact details), you need to use the import flow that supports updates.
+Yes. CSV imports **update** existing contacts when an imported row matches an existing contact by **email** or **phone**. Only mapped columns with a value are updated—empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, etc.) and custom fields.

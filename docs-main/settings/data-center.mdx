@@ -1,27 +1,34 @@
 ---
-title: "Data center"
-description: "Import contacts and historical messages for your MessageDesk workspace."
+title: "Import, Export & Search Message History"
+description: "Import contacts and historical SMS messages, then search, filter, and export your full MessageDesk message history—all from the Data Center."
 sidebarTitle: "Data center"
-"og:title": "Data Center - Import Contacts & Messages"
-"og:description": "Import contacts and historical messages for your MessageDesk workspace."
+"og:title": "Data Center - Import & Message History"
+"og:description": "Import contacts and historical messages, and search, filter, and export your full message history—all from the Data Center."
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # Data Center
 
-The **Data Center** is your hub for importing data into MessageDesk—starting with **contacts** and **historical messages**. Upload a CSV, map fields, resolve duplicates, and monitor progress in one place.
+The **Data Center** is your hub for managing workspace data in MessageDesk. It has two tabs:
+
+- **Import** — upload CSVs of contacts and historical messages, map fields, resolve duplicates, and monitor progress.
+- **Message History** — search, filter, and export every message sent or received in your workspace.
+
+<Tip>
+  Looking to **view or export existing messages**? Jump to [**Message History**](#message-history).
+</Tip>
 
 ---
 
 ## Access the Data Center
 
-Go to **Account → Settings → Data Center** (under **Workspace Settings**).
+Go to **Account → Settings → Data Center** (under **Workspace Settings**), then choose the **Import** or **Message History** tab.
 
 <Note>
   **Don’t see Data Center?** Your role may not include access. Ask an Admin or Manager to adjust your permissions.
 </Note>
 
-![Data Center Import Pn](/docs-main/images/data-center-import.png)
+![Data Center Import Pn](/images/data-center-import.png)
 
 ---
 
@@ -43,7 +50,7 @@ Quickly build your contact list by uploading a **CSV** and mapping it to Message
 
 ### Review duplicates & errors
 
-- **Duplicates** (by **email** or **phone**) are flagged—choose to **skip** or update.
+- **Duplicates** (by **email** or **phone**) are **updated** with the values in the import. Only mapped columns with a value are updated; empty cells leave existing fields unchanged.
 - **Invalid data** (e.g., bad phone/email format) is reported so you can fix and re-upload.
 - Problem rows are **skipped** during processing.
 
@@ -151,7 +158,7 @@ No. Each row must include **at least one**: **email** _or_ **phone** (you can in
 
 ### How are duplicates handled on contact import?
 
-We check **email** and **phone**. Duplicates are **skipped** by default and listed in the results.
+We check **email** and **phone**. When a row matches an existing contact, that contact is **updated** with the values from the import. Updates only apply to columns you mapped, and only when the mapped column has a value—empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, etc.) and custom fields.
 
 ### Why did some rows fail?
 
@@ -164,6 +171,70 @@ Split your data into multiple CSV files. Each file can contain **up to 5,000 row
 ### Can I import from mobile?
 
 No. Imports are **web-only**. Use a desktop browser.
+
+---
+
+## Message History
+
+The **Message History** tab is a searchable, filterable archive of every message in your workspace. Use it to audit conversations, build reports, or export filtered slices to **CSV** or **PDF**.
+
+### Access Message History
+
+Go to **Settings → Data Center → Message History**.
+
+### Filter your messages
+
+Narrow the list using the filter controls at the top of the tab. Available filters include:
+
+- **Date range** — limit results to a specific window
+- **Direction** — inbound or outbound
+- **Channel/line** — the phone number or channel the message was sent on
+- **Contact** — messages tied to a specific contact
+- **Label** — conversations carrying a given [label](/inbox/labels)
+- **User/agent** — messages sent by a specific teammate
+- **Status** — delivery state (e.g., delivered, failed)
+
+### Search within results
+
+Use the **search bar** to run a free-text search across the messages currently shown. Search runs **on top of your active filters**, so you can drill into a filtered slice rather than the entire archive.
+
+### Export to CSV
+
+Click **Export** to download a CSV of the current view. Use CSV exports for **data analysis, reporting, and bulk archiving**.
+
+<Warning>
+  Exports include **only the messages that match your active filters and search**. Adjust filters before exporting if you need a broader set.
+</Warning>
+
+### Export to PDF
+
+Use PDF exports to create **shareable, human-readable records** of a conversation or a filtered slice of message history—useful for audits, compliance reviews, or sharing context with stakeholders.
+
+- **From a conversation:** Open the conversation in the Inbox and choose **Export to PDF** from the conversation menu.
+- **From Message History:** Apply your filters in **Settings → Data Center → Message History**, then choose **Export to PDF**.
+
+PDF exports include the full message thread with timestamps, participants, direction, and inline previews of supported media.
+
+**Media handling**
+
+- **Renderable media** (images and other formats supported in PDF) is embedded inline.
+- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview."** so the attachment remains accessible from the PDF.
+
+### Permissions
+
+Message History is available to roles with access to the Data Center (typically **Admin** and **Manager**). Ask an Admin to adjust your role if you don't see the tab.
+
+### Frequently asked questions
+
+**What's the difference between Inbox search and Message History?**\
+The [**Inbox**](/inbox/filter-search-sort) is for working live conversations. **Message History** is the workspace-wide archive built for audit, reporting, and bulk export.
+
+**What format are exports in?**\
+**CSV** for data and reporting, or **PDF** for shareable conversation records.
+
+**Are media attachments included in exports?**\
+- **CSV exports:** No. CSV files contain message text and metadata only.
+- **PDF exports:** Renderable media (e.g., images) is embedded inline. Non-renderable media (e.g., videos and other unsupported types) is replaced with a direct S3 link and a **"Could not load preview"** note.
 
 ---
 
