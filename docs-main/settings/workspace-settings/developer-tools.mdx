@@ -1,0 +1,58 @@
+---
+title: "Developer Tools"
+description: "Configure your MessageDesk webhook endpoint and signing secret in Developer Tools. Required before using the Send Webhook relay action."
+sidebarTitle: "Developer Tools"
+og:title: "Developer Tools - Workspace Settings - MessageDesk"
+og:description: "Add a webhook endpoint URL and manage your signing secret in MessageDesk Developer Tools."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+---
+
+# Developer Tools
+
+The **Developer Tools** page is where you configure the workspace-level webhook endpoint and signing secret that MessageDesk uses to push events to your systems.
+
+<Note>
+  **Required for the Send Webhook relay action.** This configuration must exist before the [**Send Webhook**](/relays/webhooks) action will deliver events from your Relays.
+</Note>
+
+---
+
+## Open Developer Tools
+
+Go to **Account → Settings → Workspace Settings → Developer Tools**.
+
+---
+
+## Add a webhook endpoint URL
+
+1. Click **Add endpoint** (or edit your existing endpoint).
+2. Enter the **URL** that MessageDesk should POST events to. It must:
+   - Use **HTTPS**
+   - Be reachable from the public internet
+   - Respond with a **2xx** status code on success
+3. Click **Save**.
+
+You can configure your endpoint here once and reference it from any number of Relays that use the **Send Webhook** action.
+
+---
+
+## Generate and rotate your signing secret
+
+MessageDesk signs every outbound webhook with a **signing secret** so your receiver can verify the request really came from MessageDesk.
+
+- **Generate** — click **Generate signing secret** the first time you set up Developer Tools.
+- **View / copy** — copy the secret into your receiver's configuration. Store it somewhere safe.
+- **Rotate** — click **Rotate signing secret** to generate a new value. Update your receiver immediately—webhooks signed with the previous secret will fail validation after rotation.
+
+<Warning>
+  Treat the signing secret like a password. Anyone with the secret can forge webhook requests that look like they came from MessageDesk.
+</Warning>
+
+For the full webhook payload format, headers, signature validation algorithm, and retry behavior, see [Relays → Send Webhook](/relays/webhooks).
+
+---
+
+## See also
+
+- [Relays → Send Webhook](/relays/webhooks) — payload, signature validation, and retry behavior
+- [Relays overview](/relays/overview)

@@ -123,13 +123,17 @@
                 "pages": [
                   "settings/workspace-settings/overview",
                   "settings/workspace-settings/analytics",
+                  "settings/workspace-settings/workspace-profile",
+                  "settings/workspace-settings/labels",
+                  "settings/workspace-settings/message-templates",
                   "settings/workspace-settings/inbox-settings",
                   "settings/workspace-settings/custom-fields",
                   "settings/workspace-settings/billing-subscriptions",
                   "settings/workspace-settings/team-management",
                   "settings/workspace-settings/phone-management",
                   "settings/workspace-settings/compliance-center",
-                  "settings/workspace-settings/data-center"
+                  "settings/workspace-settings/data-center",
+                  "settings/workspace-settings/developer-tools"
                 ]
               },
               {
