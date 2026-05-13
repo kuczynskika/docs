@@ -1,6 +1,6 @@
 ---
 title: "Relay Recipes"
-description: "A practical reference library of common MessageDesk Relay configurations—after-hours auto-reply, anonymous-contact capture, keyword routing, phone-line routing, webhooks to external systems, and more."
+description: "A practical reference library of common MessageDesk Relay configurations: after-hours auto-reply, anonymous-contact capture, keyword routing, phone-line routing, webhooks to external systems, and more."
 sidebarTitle: "Recipes"
 "og:title": "Relay Recipes - Practical Automation Configurations for MessageDesk"
 "og:description": "Common Relay configurations covering customer service, operations and routing, and webhook integrations."
@@ -12,7 +12,7 @@ sidebarTitle: "Recipes"
 A practical reference library of common Relay configurations. Each recipe lists the **trigger**, any **conditions**, the **actions**, and a brief **why this works** note.
 
 <Note>
-  **Every recipe here is a starting point.** Adjust the wording, labels, assignees, active hours, and conditions to match your team's workflow. For step-by-step instructions on building a Relay from scratch—including how to use **AND/OR** between conditions, chain actions, and add delays—see [Create & edit a Relay](/relays/create-edit).
+  **Every recipe here is a starting point.** Adjust the wording, labels, assignees, active hours, and conditions to match your team's workflow. For step-by-step instructions on building a Relay from scratch, including how to use **AND/OR** between conditions, chain actions, and add delays, see [Create and edit a Relay](/relays/create-edit).
 </Note>
 
 ---
@@ -24,7 +24,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | Field | Value |
 | --- | --- |
 | **Trigger** | Message Received |
-| **Condition** | Active hours — set your business hours, then toggle **Trigger outside of business hours** to invert the window |
+| **Condition** | Active hours: set your business hours, then toggle **Trigger outside of business hours** to invert the window |
 | **Actions** | **Reply to message:** "We'll get back to you at 8am. Reply STOP to opt out." |
 
 **Why this works:** Inverting the Active hours window means the Relay only fires when an inbound message lands **outside** your business hours, so customers always get an immediate acknowledgement. The STOP language keeps you compliant with carrier opt-out requirements.
@@ -55,10 +55,10 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | **Condition** | Contact is **opted out** *(use the closest available condition; today this is most commonly handled by a keyword condition like **Message contains text "STOP"** or by routing on a label applied earlier in your workflow)* |
 | **Actions** | **Add labels to the conversation:** `Opted Out` → **Assign teammates to the conversation:** support queue |
 
-**Why this works:** Opt-outs need human review—labeling the thread keeps it visible to compliance/support, and routing it to your support queue ensures someone confirms the customer's request was honored. Once `Opted Out` is applied, downstream filters and Relays can avoid texting that contact again.
+**Why this works:** Opt-outs need human review. Labeling the thread keeps it visible to compliance and support, and routing it to your support queue ensures someone confirms the customer's request was honored. Once `Opted Out` is applied, downstream filters and Relays can avoid texting that contact again.
 
 <Note>
-  MessageDesk automatically blocks sending to **opted-out contacts** at the platform level. This Relay is for **internal awareness and audit**, not for blocking the outbound message itself.
+  MessageDesk automatically blocks sending to **opted-out contacts** at the workspace level. This Relay is for **internal awareness and audit**, not for blocking the outbound message itself.
 </Note>
 
 ---
@@ -83,7 +83,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Message Received |
 | **Condition** | **Message contains text** = `HELP` (or `SUPPORT`, `BILLING`, etc.) |
-| **Actions** | **Reply to message:** "Got it — a support teammate will be with you shortly." → **Assign teammates to the conversation:** support team |
+| **Actions** | **Reply to message:** "Got it. A support teammate will be with you shortly." → **Assign teammates to the conversation:** support team |
 
 **Why this works:** Keyword routing is fast triage: the customer gets an instant acknowledgement and the right team picks up the thread without manual sorting. Combine with **My phone number equals** if you want the keyword to behave differently on different lines.
 
@@ -98,10 +98,10 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | Field | Value |
 | --- | --- |
 | **Trigger** | Message Received |
-| **Conditions** | Optional — e.g., **My phone number equals** a specific line, or message lacks an existing assignee |
+| **Conditions** | Optional: **My phone number equals** a specific line, or message lacks an existing assignee |
 | **Actions** | **Assign teammates to the conversation:** teammate |
 
-**Why this works:** A single Relay assigns every inbound conversation to one teammate. **True round-robin distribution requires multiple Relays**—one per teammate—each segmented by a different **line** or **label** condition so they don't all fire on the same message. There isn't a built-in "rotate to next teammate" action today; this multi-Relay pattern is the supported workaround.
+**Why this works:** A single Relay assigns every inbound conversation to one teammate. **True round-robin distribution requires multiple Relays**, one per teammate, each segmented by a different **line** or **label** condition so they don't all fire on the same message. There isn't a built-in "rotate to next teammate" action today. This multi-Relay pattern is the supported workaround.
 
 <Tip>
   Pair this with a `Triage` label and an Inbox filter on **Assignee = Unassigned** so anything that slips through is easy to spot.
@@ -135,7 +135,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | **Conditions** | A label like `Closed` is applied (workaround) |
 | **Actions** | **Send Webhook** → your configured endpoint |
 
-**Why this works:** Today the only supported Relay trigger is **Message Received**—there isn't a dedicated `ConversationClosed` trigger. The supported workaround is to use a **closing label** as the signal: when an agent closes a conversation, they also apply a label like `Closed`, and a Relay scoped to that label forwards the close event downstream.
+**Why this works:** Today the only supported Relay trigger is **Message Received**. There isn't a dedicated `ConversationClosed` trigger. The supported workaround is to use a **closing label** as the signal: when an agent closes a conversation, they also apply a label like `Closed`, and a Relay scoped to that label forwards the close event downstream.
 
 <Note>
   **Workaround setup:**
@@ -151,7 +151,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 ## See also
 
-- [Create & edit a Relay](/relays/create-edit) — step-by-step Relay building, including AND/OR conditions, delays, and active hours
-- [Send Webhook](/relays/webhooks) — payload structure, signature validation, and retry behavior
-- [Developer Tools](/settings/workspace-settings/developer-tools) — configure your webhook endpoint and signing secret
-- [Relays overview](/relays/overview) — concepts and examples
+- [Create and edit a Relay](/relays/create-edit): step-by-step Relay building, including AND/OR conditions, delays, and active hours
+- [Send Webhook](/relays/webhooks): payload structure, signature validation, and retry behavior
+- [Developer Tools](/settings/workspace-settings/developer-tools): configure your webhook endpoint and signing secret
+- [Relays overview](/relays/overview): concepts and examples

@@ -1,6 +1,6 @@
 ---
 title: "SMS, MMS & Group Messaging Overview"
-description: "Explore the messaging types MessageDesk supports—1:1 SMS, MMS, group texts, scheduled sends, and templated broadcasts—plus throughput and channel rules."
+description: "Explore the messaging types MessageDesk supports: 1:1 SMS, MMS, group texts, scheduled sends, and templated broadcasts. Plus throughput and channel rules."
 sidebarTitle: "Overview"
 "og:title": "Messaging Overview - MessageDesk SMS & MMS"
 "og:description": "Learn more about which messaging types and channels MessageDesk supports."
@@ -35,14 +35,14 @@ Standard SMS messages are limited to **160 characters per segment**. If a messag
 **Maximum message length depends on encoding:** The compose box character counter automatically adjusts based on the characters in your message:
 
 - **Standard (GSM-7) messages:** Up to **1,600 characters** per send. Uses only standard ASCII characters (letters, numbers, and common punctuation).
-- **Unicode (UTF-16) messages:** Up to **800 characters** per send. Triggered by any non-ASCII character — for example, an emoji, an accented letter, curly quotes, or an em dash.
+- **Unicode (UTF-16) messages:** Up to **800 characters** per send. Triggered by any non-ASCII character. For example, an emoji, an accented letter, curly quotes, or an em dash.
 
-The lower cap on Unicode messages prevents carrier failures from oversized payloads. If you add a single emoji to a long message, the counter will drop from 1,600 to 800 — trim the message or remove the special character to send it as one piece.
+The lower cap on Unicode messages prevents carrier failures from oversized payloads. If you add a single emoji to a long message, the counter will drop from 1,600 to 800. Trim the message or remove the special character to send it as one piece.
 
 **Automatic MMS conversion:** Once a message reaches approximately three segments, MessageDesk automatically converts it to MMS. This reduces carrier costs and ensures delivery as one complete message regardless of length.
 
 <Note>
-  **You don't need to worry about character counts.** MessageDesk includes unlimited messaging and automatic MMS conversion, so your contacts will almost always receive your message as one clean, professional text—even if it technically splits behind the scenes.
+  **You don't need to worry about character counts.** MessageDesk includes unlimited messaging and automatic MMS conversion, so your contacts will almost always receive your message as one clean, professional text. Even if it technically splits behind the scenes.
 </Note>
 
 ### 1-on-1 individual text messages
@@ -66,7 +66,7 @@ Private, one-to-one messages with a single contact. Each conversation is its own
 
 ### 1-to-many text message broadcasts
 
-Your megaphone—send one message to many contacts at once. Replies come back as **private 1-on-1** threads so you can triage and follow up quickly. (This is why broadcasts scale _and_ stay personal.)
+Send one message to many contacts at once. Replies come back as **private 1-on-1** threads so you can triage and follow up quickly. (This is why broadcasts scale _and_ stay personal.)
 
 **Best for:** Announcements, reminders, alerts, promotions.
 
@@ -75,7 +75,7 @@ Your megaphone—send one message to many contacts at once. Replies come back as
 **Advantages:**
 
 - Reach many people with one send.
-- Every reply is private—no “reply all” disasters.
+- Every reply is private. No "reply all" disasters.
 - Combine with templates and scheduling for speed.
 
 **Limitations:**
@@ -159,21 +159,21 @@ These are transactional **codes typically sent from a 5- or 6-digit short code**
 - **Test before relying on this workflow:** Send a test 2FA code to your MessageDesk number before committing to this use case. Smaller organizations and internal systems typically work fine, but codes from major platforms are often blocked.
 
 <Warning>
-  **Security note:** Using a shared team number for 2FA codes bypasses the security model of two-factor authentication. This workflow is best suited for business scenarios like bookkeeping access, audit teams, or internal system logins—not for personal account security.
+  **Security note:** Using a shared team number for 2FA codes bypasses the security model of two-factor authentication. This workflow is best suited for business scenarios like bookkeeping access, audit teams, or internal system logins. It's not for personal account security.
 </Warning>
 
 ### Internal comments
 
-Leave private notes right inside a text message conversation. Contacts never see these; they’re team-only for handoffs and internal support.
+Leave private notes right inside a text message conversation. Contacts never see these. They're team-only for handoffs and internal support.
 
-**Best for:** Handoffs, support, approvals—anything your contact shouldn’t see.
+**Best for:** Handoffs, support, approvals. Anything your contact shouldn't see.
 
-**How internal comments work:** Add a comment to the thread; assign/mention teammates.
+**How internal comments work:** Add a comment to the thread. Assign or mention teammates.
 
 **Advantages:**
 
 - Keep the context within the conversation.
-- Reduce “who said what” confusion across shifts.
+- Reduce "who said what" confusion across shifts.
 
 **Limitations:**
 
