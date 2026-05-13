@@ -1,15 +1,15 @@
 ---
 title: "Integrations Overview"
-description: "Connect MessageDesk to the tools your team already uses—Grammarly for in-app spell check, Zapier for 6,000+ app automations, and webhook integrations for custom developer workflows."
+description: "Connect MessageDesk to the tools your team already uses: Grammarly for in-app spell check, Zapier for 6,000+ app automations, and webhook integrations for custom developer workflows."
 sidebarTitle: "Overview"
 "og:title": "Integrations Overview - MessageDesk"
 "og:description": "See the integrations available in MessageDesk: native extensions, automation platforms, and webhook-based developer integrations."
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# Integrations Overview
+# Integrations overview
 
-MessageDesk connects to the rest of your tech stack three ways: **native extensions** that work directly inside the app, **Zapier** for no-code automation across thousands of apps, and **webhooks** for custom developer integrations. Pick the layer that fits the job—or combine them.
+MessageDesk connects to the rest of your tech stack three ways: **native extensions** that work directly inside the app, **Zapier** for no-code automation across thousands of apps, and **webhooks** for custom developer integrations. Pick the layer that fits the job, or combine them.
 
 ---
 
@@ -27,20 +27,20 @@ The **Grammarly browser extension** runs alongside MessageDesk and checks **spel
 
 ### Zapier
 
-[**Zapier**](https://zapier.com) connects MessageDesk to **6,000+ apps** through no-code **triggers** and **actions**. Use it to push new MessageDesk messages into your CRM, send appointment reminders from your calendar, post notifications to Slack/Teams, or kick off SMS confirmations after a payment or form submission—without writing any code. MessageDesk publishes triggers like **Message Received** and **Message Sent**, and actions like **Create or Update Contact**, **Send Message**, and **Create Comment**.
+[**Zapier**](https://zapier.com) connects MessageDesk to **6,000+ apps** through no-code **triggers** and **actions**. Use it to push new MessageDesk messages into your CRM, send appointment reminders from your calendar, post notifications to Slack/Teams, or kick off SMS confirmations after a payment or form submission, without writing any code. MessageDesk publishes triggers like **Message Received** and **Message Sent**, and actions like **Create or Update Contact**, **Send Message**, and **Create Comment**.
 
 → [Zapier](/integrations/zapier)
 
 ---
 
-## Developer & webhook integrations
+## Developer and webhook integrations
 
 ### Send Webhook (custom endpoint)
 
-For developer-built integrations—or any system that doesn't have a Zapier connector—use the **Send Webhook** Relay action to push MessageDesk events to **any HTTPS endpoint** you control. Each event is signed with an `X-MessageDesk-Signature` header so you can verify authenticity. This is the right tier for streaming events into a data warehouse, custom CRM, internal microservice, or a serverless function.
+For developer-built integrations, or any system that doesn't have a Zapier connector, use the **Send Webhook** Relay action to push MessageDesk events to **any HTTPS endpoint** you control. Each event is signed with an `X-MessageDesk-Signature` header so you can verify authenticity. This is the right tier for streaming events into a data warehouse, custom CRM, internal microservice, or a serverless function.
 
-- [Send Webhook (Relay action)](/relays/webhooks) — payload format, headers, signature validation, retry behavior
-- [Developer Tools (Settings)](/settings/workspace-settings/developer-tools) — configure your webhook endpoint URL and signing secret
+- [Send Webhook (Relay action)](/relays/webhooks): payload format, headers, signature validation, retry behavior
+- [Developer Tools (Settings)](/settings/workspace-settings/developer-tools): configure your webhook endpoint URL and signing secret
 
 <Note>
   Webhook delivery requires a configured endpoint and signing secret in **Settings → Developer Tools**. Set those up before turning on a `Send Webhook` Relay.
@@ -51,7 +51,7 @@ For developer-built integrations—or any system that doesn't have a Zapier conn
 ## Lightweight in-app lookups
 
 <Note>
-  The **Contact Create Form** in MessageDesk also includes **HubSpot** and **Close CRM** lookup buttons—lightweight one-click integrations that pull contact details from those CRMs into a new MessageDesk contact record. They aren't full sync integrations; for full bi-directional CRM sync, use [Zapier](/integrations/zapier) or a webhook-based pipeline.
+  The **Contact Create Form** in MessageDesk also includes **HubSpot** and **Close CRM** lookup buttons: lightweight one-click integrations that pull contact details from those CRMs into a new MessageDesk contact record. They aren't full sync integrations. For full bi-directional CRM sync, use [Zapier](/integrations/zapier) or a webhook-based pipeline.
 </Note>
 
 ---

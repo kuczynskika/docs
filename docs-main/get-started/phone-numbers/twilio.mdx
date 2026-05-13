@@ -8,7 +8,7 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 ---
 
 <Note>
-  **Important for Twilio users:** You manage carrier registration through your Twilio account before connecting to MessageDesk. By the time you connect your numbers to our inbox, registration is already complete—no additional registration is required through MessageDesk.
+  **Important for Twilio users:** You manage carrier registration through your Twilio account before connecting to MessageDesk. By the time you connect your numbers to our inbox, registration is already complete. No additional registration is required through MessageDesk.
 </Note>
 
 ## How to Connect Phone Numbers to MessageDesk
@@ -60,7 +60,7 @@ MessageDesk leverages Twilio's Event Streams to listen for message events. This 
 - **Works alongside other systems** - You can use MessageDesk while maintaining other Twilio integrations
 - **Syncs all message activity** - Both inbound and outbound messages are captured natively
 
-You don't need to configure anything manually—add your Twilio credentials and numbers, and we handle the Event Streams setup automatically.
+You don't need to configure anything manually. Add your Twilio credentials and numbers, and we handle the Event Streams setup automatically.
 
 ### Message syncing behavior
 
@@ -106,7 +106,7 @@ When you add a new number in Twilio, it automatically configures a default webho
 3. Clear the webhook URL field (leave it blank)
 4. Save your changes
 
-This is safe to do because MessageDesk uses [Event Streams](https://www.twilio.com/docs/events)—not webhooks—to sync messages. Clearing the default webhook URL won't affect MessageDesk functionality.
+This is safe to do because MessageDesk uses [Event Streams](https://www.twilio.com/docs/events), not webhooks, to sync messages. Clearing the default webhook URL won't affect MessageDesk functionality.
 
 ### Using multiple services with your Twilio number
 
