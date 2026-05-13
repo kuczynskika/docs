@@ -15,7 +15,7 @@ The **Data Center** is your hub for managing workspace data in MessageDesk. It h
 - **Message History:** search, filter, and export every message sent or received in your workspace.
 
 <Tip>
-  Looking to **view or export existing messages**? Jump to [**Message History**](#message-history). To export a **single conversation** directly from the Inbox toolbar, see [**Export a conversation**](/inbox/export-conversation).
+  Looking to **view or export existing messages**? Jump to [Message History](#message-history). To export a **single conversation** directly from the Inbox toolbar, see [Export a conversation](/inbox/export-conversation).
 </Tip>
 
 ---
@@ -34,7 +34,7 @@ Go to **Account → Settings → Data Center** (under **Workspace Settings**), t
 
 ## How to import contacts
 
-Quickly build your contact list by uploading a **CSV** and mapping it to MessageDesk fields.
+Build your contact list quickly by uploading a **CSV** and mapping it to MessageDesk fields.
 
 ### Start an import
 
@@ -46,7 +46,7 @@ Quickly build your contact list by uploading a **CSV** and mapping it to Message
 
 - Columns that match MessageDesk field names **auto-map**.
 - Adjust mapping manually as needed.
-- You can map **[custom fields](/settings/workspace-settings/custom-fields)** (ensure the CSV data type matches the field type).
+- You can map [custom fields](/settings/workspace-settings/custom-fields). Make sure the CSV data type matches the field type.
 
 ### Review duplicates and errors
 
@@ -76,23 +76,23 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 ### Map your data
 
-- Map CSV columns to MessageDesk **message fields** (e.g., timestamp, direction, phone number, text, channel/line).
+- Map CSV columns to MessageDesk **message fields** (timestamp, direction, phone number, text, channel/line).
 - Review and confirm the mapping for accuracy.
 
 ### Validate, review, and import
 
 - Preview parsed messages and fix any errors the validator surfaces.
-- Click **Import** to start processing. A bottom banner shows pre-import issues (if any).
+- Click **Import** to start processing. A bottom banner flags pre-import issues (if any).
 
 ### Supported message types
 
-- **Outbound (sent)** messages
-- **Inbound (received)** messages
-- **1-on-1** conversations
-- **Group** conversations
+- **Outbound (sent)** messages.
+- **Inbound (received)** messages.
+- **1-on-1** conversations.
+- **Group** conversations.
 
 <Warning>
-  **Note: Not supported for message import:** media attachments (images, videos, files) and internal comments.
+  **Not supported for message import.** Media attachments (images, videos, files) and internal comments.
 </Warning>
 
 ### How message import works
@@ -107,10 +107,10 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 **Format**
 
-- **CSV only** (`.csv`)
-- **UTF-8** encoding
-- Include a **header row**
-- Each row must have the **same number of columns** as the header
+- **CSV only** (`.csv`).
+- **UTF-8** encoding.
+- Include a **header row**.
+- Each row must have the **same number of columns** as the header.
 
 **Required data**
 
@@ -119,10 +119,10 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 **Validation**
 
-- Emails must be valid email format
-- Phone numbers must be valid **E.164** (e.g., `+15551234567`)
-- [Custom fields](/settings/workspace-settings/custom-fields) must match their **defined type**
-- Duplicate detection runs on **email** and **phone** (contact imports)
+- Emails must be a valid email format.
+- Phone numbers must be valid **E.164** (`+15551234567`).
+- [Custom fields](/settings/workspace-settings/custom-fields) must match their **defined type**.
+- Duplicate detection runs on **email** and **phone** (contact imports).
 
 **Limits**
 
@@ -141,7 +141,7 @@ If a limit is exceeded, you'll see errors like **"CSV file is too large"** or **
 - **Messages** (text content only. No media or internal comments.)
 
 <Info>
-  **Coming soon:** additional workflows (e.g., labels, opt-outs). Watch the Data Center for new options.
+  **Coming soon.** More workflows (labels, opt-outs). Watch the Data Center for new options.
 </Info>
 
 ---
@@ -166,7 +166,7 @@ Common reasons: invalid email/phone format, missing required fields, custom fiel
 
 ### Can I import more than 5,000 rows?
 
-Split your data into multiple CSV files. Each file can contain **up to 5,000 rows** and **≤ 10 MB**.
+Split your data into multiple CSV files. Each file can hold **up to 5,000 rows** and **≤ 10 MB**.
 
 ### Can I import from mobile?
 
@@ -184,7 +184,7 @@ Go to **Settings → Data Center → Message History**.
 
 ### Filter your messages
 
-Narrow the list using the filter controls at the top of the tab. Available filters include:
+Narrow the list using the filter controls at the top of the tab. Available filters:
 
 - **Date range:** limit results to a specific window
 - **Direction:** inbound or outbound
@@ -210,37 +210,37 @@ Click **Export** to download a CSV of the current view. Use CSV exports for **da
 
 Use PDF exports to create **shareable, human-readable records** of a conversation or a filtered slice of message history. Useful for audits, compliance reviews, or sharing context with stakeholders.
 
-- **From a conversation:** Open the conversation in the Inbox, click the **⋯ More Options** menu in the conversation toolbar, and choose **Export** → **PDF**. See [Export a conversation](/inbox/export-conversation) for the full per-conversation flow.
-- **From Message History:** Apply your filters in **Settings → Data Center → Message History**, then choose **Export to PDF**.
+- **From a conversation.** Open the conversation in the Inbox, click the **⋯ More Options** menu in the conversation toolbar, and choose **Export → PDF**. See [Export a conversation](/inbox/export-conversation) for the full per-conversation flow.
+- **From Message History.** Apply your filters in **Settings → Data Center → Message History**, then choose **Export to PDF**.
 
 PDF exports include the full message thread with timestamps, participants, direction, and inline previews of supported media.
 
 **Media handling**
 
 - **Renderable media** (images and other formats supported in PDF) is embedded inline.
-- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview."** so the attachment remains accessible from the PDF.
+- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview"** so the attachment stays accessible from the PDF.
 
 ### Permissions
 
 Message History is available to roles with access to the Data Center (typically **Admin** and **Manager**). Ask an Admin to adjust your role if you don't see the tab.
 
-### Frequently asked questions
+### FAQ
 
 **What's the difference between Inbox search and Message History?**\
-The [**Inbox**](/inbox/filter-search-sort) is for working live conversations. **Message History** is the workspace-wide archive built for audit, reporting, and bulk export.
+The [Inbox](/inbox/filter-search-sort) is for working live conversations. **Message History** is the workspace-wide archive built for audit, reporting, and bulk export.
 
 **What format are exports in?**\
 **CSV** for data and reporting, or **PDF** for shareable conversation records.
 
 **Are media attachments included in exports?**\
-- **CSV exports:** No. CSV files contain message text and metadata only.
-- **PDF exports:** Renderable media (e.g., images) is embedded inline. Non-renderable media (e.g., videos and other unsupported types) is replaced with a direct S3 link and a **"Could not load preview"** note.
+- **CSV exports.** No. CSV files contain message text and metadata only.
+- **PDF exports.** Renderable media (images) is embedded inline. Non-renderable media (videos and other unsupported types) is replaced with a direct S3 link and a **"Could not load preview"** note.
 
 ---
 
 ## Best practices
 
 - **Normalize phone numbers** to **E.164** before upload.
-- **Clean your data** (dedupe, validate emails) to minimize skips.
+- **Clean your data.** Dedupe and validate emails to cut skips.
 - **Test with a small CSV** (10–20 rows) to confirm mapping and validation.
-- Keep a **backup** of your source CSV and **import results** for audit.
+- **Keep a backup** of your source CSV and **import results** for audit.
