@@ -135,7 +135,7 @@ You set your filter on conditions on standard fields like:
 - Last Inbound Message Time
 
 <Tip>
-  You can also set filter conditions based on [**custom fields**](/settings/workspace/custom-fields) added to MessageDesk.
+  You can also set filter conditions based on [**custom fields**](/settings/workspace-settings/custom-fields) added to MessageDesk.
 </Tip>
 
 ### Condition Operators
@@ -224,7 +224,7 @@ MessageDesk makes it easy to upload contact lists in bulk. This is a handy featu
 Click **Import Contacts**.
 
 <Note>
-  **Note:** You can also access the contact import feature from **Settings → Workspace Settings → [Data Center](/settings/data-center)**
+  **Note:** You can also access the contact import feature from **Settings → Workspace Settings → [Data Center](/settings/workspace-settings/data-center)**
 </Note>
 
 <Frame>
@@ -247,7 +247,7 @@ Select a `.csv` file from your computer or make a copy of our [**shared Google S
 
 You can adjust the field mapping manually, but in most cases, fields will auto-map when column names match properties in MessageDesk.
 
-Click **\+ Add Custom Field** to map [custom fields](/settings/workspace/custom-fields) from your .csv file to custom fields in MessageDesk.
+Click **\+ Add Custom Field** to map [custom fields](/settings/workspace-settings/custom-fields) from your .csv file to custom fields in MessageDesk.
 
 <Warning>
   **Note:** Email or Phone is a required property for every contact uploaded to MessageDesk.
@@ -269,7 +269,7 @@ Click Preview Import to confirm that your fields are properly matched. MessageDe
 
 - **Email**: must be a valid email address (`name@example.com`).
 - **Phone**: must be in **E.164** format (e.g., `+15551234567`).
-- **Custom fields**: must match defined **types** and constraints. See [custom fields](/settings/workspace/custom-fields) for supported types.
+- **Custom fields**: must match defined **types** and constraints. See [custom fields](/settings/workspace-settings/custom-fields) for supported types.
 - **Duplicates**: checked by **email** and **phone**. Matching contacts are **updated** rather than skipped (see [How duplicate updates work](#how-duplicate-updates-work)).
 
 ---
@@ -314,7 +314,7 @@ When an imported row matches an existing contact by **email** or **phone**, Mess
 - **Normalize phones to E.164** before uploading.
 - **Deduplicate** by email/phone first to avoid partial merges.
 - **Test with 25 rows** to confirm mapping and validation.
-- **Use [custom fields](/settings/workspace/custom-fields)** intentionally—ensure data types match your definitions.
+- **Use [custom fields](/settings/workspace-settings/custom-fields)** intentionally—ensure data types match your definitions.
 - **Keep under limits** (≤ **5,000** rows, ≤ **10 MB**) for smooth importing.
 
 ---
@@ -325,7 +325,7 @@ When an imported row matches an existing contact by **email** or **phone**, Mess
 No. CSV imports are **web-only**.
 
 **Can I import other data (conversations, labels, messages, opt-outs)?**\
-Yes. You can import messages via the [Data Center](/settings/data-center). This doc covers **Contacts CSV**.
+Yes. You can import messages via the [Data Center](/settings/workspace-settings/data-center). This doc covers **Contacts CSV**.
 
 **What happens to skipped rows?**\
 Invalid rows are **skipped**. Fix the CSV and re-import those rows separately.

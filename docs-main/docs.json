@@ -110,35 +110,35 @@
             "icon": "gear",
             "pages": [
               {
-                "group": "Personal",
+                "group": "My Settings",
                 "pages": [
-                  "settings/personal/overview",
-                  "settings/personal/inbox-preferences",
-                  "settings/personal/notifications",
-                  "settings/personal/account-security"
+                  "settings/my-settings/profile",
+                  "settings/my-settings/inbox-preferences",
+                  "settings/my-settings/notification-preferences",
+                  "settings/my-settings/security"
                 ]
               },
               {
-                "group": "Workspace",
+                "group": "Workspace Settings",
                 "pages": [
-                  "settings/workspace/overview",
-                  "settings/workspace/custom-fields",
-                  "settings/workspace/inbox-settings",
-                  "settings/workspace/team-management",
-                  "settings/workspace/phone-management",
-                  "settings/workspace/analytics"
+                  "settings/workspace-settings/overview",
+                  "settings/workspace-settings/analytics",
+                  "settings/workspace-settings/inbox-settings",
+                  "settings/workspace-settings/custom-fields",
+                  "settings/workspace-settings/billing-subscriptions",
+                  "settings/workspace-settings/team-management",
+                  "settings/workspace-settings/phone-management",
+                  "settings/workspace-settings/compliance-center",
+                  "settings/workspace-settings/data-center"
                 ]
               },
               {
                 "group": "Account",
                 "pages": [
-                  "settings/account/billing-subscriptions",
                   "settings/account/tenant-management",
                   "settings/account/trial-terms"
                 ]
-              },
-              "settings/compliance-center",
-              "settings/data-center"
+              }
             ]
           },
           {
@@ -255,7 +255,59 @@
     },
     {
       "source": "/a2p-registration/compliance-center",
-      "destination": "/settings/compliance-center"
+      "destination": "/settings/workspace-settings/compliance-center"
+    },
+    {
+      "source": "/settings/compliance-center",
+      "destination": "/settings/workspace-settings/compliance-center"
+    },
+    {
+      "source": "/settings/data-center",
+      "destination": "/settings/workspace-settings/data-center"
+    },
+    {
+      "source": "/settings/personal/overview",
+      "destination": "/settings/my-settings/profile"
+    },
+    {
+      "source": "/settings/personal/inbox-preferences",
+      "destination": "/settings/my-settings/inbox-preferences"
+    },
+    {
+      "source": "/settings/personal/notifications",
+      "destination": "/settings/my-settings/notification-preferences"
+    },
+    {
+      "source": "/settings/personal/account-security",
+      "destination": "/settings/my-settings/security"
+    },
+    {
+      "source": "/settings/workspace/overview",
+      "destination": "/settings/workspace-settings/overview"
+    },
+    {
+      "source": "/settings/workspace/analytics",
+      "destination": "/settings/workspace-settings/analytics"
+    },
+    {
+      "source": "/settings/workspace/custom-fields",
+      "destination": "/settings/workspace-settings/custom-fields"
+    },
+    {
+      "source": "/settings/workspace/inbox-settings",
+      "destination": "/settings/workspace-settings/inbox-settings"
+    },
+    {
+      "source": "/settings/workspace/team-management",
+      "destination": "/settings/workspace-settings/team-management"
+    },
+    {
+      "source": "/settings/workspace/phone-management",
+      "destination": "/settings/workspace-settings/phone-management"
+    },
+    {
+      "source": "/settings/account/billing-subscriptions",
+      "destination": "/settings/workspace-settings/billing-subscriptions"
     }
   ]
 }
