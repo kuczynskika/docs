@@ -96,7 +96,8 @@
             "pages": [
               "/relays/overview",
               "/relays/create-edit",
-              "/relays/webhooks"
+              "/relays/webhooks",
+              "/relays/recipes"
             ]
           },
           {
