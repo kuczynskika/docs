@@ -104,6 +104,7 @@
             "group": "Integrations",
             "icon": "link",
             "pages": [
+              "/integrations/overview",
               "/integrations/zapier",
               "/integrations/grammarly"
             ]
