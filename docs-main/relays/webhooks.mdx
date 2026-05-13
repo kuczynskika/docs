@@ -12,7 +12,7 @@ sidebarTitle: "Send webhook"
 Use the **Send Webhook** action to send MessageDesk events directly to your webhook endpoints. This enables you to integrate MessageDesk with external systems, trigger custom workflows, and build powerful automations.
 
 <Note>
-  **Developer Settings required:** Before using webhooks, you need to configure your webhook endpoint and generate a signing secret in **Settings → Developer Settings**.
+  **Developer Tools required:** Before using webhooks, you need to configure your webhook endpoint and generate a signing secret in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools).
 </Note>
 
 ---
@@ -21,11 +21,11 @@ Use the **Send Webhook** action to send MessageDesk events directly to your webh
 
 ### 1. Configure your webhook endpoint
 
-Navigate to **Settings → Developer Settings** to:
+Navigate to [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) to:
 
-- Add your webhook endpoint URL
+- Add your webhook endpoint URL (must be HTTPS and reachable from the public internet)
 - Generate a signing secret for secure webhook validation
-- Manage your webhook configurations
+- Rotate the signing secret when needed
 
 ### 2. Add the Send Webhook action to a Relay
 
@@ -149,12 +149,12 @@ function validateMessageDeskSignature(headers, body) {
 **Webhook not firing**
 
 - Verify the Relay is **On** (not paused)
-- Check that your webhook endpoint is configured in **Developer Settings**
+- Check that your webhook endpoint is configured in [**Developer Tools**](/settings/workspace-settings/developer-tools)
 - Confirm the Relay conditions are being met
 
 **Signature validation failing**
 
-- Ensure you're using the correct API secret from **Developer Settings**
+- Ensure you're using the correct signing secret from [**Developer Tools**](/settings/workspace-settings/developer-tools)
 - Verify you're hashing the raw request body (not parsed JSON)
 - Check that you're comparing the signature using a timing-safe comparison
 
