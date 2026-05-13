@@ -13,7 +13,7 @@ Connect MessageDesk to thousands of other apps using **Zapier**.\
 Automate workflows by triggering actions when messages are sent or received, or perform tasks like **creating contacts**, **sending messages**, and **adding comments** when events occur in other tools.
 
 <Note>
-  **Permissions required.** To build a Zap that authenticates with your MessageDesk account, your user role needs **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). **Admins** have this by default. **Viewers** can't authenticate Zapier under their own account, so any Zap built or owned by a Viewer will fail to run.
+  **Permissions required.** To build a Zap that authenticates with your MessageDesk account, your user role needs **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). **Admins** have this by default. **Viewers** can't authenticate Zapier under their own account, so any Zap a Viewer builds or owns won't run.
 
   Each Zap runs under the **MessageDesk account that authenticated it**. If a Zap stops working, check the authenticated user's role first.
 </Note>
@@ -240,6 +240,6 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Message sent but not delivered**                      | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details.                           |
 | **Zap not triggering**                                  | Verify the correct trigger and workspace setup. Send a test message to fire the event.                     |
 | **Contact not updating correctly**                      | Check field mappings and confirm the contact's phone number matches existing records.                      |
-| **My Zap built fine but isn't firing (or one Zap works and another doesn't)** | Check which **MessageDesk user authenticated** that specific Zap in Zapier. Each Zap runs under the user whose credentials connected the MessageDesk account, and that user must have **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). Common cause: an admin authenticated one Zap (works), and a teammate without Developer permission authenticated another (fails). Re-authenticate the failing Zap with a user who has the right permission, or have an admin grant the existing user **Developer = Editor**. |
+| **My Zap built fine but isn't firing (or one Zap works and another doesn't)** | Check which **MessageDesk user authenticated** that specific Zap in Zapier. Each Zap runs under the user whose credentials connected the MessageDesk account. That user must have **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). Common cause: an admin authenticated one Zap (works), and a teammate without Developer permission authenticated another (fails). Re-authenticate the failing Zap with a user who has the right permission, or have an admin grant the existing user **Developer = Editor**. |
 
 ---
