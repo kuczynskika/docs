@@ -52,6 +52,22 @@ For the full webhook payload format, headers, signature validation algorithm, an
 
 ---
 
+## Who can use Developer Tools
+
+The **Developer** feature permission gates Developer Tools, API key management, and [Zapier](/integrations/zapier) authentication.
+
+| Role         | Developer access     |
+| ------------ | -------------------- |
+| **Admin**    | Owner (full)         |
+| **Manager**  | No Access by default |
+| **Operator** | No Access by default |
+
+For Managers, Operators, or custom roles to manage webhooks, API keys, or build Zapier workflows under their own account, an admin must grant **Editor** or **Owner** on the **Developer** feature via a custom role. **Viewers** can read Developer Tools but can't create Zapier workflows under their own auth.
+
+See [Team Management → Roles & Permissions](/settings/workspace-settings/team-management) to customize roles.
+
+---
+
 ## See also
 
 - [Relays → Send Webhook](/relays/webhooks). Payload, signature validation, and retry behavior.
