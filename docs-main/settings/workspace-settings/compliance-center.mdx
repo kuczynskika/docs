@@ -1,6 +1,6 @@
 ---
 title: "MessageDesk Compliance Center"
-description: "Manage SMS compliance in MessageDesk—configure opt-in confirmations, STOP and HELP keywords, signatures, and double opt-in flows for TCPA-safe messaging."
+description: "Manage SMS compliance in MessageDesk. Configure opt-in confirmations, STOP and HELP keywords, signatures, and double opt-in flows for TCPA-safe messaging."
 sidebarTitle: "Compliance center"
 "og:title": "Compliance Center - SMS Opt-In & Opt-Out"
 "og:description": "Configure SMS opt-in/opt-out behavior, signatures, and STOP keywords for your workspace."
@@ -9,143 +9,143 @@ sidebarTitle: "Compliance center"
 
 # MessageDesk Compliance Center
 
-Set how your workspace handles SMS opt-outs, opt-out confirmations, signatures, and STOP keywords—clearly and carrier-friendly.
+Set how your workspace handles SMS opt-outs, opt-out confirmations, signatures, and STOP keywords. Clearly and carrier-friendly.
 
 ---
 
-## How to Access the Compliance Center
+## Access the Compliance Center
 
 Go to **Account → Settings → Compliance Center** (under **Workspace Settings**).
 
 <Note>
-  **Note:** If you don’t see Compliance Center, your role may not include access. Ask an Admin or Manager.
+  If you don't see Compliance Center, your role may not include access. Ask an Admin or Manager.
 </Note>
 
 ![Compliance Center Pn](/images/compliance-center.png)
 
 ---
 
-## SMS Compliance Overview
+## SMS compliance overview
 
-The **Overview** tab explains U.S. SMS compliance basics and recommended practices.
+The **Overview** tab covers U.S. SMS compliance basics and recommended practices.
 
-By Law, when sending business text messages in the United States, you must follow these guidelines:
+By law, when sending business text messages in the United States, you must follow these guidelines:
 
-1. Do not send any SHAFT-C-related content.
-2. Only message contacts who have opted in to receive messaging from you.
-3. Respect opt-out: when contacts reply "STOP" you should not send any additional messages.
-4. Do not send messages outside of normal business hours.
+1. Don't send any SHAFT-C-related content.
+2. Only message contacts who've opted in to receive messaging from you.
+3. Respect opt-out. When contacts reply "STOP," don't send any additional messages.
+4. Don't send messages outside of normal business hours.
 
-## How MessageDesk Helps Keep You Compliant
+## How MessageDesk helps keep you compliant
 
 MessageDesk automatically enforces:
 
-1. "Reply STOP to opt-out" for all contacts who reply STOP at any time.
-2. Tracking opt-outs for each number across your entire workspace.
-3. When contacts opt out of messaging, MessageDesk automatically tracks this for you.
+1. "Reply STOP to opt-out" for every contact who replies STOP at any time.
+2. Opt-out tracking for each number across your entire workspace.
+3. When contacts opt out of messaging, MessageDesk tracks this for you.
 
 ---
 
-## Opt-Out Configuration
+## Opt-out configuration
 
-MessageDesk gives you two options for configuring opt-out.
+MessageDesk gives you two ways to configure opt-out.
 
 ### 1. Inbox Opt-Out (carrier-preferred)
 
-If a contact opts out on **one** phone number, they are blocked from **all** numbers in your workspace.
+If a contact opts out on **one** phone number, they're blocked from **every** number in your workspace.
 
-**When to use:** This works best for most teams—single standard, fewer compliance mistakes, can result in better deliverability.
+**When to use.** Works best for most teams: single standard, fewer compliance mistakes, can produce better deliverability.
 
 ### 2. Phone Number Opt-Out
 
 If a contact opts out of messaging from **one** number, they can still receive texts from **other** numbers in your workspace.
 
-**When to use:** Each number serves a distinct audience or purpose (with separate consent).
+**When to use.** Each number serves a distinct audience or purpose (with separate consent).
 
 ![Opt Out Configuration Pn](/images/opt-out-configuration.png)
 
 ---
 
-## Opt-Out Confirmation
+## Opt-out confirmation
 
-Opt-out confirmation sends a message confirming that they've opted out of messaging. You can fine-tune what the contact sees immediately after they unsubscribe.
+Opt-out confirmation sends a message confirming the contact has opted out. Fine-tune what the contact sees immediately after they unsubscribe.
 
 **What happens by default**
 
 - MessageDesk sends an **automatic confirmation** acknowledging the opt-out.
 - The conversation shows an **opt-out banner**, and future sends are blocked.
 
-**Edit the opt out confirmation:**
+**Edit the opt-out confirmation:**
 
-1. Click **Edit**
+1. Click **Edit**.
 
-- Edit the message to include a confirmation that the contact has opted out as well as a brief note about how to **opt back in** (see “Re-opt in” below).
+- Edit the message to include a confirmation that the contact has opted out, plus a brief note about how to **opt back in** (see "Re-opt in" below).
 
 ![Opt Out Confirmation Pn](/images/opt-out-confirmation.png)
 
 ---
 
-## Opt-Out Signature
+## Opt-out signature
 
-Add a standard opt-out line (e.g., **“Reply STOP to opt out.”**) to all sent messages. This improves clarity and can help you meet carrier expectations.
+Add a standard opt-out line ("Reply STOP to opt out.") to every sent message. Improves clarity and helps you meet carrier expectations.
 
 **Options:**
 
-- **Apply to all sent messages (carrier-preferred)** — Most compliant; least confusing for recipients.
-- **Include once per conversation** — Adds the signature only to the first outbound message in a thread.
+- **Apply to all sent messages (carrier-preferred).** Most compliant. Least confusing for recipients.
+- **Include once per conversation.** Adds the signature only to the first outbound message in a thread.
 
-**How to set:** **Settings → Compliance Center → Opt-Out → Signature**.
+**How to set.** **Settings → Compliance Center → Opt-Out → Signature**.
 
 **Tips:**
 
-- Keep it short and standard: **“Reply STOP to opt out.”**
+- Keep it short and standard: "Reply STOP to opt out."
 - Pair with your business/organization name when appropriate for context.
 
 ![Opt Out Signature Pn](/images/opt-out-signature.png)
 
 ---
 
-## STOP Keywords
+## STOP keywords
 
-MessageDesk automatically manages opt-outs when a contact replies with a supported keyword:
+MessageDesk manages opt-outs automatically when a contact replies with a supported keyword:
 
 - `stop`
 - `unsubscribe`
 
 <Note>
-  **Note:** Variations (case/spacing) are supported.
+  Variations (case/spacing) are supported.
 </Note>
 
-**What you’ll see**
+**What you'll see**
 
-- The contact receives an **automatic confirmation**.
-- You’ll see an **opt-out notice** in the thread.
+- The contact gets an **automatic confirmation**.
+- An **opt-out notice** appears in the thread.
 - Future sends are **blocked** based on your configured scope.
 
 ![Opt Out Stop Keyword Pn](/images/opt-out-stop-keyword.png)
 
 ---
 
-## Opt-Out Best Practices
+## Opt-out best practices
 
 - **Message only opted-in contacts.**
-- **Respect opt-outs immediately.** Don’t follow with a “last message.”
+- **Respect opt-outs immediately.** Don't follow with a "last message."
 - **Include opt-out language** (signature) on non-conversational sends.
-- **Avoid spam triggers** (generic short links, all caps, excessive punctuation).
+- **Avoid spam triggers.** Generic short links, all caps, excessive punctuation.
 - **Send during business hours** when possible.
 
 ---
 
 ## Troubleshooting
 
-**I can’t text a contact anymore.**\
+**I can't text a contact anymore.**\
 They may be opted out. Check the **opt-out banner** in the thread and review **scope** in Compliance Center.
 
-**Switching numbers didn’t bypass an opt-out.**\
-You likely have **Inbox Opt-Out** enabled. Change to **Phone Number Opt-Out** only if your compliance policy allows distinct consent per line.
+**Switching numbers didn't bypass an opt-out.**\
+You probably have **Inbox Opt-Out** enabled. Switch to **Phone Number Opt-Out** only if your compliance policy allows distinct consent per line.
 
 **A contact wants to opt back in.**\
-Ask them to send **START** (or another explicit consent message) from the same number. Then confirm opt-in and resume messaging per your policy.
+Ask them to send **START** (or another explicit consent message) from the same number. Confirm opt-in and resume messaging per your policy.
 
 **Our messages are being filtered.**\
-Enable the **opt-out signature** for clarity, review content for potential spam triggers, and confirm your **carrier registration** status for each line.
+Turn on the **opt-out signature** for clarity, review content for potential spam triggers, and confirm your **carrier registration** status for each line.
