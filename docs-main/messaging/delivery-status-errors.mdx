@@ -7,15 +7,15 @@ sidebarTitle: "Troubleshooting delivery errors"
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# Message Delivery Errors & Troubleshooting
+# Message delivery errors and troubleshooting
 
 Get messages through, fast. This guide shows you **what each status means**, **how to fix failures**, and **what to send support** if you need help.
 
 ---
 
-## TL;DR — Your Fastest Path to Fix Messaging Problems
+## TL;DR: your fastest path to fix messaging problems
 
-1. **Open the status badge.** If it’s **Failed**, click/tap to see the error reason.
+1. **Open the status badge.** If it's **Failed**, click/tap to see the error reason.
 2. **Retry smartly.** Click **Resend Message** or send a short, **plain-text** message **without links or media**.
 3. **Check the basics.** Is the number **mobile** and formatted **E.164** (`+15551234567`)?
 4. **Registration matters.** Make sure your line is **A2P 10DLC-registered** (local) or **verified** (toll-free).
@@ -27,12 +27,12 @@ Get messages through, fast. This guide shows you **what each status means**, **h
 
 ---
 
-## What Message Delivery Statuses Mean + What to Do
+## What message delivery statuses mean and what to do
 
 | Status        | What it means                               | What you should do                                                                                                 |
 | ------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **Delivered** | Carrier confirmed delivery.                 | If your contact says “didn’t get your message,” resend a short message **without links or media**.                 |
-| **Sent**      | Handed to carriers; final delivery pending. | Wait for an update. Carriers don’t always reply with a delivery status; if it stays “Sent,” try a short follow-up. |
+| **Delivered** | Carrier confirmed delivery.                 | If your contact says "didn't get your message," resend a short message **without links or media**.                 |
+| **Sent**      | Handed to carriers; final delivery pending. | Wait for an update. Carriers don't always reply with a delivery status. If it stays "Sent," try a short follow-up. |
 | **Queued**    | Throttled to protect deliverability.        | Leave it; the queue clears automatically. Heavy team usage on one line may extend queue time.                      |
 | **Failed**    | Carrier/network rejected delivery.          | Use the **error reason** below → fix → **Resend**.                                                                 |
 
@@ -41,26 +41,26 @@ Get messages through, fast. This guide shows you **what each status means**, **h
 </Note>
 
 <Note>
-  **Twilio BYOC numbers:** Messages sent from external systems (not MessageDesk) using your Twilio number will appear in MessageDesk with a "Sent" status but won't receive delivery status updates. To track delivery status, send messages directly from MessageDesk.
+  **Twilio BYOC numbers:** Messages sent from external systems (not MessageDesk) using your Twilio number appear in MessageDesk with a "Sent" status but don't receive delivery status updates. To track delivery status, send messages directly from MessageDesk.
 </Note>
 
 ---
 
-## Top 3 Reasons Messages Fail + Fixes
+## Top 3 reasons messages fail and fixes
 
 1. **Landline or unreachable number**
    - Signs: **Invalid Number (2)**, **Destination Unreachable (5)**
-   - Fix: Confirm it’s a **mobile** number; correct formatting to **E.164**; request an updated number if needed.
+   - Fix: Confirm it's a **mobile** number, correct formatting to **E.164**, and request an updated number if needed.
 2. **Content filtered as spam / out of campaign scope**
    - Signs: **Anti-spam (4)**, **Invalid Message (3)**, **Invalid Short Link (13)**
-   - Fix: Remove short links, ALL CAPS, and promo buzzwords. Add identity + **“Reply STOP to opt out.”** Use full or branded URLs.
+   - Fix: Remove short links, ALL CAPS, and promo buzzwords. Add identity and **"Reply STOP to opt out."** Use full or branded URLs.
 3. **Throughput or registration limits**
    - Signs: **Carrier Error (7)**, **Rate Limit Exceeded (16)**, **Unregistered 10DLC (14)**, **Pending Registration (17)**, **Campaign Suspended (18)**
    - Fix: Complete **10DLC** or **toll-free verification**. **Schedule** large sends in waves. Contact support if suspended.
 
 ---
 
-## Error Reasons (codes) — Quick Fixes
+## Error reasons (codes): quick fixes
 
 Click a **Failed** badge to see a reason why your message failed to send. Use this table to resolve and resend.
 
@@ -74,7 +74,7 @@ Click a **Failed** badge to see a reason why your message failed to send. Use th
 | **6**  | Insufficient Funds      | Billing/credits issue.      | Update payment; retry after funds post.                                       |
 | **7**  | Carrier Error           | Downstream network issue.   | Retry later; if recurring, contact support.                                   |
 | **8**  | Media Error             | Unsupported/corrupt media.  | Re-attach supported types; keep **≤ 10 MB** each.                             |
-| **10** | Opted Out               | Recipient opted out.        | **Do not** resend; re-opt-in via a compliant path only.                       |
+| **10** | Opted Out               | Recipient opted out.        | **Don't** resend; re-opt-in via a compliant path only.                        |
 | **11** | Blocked                 | Recipient/workspace block.  | Unblock only if compliant and intended.                                       |
 | **12** | Unverified Toll-Free    | Toll-free not verified.     | Complete verification; resend.                                                |
 | **13** | Invalid Short Link      | Generic shortener blocked.  | Use full or branded links.                                                    |
@@ -86,10 +86,10 @@ Click a **Failed** badge to see a reason why your message failed to send. Use th
 
 ---
 
-## Deliverability Checklist
+## Deliverability checklist
 
-- **Identify yourself:** “Hi [Name], it’s [Business] …”
-- **Consent & opt-out:** Include “Reply STOP to opt out.”
+- **Identify yourself:** "Hi [Name], it's [Business]…"
+- **Consent and opt-out:** Include "Reply STOP to opt out."
 - **Keep it short:** One clear purpose per message.
 - **Avoid shorteners:** Use full/branded URLs.
 - **Right-size media:** ≤ **10 MB** each; prefer images over video.
@@ -108,7 +108,7 @@ Click a **Failed** badge to see a reason why your message failed to send. Use th
 
 ---
 
-## What to Send MessageDesk Support for Help
+## What to send MessageDesk support for help
 
 Email [**support@messagedesk.com**](mailto:support@messagedesk.com) with:
 
@@ -129,8 +129,8 @@ Email [**support@messagedesk.com**](mailto:support@messagedesk.com) with:
 - **Media:** Status shows even without text content
 - **Inbound:** Timestamp only (no status)
 
-### MMS & media tips
+### MMS and media tips
 
-- Keep images under ~**1 MB** (hard max **10 MB**)
-- If repeated failures occur, **share a file link** instead of attaching video
-- HEIC/JPG/PNG/GIF/PDF supported; files \> **500 KB** send as links automatically
+- Keep images under ~**1 MB** (hard max **10 MB**).
+- If repeated failures occur, **share a file link** instead of attaching video.
+- HEIC/JPG/PNG/GIF/PDF supported; files \> **500 KB** send as links automatically.
