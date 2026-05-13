@@ -32,6 +32,7 @@
               "get-started/introduction",
               "get-started/sign-up",
               "get-started/join-workspace",
+              "get-started/tenant-management",
               "get-started/install-apps",
               {
                 "group": "Connect phone numbers",
@@ -144,13 +145,6 @@
                   "settings/workspace-settings/data-center",
                   "settings/workspace-settings/developer-tools"
                 ]
-              },
-              {
-                "group": "Account",
-                "pages": [
-                  "settings/account/tenant-management",
-                  "settings/account/trial-terms"
-                ]
               }
             ]
           },
@@ -167,6 +161,7 @@
             "pages": [
               "contact-us",
               "resources/pricing",
+              "resources/trial-terms",
               "resources/support",
               "resources/security-compliance-hipaa",
               "resources/keyboard-shortcuts"
@@ -321,6 +316,14 @@
     {
       "source": "/settings/account/billing-subscriptions",
       "destination": "/settings/workspace-settings/billing-subscriptions"
+    },
+    {
+      "source": "/settings/account/tenant-management",
+      "destination": "/get-started/tenant-management"
+    },
+    {
+      "source": "/settings/account/trial-terms",
+      "destination": "/resources/trial-terms"
     }
   ]
 }
