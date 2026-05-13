@@ -106,6 +106,15 @@
             ]
           },
           {
+            "group": "Search",
+            "icon": "magnifying-glass",
+            "pages": [
+              "search/overview",
+              "search/quick-search",
+              "search/advanced-search"
+            ]
+          },
+          {
             "group": "Settings",
             "icon": "gear",
             "pages": [
