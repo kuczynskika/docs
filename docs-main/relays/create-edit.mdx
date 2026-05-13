@@ -1,15 +1,15 @@
 ---
 title: "Relays: Setup & Technical Guide"
-description: "Build MessageDesk Relays step-by-step—configure triggers, conditions, actions, delays, and active hours. Troubleshooting tips and a complete FAQ included."
+description: "Build MessageDesk Relays step-by-step. Configure triggers, conditions, actions, delays, and active hours. Troubleshooting tips and a complete FAQ included."
 sidebarTitle: "Create & edit"
 og:title: "Create & Edit Relays - MessageDesk Automation Guide"
-og:description: "Create, configure, and troubleshoot Relays—triggers, conditions, actions, delays, active hours, FAQ."
+og:description: "Create, configure, and troubleshoot Relays. Triggers, conditions, actions, delays, active hours, FAQ."
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# How to Create, Edit & Delete Relays
+# How to create, edit, and delete Relays
 
-Build reliable automations with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays.
+Build reliable Relays with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays.
 
 <Note>
   **Permissions required:** By default, only **Admin** users can access Relays. If you don't see the Relays module, ask your workspace admin to grant you **Relay Management** permissions via **Settings → Team Management**. Learn more: [Team Management](/settings/workspace-settings/team-management).
@@ -17,7 +17,7 @@ Build reliable automations with a clear flow: **Trigger → Conditions → Actio
 
 ---
 
-## How to Create or Edit a Relay
+## How to create or edit a Relay
 
 ### 1. Visit the Relays module
 
@@ -59,11 +59,11 @@ Conditions control **where/when** a Relay runs. You can combine multiple conditi
 
 **Available conditions:**
 
-- **Message contains text** — match keywords like `SUPPORT`, `HELP`
-- **My phone number equals** — run only on a specific outbound line
-- **Is anonymous conversation** — no saved contact yet
-- **Is new conversation** — first inbound in a thread
-- **Active hours** — restrict to a daily time window
+- **Message contains text:** match keywords like `SUPPORT`, `HELP`
+- **My phone number equals:** run only on a specific outbound line
+- **Is anonymous conversation:** no saved contact yet
+- **Is new conversation:** first inbound in a thread
+- **Active hours:** restrict to a daily time window
 
 <Tip>
   **Tip:** Turn on **“Trigger outside of business hours”** to invert the time window for after-hours replies.
@@ -75,15 +75,15 @@ Conditions control **where/when** a Relay runs. You can combine multiple conditi
 
 Actions run when the conditions match. You can add **one or many** in the order you want them to execute.
 
-- **Reply to message** — send an SMS/MMS (supports templates, tags, and media)
-- **Assign teammates to the conversation** — pick one or more users
-- **Add labels to the conversation** — apply one or more labels
-- **Remove labels from the conversation** — remove one or more labels
-- **Remove teammates from the conversation** — remove one or more assigned users
-- **Send webhook** — send event data to your webhook endpoint
+- **Reply to message:** send an SMS/MMS (supports templates, tags, and media)
+- **Assign teammates to the conversation:** pick one or more users
+- **Add labels to the conversation:** apply one or more labels
+- **Remove labels from the conversation:** remove one or more labels
+- **Remove teammates from the conversation:** remove one or more assigned users
+- **Send webhook:** send event data to your webhook endpoint
 
 <Tip>
-  **Tip:** You can chain multiple actions together—e.g., **Reply**, **Assign**, and **Label** in a single Relay.
+  **Tip:** You can chain multiple actions together. For example, **Reply**, **Assign**, and **Label** in a single Relay.
 </Tip>
 
 **Delays (optional)**
@@ -108,7 +108,7 @@ Use the **toggle** to turn the Relay **On**. You can pause anytime without losin
 - From the list: toggle **On/Off**
 - From details: use the status toggle at the top
 
-Paused Relays do not evaluate triggers or run actions.
+Paused Relays don't evaluate triggers or run actions.
 
 ### Delete
 
@@ -120,9 +120,9 @@ Open the Relay → **⋯** → **Delete**.
 
 ---
 
-## Starter Relay Templates (Copy & Adapt)
+## Starter Relay templates (copy and adapt)
 
-### Example 1: Delegation & Team Routing Relay
+### Example 1: Delegation and team routing Relay
 
 Use this setup when multiple teammates need to view and reply on behalf of a manager.
 
@@ -183,7 +183,7 @@ The message is labeled by region, keeping everything organized by team and locat
 
 ---
 
-### Example 2: Out-of-Office & Weekend Autoresponder
+### Example 2: Out-of-office and weekend autoresponder
 
 Use this when teammates want to automatically reply during vacations or after hours.
 
@@ -291,7 +291,7 @@ Use this Relay to automatically collect names from new, anonymous conversations.
 
 ### Example 4: Keyword-based autoresponder
 
-Use this Relay to automatically respond when someone texts in a specific keyword — like **SUPPORT**, **JOIN**, or **BOOK**.
+Use this Relay to automatically respond when someone texts in a specific keyword, like **SUPPORT**, **JOIN**, or **BOOK**.
 
 When a contact sends a message containing the word “SUPPORT,” MessageDesk automatically replies with your chosen message. It’s ideal for auto-routing messages or triggering fast replies without manual effort.
 
@@ -314,14 +314,14 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 <Tip>
   **Tips for Success:**
 
-  - Keep keywords **short and memorable** — e.g., `JOIN`, `HELP`, `SUPPORT`.
+  - Keep keywords **short and memorable**. For example, `JOIN`, `HELP`, `SUPPORT`.
   - Use **all caps** for clarity and easy recognition.
   - Create separate keyword relays for each department (e.g., `BOOK` → Sales, `SUPPORT` → Service).
 </Tip>
 
 ---
 
-## Relays Best Practices
+## Relays best practices
 
 - **Start simple.** Test one Relay before scaling across teams.
 - **Name clearly.** Use descriptive titles like `Teammate 1 - Delegation Relay` or `Region X,Y, Z Autoresponder`.
@@ -331,7 +331,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 
 ---
 
-## Technical Notes & Behavior
+## Technical notes and behavior
 
 - **Action order:** Actions execute top-to-bottom in the order you add them.
 - **Delays:** Units include minutes/hours. Use to prevent duplicate “fast follow” replies.
@@ -341,7 +341,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 
 ---
 
-## Frequently Asked Relay Questions
+## Frequently asked Relay questions
 
 **Do Relays respect roles & permissions?**\
 Yes. Assign/Label actions follow your **Roles & Permissions** settings.
@@ -353,7 +353,7 @@ Yes. If conditions match for more than one Relay, each eligible Relay can run.
 Yes. Keep each file **≤ 10 MB** (files **\> 500 KB** are sent as links). See [**Media**](/messaging/media).
 
 **Can I pause without losing my setup?**\
-Yes—toggle **Off** to pause. Toggle **On** to resume.
+Yes. Toggle **Off** to pause. Toggle **On** to resume.
 
 **How do I avoid duplicate automated replies?**\
 Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new conversation”).

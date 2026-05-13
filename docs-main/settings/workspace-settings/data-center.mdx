@@ -11,8 +11,8 @@ sidebarTitle: "Data center"
 
 The **Data Center** is your hub for managing workspace data in MessageDesk. It has two tabs:
 
-- **Import.** Upload CSVs of contacts and historical messages, map fields, resolve duplicates, and monitor progress.
-- **Message History.** Search, filter, and export every message sent or received in your workspace.
+- **Import:** upload CSVs of contacts and historical messages, map fields, resolve duplicates, and monitor progress.
+- **Message History:** search, filter, and export every message sent or received in your workspace.
 
 <Tip>
   Looking to **view or export existing messages**? Jump to [Message History](#message-history). To export a **single conversation** directly from the Inbox toolbar, see [Export a conversation](/inbox/export-conversation).
@@ -25,14 +25,14 @@ The **Data Center** is your hub for managing workspace data in MessageDesk. It h
 Go to **Account → Settings → Data Center** (under **Workspace Settings**), then choose the **Import** or **Message History** tab.
 
 <Note>
-  Don't see Data Center? Your role may not include access. Ask an Admin or Manager to adjust your permissions.
+  **Don't see Data Center?** Your role may not include access. Ask an Admin or Manager to adjust your permissions.
 </Note>
 
 ![Data Center Import Pn](/images/data-center-import.png)
 
 ---
 
-## Import contacts
+## How to import contacts
 
 Build your contact list quickly by uploading a **CSV** and mapping it to MessageDesk fields.
 
@@ -48,23 +48,23 @@ Build your contact list quickly by uploading a **CSV** and mapping it to Message
 - Adjust mapping manually as needed.
 - You can map [custom fields](/settings/workspace-settings/custom-fields). Make sure the CSV data type matches the field type.
 
-### Review duplicates & errors
+### Review duplicates and errors
 
 - **Duplicates** (by **email** or **phone**) are **updated** with the values in the import. Only mapped columns with a value are updated. Empty cells leave existing fields unchanged.
-- **Invalid data** (bad phone/email format) is reported so you can fix and re-upload.
+- **Invalid data** (e.g., bad phone/email format) is reported so you can fix and re-upload.
 - Problem rows are **skipped** during processing.
 
 ### Monitor progress
 
-After you start the import, you'll see the real-time status. When the import finishes, a summary shows total **processed**, **imported**, **skipped**, and any **error reasons**.
+After you start the import, you'll see the real-time status. When complete, a summary shows total **processed**, **imported**, **skipped**, and any **error reasons**.
 
 <Note>
-  Need a walkthrough? See [Create & Import Contacts](/contacts/create-import) for step-by-step guidance.
+  **Note:** Need a walkthrough? See [**Create and Import Contacts**](/contacts/create-import) for step-by-step guidance.
 </Note>
 
 ---
 
-## Import messages
+## How to import messages
 
 Preserve conversation context by importing **past SMS** from any platform or service into MessageDesk.
 
@@ -97,13 +97,13 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 ### How message import works
 
-- **Automatic conversation creation.** If a conversation doesn't exist for a row, MessageDesk creates it.
-- **Existing conversations.** Rows match into existing threads when possible.
-- **Channel requirement.** Messages can only import into **outbound channels that already exist** in your workspace.
+- **Automatic conversation creation:** If a conversation doesn't exist for a row, MessageDesk creates it.
+- **Existing conversations:** Rows match into existing threads when possible.
+- **Channel requirement:** Messages can only be imported into **outbound channels that already exist** in your workspace.
 
 ---
 
-## File requirements & limits
+## File requirements and limits
 
 **Format**
 
@@ -114,8 +114,8 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 **Required data**
 
-- For **contacts.** At least one method: **email** _or_ **phone**.
-- For **messages.** Required fields typically include **timestamp**, **direction** (inbound/outbound), **phone number(s)**, **message text**, and **channel/line identifier**.
+- For **contacts**: At least one method: **email** _or_ **phone**
+- For **messages**: Required fields typically include **timestamp**, **direction** (inbound/outbound), **phone number(s)**, **message text**, and **channel/line identifier**
 
 **Validation**
 
@@ -126,19 +126,19 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 **Limits**
 
-- **Max rows per file:** **5,000**.
-- **Max file size:** **10 MB**.
-- **Platform:** **Web only**. Imports aren't supported on mobile or desktop apps.
+- **Max rows per file:** **5,000**
+- **Max file size:** **10 MB**
+- **Platform:** **Web only** (imports aren't supported on mobile or desktop apps)
 
-If a limit is exceeded, you'll see errors like "CSV file is too large" or "Imports are only supported on web."
+If a limit is exceeded, you'll see errors like **"CSV file is too large"** or **"Imports are only supported on web."**
 
 ---
 
 ## What gets imported
 
-- **Contacts**.
-- **[Custom fields](/settings/workspace-settings/custom-fields)** (when mapped).
-- **Messages** (text content only. No media or internal comments).
+- **Contacts**
+- **[Custom fields](/settings/workspace-settings/custom-fields)** (when mapped)
+- **Messages** (text content only. No media or internal comments.)
 
 <Info>
   **Coming soon.** More workflows (labels, opt-outs). Watch the Data Center for new options.
@@ -146,7 +146,7 @@ If a limit is exceeded, you'll see errors like "CSV file is too large" or "Impor
 
 ---
 
-## FAQ: data import
+## Frequently asked data import questions
 
 ### What file types can I upload?
 
@@ -154,11 +154,11 @@ If a limit is exceeded, you'll see errors like "CSV file is too large" or "Impor
 
 ### Do contacts need both email and phone?
 
-No. Each row must include **at least one**: **email** _or_ **phone** (you can include both).
+No. Each row must include **at least one**: **email** or **phone** (you can include both).
 
 ### How are duplicates handled on contact import?
 
-MessageDesk checks **email** and **phone**. When a row matches an existing contact, that contact is **updated** with the values from the import. Updates only apply to columns you mapped, and only when the mapped column has a value. Empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address) and custom fields.
+We check **email** and **phone**. When a row matches an existing contact, that contact is **updated** with the values from the import. Updates only apply to columns you mapped, and only when the mapped column has a value. Empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, etc.) and custom fields.
 
 ### Why did some rows fail?
 
@@ -186,13 +186,13 @@ Go to **Settings → Data Center → Message History**.
 
 Narrow the list using the filter controls at the top of the tab. Available filters:
 
-- **Date range.** Limit results to a specific window.
-- **Direction.** Inbound or outbound.
-- **Channel/line.** The phone number or channel the message was sent on.
-- **Contact.** Messages tied to a specific contact.
-- **Label.** Conversations carrying a given [label](/inbox/labels).
-- **User/agent.** Messages sent by a specific teammate.
-- **Status.** Delivery state (delivered, failed).
+- **Date range:** limit results to a specific window
+- **Direction:** inbound or outbound
+- **Channel/line:** the phone number or channel the message was sent on
+- **Contact:** messages tied to a specific contact
+- **Label:** conversations carrying a given [label](/inbox/labels)
+- **User/agent:** messages sent by a specific teammate
+- **Status:** delivery state (e.g., delivered, failed)
 
 ### Search within results
 
