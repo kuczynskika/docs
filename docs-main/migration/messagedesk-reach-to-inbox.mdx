@@ -2,9 +2,9 @@
 title: "From MessageDesk Reach to Inbox"
 description: "Migrate from MessageDesk Reach to Inbox with a step-by-step plan. Move contacts, history, and templates with minimal downtime and full team confidence."
 sidebarTitle: "Reach to Inbox"
-"og:title": "Migrate from MessageDesk Reach to Inbox"
-"og:description": "A step-by-step guide to help your team switch to Inbox by MessageDesk with confidence and minimal downtime."
-"og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+og:title: "Migrate from MessageDesk Reach to Inbox"
+og:description: "A step-by-step guide to help your team switch to Inbox by MessageDesk with confidence and minimal downtime."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # **Why migrate from MessageDesk Reach to Inbox by MessageDesk?**
@@ -22,115 +22,211 @@ Migrating to Inbox by MessageDesk gives your team a messaging tool built for col
 
 ## **Migration time at a glance**
 
-- **Total time:** ~15–30 minutes to prepare. Number migration is scheduled during business hours (see Step 5).
+- **Total time:** ~5-10 minutes.
 - **Who's involved:** An account owner/admin and any teammates who will use Inbox.
-- **What moves:** Your existing phone number (after you complete the setup steps). Contacts can be exported/imported.
+- **What moves:** Your existing phone number (after you complete the setup steps).
 
 ### **What you'll need to migrate your account**
 
 - The email address you want to use for your Inbox login.
 - A list of teammates to invite (names and emails).
-- A preferred **day and time (Mon–Fri, 9 am–5 pm)** for number migration.
 
 ## How to migrate your MessageDesk Reach account
 
-### **1. Create your Inbox account**
+### 1. Log in to your MessageDesk Reach account
 
-1. Visit [**https://inbox.messagedesk.com/#/create-account**](https://inbox.messagedesk.com/#/create-account)
-2. Create your account (or sign in if one has been created for you).
+Visit [app.messagedesk.com](http://app.messagedesk.com) and log in to your existing account.
+
+<Frame>
+  ![Messagedesk Reach Login](/images/messagedesk-reach-login.png)
+</Frame>
+
+### 2. Visit Settings → Migrate to Inbox by MessageDesk
+
+You may need to scroll in your settings list to view this option.
+
+<Frame>
+  ![Migration Settings Migrate](/images/migration-settings-migrate.png)
+</Frame>
+
+### 3. Click Connect with Inbox by MessageDesk
+
+This begins the account linking process.
+
+<Frame>
+  ![Migration Connect Account](/images/migration-connect-account.png)
+</Frame>
+
+### 4. **Create your Inbox account and connect it to your Reach account**
+
+Follow the link to visit **[https://inbox.messagedesk.com/#/create-account](https://inbox.messagedesk.com/#/create-account).** Here, you'll create your Inbox by MessageDesk account (or sign in to your existing Inbox account if one already exists).
 
 <Warning>
-  Use your email already associated with your MessageDesk Reach account
+  **Important:** Be sure to create your new Inbox account using the **same admin email** already associated with your MessageDesk Reach account.
 </Warning>
 
-### **2. Invite your team**
+<Frame>
+  ![Migration Connect Account Email](/images/migration-connect-account-email.png)
+</Frame>
 
-1. Log in at [**inbox.messagedesk.com**](http://inbox.messagedesk.com).
-2. In the left-hand menu, click **Team**.
-3. Select **Invite Teammate** and send invites to everyone who will use Inbox by MessageDesk.
+### 5. Migrate your data
 
-**Why this matters:** We'll only move your number **after** your team is in place. That way, messages are immediately visible to the right people when your number goes live in the Inbox.
+Click 'Start Data Migration' to begin moving the following data types to your new Inbox by MessageDesk account:
 
-### **3. Export contacts from your Reach workspace**
-
-If you'd like to bring existing contacts with you:
-
-1. Sign in to your old account at [**app.messagedesk.com**](http://app.messagedesk.com).
-2. Export your contacts (.CSV is great).
-
-![V2 Migration 1 Gi](/images/V2-migration-1.gif)
+- **Contacts** (including addresses and email information)
+- **Messages** (including media attachments)
+- **Message templates**
+- **Custom fields**
+- **Groups** (which become [labels ](/settings/workspace-settings/labels)in Inbox by MessageDesk) 
+- **Opt-out lists** (contacts who have opted out of communication)
 
 <Note>
-  **Tip:** Take a moment to tidy your list. Remove duplicates and outdated entries to keep Inbox by MessageDesk clean from day one.
+  **Note:** Every data type maintains its original structure and metadata
 </Note>
 
-### **4. Import contacts into Inbox by MessageDesk**
+<Frame>
+  ![Migration Data](/images/migration-data.png)
+</Frame>
 
-1. Log in at [**inbox.messagedesk.com**](http://inbox.messagedesk.com).
-2. Go to **Contacts** and choose **Import Contacts**.
-3. Upload your CSV and map the fields (e.g., name, number, email).
+### 6. Begin Data Migration
 
-![V2 Migration 2 Gi](/images/V2-migration-2.gif)
+Click 'Start Migration' to begin your data migration.
 
-<Info>
-  **Need help?** If you're unsure how your CSV should be formatted, reply to your migration email and attach the file. Our team can review and advise.
-</Info>
+<Note>
+  **Note:** Data migration runs in the background and does not affect your current MessageDesk Reach account. 
+</Note>
 
-### **5. Schedule your phone number migration**
+<Frame>
+  ![Migration Data Start](/images/migration-data-start.png)
+</Frame>
 
-Once your team is set up, fill out this form with a preferred time to move your number.
+### 7. Monitor your data migration
 
-[Schedule Phone Number Migration](https://messagedesk.typeform.com/to/GGtTW64l)
+You will receive various email notifications from [no-reply@messagedesk.com](mailto:no-reply@messagedesk.com) for each migrated data type. These will notify you when your migration begins and concludes. 
 
-- **Hours:** Monday–Friday, **9:00 am–5:00 pm** PST
-- **How to schedule:** Fill out the form with your preferred **day/time** and include your email and the number to move.
-- **What to expect:** We'll confirm the window and coordinate so there's little to no downtime. The switch typically takes place inside the scheduled window.
+<Note>
+  Each migration email will also include any notes on failures which you can pass to our dev team for investigation.
+</Note>
 
-**Important:** We'll only move your number **after Steps 1–4 are complete.**
+<Frame>
+  ![Migration Email Notifications](/images/migration-email-notifications.png)
+</Frame>
 
-### **6. (Optional) Download the mobile companion app for iOS or Android**
+### 8. Migrate your phone number
 
-Stay connected on the go by installing the MessageDesk app on your preferred devices.
+Next, you'll need to migrate your phone number from MessageDesk Reach to Inbox by MessageDesk to start sending and receiving messages.
 
-https://www.messagedesk.com/mobile 
+<Warning>
+  #### **Important Information**
 
-## **What happens after the switch**
+  - Phone migration is instant.
+  - The your MessageDesk Reach app will no longer send or receive texts. 
+  - All text messages will begin running through Inbox by MessageDesk.
+  - You can always move your number back from Inbox by MessageDesk if you choose but you must contact [**support@messagedesk.com**](mailto:support@messagedesk.com) to do so.
+</Warning>
 
-- **Messages to your number** will begin routing into **Inbox by MessageDesk**.
-- Your team can now start new conversations, assign conversations, and use templates.
-- We'll be on standby during the migration window to make sure everything looks good.
+<Frame>
+  ![Migration Phone Number](/images/migration-phone-number.png)
+</Frame>
 
-## **FAQs**
+<Warning>
+  **Note:** Only account admins can migrate phone numers from MessageDesk Reach accounts to Inbox by MessageDesk accounts.
 
-<AccordionGroup>
-  <Accordion title="Do I lose my MessageDesk Reach account?">
-    No, your MessageDesk Reach account isn't deleted, and data can be moved to Inbox by MessageDesk multiple times. Your original account stays accessible and functional.
-  </Accordion>
-  <Accordion title="Can I test Inbox by MessageDesk before moving my number over?">
-    Yes. If you want to use Inbox by MessageDesk before moving your number, you can, and it's highly recommended. Moving your number to Inbox by MessageDesk is instant, but moving the number back to Reach requires messaging support.
-  </Accordion>
-  <Accordion title="What data is migrated during the migration process?">
-    The migration transfers your contacts (including addresses and email information), messages (including media attachments), message templates, custom fields, groups (which become labels), and opt-out lists. Every record keeps its original structure and metadata.
-  </Accordion>
-  <Accordion title="How long does the migration process take?">
-    It depends on how much data you have. Data migration runs in the background, and you'll get a notification when it's done. Phone number migration is instant once initiated.
-  </Accordion>
-  <Accordion title="Can I use both my MessageDesk Reach and Inbox by MessageDesk accounts at the same time?">
-    Yes. Use both platforms at the same time until you migrate your phone number. Once your phone number is migrated, every text message goes through Inbox by MessageDesk, but your Reach account stays accessible for viewing historical data.
-  </Accordion>
-  <Accordion title="What happens if I need to move my phone number back to MessageDesk Reach?">
-    You can always move your phone number back from Inbox by MessageDesk if you choose. Moving the number back requires contacting support.
-  </Accordion>
-  <Accordion title="Will there be any downtime during migration?">
-    No. There's no downtime during the data migration process. Your MessageDesk Reach account stays fully functional. Phone number migration happens instantly.
-  </Accordion>
-  <Accordion title="What if something goes wrong during migration?">
-    Contact support immediately. Your data stays safe in your MessageDesk Reach account, and you can retry the migration. Data migration can run multiple times if needed.
-  </Accordion>
-  <Accordion title="Do I need to do anything after the migration is complete?">
-    Once data migration completes, verify that your contacts, messages, and templates transferred correctly in Inbox by MessageDesk. When you're satisfied, migrate your phone number whenever you're ready.
-  </Accordion>
-  <Accordion title="Will my team members and permissions be migrated?">
-    No. Team members and user permissions are managed separately in Inbox by MessageDesk. Invite your team to your new Inbox by MessageDesk workspace and configure their permissions there.
-  </Accordion>
-</AccordionGroup>
+  <Frame>
+    ![Migration Admin Only Number Migration](/images/migration-admin-only-number-migration.png)
+  </Frame>
+</Warning>
+
+### 9. Confirm your phone number migration is complete
+
+You can verify your phone number migration's success from your MessageDesk Reach account and by logging in to your Inbox by MessageDesk account.
+
+#### Migration complete in MessageDesk Reach
+
+<Frame>
+  ![Migration Phone Complete](/images/migration-phone-complete.png)
+</Frame>
+
+#### Migration complete in Inbox by MessageDesk
+
+<Frame>
+  ![Migration Inbox Migration Complete](/images/migration-inbox-migration-complete.png)
+</Frame>
+
+### **10. Invite your team and get familiar with your new Inbox**
+
+<Columns cols={2}>
+  <Column>
+    <Card title="Inbox by MessageDesk Mobile Apps" type="info" href="/get-started/install-apps" cta="Learn more">
+      Learn how to download and install mobile apps and desktop extensions.
+    </Card>
+  </Column>
+  <Column>
+    <Card title="Invite & Manage Team Members" type="info" href="/settings/workspace-settings/team-management" cta="Learn more">
+      Learn how to bring teammates into your inbox with roles and permissions.
+    </Card>
+  </Column>
+</Columns>
+
+<Columns cols={2}>
+  <Column>
+    <Card title="Messaging Overview" type="info" href="/messaging/overview" cta="Learn more">
+      Learn the ins and outs of sending Messages in Inbox by MessageDesk.
+    </Card>
+  </Column>
+  <Column>
+    <Card title="Inbox Overview" type="info" href="/inbox/overview" cta="Learn more">
+      Learn how to manage conversations in Inbox by MessageDesk.
+    </Card>
+  </Column>
+</Columns>
+
+## Frequently Asked Migration Questions
+
+### How many times can I run a data migration?
+
+Once every 24 hours
+
+### Do I need to be an admin to run a data migration
+
+No, users with manager-level permissions can migrate data, but only admins can migrate phone numbers. Operators are unable to migrate data or numbers.
+
+### Do I lose my MessageDesk Reach account?
+
+No, your MessageDesk Reach account isn't deleted, and data can be moved to Inbox by MessageDesk multiple times. Your original account stays accessible and functional.
+
+### Can I test Inbox by MessageDesk before moving my number over?
+
+Yes. If you want to use Inbox by MessageDesk before moving your number, you can, and it's highly recommended. Moving your number to Inbox by MessageDesk is instant, but moving the number back to Reach requires messaging support.
+
+### What data is migrated during the migration process?
+
+The migration transfers your contacts (including addresses and email information), messages (including media attachments), message templates, custom fields, groups (which become labels), and opt-out lists. Every record keeps its original structure and metadata.
+
+### How long does the migration process take?
+
+It depends on how much data you have. Data migration runs in the background, and you'll get a notification when it's done. Phone number migration is instant once initiated.
+
+### Can I use both my MessageDesk Reach and Inbox by MessageDesk accounts at the same time?
+
+Yes. Use both platforms at the same time until you migrate your phone number. Once your phone number is migrated, every text message goes through Inbox by MessageDesk, but your Reach account stays accessible for viewing historical data.
+
+### What happens if I need to move my phone number back to MessageDesk Reach?
+
+You can always move your phone number back from Inbox by MessageDesk if you choose. Moving the number back requires contacting support.
+
+### Will there be any downtime during migration?
+
+No. There's no downtime during the data migration process. Your MessageDesk Reach account stays fully functional. Phone number migration happens instantly.
+
+### What if something goes wrong during migration?
+
+Contact [support@messagedesk.com](mailto:support@messagedesk.com) immediately. Your data stays safe in your MessageDesk Reach account, and you can retry the migration. Data migration can run multiple times if needed.
+
+### Do I need to do anything after the migration is complete?
+
+Once data migration completes, verify that your contacts, messages, and templates transferred correctly in Inbox by MessageDesk. When you're satisfied, migrate your phone number whenever you're ready.
+
+### Will my team members and permissions be migrated?
+
+No. Team members and user permissions are managed separately in Inbox by MessageDesk. Invite your team to your new Inbox by MessageDesk workspace and configure their permissions there.
