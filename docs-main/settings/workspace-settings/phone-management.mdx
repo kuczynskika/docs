@@ -92,21 +92,35 @@ To move your phone number to a different provider:
 
 ---
 
-## Call Forwarding
+## Call forwarding
 
-{/* TODO (human review): this section has only a screenshot. Add a one-line description of what call forwarding does and how to enable it. */}
+Route inbound calls to any phone number you choose, so voice calls to your MessageDesk lines reach the right person while texts stay in the Inbox.
+
+1. Go to **Settings → Workspace Settings → Phone Management**.
+2. Click the phone number you want to configure to open its **Phone Profile** page.
+3. Enter a **Call Forwarding number** and save.
+
+Inbound calls to that line will now forward to the destination number you set.
 
 <Frame>
   ![Settings Phone Management Call Forwarding](/images/settings-phone-management-call-forwarding.png)
 </Frame>
 
+<Note>
+  Call forwarding is currently available on **Bandwidth** and **Telgorithm** phone lines. **Twilio** call forwarding is temporarily disabled while additional configuration is finalized and will be enabled in an upcoming release.
+</Note>
+
 ### Call logs
+
+Each phone number's **Phone Profile** page includes a **Call Logs** table showing every inbound call that was forwarded, along with the forwarding details for that call.
 
 <Frame>
   ![Settings Phone Management Call Logs](/images/settings-phone-management-call-logs.png)
 </Frame>
 
-### Call forwarding events/notes in message threads
+### Call forwarding events in message threads
+
+When an inbound call is forwarded, a **Call Forwarded** event is added to the matching conversation thread in the Inbox, so your team has full context on voice activity alongside the SMS history.
 
 <Frame>
   ![Call Forwarding Note](/images/call-forwarding-note.png)
