@@ -17,7 +17,7 @@ Use the **Send Webhook** action to send MessageDesk events directly to your webh
 
 ---
 
-## Setting Up Webhooks
+## Setting up webhooks
 
 ### 1. Configure your webhook endpoint
 
@@ -44,7 +44,7 @@ The webhook will fire whenever the Relay conditions are met.
 
 ---
 
-## Webhook Payloads
+## Webhook payloads
 
 All webhook payloads from MessageDesk are delivered as **Event** objects. Each Event contains the data relevant to the specific trigger.
 
@@ -86,7 +86,7 @@ When a message is received, the webhook payload includes a `Message` object:
 
 ---
 
-## Validating Data Integrity
+## Validating data integrity
 
 Your webhook URL is publicly accessible, so you should treat all incoming requests as untrusted. Each webhook request sent by MessageDesk includes an `X-MessageDesk-Signature` header.
 
@@ -123,7 +123,7 @@ function validateMessageDeskSignature(headers, body) {
 
 ---
 
-## Use Cases
+## Use cases
 
 - **CRM integration:** Sync new messages to your CRM automatically
 - **Custom notifications:** Send alerts to Slack, Discord, or other platforms
@@ -133,7 +133,7 @@ function validateMessageDeskSignature(headers, body) {
 
 ---
 
-## Best Practices
+## Best practices
 
 - **Validate all requests:** Always verify the `X-MessageDesk-Signature` header
 - **Handle retries gracefully:** Implement idempotency to handle duplicate webhook deliveries

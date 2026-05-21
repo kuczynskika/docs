@@ -107,12 +107,12 @@ Inbound calls to that line will now forward to the destination number you set.
 </Frame>
 
 <Note>
-  Call forwarding is currently available on **Bandwidth** and **Telgorithm** phone lines. **Twilio** call forwarding is temporarily disabled while additional configuration is finalized and will be enabled in an upcoming release.
+  Call forwarding currently works on **Bandwidth** and **Telgorithm** phone lines. **Twilio** call forwarding is temporarily off while we finalize additional configuration, and we'll re-enable it in an upcoming release.
 </Note>
 
 ### Call logs
 
-Each phone number's **Phone Profile** page includes a **Call Logs** table showing every inbound call that was forwarded, along with the forwarding details for that call.
+Each phone number's **Phone Profile** page includes a **Call Logs** table. It lists every inbound call MessageDesk forwarded, along with the forwarding details for that call.
 
 <Frame>
   ![Settings Phone Management Call Logs](/images/settings-phone-management-call-logs.png)
@@ -120,7 +120,7 @@ Each phone number's **Phone Profile** page includes a **Call Logs** table showin
 
 ### Call forwarding events in message threads
 
-When an inbound call is forwarded, a **Call Forwarded** event is added to the matching conversation thread in the Inbox, so your team has full context on voice activity alongside the SMS history.
+When MessageDesk forwards an inbound call, it adds a **Call Forwarded** event to the matching conversation thread in the Inbox. Your team gets full context on voice activity alongside the SMS history.
 
 <Frame>
   ![Call Forwarding Note](/images/call-forwarding-note.png)
