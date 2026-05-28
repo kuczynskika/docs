@@ -67,7 +67,23 @@ MessageDesk sends notifications for events including:
   On iOS, fine-tune MessageDesk alerts in **Settings → Notifications → MessageDesk** (banner style, sounds, badges, lock screen, and so on).
 </Tip>
 
+<Note>
+  Mobile push notifications include **sound and vibration** when a new message arrives. These are controlled by your device's notification settings, not by MessageDesk. Manage them in:
+
+  - **iOS:** Settings → Notifications → MessageDesk
+  - **Android:** Settings → Apps → MessageDesk → Notifications
+</Note>
+
 ![Notifications iOS Allow](/images/notifications-ios-allow.png)
+
+### App icon badge count
+
+The number on the MessageDesk app icon on your home screen reflects your **total unread conversations** in the workspace.
+
+- The badge matches the unread count shown next to **All Conversations** in the side nav and on the **Inbox** icon in the bottom nav.
+- The badge only appears if notifications are enabled for the MessageDesk app at the device level.
+- The badge shows the **total** unread conversations you have access to in the workspace. It is **not** filtered by your Notification Preference setting. For example, if you're set to "Only notify me about conversations assigned to me," the badge still shows the full unread conversation count.
+- The badge counts **unread conversations**, not unread messages. Receiving multiple messages from the same contact in an already-unread conversation does not increase the badge.
 
 ---
 
@@ -136,6 +152,7 @@ MessageDesk sends notifications for events including:
 
 **Mobile push is inconsistent.**
 
+- Android push notifications are now sent at **high priority** for faster, more reliable delivery. If you're still seeing delays, the steps below still apply.
 - Make sure Background App Refresh (iOS) or unrestricted battery (Android) is on for MessageDesk.
 - Log out and back in to refresh the device token.
 - On cellular networks, push notifications may be delayed when signal strength is poor. That's a device/carrier limitation, not a MessageDesk issue.
@@ -155,5 +172,8 @@ If you turn on multiple channels, you may get duplicates (email + mobile). Fine-
 
 **Do closed conversations notify me?**\
 Notifications follow your personal rule ("Assigned to me," for instance). If a closed thread reopens and you're assigned, you may get alerts again.
+
+**What does the number on the app icon mean?**\
+It's your total **unread conversations** across the workspace, the same count shown next to **All Conversations** in the side nav and on the **Inbox** icon in the bottom nav. It only appears if notifications are enabled for the MessageDesk app at the device level, and it's not filtered by your Notification Preference setting.
 
 ---
