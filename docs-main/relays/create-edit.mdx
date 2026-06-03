@@ -185,7 +185,7 @@ The Relay also labels the message by region, keeping everything organized by tea
 
 ### Relays and conversation status
 
-When a Relay sends an outbound message (for example, an after-hours or out-of-office auto-reply), MessageDesk updates the conversation's status the same way it would for a message sent by a teammate.
+When a Relay sends an outbound message, MessageDesk updates the conversation's status the same way it would for a teammate's reply. This applies to after-hours auto-replies, out-of-office replies, and any other Relay action that sends a message.
 
 | Event | Resulting status |
 | --- | --- |
@@ -195,10 +195,10 @@ When a Relay sends an outbound message (for example, an after-hours or out-of-of
 | A teammate closes the conversation | **Closed** |
 
 <Note>
-  **Auto-replies do not mark a conversation as Read.** A Relay reply moves the conversation out of the **Unread** filter and into **Replied**, but the conversation is only marked **Read** when a teammate actually opens it. This means after-hours threads still surface for human review the next morning, even though the customer already got an automated acknowledgement.
+  **Auto-replies don't mark a conversation as Read.** A Relay reply moves the conversation out of the **Unread** filter and into **Replied**. The conversation is only marked **Read** when a teammate opens it. After-hours threads still surface for human review the next morning, even though the customer already got an automated acknowledgement.
 </Note>
 
-This behavior is the same for every Relay action that sends a message (after-hours auto-reply, keyword auto-reply, anonymous-contact first-touch, etc.).
+This behavior applies to every Relay action that sends a message: after-hours auto-reply, keyword auto-reply, anonymous-contact first-touch, and so on.
 
 ---
 
@@ -378,7 +378,7 @@ Yes. Toggle **Off** to pause. Toggle **On** to resume.
 Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new conversation”).
 
 **Does a Relay auto-reply mark the conversation as Read?**\
-No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it is **not** marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
+No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it isn't marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
 
 ---
 

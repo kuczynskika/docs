@@ -30,7 +30,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 **Why this works:** Inverting the Active hours window means the Relay only fires when an inbound message lands **outside** your business hours, so customers always get an immediate acknowledgement. The STOP language keeps you compliant with carrier opt-out requirements.
 
 <Note>
-  **Auto-replies do not mark a conversation as Read.** When this Relay sends its after-hours reply, the conversation moves to **Replied** status (so it leaves the Unread filter), but it is **not** marked as Read. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status) for details.
+  **Auto-replies don't mark a conversation as Read.** When this Relay sends its after-hours reply, the conversation moves to **Replied** status and leaves the Unread filter. It isn't marked Read until a teammate opens it in the Inbox. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status) for details.
 </Note>
 
 <Tip>
