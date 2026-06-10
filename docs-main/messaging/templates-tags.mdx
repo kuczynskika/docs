@@ -145,6 +145,13 @@ You can insert tags in any message, template or one-off.
 - `{{ WorkspaceEmail }}` – your workspace’s primary email
 - `{{ WorkspacePhone }}` – your workspace’s primary phone
 
+**Custom fields**
+
+Every [custom field](/settings/workspace-settings/custom-fields) on a contact is also available as a personalization tag (for example, `{{ Region }}`, `{{ AccountType }}`, `{{ RenewalMonth }}`). Custom field tags show up in the `#` menu alongside the built-in tags.
+
+- Tags update automatically when you add, rename, or delete a custom field in **Workspace Settings → Custom Fields**.
+- Set a [fallback](#set-a-tag-fallback-important) so the message still reads cleanly when a contact is missing a value.
+
 <Note>
   **Note:** Tags resolve at send time. In broadcasts, each recipient gets their own personalized version.
 </Note>
@@ -165,6 +172,10 @@ A fallback is the default text used **when a tag has no data**. For example, whe
 1. Insert a tag via the **#** icon.
 2. Click on the tag to add a **Fallback** value for that tag (e.g., “there” for first names).
 3. Save or send.
+
+<Note>
+  Fallbacks work for **custom field tags** too. Set a fallback on any custom field tag so messages stay readable when a contact doesn't have that value filled in.
+</Note>
 
 **Example with fallbacks**
 
@@ -198,11 +209,11 @@ A fallback is the default text used **when a tag has no data**. For example, whe
 
 <AccordionGroup>
   <Accordion title="What other kinds of info can I use with tags?">
-    Right now, you can use the **preset tags** listed above.
+    You can use the **preset tags** listed above plus any **custom field** you've created on a contact.
   </Accordion>
 
   <Accordion title="Do tags work with custom fields saved on a contact?">
-    Not yet. **Custom fields as tags** are planned for a future update. You can manage your custom fields in [**Custom Fields settings**](/settings/workspace-settings/custom-fields).
+    Yes. Every custom field on a contact is available as a personalization tag in the `#` menu (for example, `{{ Region }}` or `{{ AccountType }}`). Set a **fallback** so the message still reads cleanly when a contact is missing that value. Manage your fields in [**Custom Fields settings**](/settings/workspace-settings/custom-fields).
   </Accordion>
 
   <Accordion title="Where do templates and tags work?">
