@@ -2,9 +2,9 @@
 title: "Import, Export & Search Message History"
 description: "Import contacts and historical SMS messages, then search, filter, and export your full MessageDesk message history from the Data Center."
 sidebarTitle: "Data Center"
-"og:title": "Data Center - Import & Message History"
-"og:description": "Import contacts and historical messages, and search, filter, and export your full message history from the Data Center."
-"og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+og:title: "Data Center - Import & Message History"
+og:description: "Import contacts and historical messages, and search, filter, and export your full message history from the Data Center."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # Data Center
@@ -28,7 +28,9 @@ Go to **Account → Settings → Data Center** (under **Workspace Settings**), t
   **Don't see Data Center?** Your role may not include access. Ask an Admin or Manager to adjust your permissions.
 </Note>
 
-![Data Center Import Pn](/images/data-center-import.png)
+<Frame>
+  ![Data Center 1](/images/data-center-1.png)
+</Frame>
 
 ---
 
@@ -41,6 +43,10 @@ Build your contact list quickly by uploading a **CSV** and mapping it to Message
 1. Open **Settings → Data Center**.
 2. Click **Start Import**.
 3. Choose your **.csv** file and upload.
+
+<Frame>
+  ![Import Contacts](/images/import-contacts.png)
+</Frame>
 
 ### Map your columns
 
@@ -73,6 +79,10 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 1. Open **Settings → Data Center**.
 2. Click **Start Import**.
 3. Upload your **.csv** file.
+
+<Frame>
+  ![Import Messages](/images/import-messages.png)
+</Frame>
 
 ### Map your data
 
@@ -137,7 +147,7 @@ If a limit is exceeded, you'll see errors like **"CSV file is too large"** or **
 ## What gets imported
 
 - **Contacts**
-- **[Custom fields](/settings/workspace-settings/custom-fields)** (when mapped)
+- [**Custom fields**](/settings/workspace-settings/custom-fields) (when mapped)
 - **Messages** (text content only. No media or internal comments.)
 
 <Info>
@@ -146,7 +156,63 @@ If a limit is exceeded, you'll see errors like **"CSV file is too large"** or **
 
 ---
 
-## Frequently asked data import questions
+## Message History
+
+The **Message History** tab is a searchable, filterable archive of every message in your workspace. Use it to audit conversations, build reports, or export filtered slices to **CSV** or **PDF**.
+
+### Access message history
+
+Go to **Settings → Data Center → Message History**.
+
+<Frame>
+  ![Message History](/images/message-history.png)
+</Frame>
+
+### Filter your messages
+
+Narrow the list using the filter controls at the top of the tab. Available filters:
+
+- **Date range:** limit results to a specific window
+- **Direction:** inbound or outbound
+- **Channel/line:** the phone number or channel the message was sent on
+- **Contact:** messages tied to a specific contact
+- **Label:** conversations carrying a given [label](/inbox/labels)
+- **User/agent:** messages sent by a specific teammate
+- **Status:** delivery state (e.g., delivered, failed)
+
+### Search within results
+
+Use the **search bar** to run a free-text search across the messages currently shown. Search runs **on top of your active filters**, so you can drill into a filtered slice rather than the entire archive.
+
+### Export your text message history to CSV or PDF
+
+<Frame>
+  ![Export Csv Pdf](/images/export-csv-pdf.png)
+</Frame>
+
+Click **Export** to download a CSV of the current view. Use CSV exports for **data analysis, reporting, and bulk archiving**. For a shareable, human-readable record, use **PDF** instead. See the next section.
+
+<Warning>
+  Exports include **only the messages that match your active filters and search**. Adjust filters before exporting if you need a broader set.
+</Warning>
+
+Use PDF exports to create **shareable, human-readable records** of a conversation or a filtered slice of message history. Useful for audits, compliance reviews, or sharing context with stakeholders.
+
+- **From a conversation.** Open the conversation in the Inbox, click the **⋯ More Options** menu in the conversation toolbar, and choose **Export → PDF**. See [Export a conversation](/inbox/export-conversation) for the full per-conversation flow.
+- **From Message History.** Apply your filters in **Settings → Data Center → Message History**, then choose **Export to PDF**.
+
+PDF exports include the full message thread with timestamps, participants, direction, and inline previews of supported media.
+
+**Media handling**
+
+- **Renderable media** (images and other formats supported in PDF) is embedded inline.
+- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview"** so the attachment stays accessible from the PDF.
+
+### Permissions
+
+Message History is available to roles with access to the Data Center (typically **Admin** and **Manager**). Ask an Admin to adjust your role if you don't see the tab.
+
+## Frequently asked data import and export questions
 
 ### What file types can I upload?
 
@@ -172,67 +238,14 @@ Split your data into multiple CSV files. Each file can hold **up to 5,000 rows**
 
 No. Imports are **web-only**. Use a desktop browser.
 
----
-
-## Message History
-
-The **Message History** tab is a searchable, filterable archive of every message in your workspace. Use it to audit conversations, build reports, or export filtered slices to **CSV** or **PDF**.
-
-### Access message history
-
-Go to **Settings → Data Center → Message History**.
-
-### Filter your messages
-
-Narrow the list using the filter controls at the top of the tab. Available filters:
-
-- **Date range:** limit results to a specific window
-- **Direction:** inbound or outbound
-- **Channel/line:** the phone number or channel the message was sent on
-- **Contact:** messages tied to a specific contact
-- **Label:** conversations carrying a given [label](/inbox/labels)
-- **User/agent:** messages sent by a specific teammate
-- **Status:** delivery state (e.g., delivered, failed)
-
-### Search within results
-
-Use the **search bar** to run a free-text search across the messages currently shown. Search runs **on top of your active filters**, so you can drill into a filtered slice rather than the entire archive.
-
-### Export to CSV
-
-Click **Export** to download a CSV of the current view. Use CSV exports for **data analysis, reporting, and bulk archiving**. For a shareable, human-readable record, use **PDF** instead. See the next section.
-
-<Warning>
-  Exports include **only the messages that match your active filters and search**. Adjust filters before exporting if you need a broader set.
-</Warning>
-
-### Export to PDF
-
-Use PDF exports to create **shareable, human-readable records** of a conversation or a filtered slice of message history. Useful for audits, compliance reviews, or sharing context with stakeholders.
-
-- **From a conversation.** Open the conversation in the Inbox, click the **⋯ More Options** menu in the conversation toolbar, and choose **Export → PDF**. See [Export a conversation](/inbox/export-conversation) for the full per-conversation flow.
-- **From Message History.** Apply your filters in **Settings → Data Center → Message History**, then choose **Export to PDF**.
-
-PDF exports include the full message thread with timestamps, participants, direction, and inline previews of supported media.
-
-**Media handling**
-
-- **Renderable media** (images and other formats supported in PDF) is embedded inline.
-- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview"** so the attachment stays accessible from the PDF.
-
-### Permissions
-
-Message History is available to roles with access to the Data Center (typically **Admin** and **Manager**). Ask an Admin to adjust your role if you don't see the tab.
-
-### FAQ
-
 **What's the difference between Inbox search and Message History?**\
 The [Inbox](/inbox/filter-search-sort) is for working live conversations. **Message History** is the workspace-wide archive built for audit, reporting, and bulk export.
 
 **What format are exports in?**\
 **CSV** for data and reporting, or **PDF** for shareable conversation records.
 
-**Are media attachments included in exports?**\
+**Are media attachments included in exports?**\\
+
 - **CSV exports.** No. CSV files contain message text and metadata only.
 - **PDF exports.** Renderable media (images) is embedded inline. Non-renderable media (videos and other unsupported types) is replaced with a direct S3 link and a **"Could not load preview"** note.
 

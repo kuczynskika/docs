@@ -2,14 +2,18 @@
 title: "Export a conversation"
 description: "Export a single MessageDesk conversation as CSV or PDF from the conversation toolbar. Messages, comments, timestamps, and media are included."
 sidebarTitle: "Export conversation"
-"og:title": "Export a Conversation - MessageDesk"
-"og:description": "Export an individual MessageDesk conversation as CSV or PDF directly from the conversation toolbar."
-"og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+og:title: "Export a Conversation - MessageDesk"
+og:description: "Export an individual MessageDesk conversation as CSV or PDF directly from the conversation toolbar."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # Export a conversation
 
 Export any individual conversation to **CSV** or **PDF** directly from the conversation toolbar. Use exports for audits, compliance reviews, customer records, or handing context to a stakeholder outside MessageDesk.
+
+<Frame>
+  ![Export Conversation Thread](/images/export-conversation-thread.png)
+</Frame>
 
 <Note>
   Need to export **across many conversations** by date, contact, label, and so on? Use [Data Center → Message History](/settings/workspace-settings/data-center#message-history) instead.
@@ -19,9 +23,13 @@ Export any individual conversation to **CSV** or **PDF** directly from the conve
 
 ## Start an export
 
+<Frame>
+  ![Print Conversation](/images/print-conversation.png)
+</Frame>
+
 1. Open the conversation you want to export from the Inbox.
 2. In the conversation toolbar, click the **More Options ⋯** menu.
-3. Select **Export**.
+3. Select **Print Conversation**.
 4. Choose a format:
    - **CSV.** Best for data and reporting.
    - **PDF.** A shareable, human-readable record of the conversation.
@@ -31,6 +39,10 @@ The export runs **asynchronously** in the background. Keep working in MessageDes
 ---
 
 ## When your export is ready
+
+<Frame>
+  ![Export Available](/images/export-available.png)
+</Frame>
 
 When the export finishes, an **Export Available** button appears in the **top nav**. Click it to download your file.
 
@@ -78,15 +90,15 @@ PDF exports produce a **shareable, human-readable** record of the full conversat
 
 ## What's included
 
-| Item                              | CSV                | PDF                                                  |
-| --------------------------------- | ------------------ | ---------------------------------------------------- |
-| Messages (text)                   | ✅                 | ✅                                                   |
-| Internal comments                 | ✅                 | ✅                                                   |
-| Timestamps                        | ✅                 | ✅                                                   |
-| Participant info                  | ✅                 | ✅                                                   |
-| Direction / channel               | ✅                 | ✅                                                   |
-| Renderable media (images)         | ❌ (text only)     | ✅ Embedded inline                                   |
-| Non-renderable media (video, etc.)| ❌ (text only)     | S3 link + "Could not load preview"                   |
+| Item | CSV | PDF |
+| --- | --- | --- |
+| Messages (text) | ✅ | ✅ |
+| Internal comments | ✅ | ✅ |
+| Timestamps | ✅ | ✅ |
+| Participant info | ✅ | ✅ |
+| Direction / channel | ✅ | ✅ |
+| Renderable media (images) | ❌ (text only) | ✅ Embedded inline |
+| Non-renderable media (video, etc.) | ❌ (text only) | S3 link \+ "Could not load preview" |
 
 <Note>
   **Deleted messages are still exportable.** Deleting a message in MessageDesk **soft-deletes** it. The record stays on the backend. Exports include soft-deleted messages so the conversation record stays complete for audits and compliance.
