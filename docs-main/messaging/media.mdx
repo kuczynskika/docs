@@ -60,6 +60,7 @@ Different file types display differently within the MessageDesk app:
 ## Upload limits and delivery behavior
 
 - **Max file size per upload:** **10 MB** (per individual file)
+- **Recommended image size:** **≤ 500 KB** to skip compression and preserve sharpness
 - **Max number of files:** **No explicit limit** (upload as many as you need over time)
 - **Delivery behavior:** Files **over 500 KB** automatically send as **clickable links**
 - **Clipboard paste:** Paste images or files right into the composer with **Cmd + V** (macOS) or **Ctrl + V** (Windows/Linux)
@@ -68,6 +69,10 @@ Different file types display differently within the MessageDesk app:
 <Note>
   **Why links?** Sending larger files as links improves deliverability and makes downloads more reliable for recipients.
 </Note>
+
+<Tip>
+  **Recommended image size: ≤ 500 KB.** MessageDesk auto-compresses .jpg, .png, .gif, and .webp images over ~500 KB so they fit within carrier MMS limits. Starting from a file already under 500 KB avoids compression and preserves the sharpest image — important for branded product photos. Files that can't be compressed under the threshold (or HEIC files of any size over 500 KB) send as a clickable link instead of an inline image.
+</Tip>
 
 ---
 
@@ -145,9 +150,21 @@ Reusing a file you've already uploaded keeps things consistent and fast.
 ## Tips for smooth sending
 
 - Keep each file **≤ 10 MB**. Split large PDFs or compress images if needed.
+- **Aim for ≤ 500 KB per image** to skip auto-compression and keep your branding sharp.
 - Use **.jpg** for photos and **.pdf** for documents/forms.
+- **Prefer .jpg over .png when texting iPhone recipients.** See [PNGs and iPhone delivery](#pngs-and-iphone-delivery) below.
 - **HEIC** (common on iPhone) uploads work. For the most reliable MMS delivery and in-app preview, export photos as **.jpg** or **.png** before sending. See [HEIC photo handling](#heic-photo-handling) below.
 - Preview before sending to confirm the right file is attached. Remove with the **x** if needed.
+
+---
+
+## PNGs and iPhone delivery
+
+**PNGs to iPhone recipients can fail intermittently.** This is a known iOS-level handling issue with PNG MMS attachments — it is not specific to MessageDesk and affects messages from any sending platform. Carriers and Apple have not provided a fix.
+
+<Tip>
+  **Recommendation:** When texting customers who are mostly on iPhone, send photos as **.jpg** rather than .png. JPG delivers reliably across iOS and Android and compresses more cleanly for MMS. Reserve .png for screenshots or images that require transparency, and keep them under 500 KB.
+</Tip>
 
 ---
 
@@ -198,6 +215,9 @@ HEIC is the default photo format on newer iPhones. You can attach HEIC files in 
 **Can I add multiple media attachments to a message?**\
 Yes. Select additional files, and they'll stack above the composer. Keep each file **≤ 10 MB**.
 
+**Can I send multiple images in one message?**\
+Yes, on desktop. You can attach multiple images to a single compose. When the message sends, **each image goes out as its own MMS** to the recipient — this gives the most reliable delivery across carriers. Multi-image attach from the mobile app is on the roadmap. For best results, keep each image **≤ 500 KB** and use **.jpg**.
+
 **Is there a limit to how many files I can upload to MessageDesk overall?**\
 No explicit limit. You can upload as many files as you like to your workspace.
 
@@ -210,8 +230,8 @@ Yes. You can add media to **any** message type in MessageDesk.
 **What happens if a file is over 500 KB?**\
 It sends as a **clickable link** so your recipient can view or download it reliably.
 
-**Why does my image look smaller than expected?**\
-MessageDesk may **compress** images to reduce size and improve delivery. The linked version preserves the original file for download.
+**Why does my image look smaller, blurry, or distorted?**\
+MessageDesk compresses images over ~500 KB so they fit carrier MMS limits. Heavy compression on a very large source file (especially several MB) can introduce blur or color banding. To keep your branding sharp, **export images at ≤ 500 KB before attaching** — you'll skip compression entirely. Files that can't be compressed below the threshold send as a downloadable link, which preserves the original quality.
 
 **Are HEIC photos from iPhone supported?**\
 Yes. You can attach HEIC files, but HEIC isn't auto-compressed for MMS and may send as a link if it's over ~500 KB. Some devices and browsers also can't preview HEIC inline. For the most reliable delivery, export photos as JPEG or PNG before sending. See [HEIC photo handling](#heic-photo-handling).
