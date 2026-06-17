@@ -67,6 +67,25 @@ Emoji reactions let you quickly acknowledge or respond to messages and comments 
 - ❤️ Show appreciation.
 - 👀 Indicate "reviewing" without replying.
 
+### Inbound reactions from iPhone customers ("Loved", "Liked", etc.)
+
+When a customer reacts to one of your texts from an iPhone — for example, tapping **Loved** on a product photo — Apple sends that reaction over SMS as a plain-text message such as `Loved "test outbound"`.
+
+**How it appears in MessageDesk:**
+
+- The reaction lands in the conversation as a normal **inbound message** containing the reaction text and a snippet of the message that was reacted to.
+- You'll get an inbound message **notification** just like any other reply.
+- The reaction is **not** rendered as a native iOS-style Tapback bubble or attached visually to the original outbound message. There's no count or icon overlay on the original send.
+
+**Why:** Carrier SMS doesn't carry a structured "reaction" payload between iPhone and non-Apple platforms (Android recipients see the same text strings). MessageDesk receives only the text Apple emits.
+
+<Tip>
+  **Tips for iPhone-heavy audiences:**
+
+  - When sending product photos, ask customers to **reply with the product name or number** instead of (or in addition to) tapping a reaction. This keeps intent unambiguous.
+  - Use the inbound text itself as the signal — `Loved "Blue floral dress – $48"` clearly maps back to what the customer wants.
+</Tip>
+
 ---
 
 ## How to use comments, mentions & reactions
