@@ -62,16 +62,24 @@ Different file types display differently within the MessageDesk app:
 - **Max file size per upload:** **10 MB** (per individual file)
 - **Recommended image size:** **≤ 500 KB** to skip compression and preserve sharpness
 - **Max number of files:** **No explicit limit** (upload as many as you need over time)
-- **Delivery behavior:** Files **over 500 KB** automatically send as **clickable links**
+- **Delivery behavior:** Images over 500 KB are **compressed first**; if compression can't get them under the threshold, they send as **clickable links**
 - **Clipboard paste:** Paste images or files right into the composer with **Cmd + V** (macOS) or **Ctrl + V** (Windows/Linux)
 - **Size optimization:** Images may be **compressed** to reduce size and improve delivery
 
+### How compression vs. link conversion works
+
+When an image is **larger than 500 KB**, MessageDesk tries to compress it automatically so it can meet carrier requirements.
+
+- **Under ~500 KB to start:** sends as-is, no compression.
+- **Over ~500 KB:** MessageDesk attempts to resize and compress the image below the threshold. Heavy compression on very large source files (or formats like **.png**) can sometimes make the image appear blurry or distorted.
+- **Compression can't get it under the threshold:** MessageDesk converts the file into a **clickable link** instead so it still delivers reliably. The linked version preserves the original quality.
+
 <Note>
-  **Why links?** Sending larger files as links improves deliverability and makes downloads more reliable for recipients.
+  There's no exact "above X KB and it always becomes a link" cutoff. Whether a file compresses successfully or converts to a link depends on the image type, dimensions, and how much it can be reduced. As a rule of thumb, **anything above 500 KB will either be compressed or sent as a link if compression fails.**
 </Note>
 
 <Tip>
-  **Recommended image size: ≤ 500 KB.** MessageDesk auto-compresses .jpg, .png, .gif, and .webp images over ~500 KB so they fit within carrier MMS limits. Starting from a file already under 500 KB avoids compression and preserves the sharpest image. That matters for branded product photos. Files that can't be compressed under the threshold (or HEIC files of any size over 500 KB) send as a clickable link instead of an inline image.
+  **Recommended image size: ≤ 500 KB.** Starting from a file already under 500 KB skips compression entirely and preserves the sharpest image. That matters for branded product photos. For larger files, **.jpg** compresses much more cleanly than **.png**.
 </Tip>
 
 ---
@@ -228,10 +236,10 @@ Yes. Comments support the same media attachments as messages.
 Yes. You can add media to **any** message type in MessageDesk.
 
 **What happens if a file is over 500 KB?**\
-It sends as a **clickable link** so your recipient can view or download it reliably.
+MessageDesk first tries to **compress** the image below 500 KB so it sends as an inline MMS. If compression can't get it under the threshold, it sends as a **clickable link** so your recipient can view or download it reliably. There's no exact size at which a file always becomes a link. It depends on the image type and how much it can be reduced.
 
 **Why does my image look smaller, blurry, or distorted?**\
-MessageDesk compresses images over ~500 KB so they fit carrier MMS limits. Heavy compression on a very large source file (especially several MB) can introduce blur or color banding. To keep your branding sharp, **export images at ≤ 500 KB before attaching**. That skips compression entirely. Files that can't be compressed below the threshold send as a downloadable link, which preserves the original quality.
+When an image is larger than 500 KB, MessageDesk tries to compress it automatically so it can meet carrier requirements. That compression can sometimes make the image appear blurry or distorted, especially if the original file is very large or in a format like **.png**. If MessageDesk can't compress the file enough, it converts the file into a **link** instead to improve deliverability. To keep your branding sharp, **export images at ≤ 500 KB before attaching** so compression is skipped entirely.
 
 **Are HEIC photos from iPhone supported?**\
 Yes. You can attach HEIC files, but HEIC isn't auto-compressed for MMS and may send as a link if it's over ~500 KB. Some devices and browsers also can't preview HEIC inline. For the most reliable delivery, export photos as JPEG or PNG before sending. See [HEIC photo handling](#heic-photo-handling).

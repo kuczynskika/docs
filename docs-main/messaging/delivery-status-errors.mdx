@@ -131,8 +131,10 @@ Email [**support@messagedesk.com**](mailto:support@messagedesk.com) with:
 
 ### MMS and media tips
 
-- **Aim for ≤ 500 KB per image** (hard max **10 MB**). Files over 500 KB are auto-compressed; .jpg compresses cleanly, while large .png files may show visible compression artifacts.
-- Files that can't be reduced under the threshold send as **links** automatically.
+- **Aim for ≤ 500 KB per image** (hard max **10 MB**) to skip compression entirely.
+- **Over 500 KB:** MessageDesk first tries to **compress** the image below the threshold. If compression can't get it small enough, it converts the file into a **link** instead.
+- There's no exact cutoff at which a file always becomes a link. It depends on the image type, dimensions, and how much it can be reduced.
+- **.jpg** compresses cleanly. Large **.png** files may show visible compression artifacts after resize.
 - **Prefer .jpg over .png when texting iPhone recipients.** PNG MMS to iOS is known to fail intermittently at the carrier/device level.
 - If repeated failures occur, **share a file link** instead of attaching video.
-- HEIC/JPG/PNG/GIF/PDF supported; files \> **500 KB** send as links automatically.
+- HEIC/JPG/PNG/GIF/PDF supported.
