@@ -22,6 +22,27 @@ A **tenant** is the parent company account that owns one or more MessageDesk **w
 
 ---
 
+## Do I need a separate workspace, or just user permissions?
+
+Most teams **don't** need a second workspace. Before creating one, decide whether the goal is **separating data** (different teams and contact lists) or **separating access** (limiting which users see which lines, labels, or inboxes).
+
+| Use a **separate workspace** when… | Use **User Access Control (UAC)** when… |
+| --- | --- |
+| You have distinct teams or locations with **separate contact lists** that should be managed independently. | All users belong to the same team and share one contact list. |
+| Each team needs its own **phone lines, labels, templates, and reporting**, but you still want centralized admin oversight. | You want certain users to only see specific **phone lines, labels, or teammate inboxes**. |
+| Data, conversations, and history should **not** be visible across teams. | You want everyone in one workspace, with permissions controlling visibility. |
+| You're operating multiple brands or business units under one company. | You're a single team that needs role-based access (Admin, Manager, Operator, or custom). |
+
+<Tip>
+  Setting up access control inside your existing workspace is usually faster and cheaper than adding a workspace. See [Roles & permissions](/settings/workspace-settings/team-management#user-roles-and-permissions) for how to scope users to specific phone lines, labels, or inboxes.
+</Tip>
+
+<Warning>
+  **Billing scales per user, per workspace.** A user who needs access to two workspaces is billed in each one. If your goal is "User A only sees Line A and User B only sees Line B," UAC inside a single workspace is almost always the better fit.
+</Warning>
+
+---
+
 ## Who can manage a tenant
 
 Only users with the **tenant admin** role see the **Manage tenant** option and the ability to create new workspaces from the workspace switcher / workspace selection screen.
@@ -92,3 +113,9 @@ You can't delete workspaces from the UI. [Contact support](/contact-us) to reque
 
 **Does creating a new workspace require a separate subscription?**\
 Billing for additional workspaces under the same tenant depends on your plan. See [Billing and Subscriptions](/settings/workspace-settings/billing-subscriptions) or contact support for details.
+
+**Does a user who's in two workspaces get billed twice?**\
+Yes. Workspace seats are billed **per user, per workspace**. If the same teammate needs access to two workspaces under your tenant, they're billed in each. If your goal is just to limit what a user sees, use [User Access Control](/settings/workspace-settings/team-management#user-roles-and-permissions) inside a single workspace instead.
+
+**Can I move a phone number from one workspace to another?**\
+Yes, but the number must be removed from the source workspace first, which also removes the conversation history tied to that number in the source workspace. See [Move a phone number between workspaces](/settings/workspace-settings/phone-management#move-a-phone-number-between-workspaces).
