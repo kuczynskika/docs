@@ -40,29 +40,29 @@ Automate workflows by triggering actions when messages are sent or received, or 
 
 Each Zap has two main components:
 
-| Type        | Description                                                                                  |
-| ----------- | -------------------------------------------------------------------------------------------- |
-| **Trigger** | The event that starts your Zap (e.g., a message received in MessageDesk).                    |
-| **Action**  | The task Zapier performs after the trigger fires (e.g., send a message or create a contact). |
+| Type | Description |
+| --- | --- |
+| **Trigger** | The event that starts your Zap (e.g., a message received in MessageDesk). |
+| **Action** | The task Zapier performs after the trigger fires (e.g., send a message or create a contact). |
 
 ---
 
 ## Available MessageDesk triggers
 
-| Trigger              | Description                                                             |
-| -------------------- | ----------------------------------------------------------------------- |
-| **Message Received** | Fires when your workspace receives a new inbound text message.          |
-| **Message Sent**     | Fires when a message is sent from your workspace (manual or automated). |
+| Trigger | Description |
+| --- | --- |
+| **Message Received** | Fires when your workspace receives a new inbound text message. |
+| **Message Sent** | Fires when a message is sent from your workspace (manual or automated). |
 
 ---
 
 ## Available MessageDesk actions
 
-| Action                       | Description                                                          |
-| ---------------------------- | -------------------------------------------------------------------- |
+| Action | Description |
+| --- | --- |
 | **Create or Update Contact** | Adds a new contact or updates an existing one based on phone number. |
-| **Send Message**             | Sends a text message through your MessageDesk workspace.             |
-| **Create Comment**           | Posts a new comment in a MessageDesk conversation thread.            |
+| **Send Message** | Sends a text message through your MessageDesk workspace. |
+| **Create Comment** | Posts a new comment in a MessageDesk conversation thread. |
 
 ---
 
@@ -72,9 +72,9 @@ Each Zap has two main components:
 
 Fires when your MessageDesk workspace receives an inbound message.
 
-| Field              | Required | Description                             |
-| ------------------ | -------- | --------------------------------------- |
-| **Workspace Name** | ✅        | The name of your MessageDesk workspace. |
+| Field | Required | Description |
+| --- | --- | --- |
+| **Workspace Name** | ✅ | The name of your MessageDesk workspace. |
 
 ![Message Received](/images/message-received.png)
 
@@ -84,9 +84,9 @@ Fires when your MessageDesk workspace receives an inbound message.
 
 Fires when your MessageDesk workspace sends an outbound message.
 
-| Field              | Required | Description                             |
-| ------------------ | -------- | --------------------------------------- |
-| **Workspace Name** | ✅        | The name of your MessageDesk workspace. |
+| Field | Required | Description |
+| --- | --- | --- |
+| **Workspace Name** | ✅ | The name of your MessageDesk workspace. |
 
 ![Message Sent](/images/message-sent.png)
 
@@ -98,12 +98,12 @@ Fires when your MessageDesk workspace sends an outbound message.
 
 Creates or updates a contact in your selected workspace. Perfect for syncing leads, form submissions, or new customer signups.
 
-| Field                      | Required | Description                                                        |
-| -------------------------- | -------- | ------------------------------------------------------------------ |
-| **Workspace Name**         | ✅        | The name of your MessageDesk workspace.                            |
-| **Contact Phone Number**   | ✅        | The contact's phone number in E.164 format (e.g., `+15551234567`). |
-| **First Name / Last Name** | ❌        | Optional contact name fields.                                      |
-| **Email**                  | ❌        | Optional email address.                                            |
+| Field | Required | Description |
+| --- | --- | --- |
+| **Workspace Name** | ✅ | The name of your MessageDesk workspace. |
+| **Contact Phone Number** | ✅ | The contact's phone number in E.164 format (e.g., `+15551234567`). |
+| **First Name / Last Name** | ❌ | Optional contact name fields. |
+| **Email** | ❌ | Optional email address. |
 
 ![Create Update Contact](/images/create-update-contact.png)
 
@@ -113,12 +113,12 @@ Creates or updates a contact in your selected workspace. Perfect for syncing lea
 
 Sends an outbound text message from MessageDesk. Each Zap run sends one message at a time.
 
-| Field                             | Required | Description                                                   |
-| --------------------------------- | -------- | ------------------------------------------------------------- |
-| **Workspace Name**                | ✅        | The name of your MessageDesk workspace.                       |
-| **Workspace Number to Send From** | ✅        | The phone number you'll send the message from (E.164 format). |
-| **Recipient Number**              | ✅        | The phone number to send your message to (E.164 format).      |
-| **Message Text**                  | ✅        | The body of your message.                                     |
+| Field | Required | Description |
+| --- | --- | --- |
+| **Workspace Name** | ✅ | The name of your MessageDesk workspace. |
+| **Workspace Number to Send From** | ✅ | The phone number you'll send the message from (E.164 format). |
+| **Recipient Number** | ✅ | The phone number to send your message to (E.164 format). |
+| **Message Text** | ✅ | The body of your message. |
 
 ![Send Message](/images/send-message.png)
 
@@ -136,12 +136,12 @@ Sends an outbound text message from MessageDesk. Each Zap run sends one message 
 
 Posts a comment in an existing conversation thread. Use this action to add internal notes, mention teammates, or automate updates from other apps.
 
-| Field                | Required | Description                                                         |
-| -------------------- | -------- | ------------------------------------------------------------------- |
-| **Workspace Name**   | ✅        | The name of your MessageDesk workspace.                             |
-| **Workspace Number** | ✅        | The phone number tied to the workspace conversation (E.164 format). |
-| **Contact Number**   | ✅        | The contact's phone number to identify the conversation.            |
-| **Comment Text**     | ✅        | The text body of your comment.                                      |
+| Field | Required | Description |
+| --- | --- | --- |
+| **Workspace Name** | ✅ | The name of your MessageDesk workspace. |
+| **Workspace Number** | ✅ | The phone number tied to the workspace conversation (E.164 format). |
+| **Contact Number** | ✅ | The contact's phone number to identify the conversation. |
+| **Comment Text** | ✅ | The text body of your comment. |
 
 ![Create Comment](/images/create-comment.png)
 
@@ -210,18 +210,18 @@ Map your fields, test your Zap, and turn it on.
 
 Use these examples to get inspired and automate common MessageDesk tasks:
 
-| Workflow                                                        | Connected Apps                    | Description                                                                                                                 |
-| --------------------------------------------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **New CRM Lead → Add to MessageDesk**                           | HubSpot, Pipedrive, Zoho CRM      | When a new lead is created, automatically create or update the contact in MessageDesk and send a personalized welcome text. |
-| **Job or Appointment Booked → Send Reminder Text**              | Calendly, Google Calendar, Jobber | Send automated appointment reminders or confirmations directly from MessageDesk.                                            |
-| **New Message in MessageDesk → Notify Teammates**               | Slack, Microsoft Teams            | Post a notification with message details and contact info when a new message arrives in MessageDesk.                        |
-| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero                  | When a new invoice is issued or a payment is logged, send a text confirmation to the customer.                              |
-| **New Form Submission → Create Comment with Mention**           | Google Forms, Typeform            | Automatically post a comment when a new form or chatbot submission is received.                                             |
-| **Email or Message → Comment in Thread**                        | Outlook, Gmail, Teams             | Create an internal comment in MessageDesk when an external email or chat arrives, keeping your team aligned.                |
-| **Customer Review Received → Thank You Text**                   | Google Reviews, Mailchimp         | Automatically send a thank-you message when a customer leaves a new review or completes feedback.                           |
-| **New Twilio BYOC Number Added → Notify Slack Channel**         | Twilio, Slack                     | Post a message to a Slack channel when a new Twilio BYOC number is connected to MessageDesk so admins and the support team stay in sync on phone-line changes. |
-| **New Opted-Out Contact → Update CRM Record as Unsubscribed**   | HubSpot, Salesforce               | When a contact opts out of SMS in MessageDesk, flag the matching CRM record as unsubscribed so marketing automations and sales sequences stop messaging them. |
-| **Conversation Closed → Create Follow-Up Task**                 | Asana, ClickUp, Monday.com        | When a MessageDesk conversation is closed, create a follow-up task in your project management tool so nothing slips through after the thread is resolved. |
+| Workflow | Connected Apps | Description |
+| --- | --- | --- |
+| **New CRM Lead → Add to MessageDesk** | HubSpot, Pipedrive, Zoho CRM | When a new lead is created, automatically create or update the contact in MessageDesk and send a personalized welcome text. |
+| **Job or Appointment Booked → Send Reminder Text** | Calendly, Google Calendar, Jobber | Send automated appointment reminders or confirmations directly from MessageDesk. |
+| **New Message in MessageDesk → Notify Teammates** | Slack, Microsoft Teams | Post a notification with message details and contact info when a new message arrives in MessageDesk. |
+| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero | When a new invoice is issued or a payment is logged, send a text confirmation to the customer. |
+| **New Form Submission → Create Comment with Mention** | Google Forms, Typeform | Automatically post a comment when a new form or chatbot submission is received. |
+| **Email or Message → Comment in Thread** | Outlook, Gmail, Teams | Create an internal comment in MessageDesk when an external email or chat arrives, keeping your team aligned. |
+| **Customer Review Received → Thank You Text** | Google Reviews, Mailchimp | Automatically send a thank-you message when a customer leaves a new review or completes feedback. |
+| **New Twilio BYOC Number Added → Notify Slack Channel** | Twilio, Slack | Post a message to a Slack channel when a new Twilio BYOC number is connected to MessageDesk so admins and the support team stay in sync on phone-line changes. |
+| **New Opted-Out Contact → Update CRM Record as Unsubscribed** | HubSpot, Salesforce | When a contact opts out of SMS in MessageDesk, flag the matching CRM record as unsubscribed so marketing automations and sales sequences stop messaging them. |
+| **Conversation Closed → Create Follow-Up Task** | Asana, ClickUp, Monday.com | When a MessageDesk conversation is closed, create a follow-up task in your project management tool so nothing slips through after the thread is resolved. |
 
 ---
 
@@ -237,14 +237,14 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 
 ## Troubleshooting
 
-| Issue                                                   | Solution                                                                                                   |
-| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Issue | Solution |
+| --- | --- |
 | **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you're using the correct workspace and **Zap version 1.2.0**. |
-| **Zap fails during testing**                            | Make sure all phone numbers are formatted correctly in **E.164**.                                          |
-| **Message sent but not delivered**                      | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details.                           |
-| **Send Message action fails for a specific contact**    | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action will fail even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
-| **Zap not triggering**                                  | Verify the correct trigger and workspace setup. Send a test message to fire the event.                     |
-| **Contact not updating correctly**                      | Check field mappings and confirm the contact's phone number matches existing records.                      |
+| **Zap fails during testing** | Make sure all phone numbers are formatted correctly in **E.164**. |
+| **Message sent but not delivered** | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details. |
+| **Send Message action fails for a specific contact** | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action will fail even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
+| **Zap not triggering** | Verify the correct trigger and workspace setup. Send a test message to fire the event. |
+| **Contact not updating correctly** | Check field mappings and confirm the contact's phone number matches existing records. |
 | **My Zap built fine but isn't firing (or one Zap works and another doesn't)** | Check which **MessageDesk user authenticated** that specific Zap in Zapier. Each Zap runs under the user whose credentials connected the MessageDesk account. That user must have **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). Common cause: an admin authenticated one Zap (works), and a teammate without Developer permission authenticated another (fails). Re-authenticate the failing Zap with a user who has the right permission, or have an admin grant the existing user **Developer = Editor**. |
 
 ---
