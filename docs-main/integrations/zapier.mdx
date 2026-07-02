@@ -126,6 +126,10 @@ Sends an outbound text message from MessageDesk. Each Zap run sends one message 
   Messages sent through Zapier count toward your MessageDesk usage and must follow the same carrier and compliance rules as messages sent from your Inbox.
 </Warning>
 
+<Note>
+  **Opt-outs are enforced automatically.** If the recipient has opted out in MessageDesk, the **Send Message** action will fail and no text will be delivered — even if the Zap runs successfully on Zapier's side. Opt-out enforcement can't be bypassed. See [Compliance Center](/settings/workspace-settings/compliance-center) for how opt-outs are captured and managed.
+</Note>
+
 ---
 
 ### Create Comment
@@ -238,6 +242,7 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you're using the correct workspace and **Zap version 1.2.0**. |
 | **Zap fails during testing**                            | Make sure all phone numbers are formatted correctly in **E.164**.                                          |
 | **Message sent but not delivered**                      | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details.                           |
+| **Send Message action fails for a specific contact**    | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action will fail even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
 | **Zap not triggering**                                  | Verify the correct trigger and workspace setup. Send a test message to fire the event.                     |
 | **Contact not updating correctly**                      | Check field mappings and confirm the contact's phone number matches existing records.                      |
 | **My Zap built fine but isn't firing (or one Zap works and another doesn't)** | Check which **MessageDesk user authenticated** that specific Zap in Zapier. Each Zap runs under the user whose credentials connected the MessageDesk account. That user must have **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). Common cause: an admin authenticated one Zap (works), and a teammate without Developer permission authenticated another (fails). Re-authenticate the failing Zap with a user who has the right permission, or have an admin grant the existing user **Developer = Editor**. |
