@@ -221,7 +221,7 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Customer Review Received → Thank You Text** | Google Reviews, Mailchimp | Automatically send a thank-you message when a customer leaves a new review or completes feedback. |
 | **New Twilio BYOC Number Added → Notify Slack Channel** | Twilio, Slack | Post a message to a Slack channel when a new Twilio BYOC number is connected to MessageDesk so admins and the support team stay in sync on phone-line changes. |
 | **New Opted-Out Contact → Update CRM Record as Unsubscribed** | HubSpot, Salesforce | When a contact opts out of SMS in MessageDesk, flag the matching CRM record as unsubscribed so marketing automations and sales sequences stop messaging them. |
-| **Conversation Closed → Create Follow-Up Task** | Asana, ClickUp, Monday.com | When a MessageDesk conversation is closed, create a follow-up task in your project management tool so nothing slips through after the thread is resolved. |
+| **Conversation Closed → Create Follow-Up Task** | Asana, ClickUp, Monday.com | When you close a MessageDesk conversation, create a follow-up task in your project management tool so nothing slips through after you resolve the thread. |
 
 ---
 
@@ -242,7 +242,7 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you're using the correct workspace and **Zap version 1.2.0**. |
 | **Zap fails during testing** | Make sure all phone numbers are formatted correctly in **E.164**. |
 | **Message sent but not delivered** | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details. |
-| **Send Message action fails for a specific contact** | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action will fail even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
+| **Send Message action fails for a specific contact** | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action fails even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
 | **Zap not triggering** | Verify the correct trigger and workspace setup. Send a test message to fire the event. |
 | **Contact not updating correctly** | Check field mappings and confirm the contact's phone number matches existing records. |
 | **My Zap built fine but isn't firing (or one Zap works and another doesn't)** | Check which **MessageDesk user authenticated** that specific Zap in Zapier. Each Zap runs under the user whose credentials connected the MessageDesk account. That user must have **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). Common cause: an admin authenticated one Zap (works), and a teammate without Developer permission authenticated another (fails). Re-authenticate the failing Zap with a user who has the right permission, or have an admin grant the existing user **Developer = Editor**. |
