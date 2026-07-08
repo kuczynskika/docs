@@ -135,21 +135,27 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received *(see workaround below)* |
-| **Conditions** | A label like `Closed` is applied (workaround) |
+| **Trigger** | Conversation Closed |
+| **Conditions** | None (or scope by line/label) |
 | **Actions** | **Send Webhook** → your configured endpoint |
 
-**Why this works:** Today the only supported Relay trigger is **Message Received**. There isn't a dedicated `ConversationClosed` trigger. The supported workaround is to use a **closing label** as the signal: when an agent closes a conversation, they also apply a label like `Closed`, and a Relay scoped to that label forwards the close event downstream.
+**Why this works:** The **Conversation Closed** trigger fires whenever a teammate closes a conversation, so you can push the close event straight into a CRM, ticketing tool, or data warehouse. Add **My phone number equals** or a label condition if you only want to forward closes from certain lines or queues.
 
-<Note>
-  **Workaround setup:**
+---
 
-  1. Create a workspace label like `Closed`.
-  2. Train your team to apply the label when they close a conversation (or wire it into an existing close-out workflow).
-  3. Build a Relay: **Trigger** Message Received, **Condition** a label `Closed` is on the conversation, **Action** Send Webhook.
+### 9. Reset assignees on close
 
-  When MessageDesk adds a native `ConversationClosed` trigger, swap the trigger and remove the label condition.
-</Note>
+| Field | Value |
+| --- | --- |
+| **Trigger** | Conversation Closed |
+| **Conditions** | None |
+| **Actions** | **Unassign all teammates** |
+
+**Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached — reopens or new inbound messages on the same thread often need fresh triage. The **Unassign all teammates** action clears every assignee in one step, so the next inbound lands unassigned and can be routed by your normal auto-assign Relays.
+
+<Tip>
+  Pair this with a **Message Received** Relay that auto-assigns based on line or keyword. Closed threads get reset here; the next inbound gets routed there.
+</Tip>
 
 ---
 

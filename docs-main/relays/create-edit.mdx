@@ -49,6 +49,7 @@ Supported triggers:
 
 * **Message Received:** Fires when a new inbound SMS arrives.
 * **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
+* **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like unassigning all teammates.
 
 <Note>
   **Note:** Templates include the **Message Received** trigger by default.
@@ -84,6 +85,7 @@ Actions run when the conditions match. You can add **one or many** in the order 
 - **Add labels to the conversation:** apply one or more labels
 - **Remove labels from the conversation:** remove one or more labels
 - **Remove teammates from the conversation:** remove one or more assigned users
+- **Unassign all teammates:** clear every assignee from the conversation in a single step. Useful in close-out or hand-off workflows where you want to reset assignment state without listing every teammate.
 - **Send webhook:** send event data to your webhook endpoint
 
 <Tip>
