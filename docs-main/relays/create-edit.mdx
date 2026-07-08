@@ -45,10 +45,13 @@ Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit de
 
 ### 3. Set a **Trigger**
 
-Current supported trigger: **Message Received** (fires when a new inbound SMS arrives).
+Supported triggers:
+
+* **Message Received:** Fires when a new inbound SMS arrives.
+* **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 
 <Note>
-  **Note:** Templates include the **message received** trigger by default.
+  **Note:** Templates include the **Message Received** trigger by default.
 </Note>
 
 ![Relay Message Received Trigger Pn](/images/relay-message-received-trigger.png)
@@ -59,7 +62,8 @@ Conditions control **where/when** a Relay runs. You can combine multiple conditi
 
 **Available conditions:**
 
-- **Message contains text:** match keywords like `SUPPORT`, `HELP`
+- **Message contains text:** match keywords like `SUPPORT`, `HELP` (Message Received trigger)
+- **Comment contains text:** match keywords in the body of an internal [comment](/inbox/comments-mentions) (Comment Created trigger)
 - **My phone number equals:** run only on a specific outbound line
 - **Is anonymous conversation:** no saved contact yet
 - **Is new conversation:** first inbound in a thread

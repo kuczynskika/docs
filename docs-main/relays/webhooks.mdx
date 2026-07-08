@@ -84,6 +84,30 @@ When a message is received, the webhook payload includes a `Message` object:
 }
 ```
 
+### Example: CommentCreated event
+
+When a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation, the webhook payload includes a `Comment` object:
+
+```json
+{
+  "id": "01KAE88YX393N7SAE200000000",
+  "object": "Event",
+  "name": "CommentCreated",
+  "workspaceId": "01K6N5WEYHS5N0796000000000",
+  "createdAt": "2026-07-07T18:15:22.459465Z",
+  "dataType": "Comment",
+  "data": {
+    "id": "01KAE88X48BS8D8D2D00000000",
+    "object": "Comment",
+    "workspaceId": "01K6N5WEYHS5N0796000000000",
+    "conversationId": "01K6X3R5NNWKJCSZQY00000000",
+    "authorId": "01K6N5WEYHS5N0796111111111",
+    "text": "Heads up — this customer needs a callback today.",
+    "createdAt": "2026-07-07T18:15:22.459465Z"
+  }
+}
+```
+
 ---
 
 ## Validating data integrity
