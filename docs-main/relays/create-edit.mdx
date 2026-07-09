@@ -48,6 +48,7 @@ Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit de
 Supported triggers:
 
 * **Message Received:** Fires when a new inbound SMS arrives.
+* **Message Sent:** Fires when a message is sent from your workspace (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
 * **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 * **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like unassigning all teammates.
 
@@ -68,6 +69,7 @@ Conditions control **where/when** a Relay runs. You can combine multiple conditi
 - **My phone number equals:** run only on a specific outbound line
 - **Is anonymous conversation:** no saved contact yet
 - **Is new conversation:** first inbound in a thread
+- **Is unassigned conversation:** the conversation has no assigned teammates. Useful for scoping actions to threads no one has claimed yet.
 - **Active hours:** restrict to a daily time window
 
 <Tip>
@@ -82,6 +84,7 @@ Actions run when the conditions match. You can add **one or many** in the order 
 
 - **Reply to message:** send an SMS/MMS (supports templates, tags, and media)
 - **Assign teammates to the conversation:** pick one or more users
+- **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
 - **Add labels to the conversation:** apply one or more labels
 - **Remove labels from the conversation:** remove one or more labels
 - **Remove teammates from the conversation:** remove one or more assigned users

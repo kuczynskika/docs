@@ -56,11 +56,12 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 **Relays = Triggers → Conditions → Actions**
 
 - **Triggers:** When it runs\
-  _Examples:_ `MessageReceived` (a new inbound text starts the relay), `CommentCreated` (a teammate posts an internal comment), `ConversationClosed` (a teammate closes a conversation)
+  _Examples:_ `MessageReceived` (a new inbound text starts the relay), `MessageSent` (an outbound message is sent from your workspace), `CommentCreated` (a teammate posts an internal comment), `ConversationClosed` (a teammate closes a conversation)
 - **Conditions:** Where/when it applies\
   _Examples:_\
   • **Phone line** equals _Support_\
   • **Is anonymous** contact is **true**\
+  • **Is unassigned conversation** is **true**\
   • **Active hours** = outside business hours
 - **Actions:** What happens\
   _Examples:_\

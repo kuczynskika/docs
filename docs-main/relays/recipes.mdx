@@ -113,13 +113,33 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 ---
 
+### 7. Assign unassigned conversations to whoever replies first
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Sent |
+| **Condition** | **Is unassigned conversation** = **true** |
+| **Actions** | **Assign to sender** |
+
+**Why this works:** When a shared inbox has no owner on a thread, the first teammate to reply usually should own the follow-up. This Relay watches outbound messages, checks that no one is assigned yet, and automatically assigns the conversation to whoever hit send. New inbound messages on the same thread will then route to that teammate by default.
+
+<Note>
+  The **Assign to sender** action is only available with the **Message Sent** trigger.
+</Note>
+
+<Tip>
+  Drop the **Is unassigned conversation** condition if you want the sender to always take ownership, even on threads someone else was already assigned to.
+</Tip>
+
+---
+
 ## Webhooks and integrations
 
 <Note>
   Webhook actions require a configured webhook endpoint and signing secret. Set those up in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) before turning on the Relays below. See [Send Webhook](/relays/webhooks) for the full payload format, headers, and signature validation.
 </Note>
 
-### 7. Push new inbound message to an external system
+### 8. Push new inbound message to an external system
 
 | Field | Value |
 | --- | --- |
@@ -131,7 +151,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 ---
 
-### 8. Notify an external system on conversation close
+### 9. Notify an external system on conversation close
 
 | Field | Value |
 | --- | --- |
@@ -143,7 +163,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 ---
 
-### 9. Reset assignees on close
+### 10. Reset assignees on close
 
 | Field | Value |
 | --- | --- |
