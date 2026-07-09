@@ -84,6 +84,36 @@ When a message is received, the webhook payload includes a `Message` object:
 }
 ```
 
+### Example: MessageSent event
+
+When a message is sent from your workspace, the webhook payload includes a `Message` object with `outbound: true`:
+
+```json theme={null}
+{
+  "id": "01KAE88YX393N7SAE200000000",
+  "object": "Event",
+  "name": "MessageSent",
+  "workspaceId": "01K6N5WEYHS5N0796000000000",
+  "createdAt": "2026-07-09T20:14:11.459465Z",
+  "dataType": "Message",
+  "data": {
+    "id": "01KAE88X48BS8D8D2D00000000",
+    "object": "Message",
+    "workspaceId": "01K6N5WEYHS5N0796000000000",
+    "conversationId": "01K6X3R5NNWKJCSZQY00000000",
+    "communicationType": "sms",
+    "to": [
+      "+17025551111"
+    ],
+    "from": "+17025550000",
+    "text": "Thanks for reaching out — a teammate will follow up shortly.",
+    "media": [],
+    "outbound": true,
+    "createdAt": "2026-07-09T20:14:11.459465Z"
+  }
+}
+```
+
 ### Example: CommentCreated event
 
 When a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation, the webhook payload includes a `Comment` object:
