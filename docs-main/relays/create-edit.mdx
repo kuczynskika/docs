@@ -9,7 +9,7 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 
 # How to create, edit, and delete Relays
 
-Build reliable Relays with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays.
+Build Relays with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays.
 
 <Note>
   **Permissions required:** By default, only **Admin** users can access Relays. If you don't see the Relays module, ask your workspace admin to grant you **Relay Management** permissions via **Settings → Team Management**. Learn more: [Team Management](/settings/workspace-settings/team-management).
@@ -21,37 +21,37 @@ Build reliable Relays with a clear flow: **Trigger → Conditions → Actions**.
 
 ### 1. Visit the Relays module
 
-When you first visit **Relays**, you’ll see **templates** you can use as a starting point, just click **Add Relay** to start building.
+When you first visit **Relays**, you'll see **templates** you can use as a starting point. Click **Add Relay** to start building.
 
 ![Relays Templates Pn](/images/relays-templates.png)
 
-All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions** (the **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu).
+All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-Relays are **grouped by Trigger** (Message Received, Message Sent, Comment Created, Conversation Closed) and, within each group, **sorted by Order** — so you can scan every automation on a phone line or event at a glance.
+Relays are **grouped by Trigger** (Message Received, Message Sent, Comment Created, Conversation Closed) and, within each group, **sorted by Order**. You can scan every Relay on a phone line or event at a glance.
 
 <Note>
-  By default, new Relays are **paused**. Toggle them **On** when you’re ready.
+  By default, new Relays are **paused**. Toggle them **On** when you're ready.
 </Note>
 
 ![Relays Tab Pn](/images/relays-tab.png)
 
 ### 1a. Order your Relays
 
-Within a Trigger group, Relays execute **top-down in Order**. Ordering matters when more than one Relay's conditions match the same event — for example, a keyword auto-reply and a generic after-hours reply that both listen for **Message Received**.
+Within a Trigger group, Relays execute **top-down in Order**. Ordering matters when more than one Relay's conditions match the same event. For example, a keyword auto-reply and a generic after-hours reply that both listen for **Message Received**.
 
 To change the run order, use the **Order** column:
 
 * Click the **up** or **down** arrow on the vertical counter to move a Relay one position, or
 * Click the number and **type the exact Order value** you want.
 
-There is no drag-and-drop; the counter is the only way to reorder.
+There's no drag-and-drop. The counter is the only way to reorder.
 
 <Note>
-  **All matching Relays run.** If multiple Relays in a Trigger group match the same event, every one of them runs in Order — a higher-priority Relay does **not** stop later Relays from evaluating.
+  **All matching Relays run.** If multiple Relays in a Trigger group match the same event, every one of them runs in Order. A higher-priority Relay does **not** stop later Relays from evaluating.
 </Note>
 
 <Tip>
-  Put **narrow, specific** Relays (keyword matches, anonymous-contact capture) **above** broad catch-alls (after-hours auto-reply) so the specific behavior runs first and downstream actions like **Add label** or **Assign** layer on top in the order you expect.
+  Put **narrow, specific** Relays (keyword matches, anonymous-contact capture) **above** broad catch-alls (after-hours auto-reply). The specific behavior runs first, and downstream actions like **Add label** or **Assign** layer on top in the order you expect.
 </Tip>
 
 ### 2. Name and describe your Relay
@@ -382,7 +382,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 
 ## Technical notes and behavior
 
-- **Relay order:** Within a Trigger group, Relays run top-down in the **Order** you set on the Relays list. All matching Relays run — a higher-priority Relay does not short-circuit later Relays. Reorder from the **Order** column using the up/down arrows or by typing the numeric value.
+- **Relay order:** Within a Trigger group, Relays run top-down in the **Order** you set on the Relays list. All matching Relays run. A higher-priority Relay doesn't short-circuit later Relays. Reorder from the **Order** column using the up/down arrows or by typing the numeric value.
 - **Action order:** Actions execute top-to-bottom in the order you add them.
 - **Delays:** Units include minutes/hours. Use to prevent duplicate “fast follow” replies.
 - **Active hours:** Configure daily windows; invert to run only outside business hours.
@@ -397,7 +397,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 Yes. Assign/Label actions follow your **Roles & Permissions** settings.
 
 **Can multiple Relays run on one inbound message?**\
-Yes. If more than one Relay's conditions match, **every eligible Relay runs**. Within a Trigger group they run in the **Order** you set on the Relays list — reorder them from the **Order** column to control sequencing. See [Order your Relays](#1a-order-your-relays).
+Yes. If more than one Relay's conditions match, **every eligible Relay runs**. Within a Trigger group they run in the **Order** you set on the Relays list. Reorder them from the **Order** column to control sequencing. See [Order your Relays](#1a-order-your-relays).
 
 **Can I include media in auto-replies?**\
 Yes. Keep each file **≤ 10 MB** (files **\> 500 KB** are sent as links). See [**Media**](/messaging/media).
