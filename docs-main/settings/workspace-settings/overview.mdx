@@ -79,13 +79,13 @@ Workspace Settings store **organization-level** info that applies to every user 
 
 | Action                    | Where          | What happens                                                                                                                                                        |
 | ------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cancel subscription**   | In-app         | Severs the subscription ↔ workspace link at the end of the billing period. The workspace enters a **locked state** and stays that way until you resubscribe. Data is retained. |
-| **Delete workspace data** | Support only   | Permanently removes workspace data. You email a request from a workspace admin address and verify the card on file. Not reversible.                                 |
+| **Cancel subscription**   | In-app         | Severs the subscription ↔ workspace link at the end of the billing period. The workspace enters a **locked state**. Data is retained for **90 days**, after which the workspace is **automatically deleted**. |
+| **Delete workspace data** | Support only   | Permanently removes workspace data on request. Used to delete a workspace **before** the 90-day window ends. You email a request from a workspace admin address and verify the card on file. Not reversible.        |
 | **Remove a teammate**     | In-app         | Revokes a single user's access. The workspace, its data, and its subscription stay intact. See [Team Management](/settings/workspace-settings/team-management).     |
 
-<Note>
-  **We retain workspace data indefinitely.** Cancelling a subscription leaves your data in place. If you resubscribe later, the workspace unlocks with everything intact.
-</Note>
+<Warning>
+  **Cancelled workspaces are automatically deleted after 90 days.** Once your subscription is cancelled and the billing period ends, the workspace enters a locked state and its data is retained for 90 days. If you don't resubscribe within that window, the workspace and its data are permanently deleted. Resubscribing before the 90th day unlocks the workspace with everything intact.
+</Warning>
 
 To cancel a subscription, see [Cancel subscription](/settings/workspace-settings/billing-subscriptions#cancel-subscription).
 
@@ -97,7 +97,12 @@ Workspace deletion is a **support-only, permanent** action. There is no in-app b
 
 ### When to request deletion
 
-- You want workspace data **permanently removed** from MessageDesk. If you only want to stop paying, [cancel the subscription](/settings/workspace-settings/billing-subscriptions#cancel-subscription) instead. Your data stays intact, and you can reactivate the workspace by resubscribing.
+- You want workspace data **permanently removed before** the automatic 90-day deletion window ends.
+- You only want to stop paying — [cancel the subscription](/settings/workspace-settings/billing-subscriptions#cancel-subscription) instead. Your data stays intact for 90 days after the billing period ends, and you can reactivate the workspace by resubscribing within that window.
+
+<Note>
+  You don't have to contact support just to have a cancelled workspace deleted. **All cancelled workspaces are automatically deleted 90 days after cancellation.** Contact support only if you want the workspace deleted **sooner** than that.
+</Note>
 
 ### How to request deletion
 
