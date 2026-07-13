@@ -73,8 +73,45 @@ Workspace Settings store **organization-level** info that applies to every user 
 
 ---
 
+## Cancel a subscription vs. delete a workspace
+
+**Subscriptions and workspaces are separate.** Cancelling a subscription doesn't delete a workspace, and deleting a workspace isn't tied to your billing cycle.
+
+| Action                    | Where          | What happens                                                                                                                                                        |
+| ------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Cancel subscription**   | In-app         | Severs the subscription ↔ workspace link at the end of the billing period. The workspace enters a **locked state** and stays that way until a subscription is set again. Data is retained. |
+| **Delete workspace data** | Support only   | Permanently removes workspace data. Requires an emailed request from a workspace admin and card verification. Not reversible.                                       |
+| **Remove a teammate**     | In-app         | Revokes a single user's access. The workspace, its data, and its subscription are unaffected. See [Team Management](/settings/workspace-settings/team-management).  |
+
+<Note>
+  **We retain workspace data indefinitely.** Cancelling a subscription leaves your data in place. If you resubscribe later, the workspace unlocks with everything intact.
+</Note>
+
+To cancel a subscription, see [Cancel subscription](/settings/workspace-settings/billing-subscriptions#cancel-subscription).
+
+---
+
 ## Delete a workspace
 
-You can't delete workspaces from the UI.
+Workspace deletion is a **support-only, permanent** action. There is no in-app button to delete a workspace.
 
-To request workspace deletion, contact support. We'll verify ownership and process the request per our data-retention and security policies.
+### When to request deletion
+
+- You want workspace data **permanently removed** from MessageDesk. If you only want to stop paying, [cancel the subscription](/settings/workspace-settings/billing-subscriptions#cancel-subscription) instead — your data stays intact and the workspace can be reactivated by resubscribing.
+
+### How to request deletion
+
+To authorize a workspace deletion, email [support@messagedesk.com](mailto:support@messagedesk.com) with the following:
+
+1. **Send from an email tied to an admin user** on the workspace.
+2. **Workspace name** and **tenant** (if you have more than one).
+3. **Last 4 digits of the card on file** for verification.
+4. (Optional) Request a **final data export** before deletion. See [Data Center](/settings/workspace-settings/data-center#message-history) for what can be exported.
+
+<Warning>
+  Workspace deletion is **permanent and can't be undone**. Conversations, contacts, phone-line configuration, and settings are removed. Numbers you host or purchased through MessageDesk should be [ported away](/settings/workspace-settings/phone-management#port-your-number-away-from-messagedesk) first if you want to keep them.
+</Warning>
+
+<Tip>
+  If your tenant has multiple workspaces and you only want to remove one, tell support which workspace to delete. Other workspaces under the same tenant aren't affected. See [Tenant management](/get-started/tenant-management).
+</Tip>
