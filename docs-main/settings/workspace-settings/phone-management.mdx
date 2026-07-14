@@ -110,6 +110,33 @@ To move your phone number to a different provider:
 
 ---
 
+## Remove a phone number from MessageDesk
+
+Removing a number is a **support-only** action. There's no in-app button to remove a phone line — our dev team processes the request manually so we can clean up the associated data.
+
+<Warning>
+  **Removing a number permanently deletes every conversation tied to it.** All message history associated with the number is deleted from the workspace and can't be recovered. If you want to keep a record, [export the message history](/settings/workspace-settings/data-center#export-your-text-message-history-to-csv-or-pdf) for that phone line **before** you submit the request.
+</Warning>
+
+### Before you request removal
+
+1. **Export the message history** for the phone line you're removing. See [Data Center → Export your text message history to CSV or PDF](/settings/workspace-settings/data-center#export-your-text-message-history-to-csv-or-pdf).
+2. Decide whether you actually want to **remove** the number or [**port it away**](#port-your-number-away-from-messagedesk) to a different provider. Porting preserves the number itself; removal releases it.
+3. If you want to keep the number but reassign it to a different workspace under the same tenant, see [Move a phone number between workspaces](#move-a-phone-number-between-workspaces) instead.
+
+### How to request removal
+
+Email [support@messagedesk.com](mailto:support@messagedesk.com) with the following:
+
+1. **Send from an admin email** associated with your workspace.
+2. **Workspace name** and **tenant** (if you have more than one).
+3. The **phone number(s)** you want removed, in E.164 format (for example, `+13802101240`).
+4. Confirmation that you've **exported any message history** you need to keep.
+
+Our dev team will process the request and confirm once the number has been removed.
+
+---
+
 ## Call forwarding
 
 Route inbound calls to any phone number you choose. Voice calls to your MessageDesk lines reach the right person, while texts stay in the Inbox.
@@ -165,3 +192,6 @@ No. You can apply one carrier registration to **every connected phone line**. To
 
 **Who can add or edit lines?**\
 Users with **Phone Numbers = Editor** permission (typically **Managers** or **Admins**).
+
+**How do I remove a phone number from MessageDesk?**\
+Removal is support-only. Email [support@messagedesk.com](mailto:support@messagedesk.com) from an admin address with the workspace name and the number(s) you want removed. **Removing a number permanently deletes all message history tied to it** — export the history first if you need to keep it. See [Remove a phone number from MessageDesk](#remove-a-phone-number-from-messagedesk) for the full checklist.
