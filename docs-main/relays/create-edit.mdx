@@ -70,11 +70,11 @@ Supported triggers:
 
 * **Message Received:** Fires when a new inbound SMS arrives.
 * **Message Sent:** Fires when your workspace sends a message (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
-* **Message Failed:** Fires when an outbound message fails to deliver. Pair with the **Message failure contains text** condition to react to specific carrier or provider errors (e.g., `landline`, `unreachable`, `blocked`). Useful for surfacing failures to a teammate, opening the conversation for human review, labeling for follow-up, or forwarding the failure event to an external system. See [Delivery status and errors](/messaging/delivery-status-errors).
+* **Message Failed:** Fires when an outbound message fails to deliver. Useful for catching undelivered texts, branching on the failure reason, and alerting the team.
 * **Conversation Opened:** Fires when a conversation transitions from Closed back to Open (a reopen). Useful for re-engagement flows, re-triaging reopened threads, or notifying external systems on reopen.
 * **Conversation Users Assigned:** Fires when a teammate assigns one or more people to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
 * **Conversation Label Applied:** Fires when a label is applied to a conversation. Turns a label into an automation trigger for downstream actions like assignment, webhook fan-out, or auto-close.
-* **Conversation Label Removed:** Fires when a label is removed from a conversation. Mirror of Conversation Label Applied. Useful for reversing label-driven state — for example, reopening a conversation when a `Snoozed` label is cleared, un-assigning on a `VIP` removal, or notifying an external system that a workflow tag was pulled off.
+* **Conversation Label Removed:** Fires when a label is removed from a conversation. Mirror of Conversation Label Applied, useful for syncing a state change downstream when a label comes off.
 * **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 * **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
 
@@ -101,7 +101,7 @@ The available conditions depend on the selected trigger. The message triggers (M
 - **Message failure contains text:** match a substring in the carrier/provider error text on a failed outbound message, e.g., `landline`, `unreachable`, `blocked` (Message Failed trigger). See [Delivery status and errors](/messaging/delivery-status-errors).
 - **My phone number equals:** run only on a specific connected phone number
 - **Conversation label equals:** match against a conversation's labels using an operator selector (contains, equals, notEquals, startsWith, endsWith). For example, `startsWith "Region:"` matches every namespaced regional label at once.
-- **Conversation has label:** a boolean presence check for a specific label. Use this as a gate — run the Relay only when the conversation is already labeled (e.g., `VIP`, `Escalated`).
+- **Conversation has label:** a boolean presence check for a specific label. Use this as a gate to run the Relay only when the conversation is already labeled (for example, `VIP` or `Escalated`). Distinct from the operator-based **Conversation label equals**.
 - **Is anonymous conversation:** no saved contact yet
 - **Is new conversation:** first inbound in a thread
 - **Is unassigned conversation:** the conversation has no assigned teammates. Useful for scoping actions to threads no one has claimed yet.
