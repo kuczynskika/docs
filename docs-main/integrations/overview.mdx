@@ -23,7 +23,7 @@ Pick the layer that fits the job, or combine them.
 
 ### Grammarly
 
-The **Grammarly browser extension** runs alongside MessageDesk and checks **spelling, grammar, and tone** as you compose messages, comments, and templates. It's the lightest-weight way to keep customer-facing texts on-brand without leaving the inbox. Works in any browser where Grammarly is installed; no MessageDesk-side configuration required.
+The **Grammarly browser extension** runs alongside MessageDesk and checks **spelling, grammar, and tone** as you compose messages, comments, and templates. You keep customer-facing texts on-brand without leaving the Inbox. It works in any browser where Grammarly is installed. No MessageDesk-side configuration required.
 
 → [Grammarly](/integrations/grammarly)
 
@@ -50,7 +50,7 @@ No code required. MessageDesk publishes triggers like **Message Received** and *
 
 ### Send Webhook (custom endpoint)
 
-For developer-built integrations, or any system that doesn't have a Zapier connector, use the **Send Webhook** Relay action to push MessageDesk events to **any HTTPS endpoint** you control. Each event is signed with an `X-MessageDesk-Signature` header so you can verify authenticity. This is the right tier for streaming events into a data warehouse, custom CRM, internal microservice, or a serverless function.
+For developer-built integrations, or any system without a Zapier connector, use the **Send Webhook** Relay action to push MessageDesk events to **any HTTPS endpoint** you control. MessageDesk signs each event with an `X-MessageDesk-Signature` header so you can verify authenticity. Pick this tier when you're streaming events into a data warehouse, custom CRM, internal microservice, or a serverless function.
 
 - [Send Webhook (Relay action)](/relays/webhooks): payload format, headers, signature validation, retry behavior
 - [Developer Tools (Settings)](/settings/workspace-settings/developer-tools): configure your webhook endpoint URL and signing secret
@@ -64,7 +64,7 @@ For developer-built integrations, or any system that doesn't have a Zapier conne
 ## Lightweight in-app lookups
 
 <Note>
-  The **Contact Create Form** in MessageDesk also includes **HubSpot** and **Close CRM** lookup buttons: lightweight one-click integrations that pull contact details from those CRMs into a new MessageDesk contact record. They aren't full sync integrations. For full bi-directional CRM sync, use [Zapier](/integrations/zapier) or a webhook-based pipeline.
+  The **Contact Create Form** in MessageDesk also includes **HubSpot** and **Close CRM** lookup buttons. One click pulls contact details from those CRMs into a new MessageDesk contact record. They aren't full sync integrations. For full bi-directional CRM sync, use [Zapier](/integrations/zapier) or a webhook-based pipeline.
 </Note>
 
 ---
