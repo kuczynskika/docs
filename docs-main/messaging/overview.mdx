@@ -26,6 +26,14 @@ MessageDesk supports the following types of messages:
   **Import historical messages:** You can import past messages into MessageDesk to maintain conversation continuity. Learn more in the [Data Center](/settings/workspace-settings/data-center) documentation.
 </Note>
 
+## iMessage vs. SMS/MMS
+
+MessageDesk sends and receives over standard carrier SMS and MMS. It does not use Apple iMessage.
+
+- iMessage is Apple's separate, proprietary protocol. iMessage conversations do not appear in the MessageDesk shared Inbox.
+- Messages from iPhone users still reach you. When you or a contact texts a MessageDesk number, the message is delivered as SMS/MMS and shows up in the Inbox normally. You just won't see blue-bubble iMessage threads.
+- An existing cellular or mobile line can't be connected to MessageDesk while it stays with its wireless carrier. If a team wants to share texting on a personal cell, the practical option is a separate MessageDesk business number, with [call forwarding](/settings/workspace-settings/phone-management#call-forwarding) to a cell if voice matters. See [Phone numbers](/get-started/phone-numbers/overview) to add or connect a line.
+
 ## SMS character limits and message segments
 
 Standard SMS messages are limited to **160 characters per segment**. If a message exceeds this limit, carriers automatically split it into multiple segments. Most modern phones display these as a single continuous message, but in rare cases they may appear as separate texts or arrive out of order.
