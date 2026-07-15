@@ -158,13 +158,19 @@ The signature is generated using the request body and your API secret:
 const crypto = require('crypto');
 const apiSecret = 'YOUR_API_SECRET';
 
-function validateMessageDeskSignature(headers, body) {
+// `rawBody` MUST be the exact request body bytes/string received on the
+// request, not a parsed-and-re-serialized JSON object. Re-serializing can
+// reorder keys or change whitespace, which will invalidate the signature.
+// In Express, use `express.raw({ type: 'application/json' })` and read
+// `req.body` as a Buffer/string. In a raw Node.js handler, concatenate
+// the request stream chunks yourself.
+function validateMessageDeskSignature(headers, rawBody) {
     // Capture the X-MessageDesk-Signature header
     const signature = headers['x-messagedesk-signature'];
 
-    // Compute HMAC SHA256
+    // Compute HMAC SHA256 over the raw request body
     const hash = crypto.createHmac('sha256', apiSecret)
-                       .update(JSON.stringify(body))
+                       .update(rawBody)
                        .digest('base64');
 
     return crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature));
