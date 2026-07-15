@@ -9,7 +9,7 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 
 # How to create, edit, and delete Relays
 
-Build Relays with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays.
+Build Relays with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays. For a full reference of every [trigger, condition, and action](/relays/building-blocks), see the Relay building blocks page.
 
 <Note>
   **Permissions required:** By default, only **Admin** users can access Relays. If you don't see the Relays module, ask your workspace admin to grant you **Relay Management** permissions via **Settings → Team Management**. Learn more: [Team Management](/settings/workspace-settings/team-management).
@@ -27,7 +27,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-Relays are **grouped by Trigger** (Message Received, Message Sent, Comment Created, Conversation Opened, Conversation Assigned, Conversation Closed) and, within each group, **sorted by Order**. You can scan every Relay on a phone line or event at a glance.
+Relays are **grouped by Trigger** (Message Received, Message Sent, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Comment Created, Conversation Closed) and, within each group, **sorted by Order**. You can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -70,13 +70,18 @@ Supported triggers:
 
 * **Message Received:** Fires when a new inbound SMS arrives.
 * **Message Sent:** Fires when your workspace sends a message (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
-* **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 * **Conversation Opened:** Fires when a conversation transitions from Closed back to Open (a reopen). Useful for re-engagement flows, re-triaging reopened threads, or notifying external systems on reopen.
-* **Conversation Assigned:** Fires when a teammate assigns one or more people to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
-* **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like unassigning all teammates.
+* **Conversation Users Assigned:** Fires when a teammate assigns one or more people to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
+* **Conversation Label Applied:** Fires when a label is applied to a conversation. Turns a label into an automation trigger for downstream actions like assignment, webhook fan-out, or auto-close.
+* **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
+* **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
 
 <Note>
   **Note:** Templates include the **Message Received** trigger by default.
+</Note>
+
+<Note>
+  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger cannot support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review your conditions after switching triggers.
 </Note>
 
 ![Relay Message Received Trigger Pn](/images/relay-message-received-trigger.png)
@@ -85,18 +90,21 @@ Supported triggers:
 
 Conditions control **where/when** a Relay runs. You can combine multiple conditions with **AND** or **OR**.
 
+The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**, Comment Created adds **Comment contains text**, and every trigger includes the universal six: **My phone number equals**, **Conversation label equals**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, and **Active hours**.
+
 **Available conditions:**
 
-- **Message contains text:** match keywords like `SUPPORT`, `HELP` (Message Received trigger)
+- **Message contains text:** match keywords like `SUPPORT`, `HELP` (Message Received and Message Sent triggers)
 - **Comment contains text:** match keywords in the body of an internal [comment](/inbox/comments-mentions) (Comment Created trigger)
-- **My phone number equals:** run only on a specific outbound line
+- **My phone number equals:** run only on a specific connected phone number
+- **Conversation label equals:** match against a conversation's labels using an operator selector (contains, equals, notEquals, startsWith, endsWith). For example, `startsWith "Region:"` matches every namespaced regional label at once.
 - **Is anonymous conversation:** no saved contact yet
 - **Is new conversation:** first inbound in a thread
 - **Is unassigned conversation:** the conversation has no assigned teammates. Useful for scoping actions to threads no one has claimed yet.
 - **Active hours:** restrict to a daily time window
 
 <Tip>
-  **Tip:** Turn on **“Trigger outside of business hours”** to invert the time window for after-hours replies.
+  **Tip:** Turn on **"Trigger outside of business hours"** to invert the time window for after-hours replies.
 </Tip>
 
 ![Relay Condition Pn](/images/relay-condition.png)
@@ -105,15 +113,17 @@ Conditions control **where/when** a Relay runs. You can combine multiple conditi
 
 Actions run when the conditions match. You can add **one or many** in the order you want them to execute.
 
-- **Reply to message:** send an SMS/MMS (supports templates, tags, and media)
+The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you are using.
+
+- **Reply to message:** send an SMS/MMS (supports templates, tags, and media, with an optional Delay). Available on message-received-style triggers.
 - **Assign teammates to the conversation:** pick one or more users
 - **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
 - **Add labels to the conversation:** apply one or more labels
 - **Remove labels from the conversation:** remove one or more labels
 - **Remove teammates from the conversation:** remove one or more assigned users
-- **Unassign all teammates:** clear every assignee from the conversation in a single step. Useful in close-out or hand-off workflows where you want to reset assignment state without listing every teammate.
-- **Close conversation:** close the conversation as part of the Relay run. Useful for auto-closing after an acknowledged auto-reply or webhook-driven workflow. Available on the message triggers and on **Conversation Opened** and **Conversation Assigned**.
-- **Open conversation:** reopen a closed conversation. Useful when an event should re-surface a resolved thread for human review. Available on the **Conversation Assigned** trigger.
+- **Remove all teammates from the conversation:** clear every assignee from the conversation in a single step. Useful in close-out or hand-off workflows where you want to reset assignment state without listing every teammate.
+- **Close the conversation:** close the conversation as part of the Relay run. Useful for auto-closing after an acknowledged auto-reply or webhook-driven workflow.
+- **Open the conversation:** reopen a closed conversation. Useful when an event should re-surface a resolved thread for human review. Available on more than one trigger, including **Message Sent**.
 - **Send webhook:** send event data to your webhook endpoint
 
 <Tip>
@@ -268,7 +278,7 @@ Use this when teammates want to automatically reply during vacations or after ho
         <p>Active hours</p>
       </td>
       <td colSpan="1" rowSpan="1">
-        <p>Send Auto Reply: “Thanks for reaching out! I’m currently out of the office. Please text [alternate number].”</p>
+        <p>Reply to message: “Thanks for reaching out! I’m currently out of the office. Please text [alternate number].”</p>
       </td>
     </tr>
     <tr>
@@ -276,10 +286,10 @@ Use this when teammates want to automatically reply during vacations or after ho
         <p></p>
       </td>
       <td colSpan="1" rowSpan="1">
-        <p>My phone number is</p>
+        <p>My phone number equals</p>
       </td>
       <td colSpan="1" rowSpan="1">
-        <p>Assign to teammates: Teammate 1, 2, and 3</p>
+        <p>Assign teammates to the conversation: Teammate 1, 2, and 3</p>
       </td>
     </tr>
     <tr>
@@ -301,13 +311,19 @@ Use this when teammates want to automatically reply during vacations or after ho
 1. Create a new Relay and choose **Message Received** as the trigger.
 2. Under conditions, set **Active Hours** for each day to “Closed” or a select time span.
 3. Toggle "Trigger outside of active hours" **ON**.
-4. Add an **Action → Send Auto Reply** and compose your message.
-5. Add an **Action → Assign to teammates** and select teammates.
+4. Add an **Action → Reply to message** and compose your message.
+5. Add an **Action → Assign teammates to the conversation** and select teammates.
 6. Add an **Action → Add labels to the conversation** and select labels.
 7. Toggle the Relay **ON**.
 
+#### Out-of-office for a specific teammate
+
+Per-user out-of-office only works when the teammate has their own dedicated phone line. Add a **My phone number equals** condition set to that teammate's line, and the auto-reply will only fire for messages on that number.
+
+On a shared line, this pattern does not work. An out-of-office Relay on a shared line replies to every inbound message during its active-hours window, so it applies to the whole team, not to one person. When a teammate on a shared line is out, reassign their open conversations to someone else instead of using an auto-reply. See [Can I set up an out-of-office reply for just one person?](#can-i-set-up-an-out-of-office-reply-for-just-one-person) in the FAQ.
+
 <Tip>
-  **Team Tip:** Each team member (Teammate 1, 2, and 3) can have their own relay(s). Be sure to give each Relay a clear descriptive name, like:
+  When each teammate has their own line and their own out-of-office Relay, give each Relay a clear descriptive name so they are easy to manage:
 
   1. `Teammate 1 - Out of Office Autoreply`
   2. `Teammate 2 - Weekend Autoreply`
@@ -324,7 +340,7 @@ Use this Relay to automatically collect names from new, anonymous conversations.
 
 | **Trigger**      | **Condition**                                        | **Actions**                                                                                       |
 | ---------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Message Received | Conversation is anonymous (contact not in directory) | Send Auto Reply: “Thanks for texting us! What’s your first and last name so we know who to help?” |
+| Message Received | Conversation is anonymous (contact not in directory) | Reply to message: “Thanks for texting us! What’s your first and last name so we know who to help?” |
 
 **Steps to configure:**
 
@@ -332,7 +348,7 @@ Use this Relay to automatically collect names from new, anonymous conversations.
 2. Under conditions, set **My phone number equals** to a connected phone line.
 3. Set another condition for **Is anonymous conversation**.
 4. Add an **Action → Reply to message** and compose your message.
-5. Add an **Action → Assign to teammates** and select teammates.
+5. Add an **Action → Assign teammates to the conversation** and select teammates.
 6. Add an **Action → Add labels to the conversation** and select labels.
 7. Toggle the Relay **ON**.
 
@@ -352,7 +368,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 
 | **Trigger**      | **Condition**                      | **Actions**                                                                                               |
 | ---------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Message Received | Message contains keyword “SUPPORT” | Send Auto Reply: “Thanks for reaching out to support. Please share any extra details, and we’ll jump in.” |
+| Message Received | Message contains keyword “SUPPORT” | Reply to message: “Thanks for reaching out to support. Please share any extra details, and we’ll jump in.” |
 
 **Steps to configure:**
 
@@ -360,7 +376,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
 2. Under conditions, set **My phone number equals** to a connected phone line.
 3. Set another condition for **Message contains text SUPPORT**.
 4. Add an **Action → Reply to message** and compose your message.
-5. Add an **Action → Assign to teammates** and select teammates.
+5. Add an **Action → Assign teammates to the conversation** and select teammates.
 6. Add an **Action → Add labels to the conversation** and select labels.
 7. Toggle the Relay **ON**.
 
@@ -414,6 +430,12 @@ Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new c
 
 **Does a Relay auto-reply mark the conversation as Read?**\
 No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it isn't marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
+
+**What happens if I change the trigger on an existing Relay?**\
+MessageDesk removes any conditions the new trigger cannot support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
+
+**Can I set up an out-of-office reply for just one person?**\
+It depends on how your phone lines are set up. A Relay runs on a phone line, not on an individual teammate, and there is no condition that targets a specific assigned user. If that teammate has their own dedicated line, yes: build the out-of-office Relay and add a **My phone number equals** condition set to their line, so the auto-reply only fires for messages on that number. If several teammates share one line, an out-of-office Relay on that line replies to every message during your active-hours window, so it cannot be limited to one person while the rest of the team keeps working. In that case, cover the teammate who is out by reassigning their open conversations to someone else instead of using an auto-reply.
 
 ---
 

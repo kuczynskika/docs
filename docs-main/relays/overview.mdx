@@ -55,20 +55,20 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 
 **Relays = Triggers → Conditions → Actions**
 
-- **Triggers:** When it runs\
-  _Examples:_ `MessageReceived` (a new inbound text starts the relay), `MessageSent` (your workspace sends an outbound message), `CommentCreated` (a teammate posts an internal comment), `ConversationOpened` (a teammate or reply reopens a closed conversation), `ConversationAssigned` (a teammate assigns one or more people to a conversation), `ConversationClosed` (a teammate closes a conversation)
-- **Conditions:** Where/when it applies\
+- **Triggers:** When it runs.\
+  There are seven triggers: **Message Received**, **Message Sent**, **Conversation Opened**, **Conversation Users Assigned**, **Conversation Label Applied**, **Comment Created**, and **Conversation Closed**. See [Relay building blocks](/relays/building-blocks#triggers-7) for the full reference.
+- **Conditions:** Where/when it applies.\
   _Examples:_\
-  • **Phone line** equals _Support_\
-  • **Is anonymous** contact is **true**\
+  • **My phone number equals** _Support_\
+  • **Is anonymous conversation** is **true**\
   • **Is unassigned conversation** is **true**\
-  • **Active hours** = outside business hours
-- **Actions:** What happens\
+  • **Active hours** with **Trigger outside of business hours** enabled
+- **Actions:** What happens.\
   _Examples:_\
-  • **Assign teammates**\
-  • **Add labels**\
-  • **Send message** (auto-reply with templates/tags)\
-  • **Open conversation** / **Close conversation**
+  • **Assign teammates to the conversation**\
+  • **Add labels to the conversation**\
+  • **Reply to message** (with templates, tags, media, and an optional Delay)\
+  • **Open the conversation** or **Close the conversation**
 
 You can **pause** and **resume** any Relay without deleting it.
 
@@ -76,22 +76,28 @@ You can **pause** and **resume** any Relay without deleting it.
   **Multiple Relays on one event.** When several Relays share the same trigger, **all matching Relays run** in the **Order** you set on the Relays list, top to bottom. Reorder Relays to control sequencing when conditions overlap. For example, run a specific keyword auto-reply before a generic after-hours reply. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
 </Note>
 
+<Tip>
+  For the full list of triggers, conditions, and actions (with the operator selector on **Conversation label equals** and the phone-line scoping model), see [Relay building blocks](/relays/building-blocks).
+</Tip>
+
 ---
 
-## Example starter Relay recipes
+## Starter Relay templates
+
+A few common patterns to get you started:
 
 - **After-hours responder**\
-  _Trigger:_ MessageReceived → _Conditions:_ Outside business hours →\
-  _Actions:_ Send “We’ll reply at 8am PT. Reply STOP to opt out.”
+  _Trigger:_ Message Received → _Conditions:_ **Active hours** with **Trigger outside of business hours** enabled →\
+  _Actions:_ **Reply to message** with "We'll reply at 8am PT. Reply STOP to opt out."
 - **New lead triage**\
-  _Trigger:_ MessageReceived → _Conditions:_ Is anonymous = true →\
-  _Actions:_ Send info-capture prompt → Add label _Lead_ → Assign _Sales Queue_
-- **Phone Line-based routing**\
-  _Trigger:_ MessageReceived → _Conditions:_ Outbound channel = _Dispatch Line_ →\
-  _Actions:_ Assign _Dispatcher_ → Add label _Route Change_
+  _Trigger:_ Message Received → _Conditions:_ **Is anonymous conversation** is true →\
+  _Actions:_ **Reply to message** with an info-capture prompt (include "Reply STOP to opt out.") → **Add labels to the conversation** (_Lead_) → **Assign teammates to the conversation** (_Sales Queue_)
+- **Phone-line-based routing**\
+  _Trigger:_ Message Received → _Conditions:_ **My phone number equals** _Dispatch Line_ →\
+  _Actions:_ **Assign teammates to the conversation** (_Dispatcher_) → **Add labels to the conversation** (_Route Change_)
 
 <Tip>
-  Want more? See the full [**Relay Recipes**](/relays/recipes) library for ready-to-use configurations covering customer service, operations and routing, and webhook integrations.
+  See the full [Relay template library](/relays/templates) for ready-to-use configurations covering customer service, operations and routing, and webhook integrations. For a reference of every trigger, condition, and action, see [Relay building blocks](/relays/building-blocks).
 </Tip>
 
 <Note>
