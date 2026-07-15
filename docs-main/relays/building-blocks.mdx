@@ -8,17 +8,17 @@ sidebarTitle: "Building blocks"
 
 Every Relay combines three parts: triggers, conditions, and actions. Use this page as the reference when you build or edit one.
 
-## Triggers (9)
+## Triggers
 
 | Trigger                       | Fires when                                                                | Notes                                                                       |
 | ----------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| Message Received              | A new inbound SMS arrives                                                 | Default trigger on templates. The only trigger with the Reply to message action. |
+| Message Received              | A new inbound SMS arrives                                                 | Default trigger on templates. Supports the Reply to message action.         |
 | Message Sent                  | Your workspace sends a message, manual or automated                       | Unlocks Assign to sender.                                                   |
-| Message Failed                | An outbound message fails to deliver                                      | Pairs with the **Message failure contains text** condition to match on the carrier/provider error text. See [Delivery status and errors](/messaging/delivery-status-errors). |
+| Message Failed                | An outbound message fails to deliver                                      | New in v2026.07.15. Pairs with the Message failure contains text condition. Unlocks delivery-failure workflows. |
 | Conversation Opened           | A closed conversation is reopened                                         |                                                                             |
 | Conversation Users Assigned   | A teammate assigns one or more people to a conversation                   |                                                                             |
 | Conversation Label Applied    | A label is applied to a conversation                                      | Turns a label into an automation trigger.                                   |
-| Conversation Label Removed    | A label is removed from a conversation                                    | Mirror of Conversation Label Applied. Useful for reversing label-driven state or notifying on cleanup. |
+| Conversation Label Removed    | A label is removed from a conversation                                    | New in v2026.07.15. Mirror of Conversation Label Applied.                   |
 | Comment Created               | A teammate posts an internal comment                                      | Pairs with the Comment contains text condition.                             |
 | Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
 
@@ -38,16 +38,15 @@ On top of that core, three text conditions are trigger-scoped:
 
 - **Message contains text** appears on the message triggers (Message Received and Message Sent).
 - **Comment contains text** appears only on Comment Created.
-- **Message failure contains text** appears only on Message Failed. Matches a substring in the carrier/provider error text (for example, `unreachable`, `landline`, `blocked`).
-
-<Note>
-  **Conversation has label** vs **Conversation label equals.** *Conversation label equals* is a matcher with operators (**contains**, **equals**, **notEquals**, **startsWith**, **endsWith**) — use it for namespaced or fuzzy matches like `startsWith "Region:"`. *Conversation has label* is a simple boolean check for the presence of a specific label — use it as a gate (e.g., only run when a conversation is already labeled `VIP`).
-</Note>
+- **Message failure contains text** appears only on Message Failed. Matches a substring in the carrier/provider error text (for example, `unreachable`, `landline`, `blocked`). See [Delivery status and errors](/messaging/delivery-status-errors).
 
 Conditions combine with **AND** or **OR**.
 
 <Note>
-  **Conversation label equals** is a matcher, not a fixed equality check. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. This lets you match namespaced labels in bulk. For example, a single condition of **Conversation label startsWith "Region:"** matches every regional label at once.
+  **Conversation has label** vs **Conversation label equals.** Both conditions check labels, but they behave differently, so pick the one that matches your intent.
+
+  - **Conversation label equals** is an operator-based matcher. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. Use it for fuzzy or namespaced matches, for example `startsWith "Region:"` to match every regional label at once.
+  - **Conversation has label** is a simple presence check. It evaluates true when the conversation is currently labeled with the label you pick, and false otherwise. Use it as a gate (for example, only run when the conversation already has the `VIP` label).
 </Note>
 
 <Note>
@@ -56,7 +55,7 @@ Conditions combine with **AND** or **OR**.
 
 ## Actions
 
-- **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on message-received-style triggers)
+- **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on Message Received, Message Failed, and Conversation Label Removed)
 - **Assign teammates to the conversation**
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
@@ -68,3 +67,19 @@ Conditions combine with **AND** or **OR**.
 - **Send webhook**
 
 Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
+
+### Actions on the new triggers
+
+**Message Failed** supports the following actions:
+
+- Reply to message
+- Assign teammates to the conversation
+- Close the conversation
+- Open the conversation
+- Remove all teammates from the conversation
+- Remove teammates from the conversation
+- Add labels to the conversation
+- Remove labels from the conversation
+- Send webhook
+
+**Conversation Label Removed** supports the same set as Message Failed with one asymmetry: **Remove labels from the conversation is not available** on this trigger. Every other action above is available.
