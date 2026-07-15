@@ -96,9 +96,9 @@
             "pages": [
               "/relays/overview",
               "/relays/building-blocks",
+              "/relays/templates",
               "/relays/create-edit",
-              "/relays/webhooks",
-              "/relays/templates"
+              "/relays/webhooks"
             ]
           },
           {
