@@ -27,7 +27,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-Relays are **grouped by Trigger** (Message Received, Message Sent, Comment Created, Conversation Closed) and, within each group, **sorted by Order**. You can scan every Relay on a phone line or event at a glance.
+Relays are **grouped by Trigger** (Message Received, Message Sent, Comment Created, Conversation Opened, Conversation Assigned, Conversation Closed) and, within each group, **sorted by Order**. You can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -71,6 +71,8 @@ Supported triggers:
 * **Message Received:** Fires when a new inbound SMS arrives.
 * **Message Sent:** Fires when a message is sent from your workspace (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
 * **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
+* **Conversation Opened:** Fires when a conversation transitions from Closed back to Open (a reopen). Useful for re-engagement flows, re-triaging reopened threads, or notifying external systems on reopen.
+* **Conversation Assigned:** Fires when one or more teammates are assigned to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
 * **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like unassigning all teammates.
 
 <Note>
@@ -110,6 +112,8 @@ Actions run when the conditions match. You can add **one or many** in the order 
 - **Remove labels from the conversation:** remove one or more labels
 - **Remove teammates from the conversation:** remove one or more assigned users
 - **Unassign all teammates:** clear every assignee from the conversation in a single step. Useful in close-out or hand-off workflows where you want to reset assignment state without listing every teammate.
+- **Close conversation:** close the conversation as part of the Relay run. Useful for auto-closing after an acknowledged auto-reply or webhook-driven workflow. Available on the message triggers and on **Conversation Opened** and **Conversation Assigned**.
+- **Open conversation:** reopen a closed conversation. Useful when an event should re-surface a resolved thread for human review. Available on the **Conversation Assigned** trigger.
 - **Send webhook:** send event data to your webhook endpoint
 
 <Tip>

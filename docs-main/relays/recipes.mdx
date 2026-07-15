@@ -128,11 +128,47 @@ A practical reference library of common Relay configurations. Each recipe lists 
 **Why this works:** When a shared Inbox has no owner on a thread, the first teammate to reply usually should own the follow-up. This Relay watches outbound messages, checks that no one's assigned yet, and assigns the conversation to whoever hit send. New inbound messages on the same thread then route to that teammate by default.
 
 <Note>
+  **Ships as a template:** This recipe is available as the **Auto Assign to First Responder** template from the Relays module. Install it as-is or use the fields above to build it yourself.
+</Note>
+
+<Note>
   The **Assign to sender** action is only available with the **Message Sent** trigger.
 </Note>
 
 <Tip>
   Drop the **Is unassigned conversation** condition if you want the sender to always take ownership, even on threads someone else was already assigned to.
+</Tip>
+
+---
+
+### 8. Notify the new assignee on assignment
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Conversation Assigned |
+| **Conditions** | None (or scope by line/label) |
+| **Actions** | **Send Webhook** → your Slack/Teams/notification endpoint |
+
+**Why this works:** MessageDesk's in-app notifications reach assignees inside the product, but teams that live in Slack or Teams want a ping in their chat tool the moment a conversation lands in their queue. Fire a webhook on **Conversation Assigned** and route the payload to your notifier of choice.
+
+<Tip>
+  Pair with **Add labels to the conversation** (for example, `Handoff`) so the receiving teammate can filter their Inbox to just newly assigned threads.
+</Tip>
+
+---
+
+### 9. Re-triage on reopen
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Conversation Opened |
+| **Conditions** | None (or scope by line/label) |
+| **Actions** | **Unassign all teammates** → **Add labels to the conversation:** `Reopened` |
+
+**Why this works:** When a closed conversation gets reopened (a customer replies days later, or a teammate reopens for follow-up), the original assignees may no longer be the right owners. Clearing assignees and applying a `Reopened` label sends the thread back through your normal triage so it gets picked up by the right person.
+
+<Tip>
+  Pair this with a **Message Received** Relay that auto-assigns based on line or keyword. Reopens get reset here; the next inbound gets routed there.
 </Tip>
 
 ---
@@ -143,7 +179,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
   Webhook actions require a configured webhook endpoint and signing secret. Set those up in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) before turning on the Relays below. See [Send Webhook](/relays/webhooks) for the full payload format, headers, and signature validation.
 </Note>
 
-### 8. Push new inbound message to an external system
+### 10. Push new inbound message to an external system
 
 | Field | Value |
 | --- | --- |
@@ -155,7 +191,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 ---
 
-### 9. Notify an external system on conversation close
+### 11. Notify an external system on conversation close
 
 | Field | Value |
 | --- | --- |
@@ -167,7 +203,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 ---
 
-### 10. Reset assignees on close
+### 12. Reset assignees on close
 
 | Field | Value |
 | --- | --- |
@@ -177,8 +213,28 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 **Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached. Reopens or new inbound messages on the same thread often need fresh triage. The **Unassign all teammates** action clears every assignee in one step, so the next inbound lands unassigned and can be routed by your normal auto-assign Relays.
 
+<Note>
+  **Ships as a template:** This recipe is available as the **Unassign on Close** template from the Relays module. Install it in one click, or build it from the fields above.
+</Note>
+
 <Tip>
   Pair this with a **Message Received** Relay that auto-assigns based on line or keyword. Closed threads get reset here; the next inbound gets routed there.
+</Tip>
+
+---
+
+### 13. Auto-close after acknowledgement
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Sent |
+| **Conditions** | Optional: **My phone number equals** a specific line, or match an acknowledgement template/keyword |
+| **Actions** | **Close conversation** |
+
+**Why this works:** One-shot confirmation flows (appointment confirmations, delivery notifications, "on my way" pings) don't need to stay open in the Inbox after the outbound message goes out. The **Close conversation** action closes the thread as soon as the confirmation is sent, keeping the Inbox focused on conversations that still need a human.
+
+<Tip>
+  Reopens are handled automatically: a new inbound message on a closed conversation reopens the thread and fires any **Conversation Opened** Relays you've configured (see [Recipe 9](#9-re-triage-on-reopen)).
 </Tip>
 
 ---
