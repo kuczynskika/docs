@@ -98,7 +98,7 @@
               "/relays/building-blocks",
               "/relays/create-edit",
               "/relays/webhooks",
-              "/relays/recipes"
+              "/relays/templates"
             ]
           },
           {
@@ -328,6 +328,10 @@
     {
       "source": "/settings/account/trial-terms",
       "destination": "/resources/trial-terms"
+    },
+    {
+      "source": "/relays/recipes",
+      "destination": "/relays/templates"
     }
   ]
 }
