@@ -1,0 +1,62 @@
+---
+title: "Relay building blocks"
+description: "Reference for the triggers, conditions, and actions available when you build a MessageDesk Relay."
+sidebarTitle: "Building blocks"
+"og:title": "Relay Building Blocks - Triggers, Conditions, Actions"
+"og:description": "The canonical reference for every Relay trigger, condition, and action in MessageDesk. Use this page when building or editing a Relay."
+---
+
+Relays are built from three parts, Triggers, Conditions, and Actions. This page is the reference for all three.
+
+## Triggers (7)
+
+| Trigger                       | Fires when                                                                | Notes                                                                       |
+| ----------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Message Received              | A new inbound SMS arrives                                                 | Default trigger on templates. The only trigger with the Reply to message action. |
+| Message Sent                  | Your workspace sends a message, manual or automated                       | Unlocks Assign to sender.                                                   |
+| Conversation Opened           | A closed conversation is reopened                                         |                                                                             |
+| Conversation Users Assigned   | A teammate assigns one or more people to a conversation                   |                                                                             |
+| Conversation Label Applied    | A label is applied to a conversation                                      | Turns a label into an automation trigger.                                   |
+| Comment Created               | A teammate posts an internal comment                                      | Pairs with the Comment contains text condition.                             |
+| Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
+
+## Conditions
+
+Every trigger shares a **universal core of six conditions**:
+
+- **My phone number equals**
+- **Conversation label equals**
+- **Is anonymous conversation**
+- **Is new conversation**
+- **Is unassigned conversation**
+- **Active hours** (with a **Trigger outside of business hours** invert)
+
+On top of that core, two text conditions are trigger-scoped:
+
+- **Message contains text** appears on the message triggers (Message Received and Message Sent).
+- **Comment contains text** appears only on Comment Created.
+
+Conditions combine with **AND** or **OR**.
+
+<Note>
+  **Conversation label equals** is a matcher, not a fixed equality check. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. This makes namespaced labels powerful. For example, a single condition of **Conversation label startsWith "Region:"** matches every regional label at once.
+</Note>
+
+<Note>
+  **Relays target a phone line, not a user or an availability status.** Conditions like **My phone number equals** scope a Relay to a connected number, not to a specific teammate, and there is no condition for the assigned teammate or conversation owner. Per-person workflows such as out-of-office only work when a teammate has a dedicated line.
+</Note>
+
+## Actions
+
+- **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on message-received-style triggers)
+- **Assign teammates to the conversation**
+- **Assign to sender** (Message Sent trigger only)
+- **Add labels to the conversation**
+- **Remove labels from the conversation**
+- **Remove teammates from the conversation**
+- **Remove all teammates from the conversation**
+- **Close the conversation**
+- **Open the conversation**
+- **Send webhook**
+
+The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you are using.

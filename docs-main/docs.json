@@ -95,6 +95,7 @@
             "icon": "zap",
             "pages": [
               "/relays/overview",
+              "/relays/building-blocks",
               "/relays/create-edit",
               "/relays/webhooks",
               "/relays/recipes"
