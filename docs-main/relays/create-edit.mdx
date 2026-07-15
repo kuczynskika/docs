@@ -27,7 +27,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger** (Message Received, Message Sent, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Comment Created, Conversation Closed) and, within each group, **sorts them by Order**. You can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed) and, within each group, **sorts them by Order**. You can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -70,9 +70,11 @@ Supported triggers:
 
 * **Message Received:** Fires when a new inbound SMS arrives.
 * **Message Sent:** Fires when your workspace sends a message (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
+* **Message Failed:** Fires when an outbound message fails to deliver. Useful for catching undelivered texts, branching on the failure reason, and alerting the team.
 * **Conversation Opened:** Fires when a conversation transitions from Closed back to Open (a reopen). Useful for re-engagement flows, re-triaging reopened threads, or notifying external systems on reopen.
 * **Conversation Users Assigned:** Fires when a teammate assigns one or more people to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
 * **Conversation Label Applied:** Fires when a label is applied to a conversation. Turns a label into an automation trigger for downstream actions like assignment, webhook fan-out, or auto-close.
+* **Conversation Label Removed:** Fires when a label is removed from a conversation. Mirror of Conversation Label Applied, useful for syncing a state change downstream when a label comes off.
 * **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 * **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
 
@@ -90,14 +92,16 @@ Supported triggers:
 
 Conditions control **where/when** a Relay runs. You can combine multiple conditions with **AND** or **OR**.
 
-The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**, Comment Created adds **Comment contains text**, and every trigger includes the universal six: **My phone number equals**, **Conversation label equals**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, and **Active hours**.
+The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**, Comment Created adds **Comment contains text**, Message Failed adds **Message failure contains text**, and every trigger includes the universal core: **My phone number equals**, **Conversation label equals**, **Conversation has label**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, and **Active hours**.
 
 **Available conditions:**
 
 - **Message contains text:** match keywords like `SUPPORT`, `HELP` (Message Received and Message Sent triggers)
 - **Comment contains text:** match keywords in the body of an internal [comment](/inbox/comments-mentions) (Comment Created trigger)
+- **Message failure contains text:** match a substring in the carrier/provider error text on a failed outbound message, e.g., `landline`, `unreachable`, `blocked` (Message Failed trigger). See [Delivery status and errors](/messaging/delivery-status-errors).
 - **My phone number equals:** run only on a specific connected phone number
 - **Conversation label equals:** match against a conversation's labels using an operator selector (contains, equals, notEquals, startsWith, endsWith). For example, `startsWith "Region:"` matches every namespaced regional label at once.
+- **Conversation has label:** a boolean presence check for a specific label. Use this as a gate to run the Relay only when the conversation is already labeled (for example, `VIP` or `Escalated`). Distinct from the operator-based **Conversation label equals**.
 - **Is anonymous conversation:** no saved contact yet
 - **Is new conversation:** first inbound in a thread
 - **Is unassigned conversation:** the conversation has no assigned teammates. Useful for scoping actions to threads no one has claimed yet.

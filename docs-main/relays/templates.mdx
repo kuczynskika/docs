@@ -85,6 +85,46 @@ The outcomes below are the building blocks that most teams start from. Each entr
 
 ---
 
+### Catch every text that fails to deliver
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Failed |
+| **Conditions** | None (or scope to a line with **My phone number equals**) |
+| **Actions** | Add labels to the conversation (`Delivery failed`) → Open the conversation → Assign teammates to the conversation (an owner) → Send webhook (alert a channel) |
+
+**Why it works:** A failed text is invisible today because the sender assumes it went through. This surfaces every failure immediately, reopens and flags the thread, and puts it on someone to follow up. Most valuable for time-sensitive dispatch, staffing, and safety messages.
+
+---
+
+### Branch on the reason a message failed
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Failed |
+| **Conditions** | Message failure contains text (match the carrier error text for a temporary or unreachable failure) |
+| **Actions** | Add labels to the conversation (`Retry later`) → Send webhook |
+
+**Why it works:** Not all failures are equal, so matching on the failure text lets you retry what is worth retrying and clean up what is not. Build a second Relay on the same trigger that matches a permanent-failure reason and labels it `Bad number` instead. Use provider-agnostic error wording in your matches so the Relay keeps working if the underlying carrier or provider changes.
+
+<Note>
+  **Verify before enabling.** The **Message failure contains text** condition ships with the v2026.07.15 release. If your workspace does not see it on the Message Failed trigger yet, hold this template until it appears.
+</Note>
+
+---
+
+### When a label comes off, sync the change
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Conversation Label Removed |
+| **Conditions** | Conversation has label (or scope by line with **My phone number equals**) |
+| **Actions** | Send webhook (update the downstream system) → Assign teammates to the conversation (as needed) → Add labels to the conversation (as needed) |
+
+**Why it works:** A label coming off often signals a state change, and firing on removal keeps your CRM or reporting in sync automatically. **Remove labels is not an available action on this trigger**, so this Relay reacts to a removal rather than performing one.
+
+---
+
 ## Vertical library
 
 The templates below are grouped by how MessageDesk teams use them. The **Core Four** sections are the primary focus. **Also served (SMB)** and **Support and sales (cross-vertical)** cover patterns that show up across every vertical.
