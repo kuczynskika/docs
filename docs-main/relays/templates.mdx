@@ -1,13 +1,13 @@
 ---
-title: "Relay Templates"
+title: "Relay templates"
 description: "A library of ready-made MessageDesk Relay templates: starter templates that ship in the app, plus an outcome-first library covering customer service, operations and routing, and webhook integrations."
 sidebarTitle: "Templates"
-"og:title": "Relay Templates - Ready-Made Automation Templates for MessageDesk"
+"og:title": "Relay templates - Ready-Made Automation Templates for MessageDesk"
 "og:description": "Starter Relay templates that ship in the app, plus an outcome-first library of common Relay configurations."
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# Relay Templates
+# Relay templates
 
 A library of ready-made Relay templates. Start from a template that ships in the app, or build from the outcome-first library below. Each library entry lists the **trigger**, any **conditions**, the **actions**, and a brief **why this works** note.
 
@@ -16,7 +16,7 @@ A library of ready-made Relay templates. Start from a template that ships in the
 </Note>
 
 <Tip>
-  **Stacking templates on the same Trigger?** When you build more than one Relay on the same trigger (for example, an after-hours reply and a keyword reply both on **Message Received**), set the **Order** on the Relays list so the more specific Relay runs first. All matching Relays run in Order. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
+  **Stacking templates on the same Trigger?** You can build more than one Relay on the same trigger. For example, an after-hours reply and a keyword reply both on **Message Received**. Set the **Order** on the Relays list so the more specific Relay runs first. All matching Relays run in Order. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
 </Tip>
 
 ---
@@ -46,7 +46,7 @@ Every starter is a starting point you can customize.
 The outcomes below are the building blocks that most teams start from. Each entry lists the **trigger**, any **conditions**, the **actions**, and a short "Why it works." Adjust wording, labels, assignees, and scoping to fit your team.
 
 <Note>
-  **Confirmed vs. pending.** The Add Action menu can vary by trigger. The templates below are limited to combinations that are confirmed to appear in the app today. Three additional foundational templates (on **Conversation Opened**, **Comment Created**, and **Conversation Label Applied**) are staged for a follow-up once their action menus are confirmed.
+  **Confirmed vs. pending.** The Add Action menu can vary by trigger. The templates below cover only the combinations confirmed to appear in the app today. Three additional foundational templates (on **Conversation Opened**, **Comment Created**, and **Conversation Label Applied**) are staged for a follow-up once their action menus land.
 </Note>
 
 ### Whoever answers a lead first owns the follow-up
@@ -469,7 +469,7 @@ The patterns below cover common use cases across additional industries.
 | **Conditions** | None (or scope by line/label) |
 | **Actions** | **Send webhook** → your Slack/Teams/notification endpoint |
 
-**Why this works:** MessageDesk's in-app notifications reach assignees inside the product, but teams that live in Slack or Teams want a ping in their chat tool the moment a conversation lands in their queue. Fire a webhook on **Conversation Users Assigned** and route the payload to your notifier of choice.
+**Why this works:** MessageDesk's in-app notifications reach assignees inside the product. Teams that live in Slack or Teams want a ping in their chat tool the moment a conversation lands in their queue. Fire a webhook on **Conversation Users Assigned** and route the payload to your notifier of choice.
 
 <Tip>
   Pair with **Add labels to the conversation** (for example, `Handoff`) so the receiving teammate can filter their Inbox to just newly assigned threads.
