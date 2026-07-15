@@ -83,7 +83,7 @@ Every starter is a starting point you can customize.
 | **Conditions** | **Message contains text** = `STOP` (catches the opt-out keyword itself), or **Conversation label equals** `Opted Out` (routes on a label applied earlier in your workflow) |
 | **Actions** | **Add labels to the conversation:** `Opted Out` → **Assign teammates to the conversation:** support queue |
 
-**Why this works:** There is no built-in "contact is opted out" condition on the trigger. Build the handler from conditions that do exist: match the STOP keyword on the inbound message itself, or route on an `Opted Out` label that was applied upstream (by a keyword Relay, by a teammate, or by an integration). Labeling the thread keeps it visible to compliance and support, and routing it to your support queue ensures someone confirms the customer's request was honored. Once `Opted Out` is applied, downstream filters and Relays can avoid touching that contact.
+**Why this works:** There's no built-in "contact is opted out" condition on the trigger, so build the handler from conditions that do exist. Match the STOP keyword on the inbound message itself, or route on an `Opted Out` label that a keyword Relay, a teammate, or an integration applied upstream. Labeling the thread keeps it visible to compliance and support. Routing it to your support queue ensures someone confirms you honored the customer's request. Once you apply `Opted Out`, downstream filters and Relays can avoid touching that contact.
 
 <Note>
   MessageDesk automatically blocks sending to **opted-out contacts** at the workspace level. This Relay is for **internal awareness and audit**, not for blocking the outbound message itself.
