@@ -6,7 +6,7 @@ sidebarTitle: "Building blocks"
 "og:description": "The canonical reference for every Relay trigger, condition, and action in MessageDesk. Use this page when building or editing a Relay."
 ---
 
-Relays are built from three parts, Triggers, Conditions, and Actions. This page is the reference for all three.
+Every Relay combines three parts: triggers, conditions, and actions. Use this page as the reference when you build or edit one.
 
 ## Triggers (7)
 
@@ -39,11 +39,11 @@ On top of that core, two text conditions are trigger-scoped:
 Conditions combine with **AND** or **OR**.
 
 <Note>
-  **Conversation label equals** is a matcher, not a fixed equality check. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. This makes namespaced labels powerful. For example, a single condition of **Conversation label startsWith "Region:"** matches every regional label at once.
+  **Conversation label equals** is a matcher, not a fixed equality check. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. This lets you match namespaced labels in bulk. For example, a single condition of **Conversation label startsWith "Region:"** matches every regional label at once.
 </Note>
 
 <Note>
-  **Relays target a phone line, not a user or an availability status.** Conditions like **My phone number equals** scope a Relay to a connected number, not to a specific teammate, and there is no condition for the assigned teammate or conversation owner. Per-person workflows such as out-of-office only work when a teammate has a dedicated line.
+  **Relays target a phone line, not a user or an availability status.** Conditions like **My phone number equals** scope a Relay to a connected number, not to a specific teammate. There's no condition for the assigned teammate or conversation owner. Per-person workflows like out-of-office only work when a teammate has a dedicated line.
 </Note>
 
 ## Actions
@@ -59,4 +59,4 @@ Conditions combine with **AND** or **OR**.
 - **Open the conversation**
 - **Send webhook**
 
-The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you are using.
+Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
