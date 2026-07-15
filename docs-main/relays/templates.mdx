@@ -1,23 +1,43 @@
 ---
-title: "Relay Recipes"
-description: "A practical reference library of common MessageDesk Relay configurations: after-hours auto-reply, anonymous-contact capture, keyword routing, phone-line routing, webhooks to external systems, and more."
-sidebarTitle: "Recipes"
-"og:title": "Relay Recipes - Practical Automation Configurations for MessageDesk"
-"og:description": "Common Relay configurations covering customer service, operations and routing, and webhook integrations."
+title: "Relay Templates"
+description: "A library of ready-made MessageDesk Relay templates: starter templates that ship in the app, plus an outcome-first library covering customer service, operations and routing, and webhook integrations."
+sidebarTitle: "Templates"
+"og:title": "Relay Templates - Ready-Made Automation Templates for MessageDesk"
+"og:description": "Starter Relay templates that ship in the app, plus an outcome-first library of common Relay configurations."
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# Relay Recipes
+# Relay Templates
 
-A practical reference library of common Relay configurations. Each recipe lists the **trigger**, any **conditions**, the **actions**, and a brief **why this works** note.
+A library of ready-made Relay templates. Start from a template that ships in the app, or build from the outcome-first library below. Each library entry lists the **trigger**, any **conditions**, the **actions**, and a brief **why this works** note.
 
 <Note>
-  **Every recipe here is a starting point.** Adjust the wording, labels, assignees, active hours, and conditions to match your team's workflow. For step-by-step instructions on building a Relay from scratch, including how to use **AND/OR** between conditions, chain actions, and add delays, see [Create and edit a Relay](/relays/create-edit).
+  **Every template here is a starting point.** Adjust the wording, labels, assignees, active hours, and conditions to match your team's workflow. For step-by-step instructions on building a Relay from scratch, including how to use **AND/OR** between conditions, chain actions, and add delays, see [Create and edit a Relay](/relays/create-edit). For a full reference of the available [triggers, conditions, and actions](/relays/building-blocks), see the Relay building blocks page.
 </Note>
 
 <Tip>
-  **Stacking recipes on the same Trigger?** When you build more than one recipe on the same trigger (for example, an after-hours reply and a keyword reply both on **Message Received**), set the **Order** on the Relays list so the more specific Relay runs first. All matching Relays run in Order. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
+  **Stacking templates on the same Trigger?** When you build more than one Relay on the same trigger (for example, an after-hours reply and a keyword reply both on **Message Received**), set the **Order** on the Relays list so the more specific Relay runs first. All matching Relays run in Order. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
 </Tip>
+
+---
+
+## Starter templates that ship today
+
+These starter templates are available from the Relays module in the app. Pick one, name it, and adjust the fields to match your workflow.
+
+| Template | What it does | Underlying build |
+| --- | --- | --- |
+| **Out-of-Office (Away) Autoresponse** | Texts an autoresponse outside operating hours | Message Received + Active hours (inverted) + Reply to message |
+| **Respond to a Keyword** | Auto-replies when a keyword is texted in | Message Received + Message contains text + Reply to message |
+| **Identify Unknown Contacts** | Asks anonymous contacts for their info | Message Received + Is anonymous conversation + Reply to message |
+| **Assign to Teammate** | Assigns new conversations to a teammate | Message Received + Assign teammates |
+| **Auto Assign to First Responder** | Assigns a conversation to the first teammate who replies | Message Sent + Is unassigned conversation + Assign to sender |
+| **Label Conversation** | Auto-labels new conversations | Message Received + Add labels |
+| **Custom Relay** | Blank canvas for your own build | Any trigger, conditions, actions |
+| **Send Webhook** | Sends events to a webhook endpoint | Any trigger + Send webhook |
+| **Unassign on Close** | Removes all teammates when a conversation closes | Conversation Closed (no conditions) + Remove all teammates |
+
+Every starter is a starting point you can customize.
 
 ---
 
@@ -49,7 +69,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Message Received |
 | **Conditions** | Is anonymous conversation = **true** |
-| **Actions** | **Reply to message:** "Thanks for texting us! What's your first and last name so we know who to help?" → **Add labels to the conversation:** `Lead` |
+| **Actions** | **Reply to message:** "Thanks for texting us! What's your first and last name so we know who to help? Reply STOP to opt out." → **Add labels to the conversation:** `Lead` |
 
 **Why this works:** New inbound texts from unsaved numbers come in as **anonymous conversations**. A first-touch reply captures the contact's name while it's fresh, and the `Lead` label gives sales/intake a single filter to work from. See [Anonymous, opted out & blocked](/contacts/anonymous-opt-out-blocked) for how anonymous status is determined.
 
@@ -60,10 +80,10 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | Field | Value |
 | --- | --- |
 | **Trigger** | Message Received |
-| **Condition** | Contact is **opted out** *(use the closest available condition; today this is most commonly handled by a keyword condition like **Message contains text "STOP"** or by routing on a label applied earlier in your workflow)* |
+| **Conditions** | **Message contains text** = `STOP` (catches the opt-out keyword itself), or **Conversation label equals** `Opted Out` (routes on a label applied earlier in your workflow) |
 | **Actions** | **Add labels to the conversation:** `Opted Out` → **Assign teammates to the conversation:** support queue |
 
-**Why this works:** Opt-outs need human review. Labeling the thread keeps it visible to compliance and support, and routing it to your support queue ensures someone confirms the customer's request was honored. Once `Opted Out` is applied, downstream filters and Relays can avoid texting that contact again.
+**Why this works:** There is no built-in "contact is opted out" condition on the trigger. Build the handler from conditions that do exist: match the STOP keyword on the inbound message itself, or route on an `Opted Out` label that was applied upstream (by a keyword Relay, by a teammate, or by an integration). Labeling the thread keeps it visible to compliance and support, and routing it to your support queue ensures someone confirms the customer's request was honored. Once `Opted Out` is applied, downstream filters and Relays can avoid touching that contact.
 
 <Note>
   MessageDesk automatically blocks sending to **opted-out contacts** at the workspace level. This Relay is for **internal awareness and audit**, not for blocking the outbound message itself.
@@ -106,7 +126,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | Field | Value |
 | --- | --- |
 | **Trigger** | Message Received |
-| **Conditions** | Optional: **My phone number equals** a specific line, or message lacks an existing assignee |
+| **Conditions** | Optional: **My phone number equals** a specific line, or **Is unassigned conversation** |
 | **Actions** | **Assign teammates to the conversation:** teammate |
 
 **Why this works:** A single Relay assigns every inbound conversation to one teammate. **True round-robin distribution requires multiple Relays**, one per teammate, each segmented by a different **line** or **label** condition so they don't all fire on the same message. There isn't a built-in "rotate to next teammate" action today. This multi-Relay pattern is the supported workaround.
@@ -128,7 +148,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 **Why this works:** When a shared Inbox has no owner on a thread, the first teammate to reply usually should own the follow-up. This Relay watches outbound messages, checks that no one's assigned yet, and assigns the conversation to whoever hit send. New inbound messages on the same thread then route to that teammate by default.
 
 <Note>
-  **Ships as a template:** This recipe is available as the **Auto Assign to First Responder** template from the Relays module. Install it as-is or use the fields above to build it yourself.
+  **Ships as a template:** This template is available as the **Auto Assign to First Responder** starter from the Relays module. Install it as-is or use the fields above to build it yourself.
 </Note>
 
 <Note>
@@ -145,11 +165,11 @@ A practical reference library of common Relay configurations. Each recipe lists 
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Conversation Assigned |
+| **Trigger** | Conversation Users Assigned |
 | **Conditions** | None (or scope by line/label) |
-| **Actions** | **Send Webhook** → your Slack/Teams/notification endpoint |
+| **Actions** | **Send webhook** → your Slack/Teams/notification endpoint |
 
-**Why this works:** MessageDesk's in-app notifications reach assignees inside the product, but teams that live in Slack or Teams want a ping in their chat tool the moment a conversation lands in their queue. Fire a webhook on **Conversation Assigned** and route the payload to your notifier of choice.
+**Why this works:** MessageDesk's in-app notifications reach assignees inside the product, but teams that live in Slack or Teams want a ping in their chat tool the moment a conversation lands in their queue. Fire a webhook on **Conversation Users Assigned** and route the payload to your notifier of choice.
 
 <Tip>
   Pair with **Add labels to the conversation** (for example, `Handoff`) so the receiving teammate can filter their Inbox to just newly assigned threads.
@@ -163,7 +183,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Conversation Opened |
 | **Conditions** | None (or scope by line/label) |
-| **Actions** | **Unassign all teammates** → **Add labels to the conversation:** `Reopened` |
+| **Actions** | **Remove all teammates from the conversation** → **Add labels to the conversation:** `Reopened` |
 
 **Why this works:** When a closed conversation gets reopened (a customer replies days later, or a teammate reopens for follow-up), the original assignees may no longer be the right owners. Clearing assignees and applying a `Reopened` label sends the thread back through your normal triage so it gets picked up by the right person.
 
@@ -185,7 +205,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Message Received |
 | **Conditions** | None (or scope by line/keyword) |
-| **Actions** | **Send Webhook** → your configured endpoint |
+| **Actions** | **Send webhook** → your configured endpoint |
 
 **Why this works:** Streams every new inbound text to your CRM, data warehouse, ticketing tool, or notification service. Pair with **My phone number equals** to limit the firehose to a specific line, or add **Message contains text** to forward only certain keywords.
 
@@ -197,9 +217,9 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Conversation Closed |
 | **Conditions** | None (or scope by line/label) |
-| **Actions** | **Send Webhook** → your configured endpoint |
+| **Actions** | **Send webhook** → your configured endpoint (plus any close-out actions you want to run in-app) |
 
-**Why this works:** The **Conversation Closed** trigger fires whenever a teammate closes a conversation, so you can push the close event straight into a CRM, ticketing tool, or data warehouse. Add **My phone number equals** or a label condition if you only want to forward closes from certain lines or queues.
+**Why this works:** Use the **Conversation Closed** trigger directly. It fires whenever a teammate closes a conversation, so you can push the close event straight into a CRM, ticketing tool, or data warehouse. Add **My phone number equals** or **Conversation label equals** if you only want to forward closes from certain lines or queues. No label workaround needed.
 
 ---
 
@@ -209,12 +229,12 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Conversation Closed |
 | **Conditions** | None |
-| **Actions** | **Unassign all teammates** |
+| **Actions** | **Remove all teammates from the conversation** |
 
-**Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached. Reopens or new inbound messages on the same thread often need fresh triage. The **Unassign all teammates** action clears every assignee in one step, so the next inbound lands unassigned and can be routed by your normal auto-assign Relays.
+**Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached. Reopens or new inbound messages on the same thread often need fresh triage. The **Remove all teammates from the conversation** action clears every assignee in one step, so the next inbound lands unassigned and can be routed by your normal auto-assign Relays.
 
 <Note>
-  **Ships as a template:** This recipe is available as the **Unassign on Close** template from the Relays module. Install it in one click, or build it from the fields above.
+  **Ships as a template:** This template is available as the **Unassign on Close** starter from the Relays module. Install it in one click, or build it from the fields above.
 </Note>
 
 <Tip>
@@ -229,18 +249,19 @@ A practical reference library of common Relay configurations. Each recipe lists 
 | --- | --- |
 | **Trigger** | Message Sent |
 | **Conditions** | Optional: **My phone number equals** a specific line, or match an acknowledgement template/keyword |
-| **Actions** | **Close conversation** |
+| **Actions** | **Close the conversation** |
 
-**Why this works:** One-shot confirmation flows (appointment confirmations, delivery notifications, "on my way" pings) don't need to stay open in the Inbox after the outbound message goes out. The **Close conversation** action closes the thread as soon as the confirmation is sent, keeping the Inbox focused on conversations that still need a human.
+**Why this works:** One-shot confirmation flows (appointment confirmations, delivery notifications, "on my way" pings) don't need to stay open in the Inbox after the outbound message goes out. The **Close the conversation** action closes the thread as soon as the confirmation is sent, keeping the Inbox focused on conversations that still need a human.
 
 <Tip>
-  MessageDesk handles reopens automatically: a new inbound message on a closed conversation reopens the thread and fires any **Conversation Opened** Relays you've configured (see [Recipe 9](#9-re-triage-on-reopen)).
+  MessageDesk handles reopens automatically: a new inbound message on a closed conversation reopens the thread and fires any **Conversation Opened** Relays you've configured (see [Template 9](#9-re-triage-on-reopen)).
 </Tip>
 
 ---
 
 ## See also
 
+- [Relay building blocks](/relays/building-blocks): reference for all triggers, conditions, and actions
 - [Create and edit a Relay](/relays/create-edit): step-by-step Relay building, including AND/OR conditions, delays, and active hours
 - [Send Webhook](/relays/webhooks): payload structure, signature validation, and retry behavior
 - [Developer Tools](/settings/workspace-settings/developer-tools): configure your webhook endpoint and signing secret
