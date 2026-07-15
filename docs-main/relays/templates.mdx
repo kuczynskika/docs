@@ -87,7 +87,7 @@ The outcomes below are the building blocks that most teams start from. Each entr
 
 ## Vertical library
 
-The templates below are grouped by the way MessageDesk teams tend to use them. The **Core Four** sections are the primary focus. **Also served (SMB)** and **Support and sales (cross-vertical)** cover common patterns that show up across every vertical.
+The templates below are grouped by how MessageDesk teams use them. The **Core Four** sections are the primary focus. **Also served (SMB)** and **Support and sales (cross-vertical)** cover patterns that show up across every vertical.
 
 Every template uses the canonical trigger, condition, and action names. See [Relay building blocks](/relays/building-blocks) for the full reference.
 
@@ -103,7 +103,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | My phone number equals (the shared main or dispatch line) |
 | **Actions** | Assign teammates to the conversation (crew or job coordinator) → Add labels to the conversation (job or crew) |
 
-**Why it works:** Inbound texts land in a shared inbox with an owner and a job label, so a thread stays covered when a supervisor is on a site or out.
+**Why it works:** Inbound texts land in a shared Inbox with an owner and a job label. Threads stay covered when a supervisor is on a site or out.
 
 #### Subcontractor and supplier texts never sit unclaimed
 
@@ -113,7 +113,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | Is unassigned conversation |
 | **Actions** | Add labels to the conversation (`Needs owner`) → Send webhook |
 
-**Why it works:** Anything that slips past routing gets flagged instead of aging silently.
+**Why it works:** Anything that slips past routing gets flagged instead of aging in the queue.
 
 ---
 
@@ -127,7 +127,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | My phone number equals (dispatch line). Optionally add Conversation label equals a region. |
 | **Actions** | Add labels to the conversation (region or load type) → Assign teammates to the conversation (that region's dispatcher) |
 
-**Why it works:** Every dispatcher sees every message in one inbox and texts self-sort by region, replacing the single shared phone.
+**Why it works:** Every dispatcher sees every message in one Inbox, and texts self-sort by region. That replaces the single shared phone.
 
 #### Off-duty driver messages still get an instant acknowledgement
 
@@ -137,7 +137,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | Active hours (with **Trigger outside of business hours** enabled) |
 | **Actions** | Reply to message ("Dispatch is closed. Text URGENT for the on-call line. Reply STOP to opt out.") → Add labels to the conversation (`After-hours`) |
 
-**Why it works:** An off-hours text gets an immediate acknowledgement and is waiting for dispatch in the morning.
+**Why it works:** An off-hours text gets an immediate acknowledgement and waits for dispatch in the morning.
 
 #### Policy and route acknowledgements get tracked, not chased
 
@@ -147,7 +147,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | Message contains text `ACK` |
 | **Actions** | Add labels to the conversation (`Acknowledged`) → Send webhook |
 
-**Why it works:** Pair a broadcast with a keyword reply and every acknowledgement is labeled and logged automatically.
+**Why it works:** Pair a broadcast with a keyword reply, and MessageDesk labels and logs every acknowledgement automatically.
 
 ---
 
@@ -171,7 +171,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | Message contains text `available` |
 | **Actions** | Assign teammates to the conversation (recruiter) → Add labels to the conversation (`Available`) → Send webhook (push to your ATS) |
 
-**Why it works:** Every candidate availability reply is captured, owned, and pushed to your system, so nobody gets called twice.
+**Why it works:** MessageDesk captures every candidate availability reply, assigns an owner, and pushes it to your system. Nobody gets called twice.
 
 #### Every field message is retained and auditable
 
@@ -195,7 +195,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 | **Conditions** | Message contains text `yes` |
 | **Actions** | Assign teammates to the conversation (staffing coordinator) → Add labels to the conversation (`Shift response`) → Send webhook (sync to your ATS or CRM) |
 
-**Why it works:** After a shift-fill text, replies route to the coordinator so the fastest responder is placed first and the reply is logged.
+**Why it works:** After a shift-fill text, replies route to the coordinator. The fastest responder gets placed first, and MessageDesk logs the reply.
 
 #### Applicant first-touch that never goes cold
 
@@ -245,7 +245,7 @@ Every template uses the canonical trigger, condition, and action names. See [Rel
 
 ### Also served (SMB)
 
-These verticals are supported but are not the primary focus. The patterns below cover the most common SMB use cases.
+MessageDesk supports these verticals, but they aren't the primary focus. The patterns below cover the most common SMB use cases.
 
 #### Automotive service: a shared department inbox
 
@@ -255,7 +255,7 @@ These verticals are supported but are not the primary focus. The patterns below 
 | **Conditions** | My phone number equals (the service department line) |
 | **Actions** | Assign teammates to the conversation (advisor) → Add labels to the conversation (`Service`) |
 
-**Why it works:** Status texts stop landing on one advisor's phone, any advisor can pick up the thread, and replies can carry photos and invoice links.
+**Why it works:** Status texts stop landing on one advisor's phone. Any advisor can pick up the thread, and replies can carry photos and invoice links.
 
 <Tip>
   Pair this with an inverted **Active hours** Relay on the same line that uses **Reply to message** to acknowledge after-hours questions and set expectations for the morning.
@@ -279,7 +279,7 @@ These verticals are supported but are not the primary focus. The patterns below 
 | **Conditions** | Active hours (with **Trigger outside of business hours** enabled), My phone number equals (jobs or emergency line) |
 | **Actions** | Reply to message ("We received your message and will follow up first thing. If this is an active emergency, call [number]. Reply STOP to opt out.") → Add labels to the conversation (`After-hours`) → Assign teammates to the conversation (on-call coordinator) |
 
-**Why it works:** The lead is captured and routed even when the office is dark.
+**Why it works:** MessageDesk captures and routes the lead even when the office is dark.
 
 ---
 
