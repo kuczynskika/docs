@@ -41,6 +41,50 @@ Every starter is a starting point you can customize.
 
 ---
 
+## Foundational templates
+
+The outcomes below are the building blocks that most teams start from. Each entry lists the **trigger**, any **conditions**, the **actions**, and a short "Why it works." Adjust wording, labels, assignees, and scoping to fit your team.
+
+<Note>
+  **Confirmed vs. pending.** The Add Action menu can vary by trigger. The templates below are limited to combinations that are confirmed to appear in the app today. Three additional foundational templates (on **Conversation Opened**, **Comment Created**, and **Conversation Label Applied**) are staged for a follow-up once their action menus are confirmed.
+</Note>
+
+### Whoever answers a lead first owns the follow-up
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Sent |
+| **Conditions** | Is unassigned conversation |
+| **Actions** | Assign to sender |
+
+**Why it works:** The first teammate to reply gets assigned, and because the conversation is then no longer unassigned, later replies from others do not steal it. Follow-up never lands in an unclaimed pile. This is the outcome behind the shipped **Auto Assign to First Responder** starter.
+
+---
+
+### Clean reset and system sync every time a thread closes
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Conversation Closed |
+| **Conditions** | None (or scope to a line) |
+| **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Resolved`) → Send webhook |
+
+**Why it works:** Closing resets assignment in one step and pushes the close event to your other systems. This extends the shipped **Unassign on Close** starter with a `Resolved` label and an outbound webhook so your CRM, data warehouse, or ticketing tool stays in sync.
+
+---
+
+### One rule that routes an entire namespace of labels
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Received |
+| **Conditions** | Conversation label equals, operator **startsWith**, value `Region:` |
+| **Actions** | Send webhook → Add labels to the conversation (`Routed`) |
+
+**Why it works:** The **Conversation label equals** condition is a matcher, not a fixed equality check. A single `startsWith "Region:"` rule catches every label in a namespace at once (`Region:North`, `Region:South`, `Region:West`, etc.), so you avoid maintaining one Relay per region. See the operator-selector Note in [Relay building blocks](/relays/building-blocks) for the full operator list.
+
+---
+
 ## Customer service
 
 ### 1. After-hours auto-reply
