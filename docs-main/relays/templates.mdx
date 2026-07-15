@@ -105,10 +105,10 @@ The outcomes below are the building blocks that most teams start from. Each entr
 | **Conditions** | Message failure contains text (match the carrier error text for a temporary or unreachable failure) |
 | **Actions** | Add labels to the conversation (`Retry later`) → Send webhook |
 
-**Why it works:** Not all failures are equal, so matching on the failure text lets you retry what is worth retrying and clean up what is not. Build a second Relay on the same trigger that matches a permanent-failure reason and labels it `Bad number` instead. Use provider-agnostic error wording in your matches so the Relay keeps working if the underlying carrier or provider changes.
+**Why it works:** Not all failures are equal, so matching on the failure text lets you retry what's worth retrying and clean up what isn't. Build a second Relay on the same trigger that matches a permanent-failure reason and labels it `Bad number` instead. Use provider-agnostic error wording in your matches so the Relay keeps working if the underlying carrier or provider changes.
 
 <Note>
-  **Verify before enabling.** The **Message failure contains text** condition ships with the v2026.07.15 release. If your workspace does not see it on the Message Failed trigger yet, hold this template until it appears.
+  **Verify before enabling.** The **Message failure contains text** condition ships with the v2026.07.15 release. If your workspace doesn't see it on the Message Failed trigger yet, hold this template until it appears.
 </Note>
 
 ---
@@ -121,7 +121,7 @@ The outcomes below are the building blocks that most teams start from. Each entr
 | **Conditions** | Conversation has label (or scope by line with **My phone number equals**) |
 | **Actions** | Send webhook (update the downstream system) → Assign teammates to the conversation (as needed) → Add labels to the conversation (as needed) |
 
-**Why it works:** A label coming off often signals a state change, and firing on removal keeps your CRM or reporting in sync automatically. **Remove labels is not an available action on this trigger**, so this Relay reacts to a removal rather than performing one.
+**Why it works:** A label coming off often signals a state change. Firing on removal keeps your CRM or reporting in sync automatically. **Remove labels isn't an available action on this trigger**, so this Relay reacts to a removal rather than performing one.
 
 ---
 
@@ -336,7 +336,7 @@ MessageDesk supports these verticals, but they aren't the primary focus. The pat
 **Why it works:** One number handles support, pricing, and sales, each with its own reply and owner.
 
 <Tip>
-  Keep a keyword-free catch-all Relay ordered **last** so any message that does not match a keyword still gets a graceful reply and an owner.
+  Keep a keyword-free catch-all Relay ordered **last** so any message that doesn't match a keyword still gets a graceful reply and an owner.
 </Tip>
 
 ---
