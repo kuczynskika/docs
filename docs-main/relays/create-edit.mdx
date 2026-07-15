@@ -286,7 +286,7 @@ Use this when teammates want to automatically reply during vacations or after ho
         <p></p>
       </td>
       <td colSpan="1" rowSpan="1">
-        <p>My phone number is</p>
+        <p>My phone number equals</p>
       </td>
       <td colSpan="1" rowSpan="1">
         <p>Assign teammates to the conversation: Teammate 1, 2, and 3</p>
@@ -316,8 +316,14 @@ Use this when teammates want to automatically reply during vacations or after ho
 6. Add an **Action → Add labels to the conversation** and select labels.
 7. Toggle the Relay **ON**.
 
+#### Out-of-office for a specific teammate
+
+Per-user out-of-office only works when the teammate has their own dedicated phone line. Add a **My phone number equals** condition set to that teammate's line, and the auto-reply will only fire for messages on that number.
+
+On a shared line, this pattern does not work. An out-of-office Relay on a shared line replies to every inbound message during its active-hours window, so it applies to the whole team, not to one person. When a teammate on a shared line is out, reassign their open conversations to someone else instead of using an auto-reply. See [Can I set up an out-of-office reply for just one person?](#can-i-set-up-an-out-of-office-reply-for-just-one-person) in the FAQ.
+
 <Tip>
-  **Team Tip:** Each team member (Teammate 1, 2, and 3) can have their own relay(s). Be sure to give each Relay a clear descriptive name, like:
+  When each teammate has their own line and their own out-of-office Relay, give each Relay a clear descriptive name so they are easy to manage:
 
   1. `Teammate 1 - Out of Office Autoreply`
   2. `Teammate 2 - Weekend Autoreply`
@@ -427,6 +433,9 @@ No. When a Relay sends an auto-reply, the conversation moves to **Replied** stat
 
 **What happens if I change the trigger on an existing Relay?**\
 MessageDesk removes any conditions the new trigger cannot support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
+
+**Can I set up an out-of-office reply for just one person?**\
+It depends on how your phone lines are set up. A Relay runs on a phone line, not on an individual teammate, and there is no condition that targets a specific assigned user. If that teammate has their own dedicated line, yes: build the out-of-office Relay and add a **My phone number equals** condition set to their line, so the auto-reply only fires for messages on that number. If several teammates share one line, an out-of-office Relay on that line replies to every message during your active-hours window, so it cannot be limited to one person while the rest of the team keeps working. In that case, cover the teammate who is out by reassigning their open conversations to someone else instead of using an auto-reply.
 
 ---
 
