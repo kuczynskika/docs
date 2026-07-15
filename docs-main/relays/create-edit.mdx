@@ -27,7 +27,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-Relays are **grouped by Trigger** (Message Received, Message Sent, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Comment Created, Conversation Closed) and, within each group, **sorted by Order**. You can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Comment Created, Conversation Closed) and, within each group, **sorts them by Order**. You can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -59,7 +59,7 @@ There's no drag-and-drop. The counter is the only way to reorder.
 Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit description**, or **Delete**.
 
 <Tip>
-  Add an emoji (e.g., 💤 for after-hours) to make Relays easy to scan.
+  Add an emoji (e.g., 💤 for after-hours) so you can scan the Relays list at a glance.
 </Tip>
 
 ![Relay Name Description Pn](/images/relay-name-description.png)
@@ -81,7 +81,7 @@ Supported triggers:
 </Note>
 
 <Note>
-  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger cannot support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review your conditions after switching triggers.
+  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger can't support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review your conditions after switching triggers.
 </Note>
 
 ![Relay Message Received Trigger Pn](/images/relay-message-received-trigger.png)
@@ -113,7 +113,7 @@ The available conditions depend on the selected trigger. The message triggers (M
 
 Actions run when the conditions match. You can add **one or many** in the order you want them to execute.
 
-The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you are using.
+The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
 
 - **Reply to message:** send an SMS/MMS (supports templates, tags, and media, with an optional Delay). Available on message-received-style triggers.
 - **Assign teammates to the conversation:** pick one or more users
@@ -320,10 +320,10 @@ Use this when teammates want to automatically reply during vacations or after ho
 
 Per-user out-of-office only works when the teammate has their own dedicated phone line. Add a **My phone number equals** condition set to that teammate's line, and the auto-reply will only fire for messages on that number.
 
-On a shared line, this pattern does not work. An out-of-office Relay on a shared line replies to every inbound message during its active-hours window, so it applies to the whole team, not to one person. When a teammate on a shared line is out, reassign their open conversations to someone else instead of using an auto-reply. See [Can I set up an out-of-office reply for just one person?](#can-i-set-up-an-out-of-office-reply-for-just-one-person) in the FAQ.
+On a shared line, this pattern doesn't work. An out-of-office Relay on a shared line replies to every inbound message during its active-hours window, so it applies to the whole team, not to one person. When a teammate on a shared line is out, reassign their open conversations to someone else instead of using an auto-reply. See [Can I set up an out-of-office reply for just one person?](#can-i-set-up-an-out-of-office-reply-for-just-one-person) in the FAQ.
 
 <Tip>
-  When each teammate has their own line and their own out-of-office Relay, give each Relay a clear descriptive name so they are easy to manage:
+  When each teammate has their own line and their own out-of-office Relay, give each Relay a clear descriptive name so you can tell them apart in the list:
 
   1. `Teammate 1 - Out of Office Autoreply`
   2. `Teammate 2 - Weekend Autoreply`
@@ -334,7 +334,7 @@ On a shared line, this pattern does not work. An out-of-office Relay on a shared
 
 ### Example 3: Identify unknown contacts/conversations
 
-Use this Relay to automatically collect names from new, anonymous conversations.<br />Perfect for teams who receive texts from unsaved numbers or new contacts.
+Use this Relay to automatically collect names from new, anonymous conversations.<br />Use it when you receive texts from unsaved numbers or new contacts.
 
 ![Identify Relay Pn](/images/identify-relay.png)
 
@@ -362,7 +362,7 @@ Use this Relay to automatically collect names from new, anonymous conversations.
 
 Use this Relay to automatically respond when someone texts in a specific keyword, like **SUPPORT**, **JOIN**, or **BOOK**.
 
-When a contact sends a message containing the word “SUPPORT,” MessageDesk automatically replies with your chosen message. It’s ideal for auto-routing messages or triggering fast replies without manual effort.
+When a contact sends a message containing the word "SUPPORT," MessageDesk replies with your chosen message. Use it to auto-route messages or send fast replies without manual work.
 
 ![Support Relay Pn](/images/support-relay.png)
 
@@ -384,7 +384,7 @@ When a contact sends a message containing the word “SUPPORT,” MessageDesk au
   **Tips for Success:**
 
   - Keep keywords **short and memorable**. For example, `JOIN`, `HELP`, `SUPPORT`.
-  - Use **all caps** for clarity and easy recognition.
+  - Use **all caps** so the keyword stands out in the message body.
   - Create separate keyword relays for each department (e.g., `BOOK` → Sales, `SUPPORT` → Service).
 </Tip>
 
@@ -432,10 +432,10 @@ Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new c
 No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it isn't marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
 
 **What happens if I change the trigger on an existing Relay?**\
-MessageDesk removes any conditions the new trigger cannot support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
+MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
 
 **Can I set up an out-of-office reply for just one person?**\
-It depends on how your phone lines are set up. A Relay runs on a phone line, not on an individual teammate, and there is no condition that targets a specific assigned user. If that teammate has their own dedicated line, yes: build the out-of-office Relay and add a **My phone number equals** condition set to their line, so the auto-reply only fires for messages on that number. If several teammates share one line, an out-of-office Relay on that line replies to every message during your active-hours window, so it cannot be limited to one person while the rest of the team keeps working. In that case, cover the teammate who is out by reassigning their open conversations to someone else instead of using an auto-reply.
+It depends on how your phone lines are set up. A Relay runs on a phone line, not on an individual teammate, and there's no condition that targets a specific assigned user. If that teammate has their own dedicated line, yes: build the out-of-office Relay and add a **My phone number equals** condition set to their line, so the auto-reply only fires for messages on that number. If several teammates share one line, an out-of-office Relay on that line replies to every message during your active-hours window, so it can't be limited to one person while the rest of the team keeps working. In that case, cover the teammate who is out by reassigning their open conversations to someone else instead of using an auto-reply.
 
 ---
 
