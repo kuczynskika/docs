@@ -234,7 +234,7 @@ A practical reference library of common Relay configurations. Each recipe lists 
 **Why this works:** One-shot confirmation flows (appointment confirmations, delivery notifications, "on my way" pings) don't need to stay open in the Inbox after the outbound message goes out. The **Close conversation** action closes the thread as soon as the confirmation is sent, keeping the Inbox focused on conversations that still need a human.
 
 <Tip>
-  Reopens are handled automatically: a new inbound message on a closed conversation reopens the thread and fires any **Conversation Opened** Relays you've configured (see [Recipe 9](#9-re-triage-on-reopen)).
+  MessageDesk handles reopens automatically: a new inbound message on a closed conversation reopens the thread and fires any **Conversation Opened** Relays you've configured (see [Recipe 9](#9-re-triage-on-reopen)).
 </Tip>
 
 ---
