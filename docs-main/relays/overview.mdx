@@ -56,7 +56,7 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 **Relays = Triggers → Conditions → Actions**
 
 - **Triggers:** When it runs\
-  _Examples:_ `MessageReceived` (a new inbound text starts the relay), `MessageSent` (an outbound message is sent from your workspace), `CommentCreated` (a teammate posts an internal comment), `ConversationClosed` (a teammate closes a conversation)
+  _Examples:_ `MessageReceived` (a new inbound text starts the relay), `MessageSent` (an outbound message is sent from your workspace), `CommentCreated` (a teammate posts an internal comment), `ConversationOpened` (a closed conversation is reopened), `ConversationAssigned` (one or more teammates are assigned to a conversation), `ConversationClosed` (a teammate closes a conversation)
 - **Conditions:** Where/when it applies\
   _Examples:_\
   • **Phone line** equals _Support_\
@@ -67,7 +67,8 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
   _Examples:_\
   • **Assign teammates**\
   • **Add labels**\
-  • **Send message** (auto-reply with templates/tags)
+  • **Send message** (auto-reply with templates/tags)\
+  • **Open conversation** / **Close conversation**
 
 You can **pause** and **resume** any Relay without deleting it.
 
