@@ -92,7 +92,7 @@ Supported triggers:
 
 Conditions control **where/when** a Relay runs. You can combine multiple conditions with **AND** or **OR**.
 
-The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**, Comment Created adds **Comment contains text**, Message Failed adds **Message failure contains text**, and every trigger includes the universal core: **My phone number equals**, **Conversation label equals**, **Conversation has label**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, **Teammate Assigned**, and **Active hours**.
+The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**. Comment Created adds **Comment contains text**. Message Failed adds **Message failure contains text**. Every trigger includes the universal core: **My phone number equals**, **Conversation label equals**, **Conversation has label**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, **Teammate Assigned**, and **Active hours**.
 
 **Available conditions:**
 
@@ -130,8 +130,8 @@ The available actions can vary by trigger, so check the **Add Action** menu in t
 - **Close the conversation:** close the conversation as part of the Relay run. Useful for auto-closing after an acknowledged auto-reply or webhook-driven workflow.
 - **Open the conversation:** reopen a closed conversation. Useful when an event should re-surface a resolved thread for human review. Available on more than one trigger, including **Message Sent**.
 - **Send webhook:** send event data to your webhook endpoint
-- **Send Comment** (also called Post a Comment): posts an internal comment on the conversation. Supports static text and tags, is never sent to the contact, and is attributed as relay-generated. Use it for handoff notes and captured context.
-- **Stop Processing:** a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed or time-based Relays are exempt. Use it for clean routing, so a matched Relay can prevent a catch-all from also firing.
+- **Send Comment** (also called Post a Comment): posts an internal comment on the conversation. It supports static text and tags, never reaches the contact, and shows as relay-generated. Use it for handoff notes and captured context.
+- **Stop Processing:** a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. Use it for clean routing so a matched Relay stops a catch-all from also firing.
 
 <Tip>
   **Tip:** You can chain multiple actions together. For example, **Reply**, **Assign**, and **Label** in a single Relay.
@@ -325,7 +325,7 @@ Use this when teammates want to automatically reply during vacations or after ho
 
 #### Out-of-office for a specific teammate
 
-To scope an out-of-office to one teammate, add the **Teammate Assigned** condition set to that teammate. This works on a shared line: the auto-reply fires only for conversations assigned to the person who is out, while everyone else on the line keeps working. To also catch brand-new, unassigned threads, add **Is unassigned conversation** with **OR**. If the teammate has a dedicated line, you can scope by **My phone number equals** instead. See [Can I set up an out-of-office reply for just one person?](#can-i-set-up-an-out-of-office-reply-for-just-one-person) in the FAQ.
+To scope an out-of-office to one teammate, add the **Teammate Assigned** condition set to that teammate. This works on a shared line. The auto-reply fires only for conversations assigned to the person who's out, and everyone else on the line keeps working. To also catch brand-new, unassigned threads, add **Is unassigned conversation** with **OR**. If the teammate has a dedicated line, scope by **My phone number equals** instead. See [Can I set up an out-of-office reply for just one person?](#can-i-set-up-an-out-of-office-reply-for-just-one-person) in the FAQ.
 
 <Tip>
   When each teammate has their own line and their own out-of-office Relay, give each Relay a clear descriptive name so you can tell them apart in the list:
@@ -440,7 +440,7 @@ No. When a Relay sends an auto-reply, the conversation moves to **Replied** stat
 MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
 
 **Can I set up an out-of-office reply for just one person?**\
-Yes, including on a shared line. Build the out-of-office Relay (Message Received, plus Active hours with **Trigger outside of business hours** enabled), then add the **Teammate Assigned** condition set to the teammate who is out. The auto-reply then fires only for that person's conversations, while the rest of the team keeps working on the same line. To also cover brand-new threads no one has picked up yet, add **Is unassigned conversation** with **OR**. If the teammate has their own dedicated line, you can instead scope by **My phone number equals** that line.
+Yes, including on a shared line. Build the out-of-office Relay (Message Received, plus Active hours with **Trigger outside of business hours** enabled). Then add the **Teammate Assigned** condition set to the teammate who's out. The auto-reply fires only for that person's conversations. The rest of the team keeps working on the same line. To also cover brand-new threads no one has picked up yet, add **Is unassigned conversation** with **OR**. If the teammate has a dedicated line, scope by **My phone number equals** that line instead.
 
 ---
 
