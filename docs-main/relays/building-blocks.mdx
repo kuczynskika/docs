@@ -24,7 +24,7 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 
 ## Conditions
 
-Every trigger shares a **universal core of seven conditions**:
+Every trigger shares a **universal core of eight conditions**:
 
 - **My phone number equals**
 - **Conversation label equals**
@@ -32,6 +32,7 @@ Every trigger shares a **universal core of seven conditions**:
 - **Is anonymous conversation**
 - **Is new conversation**
 - **Is unassigned conversation**
+- **Teammate Assigned** gates on the conversation's current assignee. Pick a specific teammate, or **Any teammate** to check whether anyone is assigned. [VERIFY: confirm the exact in-app name is "Teammate Assigned" and that it is universal across triggers.]
 - **Active hours** (with a **Trigger outside of business hours** invert)
 
 On top of that core, three text conditions are trigger-scoped:
@@ -50,7 +51,7 @@ Conditions combine with **AND** or **OR**.
 </Note>
 
 <Note>
-  **Relays target a phone line, not a user or an availability status.** Conditions like **My phone number equals** scope a Relay to a connected number, not to a specific teammate. There's no condition for the assigned teammate or conversation owner. Per-person workflows like out-of-office only work when a teammate has a dedicated line.
+  **Relays can scope by line, label, content, and assignee.** **My phone number equals** targets a connected number, and **Teammate Assigned** targets the conversation's current assignee. This means per-person workflows like out-of-office now work on a shared line: gate the Relay on **Teammate Assigned** set to the teammate who is out, and add **Is unassigned conversation** with **OR** to also cover brand-new threads no one has picked up. A dedicated line per teammate is no longer required.
 </Note>
 
 ## Actions
@@ -65,8 +66,12 @@ Conditions combine with **AND** or **OR**.
 - **Close the conversation**
 - **Open the conversation**
 - **Send webhook**
+- **Send Comment** (also called Post a Comment) posts an internal comment on the conversation. It supports static text and tags, is never sent to the contact, and is attributed as relay-generated. Use it for handoff notes and captured context.
+- **Stop Processing** is a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed or time-based Relays are exempt, and the Relay list shows when a Relay stops the cascade. Use it for clean routing, so a matched Relay can prevent a catch-all from also firing.
 
 Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
+
+[VERIFY: whether Send Comment and Stop Processing should also appear in the per-trigger action lists for Message Failed and Conversation Label Removed; add them there if so.]
 
 ### Actions on the new triggers
 
