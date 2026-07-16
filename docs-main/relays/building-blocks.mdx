@@ -32,7 +32,7 @@ Every trigger shares a **universal core of eight conditions**:
 - **Is anonymous conversation**
 - **Is new conversation**
 - **Is unassigned conversation**
-- **Teammate Assigned** gates on the conversation's current assignee. Pick a specific teammate, or **Any teammate** to check whether anyone is assigned. [VERIFY: confirm the exact in-app name is "Teammate Assigned" and that it is universal across triggers.]
+- **Teammate Assigned** gates on the conversation's current assignee. Pick a specific teammate, or **Any teammate** to check whether anyone is assigned.
 - **Active hours** (with a **Trigger outside of business hours** invert)
 
 On top of that core, three text conditions are trigger-scoped:
@@ -70,8 +70,6 @@ Conditions combine with **AND** or **OR**.
 - **Stop Processing** is a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. The Relay list shows when a Relay stops the cascade. Use it for routing: a matched Relay can prevent a catch-all from also firing.
 
 Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
-
-[VERIFY: whether Send Comment and Stop Processing should also appear in the per-trigger action lists for Message Failed and Conversation Label Removed; add them there if so.]
 
 ### Actions on the new triggers
 
