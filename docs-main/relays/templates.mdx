@@ -113,6 +113,30 @@ The outcomes below are the building blocks that most teams start from. Each entr
 
 ---
 
+### Out-of-office for one teammate, even on a shared line
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Received |
+| **Conditions** | Active hours (with **Trigger outside of business hours** enabled), and **Teammate Assigned** set to the teammate who is out. Optionally add **Is unassigned conversation** with **OR** to cover brand-new threads. |
+| **Actions** | Reply to message ("I'm out of the office and will follow up when I'm back. Reply STOP to opt out.") |
+
+**Why it works:** The auto-reply fires only for the conversations owned by the person who is out, so one teammate can be away without silencing the whole shared line.
+
+---
+
+### Leave an automatic handoff note for the team
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Conversation Users Assigned |
+| **Conditions** | None (or scope to a line) |
+| **Actions** | Send Comment (an internal note with context for the new owner, for example "Assigned by Relay. Customer texted after hours, please follow up first thing.") |
+
+**Why it works:** The new owner gets context as an internal comment the moment they are assigned, without anything going to the contact.
+
+---
+
 ### When a label comes off, sync the change
 
 | Field | Value |
@@ -336,7 +360,7 @@ The patterns below cover common use cases across additional industries.
 **Why it works:** One number handles support, pricing, and sales, each with its own reply and owner.
 
 <Tip>
-  Keep a keyword-free catch-all Relay ordered **last** so any message that doesn't match a keyword still gets a graceful reply and an owner.
+  Keep a keyword-free catch-all Relay ordered **last** so any message that doesn't match a keyword still gets a graceful reply and an owner. Instead of relying only on ordering, add the **Stop Processing** action to each matched Relay so a specific match stops the catch-all from also firing on the same message.
 </Tip>
 
 ---
@@ -416,7 +440,7 @@ The patterns below cover common use cases across additional industries.
 **Why this works:** Keyword routing is fast triage: the customer gets an instant acknowledgement and the right team picks up the thread without manual sorting. Combine with **My phone number equals** if you want the keyword to behave differently on different lines.
 
 <Tip>
-  Stack multiple keyword Relays (one per keyword) and use a default Relay without a keyword condition as a catch-all.
+  Stack multiple keyword Relays (one per keyword) and use a default Relay without a keyword condition as a catch-all. Add the **Stop Processing** action to each keyword Relay so a specific match stops the catch-all from also firing on the same message, instead of relying only on ordering.
 </Tip>
 
 ---
