@@ -172,13 +172,30 @@ Go to **Settings → Data Center → Message History**.
 
 Narrow the list using the filter controls at the top of the tab. Available filters:
 
+- **Phone Numbers:** scope results to one, several, or **all** phone lines in the workspace (see [Scope by phone number](#scope-by-phone-number))
 - **Date range:** limit results to a specific window
 - **Direction:** inbound or outbound
-- **Channel/line:** the phone number or channel the message was sent on
+- **Message Type:** filter by message type
 - **Contact:** messages tied to a specific contact
 - **Label:** conversations carrying a given [label](/inbox/labels)
 - **User/agent:** messages sent by a specific teammate
 - **Status:** delivery state (e.g., delivered, failed)
+
+### Scope by phone number
+
+Use the **Phone Numbers** filter to control which phone lines are included in the view and any export.
+
+<Frame>
+  ![Message History Phone Numbers Filter](/images/message-history-phone-numbers-filter.png)
+</Frame>
+
+- **All Phone Numbers.** Leave every line checked to include the **entire workspace's Message History across all phone lines** in a single export.
+- **A single phone number.** Uncheck the others to scope Message History (and the resulting export) to **just that line** — for example, only your Front Desk or only your Sales Line.
+- **A subset of lines.** Check any combination of lines to export just those.
+
+<Warning>
+  **Tenant-level exports aren't supported.** Message History exports are scoped to a **single workspace**. If your tenant has multiple workspaces, run the export in each workspace separately — there's no concurrent export across all workspaces on a tenant.
+</Warning>
 
 ### Search within results
 
@@ -192,9 +209,18 @@ Use the **search bar** to run a free-text search across the messages currently s
 
 Click **Export** to download a CSV of the current view. Use CSV exports for **data analysis, reporting, and bulk archiving**. For a shareable, human-readable record, use **PDF** instead.
 
+You can export at two levels of scope:
+
+- **All phone lines in a workspace.** Leave every line checked in the **Phone Numbers** filter to export the workspace's full Message History in one file.
+- **A single phone number.** Uncheck the other lines in the **Phone Numbers** filter to export Message History for just that line.
+
 <Warning>
   Exports include **only the messages that match your active filters and search**. Adjust filters before exporting if you need a broader set.
 </Warning>
+
+<Note>
+  **Tenant-level exports aren't supported.** If your tenant has more than one workspace, Message History exports run **per workspace** — there's no way to export across all workspaces on a tenant in a single file.
+</Note>
 
 <Note>
   Once your export finishes processing, you'll see an in-app notification that reads **"Export Available"**. Click the notification to download your `.csv` or `.pdf` file.
@@ -247,6 +273,12 @@ The [Inbox](/inbox/filter-search-sort) is for working live conversations. **Mess
 
 **What format are exports in?**\
 **CSV** for data and reporting, or **PDF** for shareable conversation records.
+
+**Can I export Message History across every phone line at once?**\
+Yes. In **Settings → Data Center → Message History**, leave every line checked in the **Phone Numbers** filter and click **Export**. That produces a single file covering the entire workspace. To export just one line, uncheck the others before exporting.
+
+**Can I export Message History across all workspaces on my tenant?**\
+No. Message History exports are scoped to a **single workspace**. If your tenant has multiple workspaces, run the export in each workspace separately.
 
 **Are media attachments included in exports?**\
 
