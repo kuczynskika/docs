@@ -23,21 +23,31 @@ A library of ready-made Relay templates. Start from a template that ships in the
 
 ## Starter templates that ship today
 
-These starter templates are available from the Relays module in the app. Pick one, name it, and adjust the fields to match your workflow.
+These starter templates are available from the Relays module in the app, grouped by outcome to match the gallery. Pick one, name it, and adjust the fields to match your workflow.
+
+### Assign & Route Conversations
+
+| Template | What it does | Underlying build |
+| --- | --- | --- |
+| **Assign to Teammate** | Assigns new conversations to a teammate | Message Received + Assign teammates |
+| **Auto Assign to First Responder** | Assigns a conversation to the first teammate who replies | Message Sent + Is unassigned conversation + Assign to sender |
+
+### Organize Conversations & Update Status
+
+| Template | What it does | Underlying build |
+| --- | --- | --- |
+| **Label Conversation** | Auto-labels new conversations | Message Received + Add labels |
+| **Unassign on Close** | Removes all teammates when a conversation closes | Conversation Closed + Teammate Assigned (Any teammate) + Remove all teammates |
+
+### Respond to Messages
 
 | Template | What it does | Underlying build |
 | --- | --- | --- |
 | **Out-of-Office (Away) Autoresponse** | Texts an autoresponse outside operating hours | Message Received + Active hours (inverted) + Reply to message |
 | **Respond to a Keyword** | Auto-replies when a keyword is texted in | Message Received + Message contains text + Reply to message |
 | **Identify Unknown Contacts** | Asks anonymous contacts for their info | Message Received + Is anonymous conversation + Reply to message |
-| **Assign to Teammate** | Assigns new conversations to a teammate | Message Received + Assign teammates |
-| **Auto Assign to First Responder** | Assigns a conversation to the first teammate who replies | Message Sent + Is unassigned conversation + Assign to sender |
-| **Label Conversation** | Auto-labels new conversations | Message Received + Add labels |
-| **Custom Relay** | Blank canvas for your own build | Any trigger, conditions, actions |
-| **Send Webhook** | Sends events to a webhook endpoint | Any trigger + Send webhook |
-| **Unassign on Close** | Removes all teammates when a conversation closes | Conversation Closed (no conditions) + Remove all teammates |
 
-Every starter is a starting point you can customize.
+The **Custom Relay** (a blank canvas) and **Send Webhook** starters are also available for building from scratch or sending events to an endpoint.
 
 ---
 
@@ -552,10 +562,10 @@ The patterns below cover common use cases across additional industries.
 | Field | Value |
 | --- | --- |
 | **Trigger** | Conversation Closed |
-| **Conditions** | None |
+| **Conditions** | **Teammate Assigned** (Any teammate) |
 | **Actions** | **Remove all teammates from the conversation** |
 
-**Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached. Reopens or new inbound messages on the same thread often need fresh triage. The **Remove all teammates from the conversation** action clears every assignee in one step, so the next inbound lands unassigned and can be routed by your normal auto-assign Relays.
+**Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached. Reopens or new inbound messages on the same thread often need fresh triage. The **Teammate Assigned** condition (set to Any teammate) makes sure the Relay only runs when someone is actually assigned, and the **Remove all teammates from the conversation** action clears every assignee in one step, so the next inbound lands unassigned and can be routed by your normal auto-assign Relays.
 
 <Note>
   **Ships as a template:** This template is available as the **Unassign on Close** starter from the Relays module. Install it in one click, or build it from the fields above.
