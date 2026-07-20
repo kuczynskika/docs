@@ -1,8 +1,8 @@
 ---
-title: "Import, Export & Search Message History"
+title: "Import, export, and search message history"
 description: "Import contacts and historical SMS messages, then search, filter, and export your full MessageDesk message history from the Data Center."
 sidebarTitle: "Data Center"
-og:title: "Data Center - Import & Message History"
+og:title: "Data Center: import and message history"
 og:description: "Import contacts and historical messages, and search, filter, and export your full message history from the Data Center."
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
@@ -56,9 +56,9 @@ Build your contact list quickly by uploading a **CSV** and mapping it to Message
 
 ### Review duplicates and errors
 
-- **Duplicates** (by **email** or **phone**) are **updated** with the values in the import. Only mapped columns with a value are updated. Empty cells leave existing fields unchanged.
-- **Invalid data** (e.g., bad phone/email format) is reported so you can fix and re-upload.
-- Problem rows are **skipped** during processing.
+- MessageDesk **updates duplicates** (matched by **email** or **phone**) with the values in your import. Only mapped columns with a value get updated. Empty cells leave existing fields unchanged.
+- The importer flags **invalid data** (for example, bad phone or email format) so you can fix it and re-upload.
+- Processing **skips** problem rows.
 
 ### Monitor progress
 
@@ -72,7 +72,7 @@ After you start the import, you'll see the real-time status. When complete, a su
 
 ## How to import messages
 
-Preserve conversation context by importing **past SMS** from any platform or service into MessageDesk.
+Import **past SMS** from any platform or service into MessageDesk so you keep the full conversation context.
 
 ### Start a message import
 
@@ -109,7 +109,7 @@ Preserve conversation context by importing **past SMS** from any platform or ser
 
 - **Automatic conversation creation:** If a conversation doesn't exist for a row, MessageDesk creates it.
 - **Existing conversations:** Rows match into existing threads when possible.
-- **Channel requirement:** Messages can only be imported into **outbound channels that already exist** in your workspace.
+- **Channel requirement:** You can only import messages into **outbound channels that already exist** in your workspace.
 
 ---
 
@@ -235,12 +235,12 @@ PDF exports include the full message thread with timestamps, participants, direc
 
 **Media handling**
 
-- **Renderable media** (images and other formats supported in PDF) is embedded inline.
-- **Non-renderable media** (videos and other unsupported file types) is replaced with a direct **S3 link to the file** and the note **"Could not load preview"** so the attachment stays accessible from the PDF.
+- The PDF embeds **renderable media** (images and other formats supported in PDF) inline.
+- For **non-renderable media** (videos and other unsupported file types), the PDF shows a direct **S3 link to the file** and the note **"Could not load preview"** so the attachment stays accessible.
 
 ### Permissions
 
-Message History is available to roles with access to the Data Center (typically **Admin** and **Manager**). Ask an Admin to adjust your role if you don't see the tab.
+Roles with Data Center access (typically **Admin** and **Manager**) can use Message History. Ask an Admin to adjust your role if you don't see the tab.
 
 ## Frequently asked data import and export questions
 
@@ -254,7 +254,7 @@ No. Each row must include **at least one**: **email** or **phone** (you can incl
 
 ### How are duplicates handled on contact import?
 
-We check **email** and **phone**. When a row matches an existing contact, that contact is **updated** with the values from the import. Updates only apply to columns you mapped, and only when the mapped column has a value. Empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, etc.) and custom fields.
+MessageDesk checks **email** and **phone**. When a row matches an existing contact, MessageDesk **updates** that contact with the values from the import. Updates only apply to columns you mapped, and only when the mapped column has a value. Empty cells leave existing fields unchanged. Updates apply to standard fields (name, email, phone, address, and so on) and custom fields.
 
 ### Why did some rows fail?
 
@@ -279,7 +279,7 @@ No. Imports are **web-only**. Use a desktop browser.
 **Are media attachments included in exports?**\\
 
 - **CSV exports.** No. CSV files contain message text and metadata only.
-- **PDF exports.** Renderable media (images) is embedded inline. Non-renderable media (videos and other unsupported types) is replaced with a direct S3 link and a **"Could not load preview"** note.
+- **PDF exports.** The PDF embeds renderable media (images) inline. For non-renderable media (videos and other unsupported types), the PDF shows a direct S3 link and a **"Could not load preview"** note.
 
 ---
 
