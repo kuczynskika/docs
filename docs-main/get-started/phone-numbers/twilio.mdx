@@ -122,27 +122,27 @@ MessageDesk won't interfere with any of these configurations.
 
 ## Disconnect a Twilio number
 
-MessageDesk connects to your Twilio numbers through Twilio's Event Streams and does not take the numbers over, so there is no disconnect button inside MessageDesk. What you do depends on your goal.
+MessageDesk connects to your Twilio numbers through Twilio's Event Streams and doesn't take the numbers over, so there's no disconnect button inside MessageDesk. What you do depends on your goal.
 
 ### Remove a single number from MessageDesk
 
-If you want to take a Twilio number out of your MessageDesk workspace, for example you have other numbers you will keep using or you no longer need this one, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we will remove it. This is the equivalent of deleting a number.
+To take a Twilio number out of your MessageDesk workspace, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we'll remove it. This is the equivalent of deleting a number. Do this when you have other numbers you'll keep using, or you no longer need this one.
 
-Removing a number from MessageDesk does not disable the Twilio integration on its own. The Event Streams subscription stays in place. If your goal is to stop MessageDesk from receiving anything from Twilio, follow the next step as well.
+Removing a number from MessageDesk doesn't disable the Twilio integration on its own. The Event Streams subscription stays in place. To stop MessageDesk from receiving anything from Twilio, follow the next step as well.
 
 ### Stop MessageDesk from receiving your Twilio messages
 
-If you want MessageDesk to stop receiving messages and events from your Twilio number altogether, for example you are moving off MessageDesk, delete the Event Streams subscription that MessageDesk created when you connected the number. You do this from your Twilio account. Once it is deleted, messages and events stop flowing to MessageDesk.
+To stop MessageDesk from receiving messages and events from your Twilio number altogether, delete the Event Streams subscription that MessageDesk created when you connected the number. Do this from your Twilio account. Once it's deleted, messages and events stop flowing to MessageDesk. This is the right step if you're moving off MessageDesk.
 
-After the subscription is deleted, the number may still appear in your MessageDesk workspace but will no longer send or receive messages there. To also remove it from view, contact [support@messagedesk.com](mailto:support@messagedesk.com).
+After you delete the subscription, the number may still appear in your MessageDesk workspace but won't send or receive messages there. To also remove it from view, contact [support@messagedesk.com](mailto:support@messagedesk.com).
 
 <Note>
-  If you connected your Twilio numbers before MessageDesk moved to the Event Streams system, your connection uses the older webhook pattern rather than an Event Streams subscription. If that applies to you, or you are not sure, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we will help.
+  If you connected your Twilio numbers before MessageDesk moved to the Event Streams system, your connection uses the older webhook pattern rather than an Event Streams subscription. If that applies to you, or you're not sure, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we'll help.
 </Note>
 
 ### Keep using your number elsewhere
 
-You do not need to disconnect from MessageDesk to use or test your Twilio number in another application. Because MessageDesk sits on top of the number through its Event Streams subscription, your number can work with other platforms at the same time without affecting MessageDesk. See [Using multiple services with your Twilio number](#using-multiple-services-with-your-twilio-number).
+You don't need to disconnect from MessageDesk to use or test your Twilio number in another application. MessageDesk sits on top of the number through its Event Streams subscription, so your number can work with other platforms at the same time without affecting MessageDesk. See [Using multiple services with your Twilio number](#using-multiple-services-with-your-twilio-number).
 
 ---
 
