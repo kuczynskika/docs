@@ -120,29 +120,50 @@ MessageDesk won't interfere with any of these configurations.
 
 ---
 
-## Disconnect a Twilio number
+## Disconnect or remove a Twilio number
 
-MessageDesk connects to your Twilio numbers through Twilio's Event Streams and doesn't take the numbers over, so there's no disconnect button inside MessageDesk. What you do depends on your goal.
-
-### Remove a single number from MessageDesk
-
-To take a Twilio number out of your MessageDesk workspace, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we'll remove it. This is the equivalent of deleting a number. Do this when you have other numbers you'll keep using, or you no longer need this one.
-
-Removing a number from MessageDesk doesn't disable the Twilio integration on its own. The Event Streams subscription stays in place. To stop MessageDesk from receiving anything from Twilio, follow the next step as well.
-
-### Stop MessageDesk from receiving your Twilio messages
-
-To stop MessageDesk from receiving messages and events from your Twilio number altogether, delete the Event Streams subscription that MessageDesk created when you connected the number. Do this from your Twilio account. Once it's deleted, messages and events stop flowing to MessageDesk. This is the right step if you're moving off MessageDesk.
-
-After you delete the subscription, the number may still appear in your MessageDesk workspace but won't send or receive messages there. To also remove it from view, contact [support@messagedesk.com](mailto:support@messagedesk.com).
+MessageDesk connects to your Twilio numbers by listening to Twilio's Event Streams. It does not take over your number or its webhooks, so there is no disconnect button inside MessageDesk. What to do depends on what you are trying to accomplish. The sections below cover each case.
 
 <Note>
-  If you connected your Twilio numbers before MessageDesk moved to the Event Streams system, your connection uses the older webhook pattern rather than an Event Streams subscription. If that applies to you, or you're not sure, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we'll help.
+  This is the most common point of confusion, so it is worth stating plainly. Twilio offers two ways to integrate with other tools. The older method takes over a number's webhooks, which blocks other services from using that number. MessageDesk does not do this. Our current integration only listens to Twilio's built-in Event Streams, so your number keeps working with any other Twilio services at the same time. In most cases you do not need to disconnect anything.
 </Note>
 
-### Keep using your number elsewhere
+### Use your number with other tools while keeping MessageDesk
 
-You don't need to disconnect from MessageDesk to use or test your Twilio number in another application. MessageDesk sits on top of the number through its Event Streams subscription, so your number can work with other platforms at the same time without affecting MessageDesk. See [Using multiple services with your Twilio number](#using-multiple-services-with-your-twilio-number).
+You do not need to disconnect from MessageDesk to use or test your Twilio number in another application. Because MessageDesk only listens to the Event Stream and does not touch the number's webhooks, your number can work with MessageDesk and other services at the same time. See [Using multiple services with your Twilio number](#using-multiple-services-with-your-twilio-number).
+
+### Temporarily stop messages from reaching MessageDesk
+
+Twilio does not have a simple pause switch for an Event Streams subscription. To stop messages from reaching MessageDesk while keeping your number and conversation history, edit the MessageDesk Event Streams subscription in your Twilio account and remove the two event types it subscribes to:
+
+| Event            | Action   | Schema version |
+| ---------------- | -------- | -------------- |
+| Inbound Message  | Received | 6              |
+| Outbound Message | Sent     | 7              |
+
+To resume, edit the subscription again and add those two event types back using the same schema versions shown above. The schema version matters: adding a different version means MessageDesk will not receive the events correctly. For how to edit a subscription and its event types, see [Twilio's Event Streams documentation](https://www.twilio.com/docs/events).
+
+<Warning>
+  Any messages that arrive while these event types are removed will not appear in MessageDesk. There is no backfill for messages received during that gap.
+</Warning>
+
+### Stop MessageDesk from receiving your Twilio messages entirely
+
+If you are moving off MessageDesk and want it to stop receiving your messages and events, delete the Event Streams subscription in your Twilio account, rather than only removing its event types. Once it is deleted, messages and events stop flowing to MessageDesk. For the steps, see [Twilio's Event Streams documentation](https://www.twilio.com/docs/events).
+
+After you delete the subscription, the number still appears in your MessageDesk workspace but no longer sends or receives messages there. MessageDesk has no way to know you deleted the subscription in Twilio, so the number stays visible until you ask us to remove it.
+
+<Note>
+  If you connected your Twilio numbers before MessageDesk moved to the Event Streams system, your connection uses the older webhook pattern rather than an Event Streams subscription. If that applies to you, or you are not sure, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we will help.
+</Note>
+
+### Remove a number from MessageDesk
+
+To take a Twilio number out of your MessageDesk workspace, contact [support@messagedesk.com](mailto:support@messagedesk.com) and we will remove it. This is the equivalent of deleting a number, and it is separate from your Twilio Event Streams subscription. Removing the number from MessageDesk does not delete the subscription in Twilio, so if you also want to stop the flow of events, delete the subscription using the section above.
+
+<Warning>
+  Removing a number from MessageDesk permanently deletes all messages, conversations, comments, and conversation history tied to that number. This cannot be undone.
+</Warning>
 
 ---
 
