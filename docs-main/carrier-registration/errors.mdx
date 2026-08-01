@@ -1,0 +1,124 @@
+---
+title: "Carrier Registration Errors and Fixes"
+description: "Understand the errors, rejections, and warnings you may see during A2P 10DLC carrier registration in MessageDesk, what each one means, and how to fix it fast."
+sidebarTitle: "Errors and fixes"
+og:title: "Carrier Registration Errors and Fixes - MessageDesk"
+og:description: "Every A2P 10DLC carrier registration error, rejection reason, and status explained — with the fastest way to resolve each one."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+---
+
+# Carrier registration errors and how to fix them
+
+This page explains the messages you may see before, during, and after carrier registration, what each one means, and the fastest way to resolve it. Errors fall into four groups: form errors (before you submit), brand verification failures, campaign rejections, and send-time errors (after approval).
+
+---
+
+## 1. Form errors (before you can submit)
+
+MessageDesk checks each field before it lets you submit. Fix these in the registration wizard, then resubmit.
+
+| What you'll see | What it means | How to fix it |
+| --- | --- | --- |
+| **A tax ID is required to register** | You selected a path that requires an EIN/BN but didn't provide one. | Enter your 9-digit EIN (US) or BN (Canada). Sole proprietorships can't register — see the [overview](/carrier-registration/overview). |
+| **Tax ID (EIN or Business Number) must be 9 digits** | The EIN/BN you entered isn't exactly 9 digits. | Remove spaces or dashes and enter the 9 digits exactly as they appear on your IRS/CRA records. |
+| **Required: enter your legal name** | Legal company name is blank. | Enter your legal entity name exactly as filed (include the LLC/Inc suffix). |
+| **Please select an entity type / business vertical / country / state** | A required dropdown is empty. | Choose the value that matches your tax filings. LLCs taxed as S-Corps should still select **LLC**. |
+| **Required: a valid support email / support phone** | Public support contact is missing or malformed. | Enter a working public-facing email and phone. Both appear on carrier records. |
+| **Campaign description must be at least 40 characters** | Your description is too short for carriers to review. | Use **Generate with AI**, or describe who you text and what you send in a full sentence or two. |
+| **Select at least one group / message type** | No recipients or message types are checked. | Check every group you'll text and every message type you'll send. |
+| **Please select your estimated volume** | Monthly volume isn't set. | Pick the tier that matches your expected monthly send. |
+| **At least one sample message is required** / **Required: N valid sample messages** | You have too few valid samples. | Provide **3 to 5** sample messages. Each must be 20–320 characters. |
+| **Every message must include opt-out language** | A sample is missing STOP language. | Add "Reply STOP to opt out" (or equivalent) to every sample message. |
+| **Your samples must match what you described in your campaign** | Samples don't align with your campaign description. | Rewrite samples so they clearly reflect the use cases you selected. Mismatches are the #1 rejection reason. |
+| **At least one sample must include a URL** / **a phone number** | You declared that messages contain links/numbers, but no sample shows one. | Add a real link and/or phone number to at least one sample, or turn off that toggle if it doesn't apply. |
+| **A sample link is required when messages include URLs** / **Sample link must be a valid URL** | The declared sample link is missing or invalid. | Provide a complete, working URL (including `https://`). |
+| **SMS Terms & Conditions page is missing or incomplete** | Carriers couldn't find compliant SMS terms on your site. | Publish SMS terms and conditions and link them from your footer. See [privacy policy requirements](/carrier-registration/privacy-policy-terms-conditions). |
+| **Privacy policy is missing the required no-sharing statement** | Your policy lacks a "we don't sell or share" clause. | Add a statement that SMS opt-in data isn't sold or shared with third parties for marketing. |
+| **You must confirm this to continue / to submit** | A required acknowledgement (e.g. forbidden topics) is unchecked. | Check the confirmation box to proceed. |
+
+<Note>
+  Field errors appear inline in the wizard and in the **Review** step's missing-field summary. You can save progress and return; nothing submits until every required field passes.
+</Note>
+
+---
+
+## 2. Brand verification failures (after you submit)
+
+After you submit, carriers verify your **brand** (your business identity) against IRS or CRA records. If it can't be verified, your brand shows as **Identity failed** in the Compliance Center.
+
+<Warning>
+  **Most identity failures are a data mismatch.** Your EIN is matched byte-for-byte against IRS/CRA records. If your legal name, EIN, or address doesn't match exactly, verification fails.
+</Warning>
+
+**Common causes and fixes:**
+
+- **Legal name mismatch.** Match your registered legal name exactly, including the suffix (LLC, Inc, Corp).
+- **EIN mismatch.** Confirm the 9-digit EIN against your IRS Letter 147C or SS-4 confirmation.
+- **Address mismatch.** Use the address on your tax filings, including suite/unit.
+- **Brand-new EIN.** If your EIN is less than ~30 days old, carrier records may not have propagated. Wait about 30 days and resubmit.
+
+When a brand fails, MessageDesk reopens it for editing so you can correct and resubmit. When carriers return specific feedback (for example, a tax-ID correction), MessageDesk surfaces it on the registration so you know exactly what to fix.
+
+<Note>
+  A brand in **Pending**, **Unverified**, or **Self-declared** status is still in review — not yet approved and not failed. No action is needed unless it moves to **Identity failed**.
+</Note>
+
+---
+
+## 3. Campaign rejections and suspensions
+
+Once your brand is verified, your **campaign** (what you send) goes to the carriers. It can come back **Declined** or **Suspended**.
+
+**Declined** means carriers rejected the campaign. Common reasons:
+
+- **Vague or mismatched samples.** Samples don't match the campaign description. Rewrite them to line up.
+- **Forbidden content.** Campaigns tied to prohibited topics are rejected immediately and may lead to permanent blacklisting. Review the [forbidden topics](/carrier-registration/submit) list.
+- **Missing consent or opt-out.** Document your opt-in method and include STOP language.
+- **Website issues.** Your site must be live and show the same legal name/address, with an accessible privacy policy and SMS terms.
+
+**Suspended** means carriers paused an active campaign, usually for a compliance or content concern. Contact [support@messagedesk.com](mailto:support@messagedesk.com) to review and restore it.
+
+<Warning>
+  Corrections and resubmissions reset the review clock and add at least another 48 hours per resubmission. Fix everything before you resubmit.
+</Warning>
+
+MessageDesk reopens declined and suspended campaigns so you can correct and resubmit. If your brand is denied, any pending campaigns move back to **Draft**.
+
+---
+
+## 4. Errors when sending after approval
+
+Even after approval, you may see these when sending. They relate to registration status, not the message itself.
+
+| Message | What it means | How to fix it |
+| --- | --- | --- |
+| **Phone number is not registered, please register number to send messages** | The number isn't tied to an approved campaign. | Finish registration, or contact support to associate the number with your campaign. |
+| **Number is pending association with campaign, this can take up to 24 hours** | Your number is approved but still linking to the campaign. | Wait up to 24 hours. No action needed. |
+| **Registration has been suspended by the carrier network** | Carriers suspended your campaign. | Contact [support@messagedesk.com](mailto:support@messagedesk.com) to review and restore. |
+| **Number has exceeded messaging limits** | You hit your campaign's daily or per-second send limit. | Slow your send rate, or contact support about a higher throughput tier (may require enhanced vetting). |
+
+<Note>
+  Sending more than **2,000 messages/day** requires enhanced carrier vetting and may incur additional fees.
+</Note>
+
+---
+
+## Registration status glossary
+
+You'll see these statuses in **Account → Settings → Compliance Center**.
+
+| Status | Meaning | Action |
+| --- | --- | --- |
+| **Draft** | Not yet submitted. | Complete and submit. |
+| **Submitted / Pending** | In review by MessageDesk or carriers. | Wait. Typically resolves within 24–48 hours per stage. |
+| **Identity verified** | Your brand passed identity checks. | None. Campaign review comes next. |
+| **Identity failed** | Brand couldn't be verified. | Correct your business details and resubmit (see section 2). |
+| **Active** | Campaign approved. You can send. | None. Stay compliant with your registered use case. |
+| **Declined** | Campaign rejected by carriers. | Fix the issue and resubmit (see section 3). |
+| **Suspended** | Active campaign paused by carriers. | Contact support. |
+
+---
+
+## Still stuck?
+
+Our support team works with you one-on-one to bring your registration into compliance. Email [support@messagedesk.com](mailto:support@messagedesk.com) or [contact us](/contact-us).
