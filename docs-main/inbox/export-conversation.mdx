@@ -33,8 +33,13 @@ Export any individual conversation to **CSV** or **PDF** directly from the conve
 4. Choose a format:
    - **CSV.** Best for data and reporting.
    - **PDF.** A shareable, human-readable record of the conversation.
+5. If you narrow the export by date range, MessageDesk runs a background check on your selection.
 
-The export runs **asynchronously** in the background. Keep working in MessageDesk while it's preparing.
+The export runs **asynchronously** in the background through MessageDesk's **universal export system** (the same system that powers [Message History](/settings/workspace-settings/data-center#message-history) and [contact exports](/settings/workspace-settings/data-center#export)). Keep working in MessageDesk while it's preparing.
+
+<Note>
+  **Export is disabled when there's nothing to export.** If a date range or filter you apply produces zero messages, the **Export** button is greyed out so you don't kick off an empty file. Adjust the date range or clear the filter to try again.
+</Note>
 
 ---
 
@@ -44,12 +49,11 @@ The export runs **asynchronously** in the background. Keep working in MessageDes
   ![Export Available](/images/export-available.png)
 </Frame>
 
-When the export finishes, an **Export Available** button appears in the **top nav**. Click it to download your file.
+When the export finishes, you'll get it three ways:
 
-You'll also get a notification on devices where you've enabled them:
-
-- **Push notification** on the MessageDesk mobile app.
-- **Browser notification** in the installed app or in Chrome.
+- **Export Available** button in the top nav. Click it to download your file.
+- **Export completed email** with a download link, sent to the user who triggered the export.
+- **Push and browser notifications** on devices where you've enabled them (mobile app, installed desktop app, or Chrome).
 
 Notifications only go to the **user who triggered the export**. They aren't sent to your whole team.
 
@@ -121,7 +125,7 @@ No. Exports include **messages that have actually been sent or received** plus i
 Not from the per-conversation toolbar. For workspace-wide filtered exports across date ranges, labels, contacts, or channels, use [Data Center → Message History](/settings/workspace-settings/data-center#message-history).
 
 **Is the export delivered by email?**\
-No. Exports stay in MessageDesk. Click the **Export Available** button in the top nav to download.
+Yes. You'll get an **export completed email** with a download link once the file is ready. You can also grab it in-app by clicking the **Export Available** button in the top nav. Both go only to the user who triggered the export.
 
 ---
 
