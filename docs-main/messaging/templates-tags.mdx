@@ -113,7 +113,8 @@ You can insert tags in any message, template or one-off.
 1. Click the **#** icon in the message compose box.
 2. Search for or select a **Tag**.
 3. (Recommended) **Set a fallback** value so your message still reads well if data is missing.
-4. Continue composing, then **Send** or **Schedule**.
+4. (Recommended) Open the [message preview](/messaging/new-message-compose#preview-your-message-before-sending) and step through recipients to confirm each tag resolves the way you expect.
+5. Continue composing, then **Send** or **Schedule**.
 
 <Frame>
   ![Insert Tag](/images/insert-tag.png)
@@ -190,6 +191,8 @@ A fallback is the default text used **when a tag has no data**. For example, whe
 <Warning>
   Note: tags without a fallback set will appear as red when inserted into a message. A tag with a fallback set will appear in light purple.
 
+  In the [message preview](/messaging/new-message-compose#preview-your-message-before-sending), a tag can also render red when the value can't be resolved for a specific recipient — for example, when you send to a **label**, **assigned teammate**, or **group**, where per-recipient values aren't fetched until send time.
+
   <Frame>
     ![Tag No Fallback 1](/images/tag-no-fallback-1.png)
   </Frame>
@@ -229,6 +232,8 @@ A fallback is the default text used **when a tag has no data**. For example, whe
 
 - **My tag didn’t resolve.**\
   Check that the contact has data for that field and that you set a **fallback**. Make sure the braces and tag name are correct (e.g., `{{ ContactFirstName }}`).
+- **My tag looks red in the preview.**\
+  A red tag in the [message preview](/messaging/new-message-compose#preview-your-message-before-sending) means one of two things: the recipient is missing a value for that tag and you haven't set a **fallback**, or you're sending to a **label**, **assigned teammate**, or **group** — in that case, values resolve per recipient at send time and can't be previewed individually.
 - **I can’t find a template.**\
   Try a simpler search or confirm the template name in **Workspace Settings → Inbox Settings → Templates**.
 - **A template needs updating for everyone.**\
