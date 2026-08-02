@@ -107,6 +107,47 @@ After you send your message, you'll see a notification: **Message sends have beg
 
 MessageDesk queues your messages and sends them as fast as possible. For larger broadcast sends, you can navigate to other parts of the app while your message sends to all recipients.
 
+***
+
+## Preview your message before sending
+
+Before you send, MessageDesk shows a **message preview** so you can see exactly what each recipient will get. The preview widget works on **mobile** and **desktop** and is **on by default**.
+
+### Turn the preview on or off
+
+* **From the preview widget:** After your first send, you can dismiss the preview from the dialog itself.
+* **From Inbox Preferences:** Toggle **Message compose preview** on or off in [**Account → Settings → Inbox Preferences (My Settings)**](/settings/my-settings/inbox-preferences).
+
+### What the preview shows
+
+* **Resolved personalization tags.** MessageDesk fills in contact properties and [custom field](/settings/workspace-settings/custom-fields) values for the selected recipient so you see the real message they'll receive.
+* **Per-recipient iteration.** Step through your recipient list to see the unique values populated for each individual contact — great for spot-checking a broadcast before it goes out.
+* **Scheduled send time.** If the message is scheduled, the preview shows the **scheduled at** time so you can confirm before saving.
+
+### Tag warnings in the preview
+
+MessageDesk flags tags that may not resolve cleanly so you can catch problems before sending.
+
+* **Red tag.** A tag with no fallback and no data for that specific recipient. The tag sends as-is unless you [set a fallback](/messaging/templates-tags#set-a-tag-fallback-important) or fix the recipient's data.
+* **Info notice on unresolvable tags.** When you send to a **label**, **assigned teammate**, or **group**, MessageDesk can't fetch per-recipient values until send time. The preview shows an info notice so you know those tags will only resolve once the message actually sends.
+* **Dynamic warnings for labels and assigned teammates.** The compose UI adapts when you pick a label or teammate as your recipient, showing relevant warnings about which fields can and can't be previewed.
+
+<Note>
+  When you send to a label, assigned teammate, or group, contact and custom-field tags still resolve **per recipient at send time** — you just can't preview each one individually in the composer.
+</Note>
+
+### Send a test message
+
+Send a one-off test to any phone number before you commit to the full send.
+
+1. Open the **preview** widget.
+2. Enter the phone number for the test. The field **defaults to your own user phone number** for a quick self-test.
+3. Send the test. The test message uses the exact content and resolved tags from the preview.
+
+<Tip>
+  Use a test send to verify tag resolution, media rendering, and how your message reads on a real phone — especially for broadcasts to labels or assigned teammates where per-recipient previewing isn't possible.
+</Tip>
+
 ![Message Sends Begun](/images/message-sends-begun.png)
 
 ## Post-send actions
@@ -211,5 +252,9 @@ Choose when your message goes out.
   </Accordion>
   <Accordion title="What are post-send actions and when can I use them?">
     Post-send actions let you automatically assign conversations to a teammate or apply a label after sending a broadcast. They're only available when using "Send individually" mode, not for Group SMS messages.
+  </Accordion>
+
+  <Accordion title="Can I preview a message before sending it?">
+    Yes. The [message preview widget](#preview-your-message-before-sending) is on by default on mobile and desktop. It resolves personalization tags per recipient, flags tags that can't be filled until send time, and lets you send a test message to any phone number. Turn it off from the widget after your first send or in [Inbox Preferences](/settings/my-settings/inbox-preferences).
   </Accordion>
 </AccordionGroup>
