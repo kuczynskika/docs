@@ -9,20 +9,25 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 
 # Data Center
 
-The **Data Center** is your hub for managing workspace data in MessageDesk. It has two tabs:
+The **Data Center** is your hub for managing workspace data in MessageDesk. It has three tabs:
 
 - **Import:** upload CSVs of contacts and historical messages, map fields, resolve duplicates, and monitor progress.
 - **Message History:** search, filter, and export every message sent or received in your workspace.
+- **Export:** run a full CSV export of your workspace's contacts.
 
 <Tip>
-  Looking to **view or export existing messages**? Jump to [Message History](#message-history). To export a **single conversation** directly from the Inbox toolbar, see [Export a conversation](/inbox/export-conversation).
+  Looking to **view or export existing messages**? Jump to [Message History](#message-history). To **export contacts**, jump to [Export](#export). To export a **single conversation** directly from the Inbox toolbar, see [Export a conversation](/inbox/export-conversation).
 </Tip>
+
+<Note>
+  Message History exports, contact exports, and per-conversation exports all run through the same **universal export system**. Each one processes asynchronously in the background and delivers the file through the **Export Available** button in the top nav plus an **export completed email** to the user who triggered it.
+</Note>
 
 ---
 
 ## Access the Data Center
 
-Go to **Account → Settings → Data Center** (under **Workspace Settings**), then choose the **Import** or **Message History** tab.
+Go to **Account → Settings → Data Center** (under **Workspace Settings**), then choose the **Import**, **Message History**, or **Export** tab.
 
 <Note>
   **Don't see Data Center?** Your role may not include access. Ask an Admin or Manager to adjust your permissions.
@@ -219,11 +224,20 @@ You can export at two levels of scope:
 </Warning>
 
 <Note>
+  **Export is disabled when the current view has zero results.** If your filters, date range, or search return no messages, the **Export** button is greyed out. Adjust filters to widen the result set before exporting.
+</Note>
+
+<Note>
   **Tenant-level exports aren't supported.** If your tenant has more than one workspace, Message History exports run **per workspace**. There's no way to export across all workspaces on a tenant in a single file.
 </Note>
 
 <Note>
-  Once your export finishes processing, you'll see an in-app notification that reads **"Export Available"**. Click the notification to download your `.csv` or `.pdf` file.
+  When your export finishes processing, you'll get it two ways:
+
+  - An in-app **"Export Available"** button in the top nav. Click it to download your `.csv` or `.pdf` file.
+  - An **export completed email** with a download link, sent to the user who triggered the export.
+
+  See [Notification Preferences](/settings/my-settings/notification-preferences) to manage push and browser notifications for the same event.
 </Note>
 
 Use PDF exports to create **shareable, human-readable records** of a conversation or a filtered slice of message history. Useful for audits, compliance reviews, or sharing context with stakeholders.
@@ -241,6 +255,47 @@ PDF exports include the full message thread with timestamps, participants, direc
 ### Permissions
 
 Roles with Data Center access (typically **Admin** and **Manager**) can use Message History. Ask an Admin to adjust your role if you don't see the tab.
+
+---
+
+## Export
+
+The **Export** tab runs a full CSV export of every contact in your workspace. Use it when you need a complete backup of your contact list for archiving, reporting, or moving data to another system.
+
+### Access the Export tab
+
+Go to **Settings → Data Center → Export**.
+
+### Export your contacts to CSV
+
+1. Open the **Export** tab.
+2. Click **Export Contacts**.
+3. The export runs asynchronously in the background. Keep working in MessageDesk while it's preparing.
+
+<Note>
+  **Contact exports are a full workspace dump.** Every contact in the workspace is included. Filtered contact exports (by label, custom field, saved filter, and so on) aren't supported in this version.
+</Note>
+
+<Note>
+  **Tenant-level exports aren't supported.** Contact exports are scoped to a **single workspace**. If your tenant has multiple workspaces, run the export in each one separately.
+</Note>
+
+### What's included in a contact export
+
+Each row in the CSV contains a contact's standard fields (name, phone numbers, email, address, and so on) plus any [custom fields](/settings/workspace-settings/custom-fields) defined in your workspace.
+
+### When your export is ready
+
+Contact exports run through the same **universal export system** as Message History and per-conversation exports. When the file is ready, you'll get it two ways:
+
+- The **Export Available** button appears in the top nav. Click it to download the CSV.
+- An **export completed email** with a download link, sent to the user who triggered the export.
+
+Notifications only go to the **user who triggered the export**, not to your whole team. See [Notification Preferences](/settings/my-settings/notification-preferences) to manage push and browser notifications for the same event.
+
+### Permissions
+
+Roles with Data Center access (typically **Admin** and **Manager**) can use the Export tab. Ask an Admin to adjust your role if you don't see it.
 
 ## Frequently asked data import and export questions
 
@@ -275,6 +330,10 @@ No. Imports are **web-only**. Use a desktop browser.
 **Can I export Message History across every phone line at once?**<br />Yes. In **Settings → Data Center → Message History**, leave every line checked in the **Phone Numbers** filter and click **Export**. That produces a single file covering the entire workspace. To export just one line, uncheck the others before exporting.
 
 **Can I export Message History across all workspaces on my tenant?**<br />No. Message History exports are scoped to a **single workspace**. If your tenant has multiple workspaces, run the export in each workspace separately.
+
+**Can I export my contacts?**<br />Yes. Open **Settings → Data Center → [Export](#export)** and click **Export Contacts** to run a full CSV dump of every contact in the workspace. Filtered contact exports (by label, custom field, saved filter, and so on) aren't supported yet.
+
+**How do I know when an export is ready?**<br />Every export delivers two ways: an **Export Available** button in the top nav, and an **export completed email** with a download link to the user who triggered it. The same in-app notification is used across contact, Message History, and per-conversation exports because they all run through the universal export system.
 
 **Are media attachments included in exports?**\\
 
