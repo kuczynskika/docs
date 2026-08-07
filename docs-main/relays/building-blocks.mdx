@@ -21,6 +21,7 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 | Conversation Label Removed    | A teammate removes a label from a conversation                            | New in v2026.07.15. Mirror of Conversation Label Applied.                   |
 | Comment Created               | A teammate posts an internal comment                                      | Pairs with the Comment contains text condition. Comments posted by a Relay (via the Send Comment action) don't re-trigger this event, so Comment Created Relays can't loop into themselves. |
 | Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
+| Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Does not fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
 
 ## Conditions
 
@@ -67,6 +68,8 @@ Conditions combine with **AND** or **OR**.
 - **Open the conversation**
 - **Send webhook**
 - **Send Comment** (also called Post a Comment) posts an internal comment on the conversation. It supports static text and tags. The contact never sees it, and MessageDesk attributes it to the Relay. Use it for handoff notes and captured context.
+- **Mark Conversation Unread** (new in v2026.08.04) moves the conversation back into the **Unread** filter as part of the Relay run. Pair with **Reply to message** when an auto-reply shouldn't count as "handled" and the thread still needs a teammate to review it.
+- **Mark Conversation Read** (new in v2026.08.04) marks the conversation **Read** as part of the Relay run. Use it in acknowledgement or auto-close flows where no human review is required after the Relay runs.
 - **Stop Processing** is a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. The Relay list shows when a Relay stops the cascade. Use it for routing: a matched Relay can prevent a catch-all from also firing.
 
 Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
@@ -86,3 +89,21 @@ Available actions vary by trigger, so check the **Add Action** menu in the app f
 - Send webhook
 
 **Conversation Label Removed** supports the same set as Message Failed with one asymmetry: **Remove labels from the conversation isn't available** on this trigger. Every other action above is available.
+
+**Call Received** is a voice-only trigger. It fires when an MD-owned phone number receives an inbound call, so **Reply to message** isn't available (no inbound SMS to reply to). Use it to label, assign, notify, and log call activity in the same conversation thread. Supported actions:
+
+- Assign teammates to the conversation
+- Add labels to the conversation
+- Remove labels from the conversation
+- Remove teammates from the conversation
+- Remove all teammates from the conversation
+- Open the conversation
+- Close the conversation
+- Send webhook
+- Send Comment
+- Mark Conversation Read
+- Mark Conversation Unread
+
+<Note>
+  **Call Received works on MD-owned numbers only.** It does not fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers where voice stays with the original provider. See [Connect phone numbers](/get-started/phone-numbers/overview) for the difference between owned, hosted, and Twilio-connected lines.
+</Note>
