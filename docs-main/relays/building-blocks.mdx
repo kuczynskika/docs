@@ -21,7 +21,7 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 | Conversation Label Removed    | A teammate removes a label from a conversation                            | New in v2026.07.15. Mirror of Conversation Label Applied.                   |
 | Comment Created               | A teammate posts an internal comment                                      | Pairs with the Comment contains text condition. Comments posted by a Relay (via the Send Comment action) don't re-trigger this event, so Comment Created Relays can't loop into themselves. |
 | Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
-| Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Does not fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
+| Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
 
 ## Conditions
 
@@ -105,5 +105,5 @@ Available actions vary by trigger, so check the **Add Action** menu in the app f
 - Mark Conversation Unread
 
 <Note>
-  **Call Received works on MD-owned numbers only.** It does not fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers where voice stays with the original provider. See [Connect phone numbers](/get-started/phone-numbers/overview) for the difference between owned, hosted, and Twilio-connected lines.
+  **Call Received works on MD-owned numbers only.** It doesn't fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers where voice stays with the original provider. See [Connect phone numbers](/get-started/phone-numbers/overview) for the difference between owned, hosted, and Twilio-connected lines.
 </Note>
