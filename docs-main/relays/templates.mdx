@@ -44,6 +44,7 @@ These starter templates are available from the Relays module in the app, grouped
 | Template | What it does | Underlying build |
 | --- | --- | --- |
 | **Out-of-Office (Away) Autoresponse** | Texts an autoresponse outside operating hours | Message Received + Active hours (inverted) + Reply to message |
+| **After-Hours Auto-Reply (Keep Unread)** | Texts an autoresponse outside operating hours and keeps the thread Unread for morning review | Message Received + Active hours (inverted) + Reply to message + Mark Conversation Unread |
 | **Respond to a Keyword** | Auto-replies when a keyword is texted in | Message Received + Message contains text + Reply to message |
 | **Identify Unknown Contacts** | Asks anonymous contacts for their info | Message Received + Is anonymous conversation + Reply to message |
 
@@ -156,6 +157,22 @@ The outcomes below are the building blocks that most teams start from. Each entr
 | **Actions** | Send webhook (update the downstream system) → Assign teammates to the conversation (as needed) → Add labels to the conversation (as needed) |
 
 **Why it works:** A label coming off often signals a state change. Firing on removal keeps your CRM or reporting in sync automatically. **Remove labels isn't an available action on this trigger**, so this Relay reacts to a removal rather than performing one.
+
+---
+
+### Log and route inbound calls to the right owner
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Call Received |
+| **Conditions** | None (or **My phone number equals** to scope to a specific line) |
+| **Actions** | Add labels to the conversation (`Inbound call`) → Assign teammates to the conversation (line owner or on-call) → Send Comment (context for the assignee) → Send webhook (notify Slack, Teams, or your CRM) |
+
+**Why it works:** Voice activity now lives alongside SMS in the same conversation thread. Firing on the call itself gets an owner assigned, drops an internal note for context, and pings your notification tool the moment the phone rings, without waiting for a follow-up text.
+
+<Note>
+  **Call Received works on MD-owned numbers only.** It does not fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers. **Reply to message** isn't available on this trigger. See [Call Received actions](/relays/building-blocks#actions-on-the-new-triggers) for the full action list.
+</Note>
 
 ---
 
@@ -383,12 +400,12 @@ The patterns below cover common use cases across additional industries.
 | --- | --- |
 | **Trigger** | Message Received |
 | **Condition** | Active hours: set your business hours, then toggle **Trigger outside of business hours** to invert the window |
-| **Actions** | **Reply to message:** "We'll get back to you at 8am. Reply STOP to opt out." |
+| **Actions** | **Reply to message:** "We'll get back to you at 8am. Reply STOP to opt out." → **Mark Conversation Unread** |
 
-**Why this works:** Inverting the Active hours window means the Relay only fires when an inbound message lands **outside** your business hours, so customers always get an immediate acknowledgement. The STOP language keeps you compliant with carrier opt-out requirements.
+**Why this works:** Inverting the Active hours window means the Relay only fires when an inbound message lands **outside** your business hours, so customers always get an immediate acknowledgement. The STOP language keeps you compliant with carrier opt-out requirements. The **Mark Conversation Unread** action (new in v2026.08.04) forces the thread back into the **Unread** filter after the auto-reply so a teammate still picks it up in the morning.
 
 <Note>
-  **Auto-replies don't mark a conversation as Read.** When this Relay sends its after-hours reply, the conversation moves to **Replied** status and leaves the Unread filter. It isn't marked Read until a teammate opens it in the Inbox. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status) for details.
+  **This build matches the shipped After-Hours Auto-Reply (Keep Unread) starter.** Without the **Mark Conversation Unread** action, a Relay reply moves the conversation to **Replied** and out of the Unread filter. Including it forces the thread back to Unread so the customer's message is still queued for human review. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status).
 </Note>
 
 <Tip>

@@ -251,6 +251,15 @@ When a Relay sends an outbound message, MessageDesk updates the conversation's s
 
 This behavior applies to every Relay action that sends a message: after-hours auto-reply, keyword auto-reply, anonymous-contact first-touch, and so on.
 
+#### Force Read or Unread from a Relay
+
+The default status transitions above cover most flows, but two actions let a Relay set the status explicitly (new in v2026.08.04):
+
+- **Mark Conversation Unread** puts the conversation back into the **Unread** filter after the Relay runs. Add it to an after-hours auto-reply so the customer's message still queues for morning review instead of sitting in **Replied**. The shipped **After-Hours Auto-Reply (Keep Unread)** starter uses this action.
+- **Mark Conversation Read** marks the conversation **Read** as part of the Relay run. Add it to one-shot acknowledgement or auto-close flows (appointment confirmations, delivery pings) where no human review is needed after the Relay sends its reply.
+
+If you use neither action, the default table above still applies.
+
 ---
 
 ### Example 2: Out-of-office and weekend autoresponder
