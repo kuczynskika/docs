@@ -22,7 +22,7 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 | Comment Created               | A teammate posts an internal comment                                      | Pairs with the Comment contains text condition. Comments posted by a Relay (via the Send Comment action) don't re-trigger this event, so Comment Created Relays can't loop into themselves. |
 | Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
 | Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
-| Contact Updated               | A contact property changes on a saved contact                             | New in v2026.08.11. Non-conversation trigger: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pairs with the **Send Message** action, which lets you pick the outbound channel to send from. |
+| Contact Updated               | A contact property changes on a saved contact                             | New in v2026.08.11. Non-conversation trigger: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
 
 ## Conditions
 
@@ -59,7 +59,7 @@ Conditions combine with **AND** or **OR**.
 ## Actions
 
 - **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on Message Received, Message Failed, and Conversation Label Removed)
-- **Send Message** (new in v2026.08.11) sends an outbound SMS/MMS on non-conversation triggers. Because there's no conversation to reply into, you pick which connected phone number (**Outbound Channel**) the message sends from. Currently available on **Contact Updated**.
+- **Send Message** (new in v2026.08.11) sends an outbound SMS/MMS on non-conversation triggers. There's no conversation to reply into, so you pick which connected phone number MessageDesk sends from (**Outbound Channel**). Currently available on **Contact Updated**.
 - **Assign teammates to the conversation**
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
@@ -110,11 +110,11 @@ Available actions vary by trigger, so check the **Add Action** menu in the app f
   **Call Received works on MD-owned numbers only.** It doesn't fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers where voice stays with the original provider. See [Connect phone numbers](/get-started/phone-numbers/overview) for the difference between owned, hosted, and Twilio-connected lines.
 </Note>
 
-**Contact Updated** is a non-conversation trigger. It fires against a contact when a contact property changes, so there's no conversation in scope: conversation-scoped conditions (for example, **Is unassigned conversation**, **Teammate Assigned**, **Conversation label equals**) and conversation-scoped actions (assignment, labels, close/open, comments) don't apply. Supported actions:
+**Contact Updated** is a non-conversation trigger. It fires against a contact when a contact property changes, so there's no conversation in scope. Conversation-scoped conditions don't apply (for example, **Is unassigned conversation**, **Teammate Assigned**, **Conversation label equals**). Conversation-scoped actions don't apply either (assignment, labels, close/open, comments). Supported actions:
 
 - Send Message
 - Send webhook
 
 <Note>
-  **Pick the Outbound Channel on Send Message.** Because there's no existing conversation to reply into, the **Send Message** action asks which connected phone number to send from. MessageDesk creates or continues a conversation with the contact on that channel, and standard compliance (opt-outs, 10DLC) applies.
+  **Pick the Outbound Channel on Send Message.** There's no existing conversation to reply into, so the **Send Message** action asks which connected phone number to send from. MessageDesk creates or continues a conversation with the contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
 </Note>
