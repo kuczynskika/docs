@@ -275,6 +275,10 @@ You can adjust the field mapping manually, but in most cases, fields will auto-m
 
 Click **\+ Add Custom Field** to map [custom fields](/settings/workspace-settings/custom-fields) from your .csv file to custom fields in MessageDesk.
 
+<Note>
+  **A contact can have multiple phones, emails, and addresses.** Map each column (for example, `mobile`, `work_phone`, `email_home`, `email_work`, `address_billing`, `address_shipping`) to its own field. All values attach to the same contact record instead of creating duplicates.
+</Note>
+
 <Warning>
   **Note:** Email or Phone is a required property for every contact uploaded to MessageDesk.
 </Warning>
@@ -350,8 +354,8 @@ When an imported row matches an existing contact by **email** or **phone**, Mess
 **Can I import from my phone or desktop app?**\
 No. CSV imports are **web-only**.
 
-**Can I import other data (conversations, labels, messages, opt-outs)?**\
-Yes. You can import messages via the [Data Center](/settings/workspace-settings/data-center). This doc covers **Contacts CSV**.
+**Can I import other data (labels, message templates, messages, opt-outs)?**\
+Yes. From the [Data Center](/settings/workspace-settings/data-center) you can import **messages**, **message templates**, **labels**, and **opt-outs** in addition to contacts. See [How to import message templates, labels, and opt-outs](/settings/workspace-settings/data-center#how-to-import-message-templates-labels-and-opt-outs). This doc covers **Contacts CSV**.
 
 **What happens to skipped rows?**\
 Invalid rows are **skipped**. Fix the CSV and re-import those rows separately.

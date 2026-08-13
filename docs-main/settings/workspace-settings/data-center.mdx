@@ -21,6 +21,8 @@ The **Data Center** is your hub for managing workspace data in MessageDesk. It h
 
 <Note>
   Message History exports, contact exports, and per-conversation exports all run through the same **universal export system**. Each one processes asynchronously in the background and delivers the file through the **Export Available** button in the top nav plus an **export completed email** to the user who triggered it.
+
+  Imports work the same way. When a contact, message, message template, label, or opt-out import finishes, MessageDesk sends an **import completed email** to the user who started it with a summary of the run.
 </Note>
 
 ---
@@ -58,6 +60,7 @@ Build your contact list quickly by uploading a **CSV** and mapping it to Message
 - Columns that match MessageDesk field names **auto-map**.
 - Adjust mapping manually as needed.
 - You can map [custom fields](/settings/workspace-settings/custom-fields). Make sure the CSV data type matches the field type.
+- A single contact can carry **multiple phones, emails, and addresses**. Map each column (for example, `mobile`, `work_phone`, `email_home`, `email_work`, `address_billing`, `address_shipping`) to its own field. They all attach to the same contact record.
 
 ### Review duplicates and errors
 
@@ -118,6 +121,49 @@ Import **past SMS** from any platform or service into MessageDesk so you keep th
 
 ---
 
+## How to import message templates, labels, and opt-outs
+
+Bulk-load your workspace's shared **message templates**, **labels**, or **opt-out list** from CSV. Each importer runs from the same **Import** tab as contacts and messages, and delivers an **import completed email** when it finishes.
+
+### Import message templates
+
+Migrate a template library from another platform or seed a new workspace.
+
+1. Open **Settings → Data Center → Import**.
+2. Click **Start Import** and upload your **.csv** of templates.
+3. Map columns to template fields (name, body, tags, and any media URL).
+4. Review the preview, then click **Import**.
+
+Templates that match an existing template by **name** are updated in place. New names create new templates. See [Message Templates](/settings/workspace-settings/message-templates) for how the library is managed after import.
+
+### Import labels
+
+Recreate a label library in bulk instead of adding labels one at a time.
+
+1. Open **Settings → Data Center → Import**.
+2. Click **Start Import** and upload your **.csv** of labels.
+3. Map columns for **name**, **color**, and **icon**.
+4. Click **Import**.
+
+Labels that match an existing label by **name** are updated with the imported color and icon. See [Labels](/settings/workspace-settings/labels) for how the shared label library works.
+
+### Import opt-outs
+
+Move an existing opt-out list into MessageDesk so those numbers are blocked from all outbound sends in the workspace.
+
+1. Open **Settings → Data Center → Import**.
+2. Click **Start Import** and upload your **.csv** of opt-outs.
+3. Map the **phone** column (E.164 format).
+4. Click **Import**.
+
+<Warning>
+  Opt-out imports are **workspace-scoped**. Each imported number is blocked from every phone line in this workspace. If your tenant has multiple workspaces, run the import in each one that needs the block.
+</Warning>
+
+Phone numbers already on the workspace opt-out list are skipped as duplicates. See [Anonymous, opted-out, and blocked contacts](/contacts/anonymous-opt-out-blocked) for what opting out means for a contact.
+
+---
+
 ## File requirements and limits
 
 **Format**
@@ -154,10 +200,9 @@ If a limit is exceeded, you'll see errors like **"CSV file is too large"** or **
 - **Contacts**
 - [**Custom fields**](/settings/workspace-settings/custom-fields) (when mapped)
 - **Messages** (text content only. No media or internal comments.)
-
-<Info>
-  **Coming soon.** More workflows (labels, opt-outs). Watch the Data Center for new options.
-</Info>
+- **Message templates** (name, body, tags, and any media references from the source template)
+- **Labels** (name, color, icon)
+- **Opt-outs** (phone numbers that should be blocked from receiving messages in this workspace)
 
 ---
 
@@ -260,7 +305,7 @@ Roles with Data Center access (typically **Admin** and **Manager**) can use Mess
 
 ## Export
 
-The **Export** tab runs a full CSV export of every contact in your workspace. Use it when you need a complete backup of your contact list for archiving, reporting, or moving data to another system.
+The **Export** tab runs full CSV exports of your workspace's **contacts**, **message templates**, **labels**, and **opt-out list**. Use it when you need a complete backup of a list for archiving, reporting, or moving data to another system.
 
 ### Access the Export tab
 
@@ -282,7 +327,10 @@ Go to **Settings → Data Center → Export**.
 
 ### What's included in a contact export
 
-Each row in the CSV contains a contact's standard fields (name, phone numbers, email, address, and so on) plus any [custom fields](/settings/workspace-settings/custom-fields) defined in your workspace.
+Each row in the CSV contains a contact's standard fields (name, phone numbers, email, address, and so on) plus **every custom property** defined in your workspace.
+
+- **Standard fields.** First and last name, all phone numbers, all emails, all addresses, and other built-in contact properties.
+- **Custom properties.** Each [custom field](/settings/workspace-settings/custom-fields) on the workspace becomes its own column. Contacts without a value for a given custom property leave that cell blank.
 
 ### When your export is ready
 
@@ -292,6 +340,16 @@ Contact exports run through the same **universal export system** as Message Hist
 - An **export completed email** with a download link, sent to the user who triggered the export.
 
 Notifications only go to the **user who triggered the export**, not to your whole team. See [Notification Preferences](/settings/my-settings/notification-preferences) to manage push and browser notifications for the same event.
+
+### Export message templates, labels, and opt-outs
+
+The Export tab also runs full workspace exports of your shared **message templates**, **labels**, and **opt-out list**.
+
+1. Open the **Export** tab.
+2. Click **Export Message Templates**, **Export Labels**, or **Export Opt-outs**.
+3. Each export runs asynchronously and delivers through the same **Export Available** button and **export completed email** as contact exports.
+
+Each export is a full workspace dump. Filtered exports aren't supported.
 
 ### Permissions
 
