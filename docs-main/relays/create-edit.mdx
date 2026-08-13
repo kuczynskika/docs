@@ -27,7 +27,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed) and, within each group, **sorts them by Order**. You can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated) and, within each group, **sorts them by Order**. You can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -77,6 +77,7 @@ Supported triggers:
 * **Conversation Label Removed:** Fires when a label is removed from a conversation. Mirror of Conversation Label Applied, useful for syncing a state change downstream when a label comes off.
 * **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 * **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
+* **Contact Updated:** Fires when a contact property changes on a saved contact. New in **v2026.08.11**. This is a **non-conversation trigger**: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the contact on a channel you pick. Useful for property-driven outreach (for example, texting a welcome message the moment a `lifecycle_stage` custom field flips to `Customer`).
 
 <Note>
   **Note:** Templates include the **Message Received** trigger by default.
@@ -121,6 +122,7 @@ Actions run when the conditions match. You can add **one or many** in the order 
 The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
 
 - **Reply to message:** send an SMS/MMS (supports templates, tags, and media, with an optional Delay). Available on message-received-style triggers.
+- **Send Message:** send an outbound SMS/MMS on non-conversation triggers. New in **v2026.08.11**. Because there's no existing conversation to reply into, the action asks you to pick an **Outbound Channel** (which connected phone number to send from). Currently available on the **Contact Updated** trigger.
 - **Assign teammates to the conversation:** pick one or more users
 - **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
 - **Add labels to the conversation:** apply one or more labels
