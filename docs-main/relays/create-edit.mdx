@@ -1,15 +1,15 @@
 ---
-title: "Relays: Setup & Technical Guide"
+title: "Relays: setup and technical guide"
 description: "Build MessageDesk Relays step-by-step. Configure triggers, conditions, actions, delays, and active hours. Troubleshooting tips and a complete FAQ included."
 sidebarTitle: "Create & edit"
-og:title: "Create & Edit Relays - MessageDesk Automation Guide"
+og:title: "Create and edit Relays - MessageDesk automation guide"
 og:description: "Create, configure, and troubleshoot Relays. Triggers, conditions, actions, delays, active hours, FAQ."
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # How to create, edit, and delete Relays
 
-Build Relays with a clear flow: **Trigger → Conditions → Actions**. This guide shows you how to configure, test, and troubleshoot Relays. For a full reference of every [trigger, condition, and action](/relays/building-blocks), see the Relay building blocks page.
+Every Relay follows the same flow: **Trigger → Conditions → Actions**. For a full reference of every [trigger, condition, and action](/relays/building-blocks), see the Relay building blocks page.
 
 <Note>
   **Permissions required:** By default, only **Admin** users can access Relays. If you don't see the Relays module, ask your workspace admin to grant you **Relay Management** permissions via **Settings → Team Management**. Learn more: [Team Management](/settings/workspace-settings/team-management).
@@ -29,7 +29,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated) and, within each group, **sorts them by Order**. You can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -80,7 +80,7 @@ Supported triggers:
 - **Contact Updated:** Fires when a contact property changes on a saved contact. New in **v2026.08.11**. This is a **non-conversation trigger**. It fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the contact on a channel you pick. Useful for property-driven outreach (for example, texting a welcome message the moment a `lifecycle_stage` custom field flips to `Customer`).
 
 <Note>
-  **Note:** Templates include the **Message Received** trigger by default.
+  Templates include the **Message Received** trigger by default.
 </Note>
 
 <Note>
@@ -110,7 +110,7 @@ The available conditions depend on the selected trigger. The message triggers (M
 - **Active hours:** restrict to a daily time window
 
 <Tip>
-  **Tip:** Turn on **"Trigger outside of business hours"** to invert the time window for after-hours replies.
+  Turn on **"Trigger outside of business hours"** to invert the time window for after-hours replies.
 </Tip>
 
 ![Relay Condition Pn](/images/relay-condition.png)
@@ -136,7 +136,7 @@ The available actions can vary by trigger, so check the **Add Action** menu in t
 - **Stop Processing:** a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. Use it for clean routing so a matched Relay stops a catch-all from also firing.
 
 <Tip>
-  **Tip:** You can chain multiple actions together. For example, **Reply**, **Assign**, and **Label** in a single Relay.
+  You can chain multiple actions together. For example, **Reply**, **Assign**, and **Label** in a single Relay.
 </Tip>
 
 **Delays (optional)**
@@ -168,7 +168,7 @@ Paused Relays don't evaluate triggers or run actions.
 Open the Relay → **⋯** → **Delete**.
 
 <Warning>
-  **Warning:** Deleting is permanent. If you might reuse the Relay, **pause** instead.
+  Deleting is permanent. If you might reuse the Relay, **pause** instead.
 </Warning>
 
 ---
@@ -191,9 +191,9 @@ Use this setup when multiple teammates need to view and reply on behalf of a man
 The Relay also labels the message by region, keeping everything organized by team and location.
 
 <Tip>
-  **Pro Tip:** Use delegation-style relays for managers who want their teams to reply on their behalf or monitor shared inboxes.
+  Use delegation-style Relays for managers who want their teams to reply on their behalf or monitor shared inboxes.
 
-  Each teammate assigned to the conversation will [receive notifications by default](/settings/my-settings/notification-preferences).
+  Each teammate assigned to the conversation [receives notifications by default](/settings/my-settings/notification-preferences).
 </Tip>
 
 ---
@@ -283,7 +283,7 @@ Use this Relay to automatically collect names from new, anonymous conversations.
 7. Toggle the Relay **ON**.
 
 <Tip>
-  **Pro Tip:** Combine this Relay with [**Contact Imports**](/contacts/create-import) or [**Labels**](/inbox/labels) (e.g., "Unverified") to track and update new numbers later.
+  Combine this Relay with [**Contact Imports**](/contacts/create-import) or [**Labels**](/inbox/labels) (for example, "Unverified") to track and update new numbers later.
 </Tip>
 
 ---
@@ -311,11 +311,11 @@ When a contact sends a message containing the word "SUPPORT," MessageDesk replie
 7. Toggle the Relay **ON**.
 
 <Tip>
-  **Tips for Success:**
+  **Tips for success:**
 
   - Keep keywords **short and memorable**. For example, `JOIN`, `HELP`, `SUPPORT`.
   - Use **all caps** so the keyword stands out in the message body.
-  - Create separate keyword relays for each department (e.g., `BOOK` → Sales, `SUPPORT` → Service).
+  - Create separate keyword Relays for each department (for example, `BOOK` → Sales, `SUPPORT` → Service).
 </Tip>
 
 ---
@@ -326,7 +326,7 @@ When a contact sends a message containing the word "SUPPORT," MessageDesk replie
 - **Name clearly.** Use descriptive titles like `Teammate 1 - Delegation Relay` or `Region X,Y, Z Autoresponder`.
 - **Test with your phone.** Send yourself a message to confirm behavior.
 - **Combine with templates.** Use pre-saved templates to standardize replies.
-- **Audit regularly.** Disable or update relays as team structure changes.
+- **Audit regularly.** Disable or update Relays as team structure changes.
 
 ---
 
