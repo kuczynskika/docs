@@ -23,7 +23,9 @@ Build Relays with a clear flow: **Trigger → Conditions → Actions**. This gui
 
 When you first visit **Relays**, you'll see **templates** you can use as a starting point. Click **Add Relay** to start building.
 
-![Relays Templates Pn](/images/relays-templates.png)
+<Frame>
+  ![Relays Module 1](/images/relays-module-1.png "Relays Module 1")
+</Frame>
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
@@ -33,16 +35,14 @@ The list **groups Relays by Trigger** (Message Received, Message Sent, Message F
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
 </Note>
 
-![Relays Tab Pn](/images/relays-tab.png)
-
 ### 1a. Order your Relays
 
 Within a Trigger group, Relays execute **top-down in Order**. Ordering matters when more than one Relay's conditions match the same event. For example, a keyword auto-reply and a generic after-hours reply that both listen for **Message Received**.
 
 To change the run order, use the **Order** column:
 
-* Click the **up** or **down** arrow on the vertical counter to move a Relay one position, or
-* Click the number and **type the exact Order value** you want.
+- Click the **up** or **down** arrow on the vertical counter to move a Relay one position, or
+- Click the number and **type the exact Order value** you want.
 
 There's no drag-and-drop. The counter is the only way to reorder.
 
@@ -68,16 +68,16 @@ Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit de
 
 Supported triggers:
 
-* **Message Received:** Fires when a new inbound SMS arrives.
-* **Message Sent:** Fires when your workspace sends a message (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
-* **Message Failed:** Fires when an outbound message fails to deliver. Useful for catching undelivered texts, branching on the failure reason, and alerting the team.
-* **Conversation Opened:** Fires when a conversation transitions from Closed back to Open (a reopen). Useful for re-engagement flows, re-triaging reopened threads, or notifying external systems on reopen.
-* **Conversation Users Assigned:** Fires when a teammate assigns one or more people to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
-* **Conversation Label Applied:** Fires when a label is applied to a conversation. Turns a label into an automation trigger for downstream actions like assignment, webhook fan-out, or auto-close.
-* **Conversation Label Removed:** Fires when a label is removed from a conversation. Mirror of Conversation Label Applied, useful for syncing a state change downstream when a label comes off.
-* **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
-* **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
-* **Contact Updated:** Fires when a contact property changes on a saved contact. New in **v2026.08.11**. This is a **non-conversation trigger**. It fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the contact on a channel you pick. Useful for property-driven outreach (for example, texting a welcome message the moment a `lifecycle_stage` custom field flips to `Customer`).
+- **Message Received:** Fires when a new inbound SMS arrives.
+- **Message Sent:** Fires when your workspace sends a message (manual or automated). Useful for tracking outbound activity, syncing sent messages to external systems, and auto-assigning conversations to the sender.
+- **Message Failed:** Fires when an outbound message fails to deliver. Useful for catching undelivered texts, branching on the failure reason, and alerting the team.
+- **Conversation Opened:** Fires when a conversation transitions from Closed back to Open (a reopen). Useful for re-engagement flows, re-triaging reopened threads, or notifying external systems on reopen.
+- **Conversation Users Assigned:** Fires when a teammate assigns one or more people to a conversation. Useful for pinging the new assignee, applying handoff labels, or forwarding assignment events to external systems.
+- **Conversation Label Applied:** Fires when a label is applied to a conversation. Turns a label into an automation trigger for downstream actions like assignment, webhook fan-out, or auto-close.
+- **Conversation Label Removed:** Fires when a label is removed from a conversation. Mirror of Conversation Label Applied, useful for syncing a state change downstream when a label comes off.
+- **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
+- **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
+- **Contact Updated:** Fires when a contact property changes on a saved contact. New in **v2026.08.11**. This is a **non-conversation trigger**. It fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the contact on a channel you pick. Useful for property-driven outreach (for example, texting a welcome message the moment a `lifecycle_stage` custom field flips to `Customer`).
 
 <Note>
   **Note:** Templates include the **Message Received** trigger by default.
@@ -181,48 +181,10 @@ Use this setup when multiple teammates need to view and reply on behalf of a man
 
 ![Relay Delegation Routing Pn](/images/relay-delegation-routing.png)
 
-<table style={{ minWidth: "75px" }}>
-  <colgroup>
-    <col style={{ minWidth: "25px" }} />
-    <col style={{ minWidth: "25px" }} />
-    <col style={{ minWidth: "25px" }} />
-  </colgroup>
-  <tbody>
-    <tr>
-      <th colSpan="1" rowSpan="1">
-        <p>**Triggers**</p>
-      </th>
-      <th colSpan="1" rowSpan="1">
-        <p>**Conditions**</p>
-      </th>
-      <th colSpan="1" rowSpan="1">
-        <p>**Actions x2**</p>
-      </th>
-    </tr>
-    <tr>
-      <td colSpan="1" rowSpan="1">
-        <p>Message Received</p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>On the Manager's or Teammates' phone line</p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>Assign Manager 1, Teammate 2, and Teammate 3</p>
-      </td>
-    </tr>
-    <tr>
-      <td colSpan="1" rowSpan="1">
-        <p></p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p></p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>Apply labels “Region 1” and “Region 2”</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| <p>**Triggers**</p> | <p>**Conditions**</p> | <p>**Actions x2**</p> |
+| --- | --- | --- |
+| <p>Message Received</p> | <p>On the Manager's or Teammates' phone line</p> | <p>Assign Manager 1, Teammate 2, and Teammate 3</p> |
+|  |  | <p>Apply labels “Region 1” and “Region 2”</p> |
 
 **How it works:**<br />When a message comes in on the manager's number, MessageDesk automatically assigns the conversation to the manager and the two direct reports.
 
@@ -270,59 +232,11 @@ Use this when teammates want to automatically reply during vacations or after ho
 
 ![Out Of Office Relay Pn](/images/out-of-office-relay.png)
 
-<table style={{ minWidth: "75px" }}>
-  <colgroup>
-    <col style={{ minWidth: "25px" }} />
-    <col style={{ minWidth: "25px" }} />
-    <col style={{ minWidth: "25px" }} />
-  </colgroup>
-  <tbody>
-    <tr>
-      <th colSpan="1" rowSpan="1">
-        <p>**Triggers**</p>
-      </th>
-      <th colSpan="1" rowSpan="1">
-        <p>**Conditions x2**</p>
-      </th>
-      <th colSpan="1" rowSpan="1">
-        <p>**Actions x3**</p>
-      </th>
-    </tr>
-    <tr>
-      <td colSpan="1" rowSpan="1">
-        <p>Message Received</p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>Active hours</p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>Reply to message: “Thanks for reaching out! I’m currently out of the office. Please text [alternate number].”</p>
-      </td>
-    </tr>
-    <tr>
-      <td colSpan="1" rowSpan="1">
-        <p></p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>My phone number equals</p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>Assign teammates to the conversation: Teammate 1, 2, and 3</p>
-      </td>
-    </tr>
-    <tr>
-      <td colSpan="1" rowSpan="1">
-        <p></p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p></p>
-      </td>
-      <td colSpan="1" rowSpan="1">
-        <p>Add labels to the conversation: Region 1, Region 2</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| <p>**Triggers**</p> | <p>**Conditions x2**</p> | <p>**Actions x3**</p> |
+| --- | --- | --- |
+| <p>Message Received</p> | <p>Active hours</p> | <p>Reply to message: “Thanks for reaching out! I’m currently out of the office. Please text [alternate number].”</p> |
+|  | <p>My phone number equals</p> | <p>Assign teammates to the conversation: Teammate 1, 2, and 3</p> |
+|  |  | <p>Add labels to the conversation: Region 1, Region 2</p> |
 
 **Steps to configure:**
 
@@ -354,8 +268,8 @@ Use this Relay to automatically collect names from new, anonymous conversations.
 
 ![Identify Relay Pn](/images/identify-relay.png)
 
-| **Trigger**      | **Condition**                                        | **Actions**                                                                                       |
-| ---------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Trigger** | **Condition** | **Actions** |
+| --- | --- | --- |
 | Message Received | Conversation is anonymous (contact not in directory) | Reply to message: “Thanks for texting us! What’s your first and last name so we know who to help?” |
 
 **Steps to configure:**
@@ -382,8 +296,8 @@ When a contact sends a message containing the word "SUPPORT," MessageDesk replie
 
 ![Support Relay Pn](/images/support-relay.png)
 
-| **Trigger**      | **Condition**                      | **Actions**                                                                                               |
-| ---------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **Trigger** | **Condition** | **Actions** |
+| --- | --- | --- |
 | Message Received | Message contains keyword “SUPPORT” | Reply to message: “Thanks for reaching out to support. Please share any extra details, and we’ll jump in.” |
 
 **Steps to configure:**
@@ -429,29 +343,21 @@ When a contact sends a message containing the word "SUPPORT," MessageDesk replie
 
 ## Frequently asked Relay questions
 
-**Do Relays respect roles & permissions?**\
-Yes. Assign/Label actions follow your **Roles & Permissions** settings.
+**Do Relays respect roles & permissions?**<br />Yes. Assign/Label actions follow your **Roles & Permissions** settings.
 
-**Can multiple Relays run on one inbound message?**\
-Yes. If more than one Relay's conditions match, **every eligible Relay runs**. Within a Trigger group they run in the **Order** you set on the Relays list. Reorder them from the **Order** column to control sequencing. See [Order your Relays](#1a-order-your-relays).
+**Can multiple Relays run on one inbound message?**<br />Yes. If more than one Relay's conditions match, **every eligible Relay runs**. Within a Trigger group they run in the **Order** you set on the Relays list. Reorder them from the **Order** column to control sequencing. See [Order your Relays](#1a-order-your-relays).
 
-**Can I include media in auto-replies?**\
-Yes. Keep each file **≤ 10 MB** (files **\> 500 KB** are sent as links). See [**Media**](/messaging/media).
+**Can I include media in auto-replies?**<br />Yes. Keep each file **≤ 10 MB** (files **\> 500 KB** are sent as links). See [**Media**](/messaging/media).
 
-**Can I pause without losing my setup?**\
-Yes. Toggle **Off** to pause. Toggle **On** to resume.
+**Can I pause without losing my setup?**<br />Yes. Toggle **Off** to pause. Toggle **On** to resume.
 
-**How do I avoid duplicate automated replies?**\
-Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new conversation”).
+**How do I avoid duplicate automated replies?**<br />Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new conversation”).
 
-**Does a Relay auto-reply mark the conversation as Read?**\
-No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it isn't marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
+**Does a Relay auto-reply mark the conversation as Read?**<br />No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it isn't marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
 
-**What happens if I change the trigger on an existing Relay?**\
-MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
+**What happens if I change the trigger on an existing Relay?**<br />MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
 
-**Can I set up an out-of-office reply for just one person?**\
-Yes, including on a shared line. Build the out-of-office Relay (Message Received, plus Active hours with **Trigger outside of business hours** enabled). Then add the **Teammate Assigned** condition set to the teammate who's out. The auto-reply fires only for that person's conversations. The rest of the team keeps working on the same line. To also cover brand-new threads no one has picked up yet, add **Is unassigned conversation** with **OR**. If the teammate has a dedicated line, scope by **My phone number equals** that line instead.
+**Can I set up an out-of-office reply for just one person?**<br />Yes, including on a shared line. Build the out-of-office Relay (Message Received, plus Active hours with **Trigger outside of business hours** enabled). Then add the **Teammate Assigned** condition set to the teammate who's out. The auto-reply fires only for that person's conversations. The rest of the team keeps working on the same line. To also cover brand-new threads no one has picked up yet, add **Is unassigned conversation** with **OR**. If the teammate has a dedicated line, scope by **My phone number equals** that line instead.
 
 ---
 
