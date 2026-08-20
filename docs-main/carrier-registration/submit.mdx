@@ -31,6 +31,10 @@ MessageDesk builds carrier registration into the phone setup flow. When you conf
   While your registration is pending, you can't send text messages in MessageDesk.
 </Warning>
 
+<Note>
+  **Twilio users skip this flow.** If you're bringing your own Twilio phone lines (BYOC), you complete carrier registration through your Twilio account, not through MessageDesk. Your numbers are already registered by the time you connect them. This guide is for registering numbers directly in MessageDesk. See [Connect Twilio phone numbers](/get-started/phone-numbers/twilio).
+</Note>
+
 ## Carrier registration timeline
 
 1. **(10 min.)** Submit the required carrier registration information via MessageDesk
@@ -190,6 +194,10 @@ Click **Generate with AI** to create a carrier-compliant campaign description.
   _MessageDesk (Alderwood Labs Inc.) sends SMS messages to leads, prospective customers, and existing customers for marketing promotions, appointment reminders, account notifications, delivery updates, customer care support, and invoicing. Recipients opt in by submitting their phone number through web forms, checkout flows, or other digital touchpoints on [messagedesk.com](http://messagedesk.com), or by providing explicit written consent directly to a MessageDesk business customer. Message frequency varies by account and use case._
 </Info>
 
+<Tip>
+  Need a starting point for your industry? See [campaign description examples by industry](/carrier-registration/examples) for home services, healthcare, retail, nonprofit, and more.
+</Tip>
+
 #### Monthly message volume
 
 Enter the total SMS/MMS messages you expect to send per month across all MessageDesk-connected phone numbers.
@@ -300,6 +308,10 @@ Toggle one or both of these on if your messages will contain links or phone numb
 #### Click Generate with AI
 
 Click to create carrier-compliant sample messages based on your campaign description.
+
+<Tip>
+  Not sure what a good sample looks like? See [approved-vs-rejected sample messages by use case](/carrier-registration/examples#sample-messages-approved-vs-rejected) for appointment reminders, order updates, invoices, promotions, and more.
+</Tip>
 
 ### 8. Website privacy policy and SMS terms and conditions
 
@@ -492,12 +504,44 @@ Once you're satisfied with the information, complete the final attestation that 
 
 ---
 
-## Tips to speed approval
+## Before you submit: self-check
 
-- Make sure your **website shows the same legal name** and address you submit.
-- Include **opt-out language** ("Reply STOP…") in at least one **sample message**.
-- Describe **exactly** what you plan to send (for example, "appointment reminders and service updates").
-- For toll-free, submit **one form per number** to verify each line.
+Most rejections are avoidable. Run through this list before you hit **Submit registration**. It mirrors the checks carriers run, so clearing it is the single best way to get approved on the first pass.
+
+**Business identity**
+
+- Legal name, EIN, and address **match your IRS/CRA tax records exactly** (including the LLC/Inc suffix). Carriers match your EIN byte-for-byte.
+- Your **website is live** and shows the same legal name and address.
+- If your EIN is less than ~30 days old, expect a possible delay, because carrier records may not have propagated yet.
+
+**Campaign and samples**
+
+- Your campaign description is specific about **who you text and what you send** (at least 40 characters).
+- You have **3 to 5** sample messages, each 20–320 characters.
+- Every sample includes your **org name** and **opt-out language** ("Reply STOP to opt out").
+- Samples **match your campaign description**, with no promotional samples on a non-marketing campaign, and vice versa.
+- If you declared links or phone numbers, at least one sample actually contains a **real link** and one a **real phone number**.
+
+**Consent and website compliance**
+
+- Your **privacy policy is published** and includes SMS language: how you use numbers, opt-out instructions, and a **"we don't sell or share"** statement.
+- Your **SMS terms and conditions** are live and accessible (see [SMS Privacy Policy Requirements](/carrier-registration/privacy-policy-terms-conditions)).
+- Your opt-in method is **documented** with a screenshot or URL.
+- If your campaign has a **marketing component**, you're using a **written** opt-in method, not verbal.
+
+**Special cases**
+
+- Sending **more than 2,000 messages/day**? You'll need enhanced carrier vetting, so [contact support](mailto:support@messagedesk.com) first.
+- In an **age-restricted** (alcohol/tobacco) or **lending/credit** vertical? Email [support@messagedesk.com](mailto:support@messagedesk.com) before you register, because these need extra steps.
+- Using **toll-free** numbers? Those verify separately. Submit one per number and email support.
+
+<Tip>
+  Not sure a step is right? MessageDesk saves your progress, so you can pause, fix your website or samples, and come back. It's faster to fix before submitting than to resubmit, because each resubmission resets the carrier review clock by at least 48 hours.
+</Tip>
+
+<Card title="Next step: track your registration" icon="gauge-high" href="/settings/workspace-settings/compliance-center">
+  After you submit, watch your brand and campaign status in the Compliance Center. If anything comes back failed, declined, or suspended, see [Carrier registration errors and how to fix them](/carrier-registration/errors).
+</Card>
 
 ---
 

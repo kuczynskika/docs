@@ -51,6 +51,7 @@
                 "pages": [
                   "carrier-registration/overview",
                   "carrier-registration/submit",
+                  "carrier-registration/examples",
                   "carrier-registration/privacy-policy-terms-conditions",
                   "carrier-registration/errors"
                 ]
