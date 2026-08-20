@@ -1,15 +1,17 @@
 ---
-title: "Send Webhook Relay Action Setup"
-description: "Configure the Send Webhook relay action to push MessageDesk SMS events to your endpoints. Setup, payload structure, headers, and retry behavior explained."
-sidebarTitle: "Send webhook"
-"og:title": "Send Webhook Relay Action - MessageDesk Automation"
-"og:description": "Send MessageDesk events to your webhook endpoints using the Send Webhook relay action."
+title: "Webhooks"
+description: "Send MessageDesk events out to your endpoint with the Send Webhook action, or start a Relay from an outside system with the Inbound Webhook Received trigger."
+sidebarTitle: "Webhooks"
+"og:title": "Webhooks - MessageDesk Automation"
+"og:description": "Send MessageDesk events to your endpoints, and start Relays from outside systems using inbound webhooks."
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-# Send Webhook Relay Action
+MessageDesk supports webhooks in both directions. Use the Send Webhook action to send event data out of MessageDesk to your endpoint when a Relay fires. Use the Inbound Webhook Received trigger to send data into MessageDesk from an outside system and start a Relay. This page covers both.
 
-Use the **Send Webhook** action to send MessageDesk events directly to your webhook endpoints. This lets you integrate MessageDesk with external systems, trigger custom workflows, and build custom Relays.
+## Outbound webhooks
+
+The Send Webhook action pushes MessageDesk events to an endpoint you control.
 
 <Note>
   **Developer Tools required:** Before using webhooks, you'll need to configure your webhook endpoint and generate a signing secret in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools). The **Developer** feature permission gates this configuration. Managers and Operators need **Editor** or **Owner** on **Developer** to add an endpoint or rotate the signing secret. See [Team Management](/settings/workspace-settings/team-management).
@@ -17,9 +19,9 @@ Use the **Send Webhook** action to send MessageDesk events directly to your webh
 
 ---
 
-## Setting up webhooks
+### Setting up webhooks
 
-### 1. Configure your webhook endpoint
+#### 1. Configure your webhook endpoint
 
 Navigate to [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) to:
 
@@ -27,7 +29,7 @@ Navigate to [**Settings → Developer Tools**](/settings/workspace-settings/deve
 - Generate a signing secret for secure webhook validation
 - Rotate the signing secret when needed
 
-### 2. Add the Send Webhook action to a Relay
+#### 2. Add the Send Webhook action to a Relay
 
 When creating or editing a Relay:
 
@@ -44,7 +46,7 @@ The webhook will fire whenever the Relay conditions are met.
 
 ---
 
-## Webhook payloads
+### Webhook payloads
 
 All webhook payloads from MessageDesk are delivered as **Event** objects. Each Event contains the data relevant to the specific trigger.
 
@@ -52,7 +54,7 @@ All webhook payloads from MessageDesk are delivered as **Event** objects. Each E
   The event name will match the trigger you configured on your relay.
 </Tip>
 
-### Example: MessageReceived event
+#### Example: MessageReceived event
 
 When a message is received, the webhook payload includes a `Message` object:
 
@@ -84,7 +86,7 @@ When a message is received, the webhook payload includes a `Message` object:
 }
 ```
 
-### Example: MessageSent event
+#### Example: MessageSent event
 
 When a message is sent from your workspace, the webhook payload includes a `Message` object with `outbound: true`:
 
@@ -114,7 +116,7 @@ When a message is sent from your workspace, the webhook payload includes a `Mess
 }
 ```
 
-### Example: CommentCreated event
+#### Example: CommentCreated event
 
 When a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation, the webhook payload includes a `Comment` object:
 
@@ -140,11 +142,11 @@ When a teammate posts an internal [comment](/inbox/comments-mentions) on a conve
 
 ---
 
-## Validating data integrity
+### Validating data integrity
 
 Your webhook URL is publicly accessible, so you should treat all incoming requests as untrusted. Each webhook request sent by MessageDesk includes an `X-MessageDesk-Signature` header.
 
-### How signature validation works
+#### How signature validation works
 
 The signature is generated using the request body and your API secret:
 
@@ -152,7 +154,7 @@ The signature is generated using the request body and your API secret:
 2. This hash is sent in the `X-MessageDesk-Signature` header
 3. You compute the same hash on your end and compare it to verify authenticity
 
-### Example validation code
+#### Example validation code
 
 ```javascript
 const crypto = require('crypto');
@@ -183,7 +185,7 @@ function validateMessageDeskSignature(headers, rawBody) {
 
 ---
 
-## Use cases
+### Use cases
 
 - **CRM integration:** Sync new messages to your CRM automatically
 - **Custom notifications:** Send alerts to Slack, Discord, or other platforms
@@ -193,7 +195,7 @@ function validateMessageDeskSignature(headers, rawBody) {
 
 ---
 
-## Best practices
+### Best practices
 
 - **Validate all requests:** Always verify the `X-MessageDesk-Signature` header
 - **Handle retries gracefully:** Implement idempotency to handle duplicate webhook deliveries
@@ -204,7 +206,7 @@ function validateMessageDeskSignature(headers, rawBody) {
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 **Webhook not firing**
 
@@ -225,3 +227,80 @@ function validateMessageDeskSignature(headers, rawBody) {
 - Verify your firewall allows incoming connections
 
 ---
+
+## Inbound webhooks
+
+An inbound webhook lets an outside system start a Relay. Your tool sends a POST request to a MessageDesk URL, and any Relay that uses the **Inbound Webhook Received** trigger runs against the contact in that request. This is the reverse of the Send Webhook action above, which sends data out of MessageDesk.
+
+### Get your webhook URL and key
+
+Find your inbound webhook details in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools):
+
+- **Inbound Webhook URL**: the address your system sends requests to.
+- **API Key**: the value that authenticates each request.
+
+### Authentication
+
+Send the API Key in a header named `X-MD-Signature` on every request:
+
+```
+X-MD-Signature: {your API key}
+```
+
+Requests without a valid key are rejected.
+
+### Payload schema
+
+MessageDesk expects a fixed payload shape. There is no field mapping inside MessageDesk, so shape your request to match this schema before you send it, using an automation platform or your own code.
+
+```json
+{
+  "text": "string",
+  "contact": {
+    "firstName": "string",
+    "lastName": "string",
+    "email": "string",
+    "phone": "string",
+    "avatarUrl": "string",
+    "company": "string",
+    "properties": {
+      "Custom Property Name": "value"
+    }
+  }
+}
+```
+
+<Warning>
+  `contact.phone` is the only required field. It must be a valid 10-digit number in the format `+XXXXXXXXXX`. MessageDesk uses it to find an existing contact or create a new one, then runs the Relay's actions against that contact.
+</Warning>
+
+Notes on the fields:
+
+- Every field other than `contact.phone` is optional.
+- `properties` is a map. Each key must match the name of a Custom Property that already exists in your workspace, and each value is the value you want to send. For example, for a Custom Property called `favorite color`:
+
+```json
+"properties": {
+  "favorite color": "green"
+}
+```
+
+<Note>
+  Custom Property values in the payload are currently handled as text. Data type validation for non-text properties (for example dropdown or number) is planned for a future release.
+</Note>
+
+### Test your webhook before going live
+
+The Relay builder includes a test step for inbound-webhook Relays. Open the Relay, copy the endpoint URL and key, and send a sample request. MessageDesk shows the parsed payload as a browsable list of fields, with each field validated against the schema so you can confirm your request is correct before turning the Relay on. You can re-run the test after edits, and a malformed or oversized payload returns a clear error.
+
+### Use the payload in conditions and actions
+
+Once a Relay receives a payload, you can reference its fields:
+
+- **Conditions**: use **Webhook Payload Field Equals** to branch on a value in the payload.
+- **Actions**: **Send Message**, **Send Comment**, and **Update Contact Property** can insert a value from the payload (Event Data) instead of a fixed value. See [Relay building blocks](/relays/building-blocks) for how Event Data works.
+
+### Limits and compliance
+
+- Inbound webhooks are limited to 10,000 requests per day per workspace.
+- Messaging compliance still applies to any message a webhook triggers. Opt-outs are honored, and automated messages should include opt-out language such as "Reply STOP to opt out."
