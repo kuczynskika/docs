@@ -23,6 +23,7 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 | Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
 | Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
 | Contact Updated               | A contact property changes on a saved contact                             | New in v2026.08.11. Non-conversation trigger: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
+| Inbound Webhook Received      | An external system sends a webhook to MessageDesk                         | New in v2026.08.18. Non-conversation trigger. Fires against the contact identified by the payload's phone number. See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema. |
 
 ## Conditions
 
@@ -43,6 +44,11 @@ On top of that core, three text conditions are trigger-scoped:
 - **Comment contains text** appears only on Comment Created.
 - **Message failure contains text** appears only on Message Failed. Matches a substring in the carrier/provider error text (for example, `unreachable`, `landline`, `blocked`). See [Delivery status and errors](/messaging/delivery-status-errors).
 
+Two more conditions are each scoped to a single trigger:
+
+- **Contact Property Equals** checks the value of a contact property. Currently available only on the **Contact Updated** trigger.
+- **Webhook Payload Field Equals** checks the value of a field in an inbound webhook payload. Available only on the **Inbound Webhook Received** trigger. See [Webhooks](/relays/webhooks#inbound-webhooks) for the payload schema.
+
 Conditions combine with **AND** or **OR**.
 
 <Note>
@@ -60,6 +66,7 @@ Conditions combine with **AND** or **OR**.
 
 - **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on Message Received, Message Failed, and Conversation Label Removed)
 - **Send Message** (new in v2026.08.11) sends an outbound SMS/MMS on non-conversation triggers. There's no conversation to reply into, so you pick which connected phone number MessageDesk sends from (**Outbound Channel**). Currently available on **Contact Updated**.
+- **Update Contact Property** updates a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property can take either a Custom Value or an Event Data value. A non-text property (for example dropdown or number) can only take a static value that matches its type.
 - **Assign teammates to the conversation**
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
@@ -75,6 +82,15 @@ Conditions combine with **AND** or **OR**.
 - **Stop Processing** is a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. The Relay list shows when a Relay stops the cascade. Use it for routing: a matched Relay can prevent a catch-all from also firing.
 
 Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
+
+### Event Data
+
+Some actions can insert a value from the event that triggered the Relay instead of a fixed value.
+
+- On **Send Message** and **Send Comment**, choose an available Event Data property for the text, or choose **Custom Value** to type your own.
+- On **Update Contact Property**, the same choice applies for **Text** properties.
+
+Event Data is most useful with the **Inbound Webhook Received** and **Contact Updated** triggers, where the event carries contact and payload fields.
 
 ### Actions on the new triggers
 
@@ -118,3 +134,12 @@ Available actions vary by trigger, so check the **Add Action** menu in the app f
 <Note>
   **Pick the Outbound Channel on Send Message.** There's no existing conversation to reply into, so the **Send Message** action asks which connected phone number to send from. MessageDesk creates or continues a conversation with the contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
 </Note>
+
+**Inbound Webhook Received** is a non-conversation trigger. An outside system sends the payload, so there's no conversation in scope and conversation-scoped conditions and actions don't apply. It pairs well with:
+
+- Send Message (pick the **Outbound Channel** to send from)
+- Update Contact Property
+- Add labels
+- Send webhook
+
+See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.

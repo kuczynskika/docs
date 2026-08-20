@@ -29,7 +29,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated, Inbound Webhook Received). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -78,6 +78,7 @@ Supported triggers:
 - **Comment Created:** Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Useful for routing internal collaboration events to webhooks or downstream automations.
 - **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
 - **Contact Updated:** Fires when a contact property changes on a saved contact. New in **v2026.08.11**. This is a **non-conversation trigger**. It fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the contact on a channel you pick. Useful for property-driven outreach (for example, texting a welcome message the moment a `lifecycle_stage` custom field flips to `Customer`).
+- **Inbound Webhook Received:** Fires when an external system sends a webhook to MessageDesk. New in **v2026.08.18**. This is a **non-conversation trigger**: it fires against the contact identified by the payload's phone number, so conversation-scoped conditions and actions don't apply. See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.
 
 <Note>
   Templates include the **Message Received** trigger by default.
@@ -93,13 +94,15 @@ Supported triggers:
 
 Conditions control **where/when** a Relay runs. You can combine multiple conditions with **AND** or **OR**.
 
-The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**. Comment Created adds **Comment contains text**. Message Failed adds **Message failure contains text**. Every trigger includes the universal core: **My phone number equals**, **Conversation label equals**, **Conversation has label**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, **Teammate Assigned**, and **Active hours**.
+The available conditions depend on the selected trigger. The message triggers (Message Received and Message Sent) add **Message contains text**. Comment Created adds **Comment contains text**. Message Failed adds **Message failure contains text**. Contact Updated adds **Contact Property Equals**. Inbound Webhook Received adds **Webhook Payload Field Equals**. Every trigger includes the universal core: **My phone number equals**, **Conversation label equals**, **Conversation has label**, **Is anonymous conversation**, **Is new conversation**, **Is unassigned conversation**, **Teammate Assigned**, and **Active hours**.
 
 **Available conditions:**
 
 - **Message contains text:** match keywords like `SUPPORT`, `HELP` (Message Received and Message Sent triggers)
 - **Comment contains text:** match keywords in the body of an internal [comment](/inbox/comments-mentions) (Comment Created trigger)
 - **Message failure contains text:** match a substring in the carrier/provider error text on a failed outbound message, e.g., `landline`, `unreachable`, `blocked` (Message Failed trigger). See [Delivery status and errors](/messaging/delivery-status-errors).
+- **Contact Property Equals:** check the value of a contact property (Contact Updated trigger)
+- **Webhook Payload Field Equals:** check the value of a field in an inbound webhook payload (Inbound Webhook Received trigger). See [Webhooks](/relays/webhooks#inbound-webhooks).
 - **My phone number equals:** run only on a specific connected phone number
 - **Conversation label equals:** match against a conversation's labels using an operator selector (contains, equals, notEquals, startsWith, endsWith). For example, `startsWith "Region:"` matches every namespaced regional label at once.
 - **Conversation has label:** a boolean presence check for a specific label. Use this as a gate to run the Relay only when the conversation is already labeled (for example, `VIP` or `Escalated`). Distinct from the operator-based **Conversation label equals**.
@@ -123,6 +126,7 @@ The available actions can vary by trigger, so check the **Add Action** menu in t
 
 - **Reply to message:** send an SMS/MMS (supports templates, tags, and media, with an optional Delay). Available on message-received-style triggers.
 - **Send Message:** send an outbound SMS/MMS on non-conversation triggers. New in **v2026.08.11**. There's no existing conversation to reply into, so the action asks you to pick an **Outbound Channel** (which connected phone number to send from). Currently available on the **Contact Updated** trigger.
+- **Update Contact Property:** update a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property accepts either. A non-text property (for example dropdown or number) accepts only a static value that matches its type.
 - **Assign teammates to the conversation:** pick one or more users
 - **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
 - **Add labels to the conversation:** apply one or more labels
@@ -134,6 +138,10 @@ The available actions can vary by trigger, so check the **Add Action** menu in t
 - **Send webhook:** send event data to your webhook endpoint
 - **Send Comment** (also called Post a Comment): posts an internal comment on the conversation. It supports static text and tags, never reaches the contact, and shows as relay-generated. Use it for handoff notes and captured context.
 - **Stop Processing:** a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. Use it for clean routing so a matched Relay stops a catch-all from also firing.
+
+<Note>
+  **Event Data or Custom Value.** **Send Message**, **Send Comment**, and **Update Contact Property** can insert a value from the event that triggered the Relay (**Event Data**) instead of a fixed value. Pick an available Event Data property, or choose **Custom Value** to type your own. See [Event Data](/relays/building-blocks#event-data).
+</Note>
 
 <Tip>
   You can chain multiple actions together. For example, **Reply**, **Assign**, and **Label** in a single Relay.

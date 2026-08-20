@@ -176,6 +176,34 @@ The outcomes below are the building blocks that most teams start from. Each entr
 
 ---
 
+### Turn an event in another tool into a text
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Inbound Webhook Received |
+| **Conditions** | **Webhook Payload Field Equals** (optional, to branch on a payload value) |
+| **Actions** | Send Message (choose the outbound channel, use **Event Data** from the payload for the text, and include "Reply STOP to opt out.") |
+
+**Why it works:** Your CRM, form, or workflow tool can text a contact through MessageDesk the moment something happens, without anyone copying details by hand.
+
+---
+
+### Keep a contact property in sync from an outside system
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Inbound Webhook Received |
+| **Conditions** | None, or **Webhook Payload Field Equals** |
+| **Actions** | Update Contact Property (set a **Text** property from the payload using **Event Data**) |
+
+**Why it works:** When a value changes in another system, the webhook updates the matching contact property in MessageDesk automatically.
+
+<Note>
+  **Inbound Webhook Received is a non-conversation trigger.** Conversation-scoped conditions and actions don't apply. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.
+</Note>
+
+---
+
 ## Vertical library
 
 The templates below are grouped by industry and by common cross-industry use cases.
