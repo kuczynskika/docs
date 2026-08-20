@@ -199,7 +199,7 @@ The outcomes below are the building blocks that most teams start from. Each entr
 **Why it works:** When a value changes in another system, the webhook updates the matching contact property in MessageDesk automatically.
 
 <Note>
-  **Inbound Webhook Received is a non-conversation trigger.** Conversation-scoped conditions and actions don't apply. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.
+  **Inbound Webhook Received is a non-conversation trigger.** It runs against the contact in the payload, so conversation-scoped conditions don't apply. **Add labels to the conversation** is available. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.
 </Note>
 
 ---
@@ -575,7 +575,7 @@ The patterns below cover common use cases across additional industries.
 ## Webhooks and integrations
 
 <Note>
-  Webhook actions require a configured webhook endpoint and signing secret. Set those up in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) before turning on the Relays below. See [Send Webhook](/relays/webhooks) for the full payload format, headers, and signature validation.
+  Webhook actions require a configured webhook endpoint and signing secret. Set those up in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) before turning on the Relays below. See [Send Webhook](/relays/webhooks#outbound-webhooks) for the full payload format, headers, and signature validation.
 </Note>
 
 ### 10. Push new inbound message to an external system
@@ -642,6 +642,6 @@ The patterns below cover common use cases across additional industries.
 
 - [Relay building blocks](/relays/building-blocks): reference for all triggers, conditions, and actions
 - [Create and edit a Relay](/relays/create-edit): step-by-step Relay building, including AND/OR conditions, delays, and active hours
-- [Send Webhook](/relays/webhooks): payload structure, signature validation, and retry behavior
+- [Send Webhook](/relays/webhooks#outbound-webhooks): payload structure, signature validation, and retry behavior
 - [Developer Tools](/settings/workspace-settings/developer-tools): configure your webhook endpoint and signing secret
 - [Relays overview](/relays/overview): concepts and examples

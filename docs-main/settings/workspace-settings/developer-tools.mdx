@@ -12,7 +12,7 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 The **Developer Tools** page is where you configure the workspace-level webhook endpoint and signing secret MessageDesk uses to push events to your systems.
 
 <Note>
-  **Required for the Send Webhook relay action.** This configuration must exist before the [Send Webhook](/relays/webhooks) action will deliver events from your Relays.
+  **Required for the Send Webhook relay action.** This configuration must exist before the [Send Webhook](/relays/webhooks#outbound-webhooks) action will deliver events from your Relays.
 </Note>
 
 ---
@@ -48,7 +48,7 @@ MessageDesk signs every outbound webhook with a **signing secret** so your recei
   Treat the signing secret like a password. Anyone with it can forge webhook requests that look like they came from MessageDesk.
 </Warning>
 
-For the full webhook payload format, headers, signature validation algorithm, and retry behavior, see [Relays → Send Webhook](/relays/webhooks).
+For the full webhook payload format, headers, signature validation algorithm, and retry behavior, see [Relays → Send Webhook](/relays/webhooks#outbound-webhooks).
 
 ---
 
@@ -70,5 +70,5 @@ See [Team Management → Roles & Permissions](/settings/workspace-settings/team-
 
 ## See also
 
-- [Relays → Send Webhook](/relays/webhooks). Payload, signature validation, and retry behavior.
+- [Relays → Send Webhook](/relays/webhooks#outbound-webhooks). Payload, signature validation, and retry behavior.
 - [Relays overview](/relays/overview).

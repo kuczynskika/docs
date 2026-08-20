@@ -52,7 +52,7 @@ No code required. MessageDesk publishes triggers like **Message Received** and *
 
 For developer-built integrations, or any system without a Zapier connector, use the **Send Webhook** Relay action to push MessageDesk events to **any HTTPS endpoint** you control. MessageDesk signs each event with an `X-MessageDesk-Signature` header so you can verify authenticity. Pick this tier when you're streaming events into a data warehouse, custom CRM, internal microservice, or a serverless function.
 
-- [Send Webhook (Relay action)](/relays/webhooks): payload format, headers, signature validation, retry behavior
+- [Send Webhook (Relay action)](/relays/webhooks#outbound-webhooks): payload format, headers, signature validation, retry behavior
 - [Developer Tools (Settings)](/settings/workspace-settings/developer-tools): configure your webhook endpoint URL and signing secret
 
 <Note>
@@ -76,7 +76,7 @@ For developer-built integrations, or any system without a Zapier connector, use 
 | Catch typos while composing                                            | [Grammarly](/integrations/grammarly)                         |
 | Sync contacts, messages, or events with another SaaS app, no-code      | [Zapier](/integrations/zapier)                               |
 | Pull a contact from HubSpot or Close CRM into a new MessageDesk record | The **Contact Create Form** lookup buttons (in-app)          |
-| Stream events to a custom endpoint, data warehouse, or microservice    | [Send Webhook](/relays/webhooks) + [Developer Tools](/settings/workspace-settings/developer-tools) |
+| Stream events to a custom endpoint, data warehouse, or microservice    | [Send Webhook](/relays/webhooks#outbound-webhooks) + [Developer Tools](/settings/workspace-settings/developer-tools) |
 
 ---
 
