@@ -135,11 +135,11 @@ Event Data is most useful with the **Inbound Webhook Received** and **Contact Up
   **Pick the Outbound Channel on Send Message.** There's no existing conversation to reply into, so the **Send Message** action asks which connected phone number to send from. MessageDesk creates or continues a conversation with the contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
 </Note>
 
-**Inbound Webhook Received** is a non-conversation trigger. An outside system sends the payload, so there's no conversation in scope and conversation-scoped conditions and actions don't apply. It pairs well with:
+**Inbound Webhook Received** is a non-conversation trigger. An outside system sends the payload, and the Relay runs against the contact it identifies rather than an existing conversation, so conversation-scoped conditions don't apply. It pairs well with:
 
 - Send Message (pick the **Outbound Channel** to send from)
 - Update Contact Property
-- Add labels
+- Add labels to the conversation
 - Send webhook
 
 See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.
