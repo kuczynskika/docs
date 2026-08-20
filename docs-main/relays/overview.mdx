@@ -27,7 +27,7 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 
 ## Why use Relays?
 
-- **Scale without chaos:** Auto-assign and auto-label to keep your inbox tidy as volume grows.
+- **Scale without chaos:** Auto-assign and auto-label to keep your Inbox tidy as volume grows.
 - **Respond faster:** Send **after-hours** and **first-touch** replies automatically.
 - **Reduce busywork:** Route by **phone line**, **label**, or **teammate** so work starts in the right place.
 - **Stay consistent:** Standardize rules so there are no missed handoffs.
@@ -41,10 +41,10 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 3. **Identify unknown contacts:** Detect anonymous conversations and request name/phone/email automatically.
 4. **Auto-assign:** Assign new conversations to one or more teammates as they arrive.
 5. **Auto-label:** Apply labels (e.g., _Support_, _HR: New Hire_, _Region: West_) based on line, content, or rules.
-6. **Voice call automations:** React to inbound calls on MessageDesk-owned numbers with the **Call Received** trigger. Label, assign, notify, or log the call in the same conversation thread.
+6. **Voice call Relays:** React to inbound calls on MessageDesk-owned numbers with the **Call Received** trigger. Label, assign, notify, or log the call in the same conversation thread.
 7. **Read/Unread control:** Force a conversation to **Unread** (keep it queued for a teammate after an auto-reply) or to **Read** (close the loop on acknowledgement flows) as part of the Relay run.
-8. **Inbound webhook automations:** Start a Relay from an external system. Your CRM, form, or workflow tool sends a webhook to MessageDesk, and the Relay runs against the matching contact. See [Webhooks](/relays/webhooks#inbound-webhooks).
-9. **Contact property automations:** Act on contact property changes with the **Contact Updated** trigger, for example texting a welcome the moment a lifecycle field flips to `Customer`.
+8. **Inbound webhook Relays:** Start a Relay from an external system. Your CRM, form, or workflow tool sends a webhook to MessageDesk, and the Relay runs against the matching contact. See [Webhooks](/relays/webhooks#inbound-webhooks).
+9. **Contact property Relays:** Act on contact property changes with the **Contact Updated** trigger, for example texting a welcome the moment a lifecycle field flips to `Customer`.
 10. **Dynamic values from the event:** Use **Event Data** to pull values from the triggering event into your messages and contact updates instead of typing fixed text. See [Event Data](/relays/building-blocks#event-data).
 11. **Custom Relays:** Combine your own conditions and actions to match your workflow.
 
@@ -61,7 +61,7 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 **Relays = Triggers → Conditions → Actions**
 
 - **Triggers:** When it runs.\
-  There are twelve triggers: **Message Received**, **Message Sent**, **Message Failed**, **Conversation Opened**, **Conversation Users Assigned**, **Conversation Label Applied**, **Conversation Label Removed**, **Comment Created**, **Conversation Closed**, **Call Received**, **Contact Updated**, and **Inbound Webhook Received**. See [Relay building blocks](/relays/building-blocks#triggers) for the full reference.
+  There are 12 triggers: **Message Received**, **Message Sent**, **Message Failed**, **Conversation Opened**, **Conversation Users Assigned**, **Conversation Label Applied**, **Conversation Label Removed**, **Comment Created**, **Conversation Closed**, **Call Received**, **Contact Updated**, and **Inbound Webhook Received**. See [Relay building blocks](/relays/building-blocks#triggers) for the full reference.
 - **Conditions:** Where/when it applies.\
   _Examples:_\
   • **My phone number equals** _Support_\
