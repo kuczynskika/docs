@@ -24,6 +24,7 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 | Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
 | Contact Updated               | A contact property changes on a saved contact                             | New in v2026.08.11. Non-conversation trigger: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
 | Inbound Webhook Received      | An external system sends a webhook to MessageDesk                         | New in v2026.08.18. Non-conversation trigger. Fires against the contact identified by the payload's phone number. See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema. |
+| Contact Created               | A new contact is saved in your workspace                                  | New in v2026.08.21. Non-conversation trigger. Fires against the newly created contact. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
 
 ## Conditions
 
@@ -90,7 +91,7 @@ Some actions can insert a value from the event that triggered the Relay instead 
 - On **Send Message** and **Send Comment**, choose an available Event Data property for the text, or choose **Custom Value** to type your own.
 - On **Update Contact Property**, the same choice applies for **Text** properties.
 
-Event Data is most useful with the **Inbound Webhook Received** and **Contact Updated** triggers, where the event carries contact and payload fields.
+Event Data is most useful with the **Inbound Webhook Received**, **Contact Updated**, and **Contact Created** triggers, where the event carries contact and payload fields.
 
 ### Actions on the new triggers
 
@@ -143,3 +144,13 @@ Event Data is most useful with the **Inbound Webhook Received** and **Contact Up
 - Send webhook
 
 See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.
+
+**Contact Created** is a non-conversation trigger. It fires when a new contact is saved in your workspace, so there's no conversation in scope. Conversation-scoped conditions and actions don't apply. Supported actions:
+
+- Send Message (pick the **Outbound Channel** to send from)
+- Update Contact Property
+- Send webhook
+
+<Note>
+  **Pick the Outbound Channel on Send Message.** Because there's no existing conversation, the **Send Message** action asks which connected phone number to send from. MessageDesk creates a conversation with the new contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
+</Note>
