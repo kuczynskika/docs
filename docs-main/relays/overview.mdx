@@ -45,8 +45,9 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 7. **Read/Unread control:** Force a conversation to **Unread** (keep it queued for a teammate after an auto-reply) or to **Read** (close the loop on acknowledgement flows) as part of the Relay run.
 8. **Inbound webhook Relays:** Start a Relay from an external system. Your CRM, form, or workflow tool sends a webhook to MessageDesk, and the Relay runs against the matching contact. See [Webhooks](/relays/webhooks#inbound-webhooks).
 9. **Contact property Relays:** Act on contact property changes with the **Contact Updated** trigger, for example texting a welcome the moment a lifecycle field flips to `Customer`.
-10. **Dynamic values from the event:** Use **Event Data** to pull values from the triggering event into your messages and contact updates instead of typing fixed text. See [Event Data](/relays/building-blocks#event-data).
-11. **Custom Relays:** Combine your own conditions and actions to match your workflow.
+10. **New contact Relays:** Text or sync every new contact the moment they're saved with the **Contact Created** trigger. Useful for welcome messages and for pushing new contacts into an external system with **Send webhook**.
+11. **Dynamic values from the event:** Use **Event Data** to pull values from the triggering event into your messages and contact updates instead of typing fixed text. See [Event Data](/relays/building-blocks#event-data).
+12. **Custom Relays:** Combine your own conditions and actions to match your workflow.
 
 <Tip>
   All Relay templates are customizable. You can adjust wording, labels, assignees, active hours, and more.
@@ -61,7 +62,7 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 **Relays = Triggers → Conditions → Actions**
 
 - **Triggers:** When it runs.\
-  There are 12 triggers: **Message Received**, **Message Sent**, **Message Failed**, **Conversation Opened**, **Conversation Users Assigned**, **Conversation Label Applied**, **Conversation Label Removed**, **Comment Created**, **Conversation Closed**, **Call Received**, **Contact Updated**, and **Inbound Webhook Received**. See [Relay building blocks](/relays/building-blocks#triggers) for the full reference.
+  There are 13 triggers: **Message Received**, **Message Sent**, **Message Failed**, **Conversation Opened**, **Conversation Users Assigned**, **Conversation Label Applied**, **Conversation Label Removed**, **Comment Created**, **Conversation Closed**, **Call Received**, **Contact Updated**, **Inbound Webhook Received**, and **Contact Created**. See [Relay building blocks](/relays/building-blocks#triggers) for the full reference.
 - **Conditions:** Where/when it applies.\
   _Examples:_\
   • **My phone number equals** _Support_\

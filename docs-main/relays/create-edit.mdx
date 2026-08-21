@@ -29,7 +29,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated, Inbound Webhook Received). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated, Inbound Webhook Received, Contact Created). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -79,6 +79,7 @@ Supported triggers:
 - **Conversation Closed:** Fires when a teammate closes a conversation. Useful for pushing close events to external systems (CRM, ticketing, data warehouse) or for post-close cleanup actions like removing all teammates from the conversation.
 - **Contact Updated:** Fires when a contact property changes on a saved contact. New in **v2026.08.11**. This is a **non-conversation trigger**. It fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the contact on a channel you pick. Useful for property-driven outreach (for example, texting a welcome message the moment a `lifecycle_stage` custom field flips to `Customer`).
 - **Inbound Webhook Received:** Fires when an external system sends a webhook to MessageDesk. New in **v2026.08.18**. This is a **non-conversation trigger**: it fires against the contact identified by the payload's phone number, so conversation-scoped conditions don't apply. **Add labels to the conversation** is still available. See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.
+- **Contact Created:** Fires when a new contact is saved in your workspace. New in **v2026.08.21**. This is a **non-conversation trigger**. It fires against the newly created contact, so conversation-scoped conditions and actions don't apply. Pair it with the **Send Message** action to text the new contact on a channel you pick. Useful for welcome flows, or for pushing every new contact into an external system with **Send webhook**.
 
 <Note>
   Templates include the **Message Received** trigger by default.
@@ -125,7 +126,7 @@ Actions run when the conditions match. You can add **one or many** in the order 
 The available actions can vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
 
 - **Reply to message:** send an SMS/MMS (supports templates, tags, and media, with an optional Delay). Available on message-received-style triggers.
-- **Send Message:** send an outbound SMS/MMS on non-conversation triggers. New in **v2026.08.11**. There's no existing conversation to reply into, so the action asks you to pick an **Outbound Channel** (which connected phone number to send from). Currently available on the **Contact Updated** trigger.
+- **Send Message:** send an outbound SMS/MMS on non-conversation triggers. New in **v2026.08.11**. There's no existing conversation to reply into, so the action asks you to pick an **Outbound Channel** (which connected phone number to send from). Available on the **Contact Updated**, **Inbound Webhook Received**, and **Contact Created** triggers.
 - **Update Contact Property:** update a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property accepts either. A non-text property (for example dropdown or number) accepts only a static value that matches its type.
 - **Assign teammates to the conversation:** pick one or more users
 - **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
