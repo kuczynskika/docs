@@ -20,6 +20,14 @@ Connect new phone lines, rename existing ones (with emojis for easy ID), set up 
 
 > **Permissions.** You'll need the right role to manage numbers (**Manager = Editor**, **Operator = Viewer** by default). See [**Roles & permissions**](/settings/workspace-settings/team-management) if you don't see controls.
 
+### What the Phone Management table shows
+
+Each row in the table lists a connected number along with its registration state, so you can see at a glance which numbers are ready to send and which still need attention.
+
+* **Phone number.** The line's number and label.
+* **Campaign ID.** The carrier registration campaign the number is associated with. Numbers without a campaign show as unassociated and can't send messages until you assign one.
+* **Status.** The current registration state of the number (for example, `Active`, `Pending`, `Failed`, or `Unregistered`). Only numbers in an active, campaign-associated state can send messages.
+
 <Frame>
   ![Settings Phone Management](/images/settings-phone-management.png)
 </Frame>
@@ -66,6 +74,25 @@ Clear names make routing and triage faster, especially with multiple lines.
 </Tip>
 
 ---
+
+## Change a number's campaign association
+
+If a number isn't yet tied to a carrier registration campaign, you can assign it to one from Phone Management without contacting support.
+
+1. Go to **Settings → Phone Management**.
+2. Click the number you want to update to open its **Phone Profile** page.
+3. Click **Change campaign** and select the campaign to associate.
+4. Click **Save**.
+
+<Note>
+  **Reassignment is only available for numbers with no current campaign.** If a number is already associated with a campaign, you can't switch it to a different campaign in-app. [Contact support](/contact-us) if you need to change the campaign on an already-associated number.
+</Note>
+
+<Tip>
+  **Bandwidth host and port transfers now auto-associate.** After a successful host or port through Bandwidth, MessageDesk automatically links the number to the campaign you selected during the request. You don't need to associate it manually.
+</Tip>
+
+***
 
 ## Move a phone number between workspaces
 
