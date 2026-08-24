@@ -20,7 +20,7 @@ The **Data Center** is your hub for managing workspace data in MessageDesk. It h
 </Tip>
 
 <Note>
-  Message History exports, contact exports, and per-conversation exports all run through the same **universal export system**. Each one processes asynchronously in the background and delivers the file through the **Export Available** button in the top nav plus an **export completed email** to the user who triggered it.
+  Message History exports, contact exports, and per-conversation exports all run through the same **universal export system**. Each one processes asynchronously in the background. MessageDesk delivers the file through the **Export Available** button in the top nav, plus an **export completed email** to the user who triggered it.
 
   Imports work the same way. When a contact, message, message template, label, or opt-out import finishes, MessageDesk sends an **import completed email** to the user who started it with a summary of the run.
 </Note>
@@ -293,7 +293,7 @@ PDF exports include the full message thread with timestamps, participants, direc
 **Media handling**
 
 - The PDF embeds **renderable media** (images and other formats supported in PDF) inline.
-- For **non-renderable media** (videos and other unsupported file types), the PDF shows a direct **S3 link to the file** and the note **"Could not load preview"** so the attachment stays accessible.
+- For **non-renderable media** (videos and other unsupported file types), the PDF shows a direct **S3 link to the file** alongside the note **"Could not load preview."** The attachment stays accessible through the link.
 
 ### Permissions
 
@@ -391,7 +391,7 @@ No. Imports are **web-only**. Use a desktop browser.
 
 **How do I know when an export is ready?**<br />Every export delivers two ways: an **Export Available** button in the top nav, and an **export completed email** with a download link to the user who triggered it. Contact, Message History, and per-conversation exports all share the same in-app notification because they all run through the universal export system.
 
-**Are media attachments included in exports?**\\
+**Are media attachments included in exports?**<br />
 
 - **CSV exports.** No. CSV files contain message text and metadata only.
 - **PDF exports.** The PDF embeds renderable media (images) inline. For non-renderable media (videos and other unsupported types), the PDF shows a direct S3 link and a **"Could not load preview"** note.
