@@ -145,6 +145,10 @@ Event Data is most useful with the **Inbound Webhook Received**, **Contact Updat
 
 See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.
 
+<Note>
+  **Contact Auto-Create checkbox.** New in v2026.08.24. Each action on an Inbound Webhook Received Relay includes an **Auto-Create** checkbox. Check it and MessageDesk creates the contact from the payload when the phone number doesn't match a saved contact, then runs the action. Leave it unchecked and the action only runs against saved contacts. The checkbox is set per action and only appears on this trigger. See [Auto-create contacts](/relays/webhooks#auto-create-contacts).
+</Note>
+
 **Contact Created** is a non-conversation trigger. It fires when a new contact is saved in your workspace, so there's no conversation in scope. Conversation-scoped conditions and actions don't apply. Supported actions:
 
 - Send Message (pick the **Outbound Channel** to send from)

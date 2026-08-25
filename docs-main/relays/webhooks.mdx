@@ -271,7 +271,7 @@ MessageDesk expects a fixed payload shape. There's no field mapping inside Messa
 ```
 
 <Warning>
-  `contact.phone` is the only required field. It must be a valid 10-digit number in the format `+XXXXXXXXXX`. MessageDesk uses it to find an existing contact or create a new one, then runs the Relay's actions against that contact.
+  `contact.phone` is the only required field. It must be a valid 10-digit number in the format `+XXXXXXXXXX`. MessageDesk uses it to find the contact the Relay's actions run against. If the number doesn't match a saved contact, each action's **Auto-Create** checkbox controls whether MessageDesk creates one. See [Auto-create contacts](#auto-create-contacts).
 </Warning>
 
 Notes on the fields:
@@ -288,6 +288,15 @@ Notes on the fields:
 <Note>
   MessageDesk currently handles Custom Property values in the payload as text. Data type validation for non-text properties (for example, dropdown or number) is coming in a future release.
 </Note>
+
+### Auto-create contacts
+
+New in **v2026.08.24**. Each action on a Relay that uses the **Inbound Webhook Received** trigger includes a contact **Auto-Create** checkbox. The checkbox is set per action, and it only appears when the Relay's trigger is **Inbound Webhook Received**.
+
+* **Checked:** if the payload's `contact.phone` doesn't match a saved contact, MessageDesk creates the contact from the payload's `contact` fields, then runs that action against it.
+* **Unchecked:** MessageDesk doesn't create a contact. That action only runs when the payload's phone number matches a saved contact.
+
+Because the checkbox is per action, one Relay can mix behaviors. For example, a **Send Message** action can create the contact it texts while an **Update Contact Property** action on the same Relay only touches saved contacts.
 
 ### Test your webhook before going live
 
