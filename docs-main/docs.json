@@ -89,6 +89,7 @@
             "icon": "book-user",
             "pages": [
               "contacts/create-import",
+              "contacts/saved-filters",
               "contacts/anonymous-opt-out-blocked"
             ]
           },
