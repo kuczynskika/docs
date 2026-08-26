@@ -1,6 +1,6 @@
 ---
-title: "Create, Delete, Filter & Import Contacts"
-description: "Create, delete, filter, and import MessageDesk contacts one at a time or in bulk via CSV. Covers required formats, validation rules, and import limits."
+title: "Create, Delete & Import Contacts"
+description: "Create, delete, and import MessageDesk contacts one at a time or in bulk via CSV. Covers required formats, validation rules, and import limits."
 sidebarTitle: "Create & import contacts"
 og:title: "Create and Import Contacts - MessageDesk"
 og:description: "Add contacts individually or in bulk using a .csv file. Includes limits, required formats, and validation rules."
@@ -111,7 +111,7 @@ Click the **Sort** dropdown menu above the contacts list to change the sort orde
 
 ### Search contacts
 
-The search bar appears **only on filtered Contact views** (saved filters or any applied filter). To search, first apply or open a saved filter, then use the search bar to find contacts within that view.
+The search bar appears **only on filtered Contact views** ([saved filters](/contacts/saved-filters) or any applied filter). To search, first apply or open a saved filter, then use the search bar to find contacts within that view.
 
 <Note>
   The search bar is **not available on All Contacts**. Use a filter or saved filter to search a specific subset of your contacts.
@@ -121,98 +121,9 @@ The search bar appears **only on filtered Contact views** (saved filters or any 
 
 ## Filter contacts
 
-The Contacts module lets you filter contacts based on their properties saved in MessageDesk. You can use **Criteria** and **Conditions** to create various types of filters.
+Filters have moved to their own page. Build filters from criteria and conditions, save them as reusable views, and message everyone in a saved filter at once.
 
-<Frame>
-  ![Contacts Create Filter](/images/contacts-create-filter.png)
-</Frame>
-
-### Add criteria
-
-Criteria are a set of conditions. You can add as many criteria as you like to a filter. As you add criteria, you'll see a filter preview.
-
-Criteria work in two ways: creating AND and OR statements.
-
-- **Selecting Match All (AND)** means all criteria must meet the filter's conditions.
-- **Selecting Match ANY (OR)** means any criteria must meet the filter's conditions.
-
-### Add conditions
-
-Conditions are based on data fields saved and populated as part of the contact's profile in MessageDesk.
-
-You set your filter on conditions on standard fields like:
-
-- First Name
-- Last Name
-- Last Outbound Message Time
-- Last Inbound Message Time
-
-<Tip>
-  You can also set filter conditions based on [**custom fields**](/settings/workspace-settings/custom-fields) added to MessageDesk.
-</Tip>
-
-### Condition operators
-
-Use condition operators to create logical expressions for your filters. The types of operators available depend on the field's data type (true/false, dropdown, date, number, phone, and text).
-
-#### Available condition operators
-
-- Contains
-- Equals
-- In
-- Is Empty
-- \> (greater than)
-- \>= (greater than or equal to)
-- \< (less than)
-- \<= (less than or equal to)
-- NOT Contains (does not contain)
-- NOT Equals (does not equal)
-
-<Note>
-  **Is Empty doesn't take a value.** When you select **Is Empty**, the value selector is removed. The operator alone defines the match. Use it to find contacts missing a value in a given field (for example, contacts with no opt-in status set).
-</Note>
-
-Once you're satisfied with your filter, click **Apply Filter** to view a list of contacts matching your filter conditions and criteria.
-
-### Save and edit filters
-
-<Frame>
-  ![Contacts Save Filters](/images/contacts-save-filters.png)
-</Frame>
-
-After applying a filter, you can save it for quick access later:
-
-1. Click **Save Filter**.
-2. Give your filter a name.
-3. Click **Save**.
-
-Saved filters appear in the **side menu** of the Contacts module. Click any saved filter to instantly view the contacts that match its criteria.
-
-### Search saved filters
-
-Use the search widget in the Contacts side menu to quickly find a saved filter by name. Selecting a result navigates to Contacts with that filter applied.
-
-<Note>
-  Saved filter search is available on the **desktop web app only**. It's not available on tablet or mobile, since filters can't currently be managed in Contacts on those platforms.
-</Note>
-
-- Search matches against the **filter name only** (not its criteria or conditions).
-- The widget follows the same design as the global search bar and the Contacts search bar for a consistent experience across MessageDesk.
-
-### Delete a saved filter
-
-To remove a saved filter:
-
-1. Open **Contacts** in the desktop web app.
-2. In the Contacts side menu, find the saved filter you want to remove.
-3. Click the **Delete** button on the filter.
-4. Confirm the deletion.
-
-The **Delete** button is available for both simple and **compound filters** (filters built from multiple conditions).
-
-<Warning>
-  Deleting a saved filter is permanent. It doesn't delete any contacts, only the saved view.
-</Warning>
+See [Saved filters](/contacts/saved-filters).
 
 ---
 

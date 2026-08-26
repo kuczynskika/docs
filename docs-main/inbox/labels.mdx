@@ -140,10 +140,59 @@ Admins can manage labels for everyone.
 
 ---
 
+## Apply labels to contacts
+
+Labels are applied to **conversations, not directly to contacts**. How you apply a label depends on whether you've already started a conversation with the contact.
+
+### If the contact doesn't have a conversation yet
+
+You can't apply a label directly to a contact if no conversation exists. Instead, apply the label when sending your first message:
+
+1. Start a [new message](/messaging/new-message-compose) to the contact.
+2. Select **Add Action** in the New Message Compose screen.
+3. Choose the label or labels you want to apply.
+4. Send your message.
+
+The selected labels are applied to the new conversation.
+
+<Tip>
+  **Messaging multiple contacts at once:** If you're sending the same message to multiple contacts, use **Add Action** to select one or more labels before sending. Those labels are applied to each of the new conversations created by the message. See [post-send actions](/messaging/new-message-compose#post-send-actions).
+</Tip>
+
+### If the contact already has a conversation
+
+You have two options:
+
+1. **Apply the label when sending a message.** Select **Add Action** in the New Message Compose screen and choose the label or labels you want to apply.
+2. **Apply labels from the Inbox.** Select one or multiple conversations in your Inbox and apply the appropriate labels to them. See [Multi-select & quick actions](/inbox/multi-select-quick-actions).
+
+### Automatically applying labels
+
+You can also use a [Relay](/relays/overview) to automatically apply labels when a specific action or event occurs. This is helpful if you regularly need conversations labeled based on the same workflow.
+
+---
+
+## Labels vs. contact filters
+
+Labels and contact filters serve different purposes in Inbox by MessageDesk.
+
+- **Labels organize conversations.** They can be applied when sending a message, directly from the Inbox, or automatically using a [Relay](/relays/overview).
+- **Contact filters organize contacts.** You can filter contacts based on properties such as [custom fields](/settings/workspace-settings/custom-fields) and save those filters for future use. A [saved filter](/contacts/saved-filters) effectively gives you a reusable group of contacts that you can select and message together.
+
+When sending a message to contacts from a filter, you can also use **Add Action** to apply one or more labels. Those labels are applied to each conversation created by the message.
+
+---
+
 ## FAQ
 
 **Can I apply more than one label to a conversation?**\
 Yes. Apply as many as you need.
+
+**Can I apply a label directly to a contact?**\
+No. Labels apply to conversations, not contacts. If the contact has no conversation yet, apply the label while sending your first message with **Add Action**. If a conversation exists, label it from the Inbox or when sending a message. See [Apply labels to contacts](#apply-labels-to-contacts).
+
+**What's the difference between labels and contact filters?**\
+Labels organize conversations in your Inbox. Contact filters organize contacts, and a [saved filter](/contacts/saved-filters) gives you a reusable group of contacts to message together. See [Labels vs. contact filters](#labels-vs-contact-filters).
 
 **Do labels affect who can see a conversation or whether messages send?**\
 Applying or removing a label doesn't by itself grant or revoke anyone's access, and it never affects deliverability. But labels are a scopable resource in the permission model. A custom role can be set to **Editor**, **Viewer**, or **No Access** on specific **Label inboxes**, so an admin can restrict a role to one label and hide the rest. See [Custom roles and permissions](/settings/workspace-settings/team-management#custom-roles-and-permissions).
