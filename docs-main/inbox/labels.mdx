@@ -20,6 +20,7 @@ A label is a small badge made of **text + color + icon** that you can apply to a
 - **Stay organized.** Group related conversations across teams and topics.
 - **Work faster.** Scan your inbox and spot priorities by color/icon.
 - **Report & review.** Filter by label to see everything for a project, region, or status.
+- **Scope visibility.** Use labels as a permission boundary. Custom roles can be set to Editor, Viewer, or No Access on specific **Label inboxes**. See [Custom roles and permissions](/settings/workspace-settings/team-management#custom-roles-and-permissions).
 - **Keep it simple.** Add or remove labels anytime. No impact on message delivery.
 
 <Note>
@@ -145,7 +146,12 @@ Admins can manage labels for everyone.
 Yes. Apply as many as you need.
 
 **Do labels affect who can see a conversation or whether messages send?**\
-No. Labels don't change permissions or deliverability. They're for organization and filtering only.
+Applying or removing a label doesn't by itself grant or revoke anyone's access, and it never affects deliverability. But labels are a scopable resource in the permission model. A custom role can be set to **Editor**, **Viewer**, or **No Access** on specific **Label inboxes**, so an admin can restrict a role to one label and hide the rest. See [Custom roles and permissions](/settings/workspace-settings/team-management#custom-roles-and-permissions).
+
+Two things to know if you scope visibility this way:
+
+- **Assignment overrides label scope.** Assigning a teammate to a conversation grants them Editor on that thread even when they have No Access to its labels. This is what makes Relay routing work, and it also means a misrouted thread is visible to whoever it landed on.
+- **Label scope isn't a boundary on its own.** Pair it with **Phone number inbox** permissions on the same role, and test with a real teammate login before relying on it.
 
 **Can I edit or delete a label later?**\
 Yes. Edit the name/color/icon anytime from **Inbox (Label menu)** or **Workspace Settings**. Deleting a label removes it from every conversation. You can also multi-select and delete multiple labels at once from **Label Settings**.
