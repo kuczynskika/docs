@@ -127,7 +127,7 @@ The available actions can vary by trigger, so check the **Add Action** menu in t
 
 - **Reply to message:** send an SMS/MMS (supports templates, tags, and media, with an optional Delay). Available on message-received-style triggers.
 - **Send Message:** send an outbound SMS/MMS on non-conversation triggers. New in **v2026.08.11**. There's no existing conversation to reply into, so the action asks you to pick an **Outbound Channel** (which connected phone number to send from). Available on the **Contact Updated**, **Inbound Webhook Received**, and **Contact Created** triggers.
-- **Update Contact Property:** update a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property accepts either. A non-text property (for example dropdown or number) accepts only a static value that matches its type.
+- **Update Contact Property:** update a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property accepts either. A non-text property (for example dropdown or number) accepts a static value that matches its type or, new in **v2026.08.28**, the matching Custom Property mapped from an Inbound Webhook payload. Mapped payload values must pass [type validation](/relays/webhooks#custom-property-validation).
 - **Assign teammates to the conversation:** pick one or more users
 - **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
 - **Add labels to the conversation:** apply one or more labels

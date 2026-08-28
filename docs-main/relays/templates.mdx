@@ -194,9 +194,9 @@ The outcomes below are the building blocks that most teams start from. Each entr
 | --- | --- |
 | **Trigger** | Inbound Webhook Received |
 | **Conditions** | None, or **Webhook Payload Field Equals** |
-| **Actions** | Update Contact Property (set a **Text** property from the payload using **Event Data**) |
+| **Actions** | Update Contact Property (set a property from the payload using **Event Data**) |
 
-**Why it works:** When a value changes in another system, the webhook updates the matching contact property in MessageDesk automatically.
+**Why it works:** When a value changes in another system, the webhook updates the matching contact property in MessageDesk automatically. **Text** properties accept any payload value. Non-text properties (for example dropdown or date) map the matching Custom Property from the payload, and the value must pass [type validation](/relays/webhooks#custom-property-validation).
 
 <Note>
   **Inbound Webhook Received is a non-conversation trigger.** It runs against the contact in the payload, so conversation-scoped conditions don't apply. **Add labels to the conversation** is available. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.

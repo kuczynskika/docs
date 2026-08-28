@@ -285,9 +285,17 @@ Notes on the fields:
 }
 ```
 
-<Note>
-  MessageDesk currently handles Custom Property values in the payload as text. Data type validation for non-text properties (for example, dropdown or number) is coming in a future release.
-</Note>
+#### Custom Property validation
+
+New in **v2026.08.28**. Payload values are still sent as strings, but MessageDesk validates each `properties` value against the type of the matching Custom Property and only accepts the value if it fits. See [Custom Fields](/settings/workspace-settings/custom-fields#supported-field-types) for the field types.
+
+* **Text**: any value is accepted.
+* **Number**: the value must be numeric.
+* **Date**: the value must be in a date format.
+* **True/false**: the value must be a boolean value.
+* **Dropdown**: the value must exactly match one of the property's defined options. The match is **case-sensitive**, so values map 1-to-1 without accidental overwrites.
+
+For example, if `Favorite Color` is a dropdown Custom Property with the options `Red`, `Green`, and `Blue`, MessageDesk only accepts a `Favorite Color` value of exactly `Red`, `Green`, or `Blue`. A value of `red` or `Purple` is rejected.
 
 ### Auto-create contacts
 
@@ -308,6 +316,8 @@ Once a Relay receives a payload, you can reference its fields:
 
 - **Conditions**: use **Webhook Payload Field Equals** to branch on a value in the payload.
 - **Actions**: **Send Message**, **Send Comment**, and **Update Contact Property** can insert a value from the payload (Event Data) instead of a fixed value. See [Relay building blocks](/relays/building-blocks) for how Event Data works.
+
+New in **v2026.08.28**: **Update Contact Property** supports mapping payload values to non-text Custom Properties. A **Text** property accepts any value. Other property types accept either a custom value or the matching Custom Property from the webhook payload, and the payload value must pass the [type validation above](#custom-property-validation). This lets you pair the **Inbound Webhook Received** trigger with **Update Contact Property** to map payload properties 1-to-1 to the corresponding properties in MessageDesk.
 
 ### Limits and compliance
 
