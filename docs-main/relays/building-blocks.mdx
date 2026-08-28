@@ -67,7 +67,7 @@ Conditions combine with **AND** or **OR**.
 
 - **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on Message Received, Message Failed, and Conversation Label Removed)
 - **Send Message** (new in v2026.08.11) sends an outbound SMS/MMS on non-conversation triggers. There's no conversation to reply into, so you pick which connected phone number MessageDesk sends from (**Outbound Channel**). Currently available on **Contact Updated**.
-- **Update Contact Property** updates a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property can take either a Custom Value or an Event Data value. A non-text property (for example dropdown or number) can only take a static value that matches its type.
+- **Update Contact Property** updates a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property can take either a Custom Value or an Event Data value. A non-text property (for example dropdown or number) can take a static value that matches its type or, new in **v2026.08.28**, the matching Custom Property mapped from an Inbound Webhook payload. Mapped payload values must pass [type validation](/relays/webhooks#custom-property-validation).
 - **Assign teammates to the conversation**
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
@@ -89,7 +89,7 @@ Available actions vary by trigger, so check the **Add Action** menu in the app f
 Some actions can insert a value from the event that triggered the Relay instead of a fixed value.
 
 - On **Send Message** and **Send Comment**, choose an available Event Data property for the text, or choose **Custom Value** to type your own.
-- On **Update Contact Property**, the same choice applies for **Text** properties.
+- On **Update Contact Property**, the same choice applies for **Text** properties. New in **v2026.08.28**: non-text properties can also take Event Data on **Inbound Webhook Received** Relays by mapping the matching Custom Property from the payload. The payload value must pass [type validation](/relays/webhooks#custom-property-validation).
 
 Event Data is most useful with the **Inbound Webhook Received**, **Contact Updated**, and **Contact Created** triggers, where the event carries contact and payload fields.
 
