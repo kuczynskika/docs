@@ -107,6 +107,7 @@ The available conditions depend on the selected trigger. The message triggers (M
 - **My phone number equals:** run only on a specific connected phone number
 - **Conversation label equals:** match against a conversation's labels using an operator selector (contains, equals, notEquals, startsWith, endsWith). For example, `startsWith "Region:"` matches every namespaced regional label at once.
 - **Conversation has label:** a boolean presence check for a specific label. Use this as a gate to run the Relay only when the conversation is already labeled (for example, `VIP` or `Escalated`). Distinct from the operator-based **Conversation label equals**.
+- **Label name equals:** check whether the conversation has a label whose name matches the text you enter (new in **v2026.09.01**). It matches on the typed name rather than a label you pick from a list, so create a label with that exact name (or edit the name in the condition) for it to match.
 - **Is anonymous conversation:** no saved contact yet
 - **Is new conversation:** first inbound in a thread
 - **Is unassigned conversation:** the conversation has no assigned teammates. Useful for scoping actions to threads no one has claimed yet.
@@ -132,6 +133,7 @@ The available actions can vary by trigger, so check the **Add Action** menu in t
 - **Assign to sender:** automatically assign the conversation to the teammate who sent the message. **Only available with the Message Sent trigger.** Useful for making sure whoever replies owns the follow-up.
 - **Add labels to the conversation:** apply one or more labels
 - **Remove labels from the conversation:** remove one or more labels
+- **Remove Label where name equals:** remove every label on the conversation whose name matches the text you enter (new in **v2026.09.01**). **Remove labels from the conversation** removes labels you pick from a list; this action matches on the typed name instead.
 - **Remove teammates from the conversation:** remove one or more assigned users
 - **Remove all teammates from the conversation:** clear every assignee from the conversation in a single step. Useful in close-out or hand-off workflows where you want to reset assignment state without listing every teammate.
 - **Close the conversation:** close the conversation as part of the Relay run. Useful for auto-closing after an acknowledged auto-reply or webhook-driven workflow.
