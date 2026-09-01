@@ -29,7 +29,7 @@ When you first visit **Relays**, you'll see **templates** you can use as a start
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated, Inbound Webhook Received, Contact Created). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
+The list **groups Relays by Trigger** (Message Received, Message Sent, Message Failed, Conversation Opened, Conversation Users Assigned, Conversation Label Applied, Conversation Label Removed, Comment Created, Conversation Closed, Call Received, Contact Updated, Inbound Webhook Received, Contact Created). Triggers in the Relays side menu sort alphabetically (new in **v2026.09.01b**). Within each group, MessageDesk **sorts Relays by Order** so you can scan every Relay on a phone line or event at a glance.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -86,7 +86,7 @@ Supported triggers:
 </Note>
 
 <Note>
-  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger can't support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review your conditions after switching triggers.
+  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger can't support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). New in **v2026.09.01b**: MessageDesk also removes any Event Data values used as inputs on existing actions, because those fields don't exist on the new trigger's event. Review your conditions and action inputs after switching triggers.
 </Note>
 
 ![Relay Message Received Trigger Pn](/images/relay-message-received-trigger.png)
@@ -366,7 +366,7 @@ When a contact sends a message containing the word "SUPPORT," MessageDesk replie
 
 **Does a Relay auto-reply mark the conversation as Read?**<br />No. When a Relay sends an auto-reply, the conversation moves to **Replied** status (so it leaves the **Unread** filter), but it isn't marked **Read**. A conversation is only marked Read when a teammate opens it in the Inbox. See [Relays and conversation status](#relays-and-conversation-status).
 
-**What happens if I change the trigger on an existing Relay?**<br />MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). Review the remaining conditions after switching triggers to make sure the Relay still behaves as expected.
+**What happens if I change the trigger on an existing Relay?**<br />MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). New in **v2026.09.01b**, MessageDesk also removes any Event Data values used as inputs on existing actions, since those fields don't exist on the new trigger's event. Review the remaining conditions and action inputs after switching triggers to make sure the Relay still behaves as expected.
 
 **Can I set up an out-of-office reply for just one person?**<br />Yes, including on a shared line. Build the out-of-office Relay (Message Received, plus Active hours with **Trigger outside of business hours** enabled). Then add the **Teammate Assigned** condition set to the teammate who's out. The auto-reply fires only for that person's conversations. The rest of the team keeps working on the same line. To also cover brand-new threads no one has picked up yet, add **Is unassigned conversation** with **OR**. If the teammate has a dedicated line, scope by **My phone number equals** that line instead.
 

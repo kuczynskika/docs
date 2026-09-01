@@ -319,6 +319,8 @@ Once a Relay receives a payload, you can reference its fields:
 
 New in **v2026.08.28**: **Update Contact Property** supports mapping payload values to non-text Custom Properties. A **Text** property accepts any value. Other property types accept either a custom value or the matching Custom Property from the webhook payload, and the payload value must pass the [type validation above](#custom-property-validation). This lets you pair the **Inbound Webhook Received** trigger with **Update Contact Property** to map payload properties 1-to-1 to the corresponding properties in MessageDesk.
 
+New in **v2026.09.01b**: if an action uses a Custom Property as Event Data and there's no value for that property, the action exits early without running. Earlier versions threw an error on run, which could surface as webhook failures. See [Event Data](/relays/building-blocks#event-data).
+
 ### Limits and compliance
 
 - MessageDesk limits inbound webhooks to 10,000 requests per day per workspace.
