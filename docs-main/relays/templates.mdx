@@ -38,6 +38,7 @@ These starter templates are available from the Relays module in the app, grouped
 | --- | --- | --- |
 | **Label Conversation** | Auto-labels new conversations | Message Received + Add labels |
 | **Unassign on Close** | Removes all teammates when a conversation closes | Conversation Closed + Teammate Assigned (Any teammate) + Remove all teammates |
+| **Auto-Close No-Reply-Needed** | Closes conversations labeled `No Reply Needed` and clears the label when a reply arrives | Message Received + Label name equals + Close the conversation + Remove Label where name equals |
 
 ### Respond to Messages
 
@@ -81,6 +82,22 @@ The outcomes below are the building blocks that most teams start from. Each entr
 | **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Resolved`) → Send webhook |
 
 **Why it works:** Closing resets assignment in one step and pushes the close event to your other systems. This extends the shipped **Unassign on Close** starter with a `Resolved` label and an outbound webhook so your CRM, data warehouse, or ticketing tool stays in sync.
+
+---
+
+### Auto-close conversations that don't need a reply
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Message Received |
+| **Conditions** | Label name equals `No Reply Needed` |
+| **Actions** | Close the conversation → Remove Label where name equals `No Reply Needed` |
+
+**Why it works:** Courtesy replies like "thanks!" reopen threads that nobody needs to touch. Label a conversation `No Reply Needed` when you're done with it. The next inbound message closes the thread and clears the label, so a real follow-up later reopens it normally.
+
+<Note>
+  **Ships as a template:** This build is available as the **Auto-Close No-Reply-Needed** starter from the Relays module (new in v2026.09.01). MessageDesk doesn't create the label for you. Create a label named `No Reply Needed` before turning the Relay on, or change the name in both the condition and the action to a label you already use. See [Labels](/inbox/labels). The **Label name equals** condition and **Remove Label where name equals** action are documented in [Relay building blocks](/relays/building-blocks).
+</Note>
 
 ---
 

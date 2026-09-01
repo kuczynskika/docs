@@ -50,13 +50,18 @@ Two more conditions are each scoped to a single trigger:
 - **Contact Property Equals** checks the value of a contact property. Currently available only on the **Contact Updated** trigger.
 - **Webhook Payload Field Equals** checks the value of a field in an inbound webhook payload. Available only on the **Inbound Webhook Received** trigger. See [Webhooks](/relays/webhooks#inbound-webhooks) for the payload schema.
 
+One more condition matches labels by name:
+
+- **Label name equals** checks whether the conversation has a label whose name matches the text you enter. New in **v2026.09.01**. Because it matches on a typed name rather than a label you pick from a list, the condition can reference a label that doesn't exist yet. Create the label with that exact name (or edit the name in the condition) before you rely on it.
+
 Conditions combine with **AND** or **OR**.
 
 <Note>
-  **Conversation has label** vs **Conversation label equals.** Both conditions check labels, but they behave differently, so pick the one that matches your intent.
+  **Three conditions check labels.** They behave differently, so pick the one that matches your intent.
 
   - **Conversation label equals** is an operator-based matcher. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. Use it for fuzzy or namespaced matches, for example `startsWith "Region:"` to match every regional label at once.
   - **Conversation has label** is a simple presence check. It evaluates true when the conversation is currently labeled with the label you pick, and false otherwise. Use it as a gate (for example, only run when the conversation already has the `VIP` label).
+  - **Label name equals** (new in v2026.09.01) is a name-based presence check. It evaluates true when the conversation has a label whose name matches the text you enter. Pairs with the **Remove Label where name equals** action for name-driven cleanup flows like the **Auto-Close No-Reply-Needed** template.
 </Note>
 
 <Note>
@@ -72,6 +77,7 @@ Conditions combine with **AND** or **OR**.
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
 - **Remove labels from the conversation**
+- **Remove Label where name equals** (new in v2026.09.01) removes every label on the conversation whose name matches the text you enter. **Remove labels from the conversation** removes labels you pick from a list; this action matches on the typed name instead. The **Auto-Close No-Reply-Needed** template uses it to clear the `No Reply Needed` label after closing.
 - **Remove teammates from the conversation**
 - **Remove all teammates from the conversation**
 - **Close the conversation**
