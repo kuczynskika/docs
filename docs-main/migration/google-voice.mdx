@@ -1,0 +1,207 @@
+---
+title: "Move a Google Voice Number to MessageDesk"
+description: "Port a Google Voice number to MessageDesk for business texting. Unlock steps, porting PIN requirements, call forwarding, and the VoIP alternative."
+sidebarTitle: "Google Voice to MessageDesk"
+og:title: "Move a Google Voice Number to MessageDesk"
+og:description: "Two routes for moving a Google Voice number to MessageDesk, step by step."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+---
+
+Google Voice numbers can't be text-enabled in place the way a landline or VoIP number can. Google has to fully release the number first, which means a **port**, not hosting.
+
+We work with Google Voice customers all the time. You have two routes forward.
+
+| | Route 1: Port to MessageDesk | Route 2: Port to a VoIP provider |
+| --- | --- | --- |
+| **Texting** | MessageDesk | MessageDesk |
+| **Calling** | Forwards to a number you choose | Your VoIP provider |
+| **Best for** | Texting-first teams | Teams that need extensions, IVR, or call queues |
+| **Added cost** | None beyond MessageDesk | VoIP provider subscription |
+
+<Note>
+  **Which route?** If you mainly need texting and can forward calls to a cell or desk phone, Route 1 is faster and simpler. If you need full voice functionality on the number itself, choose Route 2.
+</Note>
+
+---
+
+## Route 1: Port your number to MessageDesk
+
+A full port moves both the voice and SMS associated with your number to MessageDesk. We set a port date with you, so you know exactly when your number moves over.
+
+<Warning>
+  **MessageDesk doesn't offer full voice service.** After the port, set up [call forwarding](/settings/workspace-settings/phone-management) in-app so inbound calls route to a number that can receive them, like a cell or a desk phone. MessageDesk also logs every forwarded call and adds a **Call Forwarded** event to the matching conversation in your Inbox.
+</Warning>
+
+### What you'll need
+
+- The Google Voice number you want to move
+- Your Google Voice **voicemail PIN**
+- The account-holder name on the Google account
+- A billing or contact address, if the carrier requests one
+- A destination number for call forwarding
+- A signed Letter of Authorization (LOA), which we send you to complete
+
+Start with [Step 1: Unlock the number](#step-1-unlock-the-number-in-google-voice).
+
+---
+
+## Route 2: Port your number to a VoIP provider
+
+If you need to keep full voice functionality and don't want to rely on call forwarding, port the number to a VoIP provider like **Aircall** first. Once that port completes, MessageDesk hosts the number for SMS only. Voice stays with the VoIP provider, we manage your texting.
+
+<Note>
+  This route takes longer and adds a service. You'll pay the VoIP provider for voice on top of MessageDesk for texting, and the two ports happen in sequence.
+</Note>
+
+<Steps>
+  <Step title="Unlock the number in Google Voice" stepNumber={1} titleSize="h3">
+    Google has to release the number regardless of where it lands. Follow [Step 1](#step-1-unlock-the-number-in-google-voice) below.
+  </Step>
+  <Step title="Port the number to your VoIP provider" stepNumber={2} titleSize="h3">
+    Work directly with Aircall, or whichever provider you choose. They'll ask for the same Google Voice account number and voicemail PIN described in [Step 2](#step-2-confirm-your-voicemail-pin).
+  </Step>
+  <Step title="Host the number with MessageDesk for texting" stepNumber={3} titleSize="h3">
+    Once the number is live with your VoIP provider, [connect it to MessageDesk](/get-started/phone-numbers/landline-voip) for SMS. Your voice configuration stays untouched.
+  </Step>
+</Steps>
+
+---
+
+## Step 1: Unlock the number in Google Voice
+
+Required for both routes. Google locks its numbers by default, and nothing can start until yours shows as unlocked.
+
+<Steps>
+  <Step title="Open Google Voice on desktop" stepNumber={1} titleSize="h3">
+    Go to [voice.google.com](https://voice.google.com) and sign in. Use desktop. The mobile app doesn't expose the unlock option.
+  </Step>
+  <Step title="Navigate to your number" stepNumber={2} titleSize="h3">
+    Click **Settings → Account →** your Google Voice number.
+  </Step>
+  <Step title="Click Unlock" stepNumber={3} titleSize="h3">
+    Google charges a **$3 unlock fee** for numbers that originated with Google Voice. If you originally ported the number *into* Google Voice from another carrier, Google waives the fee.
+  </Step>
+</Steps>
+
+<Warning>
+  **Don't delete the number from Google Voice.** Unlocking is all we need. Deleting the number, before or during the port, can release it back to the number pool and you may lose it permanently.
+</Warning>
+
+---
+
+## Step 2: Confirm your voicemail PIN
+
+This is the part that trips most people up. Google uses non-obvious values for the two fields every port request needs.
+
+| Porting field | What Google Voice uses |
+| --- | --- |
+| **Account number** | Your 10-digit Google Voice number |
+| **Porting PIN** | Your Google Voice **voicemail PIN** |
+
+If your number is (775) 555-1212, your account number is `7755551212`.
+
+Don't know your voicemail PIN? Reset it in Google Voice under **Settings → Voicemail → Voicemail PIN** before you continue.
+
+---
+
+## Step 3: Sign your Letter of Authorization
+
+<Note>
+  This step applies to Route 1. If you're porting to a VoIP provider first, that provider handles its own authorization paperwork.
+</Note>
+
+We send you a Letter of Authorization (LOA) to sign. The LOA authorizes MessageDesk to request the number from Google on your behalf.
+
+Sign and complete it, then reply with:
+
+- The Google Voice number
+- Your voicemail PIN
+- The account-holder name on the Google account
+- The number where you want calls forwarded
+
+<Info>
+  We submit Google Voice numbers as **landline/VoIP ports**, not wireless ports. Our team handles this, so you don't need to specify it.
+</Info>
+
+<Warning>
+  **You can add at most 2 numbers per day** through hosting, porting, or purchase combined, per workspace. This is a fraud-prevention limit against number-rotation scams. If you're moving several Google Voice numbers at once, [contact support](/contact-us) so we can plan the schedule.
+</Warning>
+
+---
+
+## Step 4: Leave Google Voice alone while the port is pending
+
+Once we submit the request, don't change anything on the Google side:
+
+- Don't delete the number
+- Don't re-lock the number
+- Don't cancel or close the Google Voice account
+- Don't change your voicemail PIN
+
+Any of these rejects the port and restarts the clock. If Google or MessageDesk needs something from you, we'll reach out directly.
+
+---
+
+## Step 5: Set up your workspace while you wait
+
+Porting takes a few business days, and the switch happens on a scheduled date. Use that time to get MessageDesk ready so your team can work from day one.
+
+<Card title="Invite and manage teammates" icon="users" iconType="solid" color="#683cb5" href="/settings/workspace-settings/team-management">
+  Add your team and set roles and permissions before the number goes live.
+</Card>
+
+<Card title="Import your contacts" icon="address-book" iconType="solid" color="#683cb5" href="/settings/workspace-settings/data-center">
+  Bring your existing contact list into MessageDesk.
+</Card>
+
+<Card title="Install the mobile apps" icon="mobile" iconType="solid" color="#683cb5" href="/get-started/install-apps">
+  Get MessageDesk on iOS and Android so your team can text on the go.
+</Card>
+
+<Card title="Complete carrier registration" icon="shield-check" iconType="solid" color="#683cb5" href="/carrier-registration/overview">
+  Required before you can send outbound texts on your number.
+</Card>
+
+---
+
+## What happens after the move
+
+- **Texting:** Inbound and outbound messages route through your MessageDesk Inbox.
+- **Calling:** On Route 1, calls forward to the destination number you set. On Route 2, your VoIP provider handles calls as it always has.
+- **Google Voice:** No longer controls the number. Your Google Voice message history stays in Google Voice and doesn't transfer, so export anything you want to keep.
+
+<Note>
+  Outbound texting requires approved [carrier registration](/carrier-registration/overview). Inbound texts arrive as soon as the number is connected.
+</Note>
+
+---
+
+## Frequently asked Google Voice porting questions
+
+### Can I keep the number in Google Voice and just add texting?
+
+No. Google doesn't allow third-party SMS hosting on Google Voice numbers. The number has to be fully ported out before you can use it with MessageDesk.
+
+### Does MessageDesk replace my phone system?
+
+No. We don't offer full voice service. After a full port, calls to your number forward to a destination number you set in **Settings → Workspace Settings → Phone Management**. If you need extensions, IVR, or call queues, keep voice with a VoIP provider and let us host texting.
+
+### Why is there a $3 charge?
+
+That's Google's fee to unlock a number that originated with Google Voice. You pay it to Google, not MessageDesk. If you originally ported the number into Google Voice from another carrier, Google waives it.
+
+### Does my Google Voice message history come with me?
+
+No. Only the number moves. Export anything you want to keep from Google Voice before the port completes.
+
+### Will there be downtime?
+
+We set a port date with you in advance, so you know exactly when the number moves. If anything about your setup looks unusual, we'll flag it when we confirm the date.
+
+### What if the port gets rejected?
+
+The most common causes are a locked number, a mismatched voicemail PIN, or an account-holder name that doesn't match Google's records. We'll tell you exactly what Google flagged and resubmit once you've corrected it.
+
+### Who do I contact for help?
+
+Email [support@messagedesk.com](mailto:support@messagedesk.com) or visit [Support](/resources/support).

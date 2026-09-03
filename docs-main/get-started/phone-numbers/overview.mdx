@@ -99,14 +99,16 @@ Use your Twilio numbers within MessageDesk's shared team inbox.
 ## Unsupported number types
 
 - **International numbers** outside the U.S./Canada
-- **Google Voice** and **mobile carrier personal numbers** (unless fully **ported** to a VoIP provider first)
+- **Google Voice** and **mobile carrier personal numbers** (unless fully **ported** out first)
 - **Virtual numbers** (non-carrier virtual SMS apps/services)
 - **Short codes (outbound)** – MessageDesk doesn't send from 5–6 digit codes
   - Inbound from short codes is supported (you can receive replies)
 
 <Note>
-  **Note:** To use a personal mobile or Google Voice number, first **port** it to a VoIP provider, then connect it for texting with MessageDesk.
+  **Note:** To use a personal mobile or Google Voice number, you have to **port** it out of that carrier first. You can port it directly to MessageDesk and forward calls to a number you choose, or port it to a VoIP provider and let us host it for texting only.
 </Note>
+
+Learn more: [**Move a Google Voice Number to MessageDesk**](/migration/google-voice)
 
 ---
 
@@ -133,7 +135,11 @@ We add **SMS** to your existing number. **Voice stays with your current provider
 We **move the entire number** (voice + text) to MessageDesk.
 
 - Full transfer of services
-- MessageDesk becomes the provider for that number
+- MessageDesk becomes the carrier of record for that number
+
+<Warning>
+  **Important:** MessageDesk doesn't offer full voice service. After a port, texting runs through your Inbox and you set up [call forwarding](/settings/workspace-settings/phone-management) so inbound calls route to a number that can receive them. If you need full voice functionality on the number, port it to a VoIP provider instead and let us host it for texting.
+</Warning>
 
 <Note>
   **Note:** In short: **Hosting = add texting** to your current setup. **Porting = move voice + text** to MessageDesk.
