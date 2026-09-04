@@ -167,13 +167,13 @@ MessageDesk skips phone numbers already on the workspace opt-out list as duplica
 **Format**
 
 - **CSV only** (`.csv`).
-- **UTF-8** encoding.
+- **UTF-8** encoding preferred. MessageDesk strips a byte order mark (BOM) and other invalid bytes automatically.
 - Include a **header row**.
 - Each row must have the **same number of columns** as the header.
 
 **Required data**
 
-- For **contacts**: At least one method: **email** _or_ **phone**
+- For **contacts**: **phone**. Email and name columns are optional
 - For **messages**: Required fields typically include **timestamp**, **direction** (inbound/outbound), **phone number(s)**, **message text**, and **channel/line identifier**
 
 **Validation**
