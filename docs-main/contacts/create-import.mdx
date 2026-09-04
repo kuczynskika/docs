@@ -139,8 +139,8 @@ Upload contact lists in bulk when you have a large amount of contact information
   - **Row count:** up to **5,000 rows** per CSV (hard limit)
   - **File size:** up to **10 MB**
   - **Platform:** **Web-only** (imports aren't supported on mobile/desktop apps)
-  - **Format:** must use **.csv** files **with a header row**, **UTF-8** encoding
-  - **Required per row:** **Email** _or_ **Phone** (at least one)
+  - **Format:** must use **.csv** files **with a header row**. UTF-8 encoding is preferred. MessageDesk strips a byte order mark (BOM) and other invalid bytes automatically
+  - **Required per row:** **Phone**. Email, first name, and last name are optional
 </Note>
 
 <Warning>
@@ -148,7 +148,7 @@ Upload contact lists in bulk when you have a large amount of contact information
 
   - Include a **header row** (first line in .csv file).
   - Use **consistent columns** on every row (same number of columns as the header).
-  - Include at least one contact method: **Email** _or_ **Phone** per row.
+  - Include a **Phone** number on every row.
   - Preferred: Use **E.164** format for phone number formatting (e.g., `+15551234567`).
 </Warning>
 
@@ -191,7 +191,7 @@ Click **\+ Add Custom Field** to map [custom fields](/settings/workspace-setting
 </Note>
 
 <Warning>
-  **Note:** Email or Phone is a required property for every contact uploaded to MessageDesk.
+  **Note:** Phone is the only required property for every contact uploaded to MessageDesk. Email, first name, and last name are optional.
 </Warning>
 
 <Frame>
@@ -200,7 +200,7 @@ Click **\+ Add Custom Field** to map [custom fields](/settings/workspace-setting
 
 ### 4. Fix duplicates and errors (preview step)
 
-Click Preview Import to confirm that your fields are properly matched. MessageDesk validates your data and flags issues **before** import. Invalid rows are **skipped**.
+Click Preview Import to confirm that your fields are properly matched. MessageDesk validates your data and flags issues **before** import, showing which field in a row failed validation. Invalid rows are **skipped**.
 
 ![Clean Shot2025 08 26at12 18 42 Pn](/images/CleanShot2025-08-26at12.18.42.png)
 
@@ -208,8 +208,9 @@ Click Preview Import to confirm that your fields are properly matched. MessageDe
 
 ## Validation rules and what we check
 
-- **Email**: must be a valid email address (`name@example.com`).
-- **Phone**: must be in **E.164** format (e.g., `+15551234567`).
+- **Phone**: required for every row. Must be in **E.164** format (e.g., `+15551234567`).
+- **Email**: optional. When provided, must be a valid email address (`name@example.com`).
+- **Encoding**: MessageDesk strips a byte order mark (BOM) and other invalid bytes while parsing, so files saved with a BOM or stray non-UTF-8 characters import instead of failing.
 - **Custom fields**: must match defined **types** and constraints. See [custom fields](/settings/workspace-settings/custom-fields) for supported types.
 - **Duplicates**: checked by **email** and **phone**. Matching contacts are **updated** rather than skipped (see [How duplicate updates work](#how-duplicate-updates-work)).
 
@@ -245,8 +246,8 @@ When an imported row matches an existing contact by **email** or **phone**, Mess
   Correct typos or remove invalid emails.
 - **"Row has an inconsistent number of columns."**\
   Ensure every row matches the header's column count.
-- **"Missing contact method."**\
-  Add **Email** or **Phone** for that row.
+- **Missing phone number**\
+  Add a **Phone** value for that row.
 
 ---
 
