@@ -147,6 +147,19 @@ To resume, edit the subscription again and add those two event types back using 
   Any messages that arrive while these event types are removed won't appear in MessageDesk. There's no backfill for messages received during that gap.
 </Warning>
 
+### Replace one Twilio number while keeping MessageDesk
+
+If you want to stop using one Twilio number in MessageDesk but keep your workspace and your other Twilio numbers, don't delete the Event Streams subscription. The subscription covers your whole Twilio account, so deleting it stops messages from syncing for every connected number, not just the one you're replacing.
+
+Instead:
+
+1. **Connect the replacement number.** Add the new Twilio number through **Settings → Phone Management → Add Phone Number → Connect Twilio**, the same way you connected your original numbers.
+2. **Remove the old number from your workspace.** Email [support@messagedesk.com](mailto:support@messagedesk.com) and we'll remove it. See [Remove a number from MessageDesk](#remove-a-number-from-messagedesk) for what removal deletes.
+
+<Warning>
+  Removing the old number permanently deletes its messages, Conversations, comments, and history in MessageDesk. [Export the message history](/settings/workspace-settings/data-center#export-your-text-message-history-to-csv-or-pdf) first if you need to keep it.
+</Warning>
+
 ### Stop MessageDesk from receiving your Twilio messages entirely
 
 If you're moving off MessageDesk and want it to stop receiving your messages and events, delete the Event Streams subscription in your Twilio account rather than only removing its event types. Once it's deleted, messages and events stop flowing to MessageDesk. For the steps, see [Twilio's Event Streams documentation](https://www.twilio.com/docs/events).
