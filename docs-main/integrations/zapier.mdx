@@ -63,7 +63,7 @@ Version 2.0 is the current MessageDesk app on Zapier. Everything on this page de
 
 ## How Zapier works
 
-A Zap is made of three kinds of steps.
+A Zap has three kinds of steps.
 
 | Type | Description |
 | --- | --- |
@@ -87,7 +87,7 @@ A Zap is made of three kinds of steps.
 | **Contact Updated** | Fires when any contact field changes, including custom fields. |
 | **Contact Deleted** | Fires when someone deletes a contact from your workspace. |
 | **Opt-Out Created** | Fires when a phone number opts out, whether by STOP keyword, manual opt-out, or the Create Opt Out action. |
-| **Opt-Out Deleted** | Fires when an opt-out is removed and that number can be messaged again. |
+| **Opt-Out Deleted** | Fires when an opt-out is removed and that number can receive messages again. |
 | **Call Received** | Fires when someone calls one of your MessageDesk numbers. |
 | **Comment Created** | Fires when a teammate posts an internal comment on a conversation. |
 
@@ -131,7 +131,7 @@ Fires when your MessageDesk workspace sends an outbound message.
 
 ### Contact Created
 
-Fires when a contact is created in your workspace. The payload includes the contact's [custom fields](/settings/workspace-settings/custom-fields).
+Fires when someone creates a contact in your workspace. The payload includes the contact's [custom fields](/settings/workspace-settings/custom-fields).
 
 Use it to mirror new MessageDesk contacts into your CRM, or to kick off a welcome text.
 
@@ -151,7 +151,7 @@ There's no separate trigger for custom field changes. One trigger covers every e
 
 ### Contact Deleted
 
-Fires when a contact is deleted from your workspace. Use it to close out or archive the matching record elsewhere.
+Fires when someone deletes a contact from your workspace. Use it to close out or archive the matching record elsewhere.
 
 ---
 
@@ -219,7 +219,7 @@ Sends an outbound text or MMS from MessageDesk. Each Zap run sends one message.
 </Warning>
 
 <Note>
-  **MessageDesk enforces opt-outs automatically.** If the recipient has opted out in MessageDesk, the **Send Message** action fails and no text is delivered, even if the Zap itself runs successfully on Zapier's side. You can't bypass opt-out enforcement. See the [Compliance Center](/settings/workspace-settings/compliance-center) for how MessageDesk captures and manages opt-outs.
+  **MessageDesk enforces opt-outs automatically.** If the recipient has opted out in MessageDesk, the **Send Message** action fails and no text goes out, even if the Zap itself runs successfully on Zapier's side. You can't bypass opt-out enforcement. See the [Compliance Center](/settings/workspace-settings/compliance-center) for how MessageDesk captures and manages opt-outs.
 </Note>
 
 ---
@@ -376,7 +376,7 @@ All of these reach the same contact:
 - `+15551234567`
 
 <Note>
-  **Numbers without a country code are treated as US or Canada (+1).** If a number can't be parsed, the step fails with an error naming the value that caused it, so you can fix the mapping instead of hunting through a Zap history.
+  **MessageDesk treats numbers without a country code as US or Canada (+1).** If a number can't be parsed, the step fails with an error naming the value that caused it, so you can fix the mapping instead of hunting through a Zap history.
 </Note>
 
 ---
@@ -449,18 +449,18 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | Workflow | Connected Apps | Description |
 | --- | --- | --- |
 | **Missed call → AI text-back** | OpenAI, Zapier AI | When someone calls your number, find the conversation, draft a reply with an AI step, and text them back before they call a competitor. |
-| **New CRM Lead → Add to MessageDesk** | HubSpot, Pipedrive, Zoho CRM | When a new lead is created, create or update the contact in MessageDesk and send a personalized welcome text. |
-| **New MessageDesk contact → Create CRM record** | HubSpot, Salesforce | When a contact is created in MessageDesk, push the record into your CRM so both systems stay in sync. |
+| **New CRM Lead → Add to MessageDesk** | HubSpot, Pipedrive, Zoho CRM | When a new lead comes in, create or update the contact in MessageDesk and send a personalized welcome text. |
+| **New MessageDesk contact → Create CRM record** | HubSpot, Salesforce | When someone creates a contact in MessageDesk, push the record into your CRM so both systems stay in sync. |
 | **Job or Appointment Booked → Send Reminder Text** | Calendly, Google Calendar, Jobber | Send automated appointment reminders or confirmations directly from MessageDesk. |
 | **Event registration closes → Send a broadcast** | Eventbrite, Google Forms | When registration fills or a date changes, send one broadcast to everyone on the list. Replies come back as private threads. |
 | **New Message in MessageDesk → Notify Teammates** | Slack, Microsoft Teams | Post a notification with message details and contact info when a new message arrives in MessageDesk. |
-| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero | When a new invoice is issued or a payment is logged, send a text confirmation with the invoice image attached. |
+| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero | When an invoice goes out or a payment comes in, send a text confirmation with the invoice image attached. |
 | **New Form Submission → Create Comment with Mention** | Google Forms, Typeform | Post an internal comment and tag the teammate who owns the follow-up. |
 | **Email or Message → Comment in Thread** | Outlook, Gmail, Teams | Create an internal comment in MessageDesk when an external email or chat arrives, keeping your team aligned. |
 | **Customer Review Received → Thank You Text** | Google Reviews, Mailchimp | Automatically send a thank-you message when a customer leaves a new review or completes feedback. |
 | **Contact opts out in MessageDesk → Mark unsubscribed in CRM** | HubSpot, Salesforce | When a number opts out, flag the matching CRM record so marketing automations and sales sequences stop messaging them. |
 | **Contact unsubscribes in your CRM → Opt them out in MessageDesk** | HubSpot, Salesforce | Push unsubscribes the other direction so one opt-out covers every system. |
-| **New Twilio BYOC Number Added → Notify Slack Channel** | Twilio, Slack | Post a message to a Slack channel when a new Twilio BYOC number is connected to MessageDesk so admins and the support team stay in sync on phone-line changes. |
+| **New Twilio BYOC Number Added → Notify Slack Channel** | Twilio, Slack | When you connect a new Twilio BYOC number to MessageDesk, post a message to a Slack channel. Admins and the support team stay in sync on phone-line changes. |
 
 ---
 
@@ -468,7 +468,7 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 
 - ✅ **Include opt-out text:** "Reply STOP to opt out" for promotional or automated messages.
 - ✅ **Pick the right send action:** one recipient uses **Send Message**, a small group that should see each other uses **Send Group Message**, and a list uses **Send Broadcast Message**.
-- ✅ **Test with real data:** before turning on your Zap.
+- ✅ **Test with real data** before turning on your Zap.
 - ✅ **Add a Find step when you need more than the event:** trigger payloads are intentionally small.
 - 🧩 **Use filters and conditions:** limit your Zaps to relevant events, like only messages containing "Support."
 
@@ -480,7 +480,7 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | --- | --- |
 | **My Zap doesn't have the new triggers or actions** | You're on an older version. Open the step and switch it to **2.0**. Deprecated versions keep running but won't get new functionality. |
 | **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you're using the correct workspace and **version 2.0**. |
-| **A phone number is rejected** | The error names the value that couldn't be read. Numbers without a country code are treated as US or Canada (+1). |
+| **A phone number is rejected** | The error names the value that couldn't be read. MessageDesk treats numbers without a country code as US or Canada (+1). |
 | **Message sent but not delivered** | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details. |
 | **Send Message action fails for a specific contact** | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action fails even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
 | **Send Broadcast Message fails with a plan error** | Your plan doesn't include broadcasts, or you've hit a volume limit. MessageDesk enforces this on our side, so Zapier can't route around it. See [Pricing](/resources/pricing). |
