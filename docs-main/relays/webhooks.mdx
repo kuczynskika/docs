@@ -14,6 +14,10 @@ MessageDesk supports webhooks in both directions. Use the Send Webhook action to
 The Send Webhook action pushes MessageDesk events to an endpoint you control.
 
 <Note>
+  **Plan required:** Outbound webhooks are available on the **Pro** and **Enterprise** plans, and they run as a Relay action, so they follow the same plan requirement as [Relays](/relays/overview). See [Pricing](/resources/pricing).
+</Note>
+
+<Note>
   **Developer Tools required:** Before you use webhooks, configure your webhook endpoint and generate a signing secret in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools). The **Developer** feature permission gates this configuration. Managers and Operators need **Editor** or **Owner** on **Developer** to add an endpoint or rotate the signing secret. See [Team Management](/settings/workspace-settings/team-management).
 </Note>
 
