@@ -62,7 +62,7 @@ Conditions combine with **AND** or **OR**.
 
   - **Conversation label equals** is an operator-based matcher. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. Use it for fuzzy or namespaced matches, for example `startsWith "Region:"` to match every regional label at once.
   - **Conversation has label** is a simple presence check. It evaluates true when the conversation is currently labeled with the label you pick, and false otherwise. Use it as a gate (for example, only run when the conversation already has the `VIP` label).
-  - **Label name equals** (new in v2026.09.01) is a name-based presence check. It evaluates true when the conversation has a label whose name matches the text you enter. Pairs with the **Remove Label where name equals** action for name-driven cleanup flows like the **Auto-Close No-Reply-Needed** template.
+  - **Label name equals** (new in v2026.09.01) is a name-based presence check. It evaluates true when the conversation has a label whose name matches the text you enter. Pairs with the **Remove Label where name equals** action for name-driven cleanup flows like the **Auto Close No Reply Needed** template.
 </Note>
 
 <Note>
@@ -78,7 +78,7 @@ Conditions combine with **AND** or **OR**.
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
 - **Remove labels from the conversation**
-- **Remove Label where name equals** (new in v2026.09.01) removes every label on the conversation whose name matches the text you enter. **Remove labels from the conversation** removes labels you pick from a list; this action matches on the typed name instead. The **Auto-Close No-Reply-Needed** template uses it to clear the `No Reply Needed` label after closing.
+- **Remove Label where name equals** (new in v2026.09.01) removes every label on the conversation whose name matches the text you enter. **Remove labels from the conversation** removes labels you pick from a list; this action matches on the typed name instead. The **Auto Close No Reply Needed** template uses it to clear the `No Reply Needed` label after closing.
 - **Remove teammates from the conversation**
 - **Remove all teammates from the conversation**
 - **Close the conversation**
