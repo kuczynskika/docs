@@ -24,6 +24,21 @@ Start a workflow when a message arrives, a contact changes, or someone calls you
 
 ---
 
+## Pick the right app in Zapier
+
+Searching Zapier for "MessageDesk" can return more than one app. Only one of them works with Inbox by MessageDesk.
+
+| App name in Zapier | Use it? | What it connects to |
+| --- | --- | --- |
+| **MessageDesk (Invite Only)** | ✅ Yes, and select **2.0** | Inbox by MessageDesk (V2), at [inbox.messagedesk.com](https://inbox.messagedesk.com) |
+| **MessageDesk Reach** | ❌ No | The legacy V1 product, at [app.messagedesk.com](https://app.messagedesk.com) |
+
+<Warning>
+  **If Zapier only shows you MessageDesk Reach**, you haven't accepted the beta invitation yet. The invite-only app stays hidden from your Zapier account until the invitation is accepted. See [Gain early beta access](#1-gain-early-beta-access) below, and check that you accepted the invite while signed in as an **admin** on the Zapier account you're building in.
+</Warning>
+
+---
+
 ## Use version 2.0
 
 Version 2.0 is the current MessageDesk app on Zapier. Everything on this page describes 2.0.
@@ -55,6 +70,7 @@ Version 2.0 is the current MessageDesk app on Zapier. Everything on this page de
 - **When a contact opts out** → Flag the matching CRM record as unsubscribed so your sequences stop.
 - **From your CRM, forms, or scheduling tools** → Create or update contacts in MessageDesk and send personalized texts.
 - **From payments or invoicing systems** → Send SMS confirmations when a customer pays or an invoice goes out.
+- **From your HR or scheduling system** → Keep your employee and crew contact lists current. See [Contact and roster sync](#contact-and-roster-sync).
 
 <Note>
   **Requirements:**
@@ -106,6 +122,10 @@ A Zap has three kinds of steps.
 | **Create Comment** | Posts an internal comment on a conversation, with optional mentions and media. |
 | **Create Opt Out** | Opts one or more phone numbers out of messaging. |
 
+<Note>
+  **There's no Delete Contact action.** Zapier can create and update MessageDesk contacts, but it can't delete them. That makes contact sync one-way on the delete path: you'll see a **Contact Deleted** trigger when a contact is removed *in* MessageDesk, but you can't remove a MessageDesk contact *from* another app. See [Contact and roster sync](#contact-and-roster-sync) for what to do instead.
+</Note>
+
 ## Available MessageDesk searches
 
 | Search | Description |
@@ -156,6 +176,10 @@ There's no separate trigger for custom field changes. One trigger covers every e
 ### Contact Deleted
 
 Fires when someone deletes a contact from your workspace. Use it to close out or archive the matching record elsewhere.
+
+<Note>
+  This is a trigger only. There's no matching action to delete a MessageDesk contact from another app. See [Contact and roster sync](#contact-and-roster-sync).
+</Note>
 
 ---
 
@@ -224,6 +248,8 @@ Sends an outbound text or MMS from MessageDesk. Each Zap run sends one message.
 
 <Note>
   **MessageDesk enforces opt-outs automatically.** If the recipient has opted out in MessageDesk, the **Send Message** action fails and no text goes out, even if the Zap itself runs successfully on Zapier's side. You can't bypass opt-out enforcement. See the [Compliance Center](/settings/workspace-settings/compliance-center) for how MessageDesk captures and manages opt-outs.
+
+  This works in your favor when you automate outreach off CRM activity. You don't need to check opt-out status in your Zap first, because MessageDesk checks it on every send.
 </Note>
 
 ---
@@ -276,6 +302,10 @@ Creates or updates a contact in your selected workspace, matched by phone number
 | **First Name / Last Name** | ❌ | Optional contact name fields. |
 | **Email** | ❌ | Optional email address. |
 | **Custom fields** | ❌ | Your workspace's [custom fields](/settings/workspace-settings/custom-fields), pulled in automatically so you can set typed values. |
+
+<Note>
+  **Matching is by phone number.** If the number coming out of your other app doesn't match what's on the MessageDesk contact, you'll get a second contact instead of an update. When a source app stores several numbers per record, map the one you actually text.
+</Note>
 
 ![Create Update Contact](/images/create-update-contact.png)
 
@@ -429,6 +459,10 @@ Your workspace's [custom fields](/settings/workspace-settings/custom-fields) sho
 
 Add a new custom field in MessageDesk and it shows up the next time you refresh the step in Zapier.
 
+<Note>
+  **Custom fields need version 2.0.** Earlier versions of the app didn't expose them at all. If your custom fields aren't appearing in the Zap editor, switch the step to **2.0** and refresh it.
+</Note>
+
 ---
 
 ## Phone number formatting
@@ -446,6 +480,78 @@ All of these reach the same contact:
   **MessageDesk treats numbers without a country code as US or Canada (+1).** If a number can't be parsed, the step fails with an error naming the value that caused it, so you can fix the mapping instead of hunting through a Zap history.
 </Note>
 
+<Note>
+  **On version 1.x you needed a Formatter step** to convert numbers to E.164 before MessageDesk would accept them. If you have old Zaps carrying a Formatter step just for phone numbers, switch them to 2.0 and remove it.
+</Note>
+
+---
+
+## Contact and roster sync
+
+A common setup is to keep a list of people somewhere else, like an HR system, a scheduling tool, a project board, or a spreadsheet, and mirror it into MessageDesk contacts so your team can text them.
+
+Zapier handles most of this well, with one gap.
+
+| What you want | Supported? |
+| --- | --- |
+| Person added in the other app → contact in MessageDesk | ✅ **Create or Update Contact** |
+| Person edited in the other app → contact updated | ✅ **Create or Update Contact**, matched on phone number |
+| Contact changes in MessageDesk → push to the other app | ✅ **Contact Created**, **Contact Updated**, and **Contact Deleted** triggers |
+| Person removed in the other app → contact removed | ❌ No Delete Contact action |
+
+<Warning>
+  **Run the sync in one direction.** The first two rows and the third row are opposite halves of the same loop. Because [actions fire triggers](#actions-fire-triggers), turning on both means each write sets off the other Zap. Pick the system that owns the roster and sync toward the other one.
+</Warning>
+
+### Working around the delete gap
+
+There's no way to delete a MessageDesk contact from Zapier. Pick whichever of these fits how you work:
+
+- **Mark instead of delete.** Add a [custom field](/settings/workspace-settings/custom-fields) like `Status` and have your Zap set it to `Inactive` with **Create or Update Contact**. Filter your inbox and broadcast lists on that field. This keeps message history intact, which is usually what you want anyway.
+- **Opt out instead of delete.** Use **Create Opt Out** on the person's number. They stay in your workspace but can't be messaged, deliberately or accidentally.
+- **Delete in bulk, by hand.** For a periodic cleanup, [export and re-import](/contacts/create-import) your contact list, or delete contacts directly in the Inbox.
+
+<Note>
+  **Source-app limits matter too.** Some apps don't publish a usable "item deleted" or "row removed" trigger to Zapier, so even the detection half may not be available on their side. Check the source app's trigger list before you plan a two-way sync.
+</Note>
+
+<Note>
+  **For a large one-time roster load**, a [CSV import](/contacts/create-import) is faster and more reliable than a Zap, and it supports custom fields. Use Zapier to keep the list current afterward.
+</Note>
+
+---
+
+## QuickBooks
+
+Texting invoices, estimates, and payment confirmations is one of the most common reasons people connect MessageDesk to Zapier. A few specifics will save you time.
+
+<Warning>
+  **The legacy native QuickBooks integration is deprecated.** It only ever worked with MessageDesk Reach (V1), and we no longer maintain it. If you're on Inbox by MessageDesk, connect QuickBooks through Zapier instead. If you're on V1 and relying on the native integration, [contact support](mailto:support@messagedesk.com) about migrating.
+</Warning>
+
+### Add a Find Customer step
+
+QuickBooks invoice and estimate triggers usually return a customer **reference**, not the customer's phone number. So a Zap that goes straight from "Invoice Created" to **Send Message** has nothing to send to.
+
+Build it in this order:
+
+1. **Trigger:** QuickBooks Online → *New Invoice* or *New Estimate*.
+2. **Search:** QuickBooks Online → *Find Customer*, using the customer ID from the trigger. This is what gives you the phone number.
+3. **Search:** MessageDesk → *Find or Create Contact*, mapping the phone number from step 2.
+4. **Action:** MessageDesk → *Send Message*, with the invoice link or amount in the body.
+
+### Payment status is unreliable as a trigger
+
+QuickBooks doesn't always expose a clean "paid" state to Zapier. In practice the e-invoice status field can stay at `viewed` after an invoice is marked paid, and the `Paid in Full` state visible in the QuickBooks UI isn't available to Zapier at all.
+
+If a payment-received Zap never fires, don't assume the problem is on the MessageDesk side. Try triggering on a linked payment or transaction record rather than on invoice status, and test against a real paid invoice before turning the Zap on.
+
+### Field mappings can break after a QuickBooks update
+
+QuickBooks periodically renames or restructures fields, including phone number fields like `primary phone free form number`. When that happens, existing Zaps fail with a mapping error rather than silently sending the wrong thing.
+
+If a working QuickBooks Zap suddenly starts failing, open the step and re-map the phone field before troubleshooting anything else.
+
 ---
 
 ## Zapier or Relays?
@@ -458,6 +564,12 @@ Both automate MessageDesk. They're built for different jobs.
 | **Zapier** | You need to reach another app, or you need multi-step logic, branching, filters, and paths that Relays doesn't cover. |
 
 The two share a vocabulary on purpose. A Send Message action means the same thing in both places, so what you learn in one carries over.
+
+<Note>
+  **Why some things are Relays-only.** Zapier's actions cover programmatic tasks like sending a message, creating a contact, posting a comment, and opting someone out. Actions that mirror what a person does inside the Inbox, like assigning a conversation, changing its status, or adding and removing labels, are handled by Relays instead of duplicated in Zapier.
+
+  You can still *react* to those events in Zapier, since the corresponding triggers fire normally.
+</Note>
 
 ---
 
@@ -474,6 +586,10 @@ Go to your email, find an invitation from Zapier, and click accept to gain acces
 <Warning>
   You must be an admin on your Zapier account to accept the invitation and gain access to the MessageDesk Zapier integration.
 </Warning>
+
+<Note>
+  **Accept the invite before you go looking for the app.** Until it's accepted, Zapier only shows you the legacy **MessageDesk Reach** app. If you can't find the invitation, check spam, then [ask support to resend it](mailto:support@messagedesk.com).
+</Note>
 
 ### 3. Log in to Zapier
 
@@ -517,16 +633,21 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | --- | --- | --- |
 | **Missed call → AI text-back** | OpenAI, Zapier AI | When someone calls your number, find the conversation, draft a reply with an AI step, and text them back before they call a competitor. |
 | **New CRM Lead → Add to MessageDesk** | HubSpot, Pipedrive, Zoho CRM | When a new lead comes in, create or update the contact in MessageDesk and send a personalized welcome text. |
+| **Lead reaches a pipeline stage → Send follow-up text** | AgencyZoom, HubSpot, Pipedrive | Trigger on a stage change, filter to the one stage you care about, then text the lead. Add a lookup step keyed to the lead ID if you need one text per lead. |
 | **New MessageDesk contact → Create CRM record** | HubSpot, Salesforce | When someone creates a contact in MessageDesk, push the record into your CRM so both systems stay in sync. |
+| **New form submission → Create contact and text** | Jotform, Typeform, Google Forms, Webflow | Turn an inbound form or lead ad into a MessageDesk contact and an immediate first text. |
 | **Job or Appointment Booked → Send Reminder Text** | Calendly, Google Calendar, Jobber | Send automated appointment reminders or confirmations directly from MessageDesk. |
+| **New or updated spreadsheet row → Create or update contact** | Google Sheets, Airtable | Keep a MessageDesk contact list in step with a sheet you already maintain. Pair it with Send Broadcast Message to text the whole list. |
 | **Event registration closes → Send a broadcast** | Eventbrite, Google Forms | When registration fills or a date changes, send one broadcast to everyone on the list. Replies come back as private threads. |
 | **New Message in MessageDesk → Notify Teammates** | Slack, Microsoft Teams | Post a notification with message details and contact info when a new message arrives in MessageDesk. |
-| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero | When an invoice goes out or a payment comes in, send a text confirmation with the invoice image attached. |
+| **Invoice Created or Payment Received → Send Confirmation SMS** | QuickBooks, Xero | When an invoice goes out or a payment comes in, send a text confirmation with the invoice image attached. See [QuickBooks](#quickbooks) for setup specifics. |
 | **New Form Submission → Create Comment with Mention** | Google Forms, Typeform | Post an internal comment and tag the teammate who owns the follow-up. |
 | **Email or Message → Comment in Thread** | Outlook, Gmail, Teams | Create an internal comment in MessageDesk when an external email or chat arrives, keeping your team aligned. |
 | **Customer Review Received → Thank You Text** | Google Reviews, Mailchimp | Automatically send a thank-you message when a customer leaves a new review or completes feedback. |
 | **Contact opts out in MessageDesk → Mark unsubscribed in CRM** | HubSpot, Salesforce | When a number opts out, flag the matching CRM record so marketing automations and sales sequences stop messaging them. |
 | **Contact unsubscribes in your CRM → Opt them out in MessageDesk** | HubSpot, Salesforce | Push unsubscribes from your CRM into MessageDesk so one opt-out covers every system. |
+| **New employee or crew member added → Create contact** | Monday.com, BambooHR, Connecteam | Keep your workforce contact list current from the system that already owns it. See [Contact and roster sync](#contact-and-roster-sync). |
+| **Visit or shift scheduled → Send reminder text** | AlayaCare, Google Calendar | Text caregivers, clinicians, or field staff their next assignment, with replies landing in your shared inbox. |
 | **New Twilio BYOC Number Added → Notify Slack Channel** | Twilio, Slack | When you connect a new Twilio BYOC number to MessageDesk, post a message to a Slack channel. Admins and the support team stay in sync on phone-line changes. |
 
 <Warning>
@@ -545,6 +666,8 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 - ✅ **Add a Find step when you need more than the event:** trigger payloads are intentionally small.
 - ⚠️ **Sync in one direction:** pick the system that owns the record. Running a sync both ways creates a loop, because [actions fire triggers](#actions-fire-triggers).
 - ⚠️ **Watch Zapier for failures:** MessageDesk has no Zapier activity view, so Zapier's task history and notification settings are your only warning.
+- ✅ **Keep Zaps small and modular.** Several short Zaps are easier to debug than one long branching Zap, and a failure takes down less of your workflow.
+- ✅ **Guard against duplicate sends.** Zapier's deduplication only stops the same trigger event from running twice. If a record can re-enter the same state later, log processed records in Zapier Tables or Google Sheets and filter on whether they're already there.
 - 🧩 **Use filters and conditions:** limit your Zaps to relevant events, like only messages containing "Support."
 
 ---
@@ -553,8 +676,11 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 
 | Issue | Solution |
 | --- | --- |
+| **Zapier only offers me "MessageDesk Reach"** | That's the legacy V1 app. The V2 app is invite-only and stays hidden until you accept the Zapier invitation, as an admin on your Zapier account. [Request access](https://messagedesk.typeform.com/to/C3cEgPAm), or ask support to resend the invite. Then search for **MessageDesk (Invite Only)** and pick **2.0**. |
+| **I accepted the invite but the app still doesn't appear** | Confirm you accepted it while signed in to the same Zapier account you're building in, and that you're an admin on it. If you have more than one Zapier account, the invite only applies to the one that accepted it. |
 | **My Zap doesn't have the new triggers or actions** | You're on an older version. Open the step and switch it to **2.0**. Deprecated versions keep running but won't get new functionality. |
-| **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you're using the correct workspace and **version 2.0**. |
+| **Authentication fails when connecting to MessageDesk** | Reconnect your account in Zapier and confirm you're using the correct workspace and **version 2.0**. Authenticate with the email tied to your MessageDesk workspace. A personal address that isn't a member of the workspace won't authorize. |
+| **Zaps stopped firing after I reconnected my account** | A reconnect can leave the old webhook subscription in place, so events go to a subscription no live Zap is listening on. Turning the Zap off and on again re-subscribes it. If it still doesn't fire, especially across several workspaces, [contact support](mailto:support@messagedesk.com) and we'll clear the stale subscriptions on our side. |
 | **A phone number is rejected** | The error names the value that couldn't be read. MessageDesk treats numbers without a country code as US or Canada (+1). |
 | **Message sent but not delivered** | Check [Delivery Status & Errors](/messaging/delivery-status-errors) for details. |
 | **Send Message action fails for a specific contact** | Confirm the contact hasn't opted out. MessageDesk automatically blocks outbound messages to opted-out contacts, so the Zap action fails even though the Zap itself runs. See [Compliance Center](/settings/workspace-settings/compliance-center). |
@@ -568,7 +694,21 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Imported contacts didn't fire Contact Created** | That's expected. CSV imports create one bulk event instead of one per contact, and Zapier doesn't listen for it. |
 | **A search step returns nothing** | An empty result isn't an error. Add a Filter or Path to branch on it, or turn on the create option so the search makes the record. |
 | **Zap not triggering** | Verify the correct trigger and workspace setup. Send a test message to fire the event. |
-| **Contact not updating correctly** | Check field mappings and confirm the contact's phone number matches existing records. |
+| **Contact not updating correctly** | Check field mappings and confirm the contact's phone number matches existing records. Contacts match on phone number, so a mismatch creates a second contact instead of updating the first. |
+| **I can't find an action to delete a contact** | There isn't one. Contact deletion can't be driven from Zapier. Mark the contact inactive with a custom field, or opt the number out instead. See [Contact and roster sync](#contact-and-roster-sync). |
+| **My custom fields don't show up in the Zap editor** | Custom fields require **2.0**. Switch the step to 2.0 and refresh it. New fields added in MessageDesk appear the next time you refresh the step. |
+| **A QuickBooks Zap suddenly started failing** | QuickBooks changes field names periodically, including phone fields. Open the step and re-map the phone number field. See [QuickBooks](#quickbooks). |
+| **My QuickBooks payment Zap never fires** | QuickBooks doesn't reliably expose a paid state to Zapier. Trigger on a linked payment or transaction record instead of invoice status. See [QuickBooks](#quickbooks). |
 | **My Zap built fine but isn't firing (or one Zap works and another doesn't)** | Check which **MessageDesk user authenticated** that specific Zap in Zapier. Each Zap runs under the user whose credentials connected the MessageDesk account. That user must have **Editor** or **Owner** on the **Developer** feature in [Team Management](/settings/workspace-settings/team-management). Common cause: an admin authenticated one Zap (works), and a teammate without Developer permission authenticated another (fails). Re-authenticate the failing Zap with a user who has the right permission, or have an admin grant the existing user **Developer = Editor**. |
 
 ---
+
+## Still stuck?
+
+If a Zap won't run and none of the above explains it, [email support](mailto:support@messagedesk.com) with:
+
+- The Zap's name and the MessageDesk workspace it's connected to.
+- The email address that authenticated the MessageDesk connection.
+- A screenshot of the failing step from your Zap history, including the error text.
+
+That's usually enough for us to reproduce it without a screen share.
