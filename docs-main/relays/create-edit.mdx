@@ -21,7 +21,7 @@ Every Relay follows the same flow: **Trigger → Conditions → Actions**. For a
 
 ### 1. Visit the Relays module
 
-Your first visit to **Relays** opens the **Relay Templates** board. It holds 58 templates in seven outcome groups. Groups and template cards expand and collapse (new in v2026.09.10b), so you can scan all seven at once and open just the one you need.
+Your first visit to **Relays** opens the **Relay Templates** board. It holds 58 templates in seven outcome groups. Groups and template cards expand and collapse, so you can scan all seven at once and open just the one you need.
 
 Pick a template to start from, or click **Add Relay** to build from scratch. See [Relay templates](/relays/templates#templates-that-ship-in-the-app) for every template and what it does.
 
@@ -31,7 +31,7 @@ Pick a template to start from, or click **Add Relay** to build from scratch. See
 
 All Relays appear in the **Relays** tab. The list has five columns, left to right: **Name**, **Description**, **Trigger**, **Order**, and **Actions**. The **On/Off** toggle lives in the Actions column, along with the vertical **⋯** menu.
 
-The list **groups Relays by Trigger**, and the side menu sorts those triggers alphabetically (new in **v2026.09.01b**). Within a group, MessageDesk sorts by **Order**, so you can scan every Relay on a line or event at a glance. See [Relay building blocks](/relays/building-blocks#triggers) for all 14 triggers.
+The list **groups Relays by Trigger**, and the side menu sorts those triggers alphabetically. Within a group, MessageDesk sorts by **Order**, so you can scan every Relay on a line or event at a glance. See [Relay building blocks](/relays/building-blocks#triggers) for all 14 triggers.
 
 <Note>
   By default, new Relays are **paused**. Toggle them **On** when you're ready.
@@ -68,7 +68,7 @@ Click the vertical **⋯** (three dots) next to a Relay to **Rename**, **Edit de
 
 ### 3. Set a **Trigger**
 
-Pick the event that starts the Relay. Fourteen triggers are available, and three of them (**Contact Created**, **Contact Updated**, and **Inbound Webhook Received**) fire against a contact rather than a conversation, so conversation-scoped conditions and actions don't apply.
+Pick the event that starts the Relay. Fourteen triggers are available. Three of them fire against a contact rather than a conversation: **Contact Created**, **Contact Updated**, and **Inbound Webhook Received**. Conversation-scoped conditions and actions don't apply to those.
 
 See [Relay building blocks](/relays/building-blocks#triggers) for what each trigger fires on and which ones carry restrictions.
 
@@ -77,7 +77,7 @@ See [Relay building blocks](/relays/building-blocks#triggers) for what each trig
 </Note>
 
 <Note>
-  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger can't support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). New in **v2026.09.01b**: MessageDesk also removes any Event Data values used as inputs on existing actions, because those fields don't exist on the new trigger's event. Review your conditions and action inputs after switching triggers.
+  **Changing the trigger on an existing Relay.** If you switch a Relay's trigger, MessageDesk removes any conditions the new trigger can't support. The app shows a warning with a count before you save (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). MessageDesk also removes any Event Data values used as inputs on existing actions, because those fields don't exist on the new trigger's event. Review your conditions and action inputs after switching triggers.
 </Note>
 
 ![Relay Message Received Trigger Pn](/images/relay-message-received-trigger.png)
@@ -153,7 +153,7 @@ This behavior applies to every Relay action that sends a message: after-hours au
 
 ### Force Read or Unread from a Relay
 
-The default status transitions above cover most flows, but two actions let a Relay set the status explicitly (new in v2026.08.04):
+The default status transitions above cover most flows, but two actions let a Relay set the status explicitly:
 
 - **Mark Conversation Unread** puts the conversation back into the **Unread** filter after the Relay runs. Add it to an after-hours auto-reply so the customer's message still queues for morning review instead of sitting in **Replied**. The shipped **After-Hours Auto Reply** template uses this action, and **Keep Keyword Threads Unread** uses it to hold matching keyword threads for review.
 - **Mark Conversation Read** marks the conversation **Read** as part of the Relay run. Add it to one-shot acknowledgement or auto-close flows (appointment confirmations, delivery pings) where no human review is needed after the Relay sends its reply.
@@ -197,7 +197,7 @@ If you use neither action, the default table above still applies.
 
 **Does a Relay auto-reply mark the conversation as Read?**<br />No. It moves to **Replied**, which takes it out of the **Unread** filter. Only a teammate opening it marks it **Read**. See [Relays and conversation status](#relays-and-conversation-status).
 
-**What happens if I change the trigger on an existing Relay?**<br />MessageDesk removes any conditions the new trigger can't support. Before you save, the app shows a warning with a count (for example, "Changing the trigger will remove 1 incompatible condition from this relay"). New in **v2026.09.01b**, MessageDesk also removes any Event Data values used as inputs on existing actions, since those fields don't exist on the new trigger's event. Review the remaining conditions and action inputs after switching triggers to make sure the Relay still behaves as expected.
+**What happens if I change the trigger on an existing Relay?**<br />MessageDesk drops any conditions and Event Data inputs the new trigger can't support, and warns you before you save. See [Set a Trigger](#3-set-a-trigger).
 
 **Can I set up an out-of-office reply for just one person?**<br />Yes, even on a shared line. Add the **Teammate Assigned** condition set to the person who's out. See [Reply outside business hours](/relays/templates#reply-outside-business-hours) for the build.
 

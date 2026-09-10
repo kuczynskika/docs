@@ -14,18 +14,18 @@ Every Relay combines three parts: triggers, conditions, and actions. Use this pa
 | ----------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | Message Received              | A new inbound SMS arrives                                                 | Default trigger on templates. Supports the Reply to message action.         |
 | Message Sent                  | Your workspace sends a message, manual or automated                       | Unlocks Assign to sender.                                                   |
-| Message Failed                | An outbound message fails to deliver                                      | New in v2026.07.15. Pairs with the Message failure contains text condition. Unlocks delivery-failure workflows. |
+| Message Failed                | An outbound message fails to deliver                                      | Pairs with the Message failure contains text condition. Unlocks delivery-failure workflows. |
 | Conversation Opened           | Someone reopens a closed conversation                                     |                                                                             |
 | Conversation Users Assigned   | A teammate assigns one or more people to a conversation                   |                                                                             |
 | Conversation Label Applied    | A teammate applies a label to a conversation                              | Turns a label into an automation trigger.                                   |
-| Conversation Label Removed    | A teammate removes a label from a conversation                            | New in v2026.07.15. Mirror of Conversation Label Applied.                   |
+| Conversation Label Removed    | A teammate removes a label from a conversation                            | Mirror of Conversation Label Applied.                   |
 | Comment Created               | A teammate posts an internal comment                                      | Pairs with the Comment contains text condition. Comments posted by a Relay (via the Send Comment action) don't re-trigger this event, so Comment Created Relays can't loop into themselves. |
 | Conversation Closed           | A teammate closes a conversation                                          | Good for close-out and system-sync flows.                                   |
-| Call Received                 | An MD-owned phone number receives an inbound call                         | New in v2026.08.04. Only fires on MessageDesk-owned numbers. Doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
-| Contact Updated               | A contact property changes on a saved contact                             | New in v2026.08.11. Non-conversation trigger: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
-| Inbound Webhook Received      | An external system sends a webhook to MessageDesk                         | New in v2026.08.18. Non-conversation trigger. Fires against the contact identified by the payload's phone number. See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema. |
-| Contact Created               | A new contact is saved in your workspace                                  | New in v2026.08.21. Non-conversation trigger. Fires against the newly created contact. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
-| Opt Out Created               | A phone number opts out of receiving your messages                        | New in v2026.09.04. Message-sending actions aren't available. Conversation actions run only on channel-specific opt-outs. Contact actions run only when a saved contact matches the number. See [Opt Out Created](#actions-on-the-new-triggers). |
+| Call Received                 | An MD-owned phone number receives an inbound call                         | Only fires on MessageDesk-owned numbers. Doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. |
+| Contact Updated               | A contact property changes on a saved contact                             | Non-conversation trigger: it fires against a contact, not a conversation, so conversation-scoped conditions and actions don't apply. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
+| Inbound Webhook Received      | An external system sends a webhook to MessageDesk                         | Non-conversation trigger. Fires against the contact identified by the payload's phone number. See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema. |
+| Contact Created               | A new contact is saved in your workspace                                  | Non-conversation trigger. Fires against the newly created contact. Pairs with the **Send Message** action. You pick the outbound channel to send from. |
+| Opt Out Created               | A phone number opts out of receiving your messages                        | Message-sending actions aren't available. Conversation actions run only on channel-specific opt-outs. Contact actions run only when a saved contact matches the number. See [Opt Out Created](#actions-on-the-new-triggers). |
 
 ## Conditions
 
@@ -53,7 +53,7 @@ Two more conditions are each scoped to a single trigger:
 
 One more condition matches labels by name:
 
-- **Label name equals** checks whether the conversation has a label whose name matches the text you enter. New in **v2026.09.01**. It matches a name you type, not a label you pick from a list, so the condition can point at a label that doesn't exist yet. Create the label with that exact name before you rely on it, or edit the name in the condition.
+- **Label name equals** checks whether the conversation has a label whose name matches the text you enter. It matches a name you type, not a label you pick from a list, so the condition can point at a label that doesn't exist yet. Create the label with that exact name before you rely on it, or edit the name in the condition.
 
 Conditions combine with **AND** or **OR**.
 
@@ -62,31 +62,31 @@ Conditions combine with **AND** or **OR**.
 
   - **Conversation label equals** is an operator-based matcher. It exposes an operator selector with **contains**, **equals**, **notEquals**, **startsWith**, and **endsWith**. Use it for fuzzy or namespaced matches, for example `startsWith "Region:"` to match every regional label at once.
   - **Conversation has label** is a simple presence check. It evaluates true when the conversation is currently labeled with the label you pick, and false otherwise. Use it as a gate (for example, only run when the conversation already has the `VIP` label).
-  - **Label name equals** (new in v2026.09.01) is a name-based presence check. It evaluates true when the conversation has a label whose name matches the text you enter. Pairs with the **Remove Label where name equals** action for name-driven cleanup flows like the **Auto Close No Reply Needed** template.
+  - **Label name equals** is a name-based presence check. It evaluates true when the conversation has a label whose name matches the text you enter. Pairs with the **Remove Label where name equals** action for name-driven cleanup flows like the **Auto Close No Reply Needed** template.
 </Note>
 
 <Note>
-  **Relays can scope by line, label, content, and assignee.** **My phone number equals** targets a connected number. **Teammate Assigned** targets the conversation's current assignee. Per-person workflows like out-of-office now work on a shared line. Gate the Relay on **Teammate Assigned** set to the teammate who's out, then add **Is unassigned conversation** with **OR** to also cover brand-new threads no one has picked up. You no longer need a dedicated line per teammate.
+  **Relays can scope by line, label, content, and assignee.** **My phone number equals** targets a connected number. **Teammate Assigned** targets the conversation's current assignee. Per-person workflows like out-of-office now work on a shared line. Gate the Relay on **Teammate Assigned** set to the teammate who's out. Add **Is unassigned conversation** with **OR** to also cover brand-new threads. You no longer need a dedicated line per teammate.
 </Note>
 
 ## Actions
 
 - **Reply to message** (supports templates, tags, and media, with an optional **Delay**; available on Message Received, Message Failed, and Conversation Label Removed)
-- **Send Message** (new in v2026.08.11) sends an outbound SMS/MMS on non-conversation triggers. There's no conversation to reply into, so you pick which connected phone number MessageDesk sends from (**Outbound Channel**). Currently available on **Contact Updated**.
-- **Update Contact Property** updates a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property can take either a Custom Value or an Event Data value. A non-text property (for example dropdown or number) can take a static value that matches its type or, new in **v2026.08.28**, the matching Custom Property mapped from an Inbound Webhook payload. Mapped payload values must pass [type validation](/relays/webhooks#custom-property-validation).
+- **Send Message** sends an outbound SMS/MMS on non-conversation triggers. There's no conversation to reply into, so you pick which connected phone number MessageDesk sends from (**Outbound Channel**). Currently available on **Contact Updated**.
+- **Update Contact Property** updates a contact property you choose. Set it to a **Custom Value**, or pull a value from the triggering event (**Event Data**). A regular **Text** property can take either a Custom Value or an Event Data value. A non-text property, like a dropdown or number, takes either a static value matching its type or the Custom Property mapped from an Inbound Webhook payload. Mapped payload values must pass [type validation](/relays/webhooks#custom-property-validation).
 - **Assign teammates to the conversation**
 - **Assign to sender** (Message Sent trigger only)
 - **Add labels to the conversation**
 - **Remove labels from the conversation**
-- **Remove Label where name equals** (new in v2026.09.01) removes every label on the conversation whose name matches the text you enter. **Remove labels from the conversation** removes labels you pick from a list; this action matches on the typed name instead. The **Auto Close No Reply Needed** template uses it to clear the `No Reply Needed` label after closing.
+- **Remove Label where name equals** removes every label on the conversation whose name matches the text you enter. **Remove labels from the conversation** removes labels you pick from a list; this action matches on the typed name instead. The **Auto Close No Reply Needed** template uses it to clear the `No Reply Needed` label after closing.
 - **Remove teammates from the conversation**
 - **Remove all teammates from the conversation**
 - **Close the conversation**
 - **Open the conversation**
 - **Send webhook**
 - **Send Comment** (also called Post a Comment) posts an internal comment on the conversation. It supports static text and tags. The contact never sees it, and MessageDesk attributes it to the Relay. Use it for handoff notes and captured context.
-- **Mark Conversation Unread** (new in v2026.08.04) moves the conversation back into the **Unread** filter as part of the Relay run. Pair with **Reply to message** when an auto-reply shouldn't count as "handled" and the thread still needs a teammate to review it.
-- **Mark Conversation Read** (new in v2026.08.04) marks the conversation **Read** as part of the Relay run. Use it in acknowledgement or auto-close flows where no human review is required after the Relay runs.
+- **Mark Conversation Unread** moves the conversation back into the **Unread** filter as part of the Relay run. Pair with **Reply to message** when an auto-reply shouldn't count as "handled" and the thread still needs a teammate to review it.
+- **Mark Conversation Read** marks the conversation **Read** as part of the Relay run. Use it in acknowledgement or auto-close flows where no human review is required after the Relay runs.
 - **Stop Processing** is a terminal control action. When a Relay fires and reaches this action, no lower-priority Relays on the same trigger run. Delayed and time-based Relays are exempt. The Relay list shows when a Relay stops the cascade. Use it for routing: a matched Relay can prevent a catch-all from also firing.
 
 Available actions vary by trigger, so check the **Add Action** menu in the app for the trigger you're using.
@@ -96,16 +96,16 @@ Available actions vary by trigger, so check the **Add Action** menu in the app f
 Some actions can insert a value from the event that triggered the Relay instead of a fixed value.
 
 - On **Send Message** and **Send Comment**, choose an available Event Data property for the text, or choose **Custom Value** to type your own.
-- On **Update Contact Property**, the same choice applies for **Text** properties. New in **v2026.08.28**: non-text properties can also take Event Data on **Inbound Webhook Received** Relays by mapping the matching Custom Property from the payload. The payload value must pass [type validation](/relays/webhooks#custom-property-validation).
+- On **Update Contact Property**, the same choice applies for **Text** properties. Non-text properties can also take Event Data on **Inbound Webhook Received** Relays by mapping the matching Custom Property from the payload. The payload value must pass [type validation](/relays/webhooks#custom-property-validation).
 
 Event Data is most useful with the **Inbound Webhook Received**, **Contact Updated**, and **Contact Created** triggers, where the event carries contact and payload fields.
 
 <Note>
-  **Missing values exit early.** New in **v2026.09.01b**: if the Event Data property an action uses has no value, the action exits early without running. Say the action inserts the custom property `Favorite Color` and the contact has no `Favorite Color` value. Nothing runs, and nothing breaks. Earlier versions threw an error, which could take down a webhook-driven flow.
+  **Missing values exit early.** If the Event Data property an action uses has no value, the action exits early without running. Say the action inserts the custom property `Favorite Color` and the contact has no `Favorite Color` value. Nothing runs, and nothing breaks.
 </Note>
 
 <Note>
-  **Changing the trigger clears Event Data inputs.** New in **v2026.09.01b**: if you switch a Relay's trigger, MessageDesk removes any Event Data values used as inputs on existing actions. Those fields don't exist on the new trigger's event. Review your action inputs after switching triggers. See [Changing the trigger on an existing Relay](/relays/create-edit#3-set-a-trigger).
+  **Changing the trigger clears Event Data inputs.** If you switch a Relay's trigger, MessageDesk removes any Event Data values used as inputs on existing actions. Those fields don't exist on the new trigger's event. Review your action inputs after switching triggers. See [Changing the trigger on an existing Relay](/relays/create-edit#3-set-a-trigger).
 </Note>
 
 ### Actions on the new triggers
@@ -161,7 +161,7 @@ Event Data is most useful with the **Inbound Webhook Received**, **Contact Updat
 See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload schema.
 
 <Note>
-  **Contact Auto-Create checkbox.** New in v2026.08.24. Each action on an Inbound Webhook Received Relay includes an **Auto-Create** checkbox. Check it and MessageDesk creates the contact from the payload when the phone number doesn't match a saved contact, then runs the action. Leave it unchecked and the action only runs against saved contacts. The checkbox is set per action and only appears on this trigger. See [Auto-create contacts](/relays/webhooks#auto-create-contacts).
+  **Contact Auto-Create checkbox.** Each action on an Inbound Webhook Received Relay includes an **Auto-Create** checkbox. Check it and MessageDesk creates the contact from the payload when the phone number doesn't match a saved contact, then runs the action. Leave it unchecked and the action only runs against saved contacts. The checkbox is set per action and only appears on this trigger. See [Auto-create contacts](/relays/webhooks#auto-create-contacts).
 </Note>
 
 **Contact Created** is a non-conversation trigger. It fires when a new contact is saved in your workspace, so there's no conversation in scope. Conversation-scoped conditions and actions don't apply. Supported actions:
@@ -174,7 +174,7 @@ See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload sche
   **Pick the Outbound Channel on Send Message.** Because there's no existing conversation, the **Send Message** action asks which connected phone number to send from. MessageDesk creates a conversation with the new contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
 </Note>
 
-**Opt Out Created** fires when a phone number opts out of receiving your messages. New in **v2026.09.04**. What runs depends on the opt-out's scope and whether the number matches a saved contact:
+**Opt Out Created** fires when a phone number opts out of receiving your messages. What runs depends on the opt-out's scope and whether the number matches a saved contact:
 
 - **Channel-specific opt-outs.** When a contact opts out of a specific outbound channel (for example, by texting STOP to that number), conversation actions run against the conversation on that channel.
 - **Global opt-outs.** When the opt-out is global (mostly submitted through the support site), conversation actions don't run, because no single channel conversation is in scope.

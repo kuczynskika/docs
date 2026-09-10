@@ -26,7 +26,7 @@ This page has three parts. The **catalog** lists every shipped template. **How t
 Seven outcome groups, 58 templates. Pick one, name it, and adjust the fields. Every template arrives **paused**, so nothing runs until you toggle it **On**.
 
 <Tip>
-  **Outcome groups expand and collapse** (new in v2026.09.10b). The board opens with the outcome headings collapsed so you can scan all seven at once, then expand only the group you need. Individual template cards expand and collapse too, so you can read a template's detail without leaving the board.
+  **Outcome groups expand and collapse.** The board opens with the outcome headings collapsed so you can scan all seven at once, then expand only the group you need. Individual template cards expand and collapse too, so you can read a template's detail without leaving the board.
 </Tip>
 
 Each group below lists every shipped template and what it does. Where this page documents the underlying build, the third column links to it, so you can either install the template or build the same outcome by hand.
@@ -147,7 +147,7 @@ The **Custom Relay** (a blank canvas) is also available. Use it to build from sc
 </Tip>
 
 <Tip>
-  **Don't see the template you need?** Click **Suggest a Relay Template** at the bottom of the Relay Templates page in the app (new in v2026.09.04). It routes you to MessageDesk's feedback board, where you can submit template ideas.
+  **Don't see the template you need?** Click **Suggest a Relay Template** at the bottom of the Relay Templates page. It routes you to MessageDesk's feedback board, where you can submit template ideas.
 </Tip>
 
 ---
@@ -188,7 +188,7 @@ The busiest trigger. Eight builds cover almost everything teams do with inbound 
 | **Conditions** | Message contains text (`HELP`, `invoice`, `incident`, `apply`, `ACK`, whatever you need) |
 | **Actions** | Reply to message → Assign teammates to the conversation → Add labels to the conversation → Send webhook |
 
-**Why it works:** Keyword matching is the fastest triage you can build. The contact gets an instant acknowledgement, the right team picks up the thread, and the label gives you a filter. Use as many or as few of those actions as the case needs: a safety keyword wants all four, a billing keyword just wants an assignee and a label.
+**Why it works:** Keyword matching is the fastest triage you can build. The contact gets an instant acknowledgement, the right team picks up the thread, and the label gives you a filter. Use as many of those actions as the case needs. A safety keyword wants all four. A billing keyword wants an assignee and a label.
 
 Build one Relay per keyword to make a texted menu. `support`, `pricing`, and `sales` each get their own reply and owner, all on the same number.
 
@@ -369,7 +369,7 @@ Assigning more than one teammate works too, which is how a manager lets their te
 | **Conditions** | None, or My phone number equals to scope to a line |
 | **Actions** | Add labels to the conversation (`Inbound call`) → Assign teammates to the conversation → Send Comment → Send webhook |
 
-**Why it works:** Voice activity lives in the same thread as SMS. Firing on the call itself assigns an owner, drops an internal note, and pings your notifier the moment the phone rings, instead of waiting for a follow-up text.
+**Why it works:** Voice activity lives in the same thread as SMS. Firing on the call assigns an owner, drops an internal note, and pings your notifier the moment the phone rings. No waiting for a follow-up text.
 
 <Note>
   **Call Received works on MessageDesk-owned numbers only.** It doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. **Reply to message** isn't available on this trigger. See [Call Received actions](/relays/building-blocks#actions-on-the-new-triggers).
@@ -412,7 +412,7 @@ Assigning more than one teammate works too, which is how a manager lets their te
 | **Conditions** | None |
 | **Actions** | Add labels to the conversation (`Opted Out`) → Assign teammates to the conversation (compliance owner) → Close the conversation → Send webhook |
 
-**Why it works:** The trigger fires on the opt-out event, so it catches opt-outs that never arrive as a STOP text. Labeling keeps the thread visible to compliance, an owner confirms you honored the request, and the webhook syncs it downstream so you don't text the contact from another system.
+**Why it works:** The trigger fires on the opt-out event, so it catches opt-outs that never arrive as a STOP text. Labeling keeps the thread visible to compliance. An owner confirms you honored the request. The webhook syncs it downstream, so no other system texts the contact.
 
 <Note>
   **MessageDesk already blocks sending to opted-out contacts** at the workspace level. This Relay is for awareness, ownership, and audit trails, not for blocking the message. Message-sending actions aren't available on this trigger, and conversation actions run only on channel-specific opt-outs. See [Opt Out Created](/relays/building-blocks#actions-on-the-new-triggers).
