@@ -26,11 +26,42 @@ Each row in the table lists a connected number along with its registration state
 
 * **Phone number.** The line's number and label.
 * **Campaign ID.** The carrier registration campaign the number is associated with. Numbers without a campaign show as unassociated and can't send messages until you assign one.
-* **Status.** The current registration state of the number (for example, `Active`, `Pending`, `Failed`, or `Unregistered`). Only numbers in an active, campaign-associated state can send messages.
+* **Status.** The current state of the number. MessageDesk tracks status through the whole lifecycle, so a number you're hosting or porting stays visible in the table while the carrier works on it.
 
 <Frame>
   ![Settings Phone Management](/images/settings-phone-management.png)
 </Frame>
+
+#### Reading the status column
+
+| Status | What it means | What to do |
+| --- | --- | --- |
+| **Active** | The number is ordered, connected, and ready. | Nothing. You can send from it. |
+| **Pending** | The number is being ordered but isn't active yet. | Wait for the carrier to finish. |
+| **Pending Port In** | A port request is in progress. | Wait. Don't cancel service with your old provider until this clears. |
+| **Pending TCR Campaign Add** | The number is ordered but isn't attached to an approved campaign. | Finish [carrier registration](/carrier-registration/submit), then [associate the campaign](#change-a-numbers-campaign-association). |
+| **Pending TCR Campaign Change** | The number's campaign association is being updated. | Wait. This can take a while on the carrier's side. |
+| **Pending Messaging Config Add** | The number is ordered but not yet attached to a messaging configuration. | Wait. [Contact support](/contact-us) if it doesn't clear. |
+| **Canadian Traffic Only** | A Canadian number with no approved campaign. | Nothing, unless you need to text US numbers. See the note below. |
+| **Removed** | The number is no longer on your account. | See [Removed numbers](#removed-numbers-and-snapbacks). |
+
+<Warning>
+  **A number can only send messages while its status is active.** Any other status blocks outbound texting on that line. Inbound texts still arrive, so a number can be receiving messages while unable to reply.
+</Warning>
+
+<Note>
+  **Canadian numbers without a campaign can only text Canada.** You can add a Canadian number without completing carrier registration, but it lands in a Canadian-traffic-only state and can't message US numbers. To text US recipients from it, complete [carrier registration](/carrier-registration/submit) and associate the number with an approved campaign.
+</Note>
+
+#### Removed numbers and snapbacks
+
+A hosted number can show as removed without you asking for it. This usually happens after a **snapback**: you move the voice side of a hosted number to a new provider, and that provider also pulls the texting side back, because MessageDesk never owned the number outright.
+
+If a hosted line stops sending and shows as removed, [contact support](/contact-us). Restoring texting requires submitting a new hosting request and Letter of Authorization for that number.
+
+<Tip>
+  Tell your new voice provider explicitly that **SMS on the number stays with MessageDesk** when you move voice service. That's the cleanest way to avoid a snapback.
+</Tip>
 
 ---
 

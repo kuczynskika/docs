@@ -40,6 +40,7 @@
                 "pages": [
                   "get-started/phone-numbers/overview",
                   "get-started/phone-numbers/landline-voip",
+                  "get-started/phone-numbers/port-number",
                   "get-started/phone-numbers/purchase-new",
                   "get-started/phone-numbers/toll-free",
                   "get-started/phone-numbers/twilio"

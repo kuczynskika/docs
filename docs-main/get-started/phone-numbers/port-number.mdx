@@ -1,0 +1,125 @@
+---
+title: "Port a Phone Number to MessageDesk"
+description: "Transfer voice and texting for an existing phone number to MessageDesk. Letter of Authorization steps, timelines, call forwarding requirements, and what porting changes."
+sidebarTitle: "Port a number"
+og:title: "Port a Phone Number to MessageDesk"
+og:description: "Learn how to port an existing phone number to MessageDesk, and what changes when you do."
+og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
+---
+
+Porting moves an entire phone number to MessageDesk. MessageDesk becomes the carrier of record, and the number leaves your current provider. You can submit the request yourself in-app, including signing the Letter of Authorization.
+
+---
+
+## Porting is not the same as hosting
+
+Most teams who ask about porting actually want hosting. Read this before you start.
+
+| | Hosting | Porting |
+| --- | --- | --- |
+| **What moves** | Texting only | Voice and texting |
+| **Your current provider** | Keeps handling calls | No longer serves the number |
+| **Reversible** | Stop hosting, texting returns | Requires a new port to move back |
+| **Best for** | Keeping your phone system as-is | Leaving your current provider entirely |
+
+<Warning>
+  **MessageDesk doesn't offer full voice service.** After a port, texting runs through your Inbox, but MessageDesk can't act as your phone system. You have to [set up call forwarding](/settings/workspace-settings/phone-management#call-forwarding) to a number that can answer calls, or inbound callers will have nowhere to land.
+
+  If you need full voice features on the number, port it to a VoIP provider instead and let MessageDesk [host it for texting](/get-started/phone-numbers/landline-voip).
+</Warning>
+
+MessageDesk shows a warning banner when you choose the port option, and a final confirmation before the request is submitted. Both are there because porting is difficult to reverse.
+
+---
+
+## Before you start
+
+<Warning>
+  **US numbers need an approved carrier registration campaign first.** If your workspace has no campaign, or your campaign hasn't been approved yet, MessageDesk blocks the port request and prompts you to finish [carrier registration](/carrier-registration/submit).
+</Warning>
+
+<Note>
+  **Canadian numbers are the exception.** Numbers with a Canadian area code can be ported without an approved campaign. Canada doesn't run on the A2P 10DLC registration system that US numbers require.
+
+  A Canadian number added this way can only text **Canadian recipients** until you complete [carrier registration](/carrier-registration/submit) and associate it with an approved campaign.
+</Note>
+
+Have this ready:
+
+- The **phone number** you want to port
+- Your **current provider account details**, exactly as they appear on your bill
+- The name and title of someone **authorized to sign** on behalf of the account holder
+- A **call forwarding destination** for inbound calls after the port completes
+
+---
+
+## How to port a number to MessageDesk
+
+<Steps>
+  <Step title="Navigate to Settings" iconType="regular" stepNumber={1} titleSize="h3">
+    - Click your profile image in the top right of MessageDesk
+    - Click "Settings" from the dropdown menu
+  </Step>
+  <Step title="Click Phone Management" stepNumber={2} titleSize="h3">
+    - From the left-hand navigation, select "Phone Management" under Workspace Settings
+      - If you don't see `Phone Management` you may not have access. Speak with your account administrator for more details.
+  </Step>
+  <Step title="Click `Add Phone Number`" stepNumber={3} titleSize="h3">
+    - Click `Add Phone Number` button in the top right corner of the Phone Management screen
+    - Select **Port existing phone number**
+    - Read the warning banner explaining that porting moves voice as well as texting
+  </Step>
+  <Step title="Enter the number and account details" stepNumber={4} titleSize="h3">
+    - Enter the phone number you want to port
+    - Fill in your current provider's account information
+    - Details that don't match your provider's records are the most common cause of a rejected port
+  </Step>
+  <Step title="Fill out and sign the Letter of Authorization" stepNumber={5} titleSize="h3">
+    - Complete the authorized-signer fields
+    - MessageDesk generates a **PDF Letter of Authorization** from what you enter
+    - Sign it using the signature field
+  </Step>
+  <Step title="Confirm and submit" stepNumber={6} titleSize="h3">
+    - A confirmation dialog appears summarizing what porting changes
+    - Confirm to submit the request to the carrier
+  </Step>
+</Steps>
+
+<Warning>
+  **You can add at most 2 numbers per day** through porting, hosting, or purchase combined, per workspace. This is a fraud-prevention limit against number-rotation scams. If you need to port more numbers in a day, [contact support](/contact-us).
+</Warning>
+
+---
+
+## After you submit
+
+Track progress from the **Status** column in [Phone Management](/settings/workspace-settings/phone-management#what-the-phone-management-table-shows). Ports take longer than hosting requests because the losing carrier has to release the number.
+
+Once the port completes:
+
+1. **Set up [call forwarding](/settings/workspace-settings/phone-management#call-forwarding)** so inbound calls reach a number that can answer them.
+2. Confirm the number shows an active status and a campaign association.
+3. [Name the line](/settings/workspace-settings/phone-management#namelabel-phone-lines-and-add-emojis) so your team can identify it in the Inbox.
+
+<Note>
+  **Don't cancel your old service until the port completes.** Cancelling early releases the number back to the carrier pool and the port will fail.
+</Note>
+
+---
+
+## FAQ
+
+**How long does a port take?**\
+Longer than hosting, and the timeline depends on your losing carrier's release process. Plan for several business days and don't schedule campaigns against the number until it's active.
+
+**Can I port a mobile or Google Voice number?**\
+You can port a number out of a mobile carrier or Google Voice into MessageDesk. See [Move a Google Voice Number to MessageDesk](/migration/google-voice) for that path specifically.
+
+**What happens to texts during the port?**\
+Texting continues with your current provider until the port completes, then moves to your MessageDesk Inbox.
+
+**Can I undo a port?**\
+Not directly. You'd submit a new port request with your new provider to move the number again. This is why MessageDesk asks you to confirm before submitting.
+
+**How do I port a number away from MessageDesk?**\
+That process runs in the opposite direction and is driven by your new provider. See [Port your number away from MessageDesk](/settings/workspace-settings/phone-management#port-your-number-away-from-messagedesk).
