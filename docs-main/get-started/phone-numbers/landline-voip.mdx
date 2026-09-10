@@ -7,6 +7,30 @@ og:description: "Learn how to connect an existing landline or VoIP-connected num
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
+Hosting adds texting to a number you already own. Your voice service stays exactly where it is. You can complete the whole request yourself in MessageDesk, including signing the Letter of Authorization.
+
+---
+
+## Before you start
+
+<Warning>
+  **US numbers need an approved carrier registration campaign first.** If your workspace has no campaign, or your campaign hasn't been approved yet, MessageDesk blocks the hosting request and prompts you to finish [carrier registration](/carrier-registration/submit). Start registration before you plan to host numbers.
+</Warning>
+
+<Note>
+  **Canadian numbers are the exception.** Numbers with a Canadian area code can be hosted without an approved campaign. Canada doesn't run on the A2P 10DLC registration system that US numbers require.
+
+  A Canadian number added this way can only text **Canadian recipients** until you complete [carrier registration](/carrier-registration/submit) and associate it with an approved campaign.
+</Note>
+
+Have this ready before you begin:
+
+- The **phone number** you want to text-enable
+- Your **current provider** and account details for that number
+- The name and title of someone **authorized to sign** on behalf of the account holder
+
+---
+
 ## How to connect a new landline or VoIP phone number
 
 <Steps>
@@ -21,6 +45,18 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
   <Step title="Click `Add Phone Number`" stepNumber={3} titleSize="h3">
     - Click `Add Phone Number` button in the top right corner of the Phone Management screen
     - Select **Host existing phone number**
+  </Step>
+  <Step title="Enter the number you want to host" stepNumber={4} titleSize="h3">
+    - Enter the phone number
+    - MessageDesk checks whether the number can be hosted before you go any further. If it isn't hostable, you'll be told at this step rather than after submitting.
+  </Step>
+  <Step title="Fill out the Letter of Authorization" stepNumber={5} titleSize="h3">
+    - Complete the account and authorized-signer fields
+    - MessageDesk generates a **PDF Letter of Authorization** from what you enter
+  </Step>
+  <Step title="Sign and submit" stepNumber={6} titleSize="h3">
+    - Sign the LOA using the signature field
+    - Submit the request
   </Step>
 </Steps>
 
@@ -42,9 +78,11 @@ Learn how to [submit your carrier registration submission](/carrier-registration
 
 ## Processing time
 
-After you submit your Letter of Authorization (LOA), our team processes the hosting request on the backend. Processing time varies by provider:
+After you submit your Letter of Authorization (LOA), the hosting request goes to the carrier for processing. Processing time varies by provider:
 
 - **Typical timeline:** 5 minutes to 72 hours
+
+Track progress from the **Status** column in [Phone Management](/settings/workspace-settings/phone-management#what-the-phone-management-table-shows). The number moves from pending to active once the carrier completes the transfer, and MessageDesk associates it with your campaign automatically.
 
 <Note>
   **Adding additional numbers later?** You'll need to complete a new LOA for each number you want to add. The same processing timeline applies.

@@ -7,7 +7,25 @@ og:description: "Learn how to purchase a new text-only number with MessageDesk."
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-## Add a new phone number
+Buy a new text-enabled number directly in MessageDesk. Search by area code, pick a number, and it's connected to your workspace in a few minutes. No support request needed.
+
+---
+
+## Before you start
+
+<Warning>
+  **US numbers need an approved carrier registration campaign first.** If your workspace has no campaign, or your campaign hasn't been approved yet, MessageDesk blocks the purchase and prompts you to finish [carrier registration](/carrier-registration/submit). Approval typically takes a few business days, so start registration before you plan to buy numbers.
+</Warning>
+
+<Note>
+  **Canadian numbers are the exception.** If you search a Canadian area code, you can purchase without an approved campaign. Canada doesn't run on the A2P 10DLC registration system that US numbers require.
+
+  A Canadian number added this way can only text **Canadian recipients** until you complete [carrier registration](/carrier-registration/submit) and associate it with an approved campaign.
+</Note>
+
+---
+
+## Purchase a new phone number
 
 <Steps>
   <Step title="Navigate to Settings" iconType="regular" stepNumber={1} titleSize="h3">
@@ -15,12 +33,25 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
     - Click "Settings" from the dropdown menu
   </Step>
   <Step title="Click Phone Management" stepNumber={2} titleSize="h3">
-    - From the left-hand navigation, select "Phone Management" under Workspace Settings,
+    - From the left-hand navigation, select "Phone Management" under Workspace Settings
       - If you don't see `Phone Management` you may not have access. Speak with your account administrator for more details.
   </Step>
-  <Step title="Click `Add Phone Number` " stepNumber={3} titleSize="h3">
+  <Step title="Click `Add Phone Number`" stepNumber={3} titleSize="h3">
     - Click `Add Phone Number` button in the top right corner of the Phone Management screen
     - Select **Purchase Phone Number**
+  </Step>
+  <Step title="Search for an available number" stepNumber={4} titleSize="h3">
+    - Choose a **country**: United States or Canada
+    - Enter an **area code** to see numbers available in that region
+    - MessageDesk returns the available numbers matching your search
+  </Step>
+  <Step title="Choose a provider (if prompted)" stepNumber={5} titleSize="h3">
+    - If your workspace has campaigns or numbers with more than one carrier, you'll be asked which provider to purchase from
+    - If your workspace uses a single provider, MessageDesk selects it for you and skips this step
+  </Step>
+  <Step title="Confirm the purchase" stepNumber={6} titleSize="h3">
+    - Select the number you want and confirm
+    - MessageDesk associates the number with your approved campaign automatically
   </Step>
 </Steps>
 
@@ -34,8 +65,38 @@ After clicking `Add Phone Number` you'll see the following dialog. You can selec
   **You can add at most 2 numbers per day** through purchase, hosting, or porting combined, per workspace. This is a fraud-prevention limit against number-rotation scams. If you need to add more in a day, [contact support](/contact-us).
 </Warning>
 
+---
+
+## After you purchase
+
+Your new number appears in the [Phone Management](/settings/workspace-settings/phone-management) table right away, along with its **Campaign ID** and **Status**. Once the status shows the number as active and campaign-associated, you can send from it.
+
+Next steps:
+
+- [Name the line](/settings/workspace-settings/phone-management#namelabel-phone-lines-and-add-emojis) so your team can tell it apart in the Inbox
+- [Set up call forwarding](/settings/workspace-settings/phone-management#call-forwarding) so inbound calls reach a number that can answer them
+- Configure [roles and permissions](/settings/workspace-settings/team-management) if only some teammates should see this line
+
+---
+
 ## If you haven't already completed carrier registration
 
 [Carrier registration](/carrier-registration/overview) is required for texting with MessageDesk. If you haven't already completed this process, you'll be prompted to do so first.
 
 Learn how to [submit your carrier registration submission](/carrier-registration/submit).
+
+---
+
+## FAQ
+
+**Which area codes can I search?**\
+Any US or Canadian area code. MessageDesk searches live availability with your carrier, so results change over time. If nothing comes back for an area code, try an adjacent one serving the same region.
+
+**Why am I being asked to choose a provider?**\
+Workspaces that have numbers or campaigns spread across more than one carrier get to pick which carrier the new number comes from. Most workspaces use a single provider and never see this step.
+
+**Can I buy a toll-free number here?**\
+Toll-free numbers use a separate verification process. See [Connect toll-free numbers](/get-started/phone-numbers/toll-free).
+
+**Can I purchase more than two numbers in a day?**\
+Not on your own. The two-per-day cap is a fraud-prevention measure. [Contact support](/contact-us) if you need to add numbers in bulk.

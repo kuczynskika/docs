@@ -21,9 +21,10 @@ Setting up texting is one flow that combines [**carrier registration**](/carrier
 
 **3. Choose your configuration path**
 
-- **Purchase new**: Local **10DLC** or **toll-free** numbers
-- **Connect existing**: **Landline**, **VoIP**, local 10DLC, or **toll-free** numbers
-- **Connect Twilio**: Plug in your Twilio numbers (see note below)
+- [**Purchase new**](/get-started/phone-numbers/purchase-new): Search by area code and buy a local **10DLC** number
+- [**Host existing**](/get-started/phone-numbers/landline-voip): Add texting to a **landline**, **VoIP**, or local 10DLC number while your voice service stays put
+- [**Port existing**](/get-started/phone-numbers/port-number): Move **voice and texting** for a number to MessageDesk
+- [**Connect Twilio**](/get-started/phone-numbers/twilio): Plug in your Twilio numbers (see note below)
 
 **4. Start texting**: Once approved and connected, you're ready to message from your shared Inbox.
 
@@ -38,6 +39,13 @@ Setting up texting is one flow that combines [**carrier registration**](/carrier
 - **Registration is part of setup**: It's not a separate first step. Our flow handles it.
 - **Smart routing in the form**: The configuration form adapts to your choices (purchase vs. connect, local vs. toll-free, etc.).
 - **Different paths for different stacks**: Twilio-connected numbers keep using your Twilio registration state.
+- **You do it yourself**: Purchasing, hosting, and porting all run in-app from **Settings → Phone Management**. You don't need to file a support request or fill out an external form to add a number.
+
+<Warning>
+  **US numbers require an approved carrier registration campaign.** MessageDesk checks for an approved campaign before letting you purchase, host, or port a US number. Without one, the flow stops and prompts you to finish [carrier registration](/carrier-registration/submit) first.
+
+  **Canadian numbers are exempt**, because Canada doesn't use the A2P 10DLC registration system. A Canadian number added without a campaign can only text **Canadian recipients** until you register and associate it with an approved campaign.
+</Warning>
 
 <Warning>
   **MessageDesk caps daily number-adds at two per workspace.** To protect against number-rotation scams, MessageDesk limits how many numbers you can add through **purchase**, **hosting**, or **porting** to **two per day** per workspace. If you hit the cap, the UI blocks additional adds until the next day. Need to add more in one day? [Contact support](/contact-us). This cap doesn't apply to **Twilio (BYOC)** numbers, which you connect through your own Twilio account.
@@ -130,6 +138,10 @@ We add **SMS** to your existing number. **Voice stays with your current provider
   Hosting works for traditional landlines, local 10-digit numbers, and most VoIP-connected numbers.
 </Note>
 
+<Card title="Host an Existing Landline or VoIP Number" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/landline-voip">
+  Step-by-step hosting instructions, including the in-app Letter of Authorization.
+</Card>
+
 ### Phone number porting (move everything)
 
 We **move the entire number** (voice + text) to MessageDesk.
@@ -138,12 +150,18 @@ We **move the entire number** (voice + text) to MessageDesk.
 - MessageDesk becomes the carrier of record for that number
 
 <Warning>
-  **MessageDesk doesn't offer full voice service.** After a port, texting runs through your Inbox. Set up [call forwarding](/settings/workspace-settings/phone-management) so inbound calls route to a number that can receive them. If you need full voice functionality on the number, port it to a VoIP provider instead and let us host it for texting.
+  **MessageDesk doesn't offer full voice service.** After a port, texting runs through your Inbox. Set up [call forwarding](/settings/workspace-settings/phone-management#call-forwarding) so inbound calls route to a number that can receive them. If you need full voice functionality on the number, port it to a VoIP provider instead and let us host it for texting.
 </Warning>
+
+<Card title="Port a Phone Number to MessageDesk" icon="phone-arrow-right" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/port-number">
+  What porting changes, what to prepare, and how to submit the request.
+</Card>
 
 <Note>
   In short: **Hosting = add texting** to your current setup. **Porting = move voice + text** to MessageDesk.
 </Note>
+
+Both hosting and porting run entirely in MessageDesk. You enter the number, MessageDesk verifies it can be transferred, generates a **Letter of Authorization** as a PDF from the details you provide, and you sign it in the same flow. Track the request from the **Status** column in [Phone Management](/settings/workspace-settings/phone-management#what-the-phone-management-table-shows).
 
 ---
 
