@@ -27,14 +27,14 @@ A library of ready-made Relay templates. Start from a template that ships in the
 
 These starter templates are available from the Relays module in the app, grouped by outcome to match the gallery. Pick one, name it, and adjust the fields to match your workflow.
 
-### Assign & Route Conversations
+### Assign and route Conversations
 
 | Template | What it does | Underlying build |
 | --- | --- | --- |
 | **Assign to Teammate** | Assigns new conversations to a teammate | Message Received + Assign teammates |
 | **Auto Assign to First Responder** | Assigns a conversation to the first teammate who replies | Message Sent + Is unassigned conversation + Assign to sender |
 
-### Organize Conversations & Update Status
+### Organize Conversations and update status
 
 | Template | What it does | Underlying build |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ These starter templates are available from the Relays module in the app, grouped
 | **Unassign on Close** | Removes all teammates when a conversation closes | Conversation Closed + Teammate Assigned (Any teammate) + Remove all teammates |
 | **Auto-Close No-Reply-Needed** | Closes conversations labeled `No Reply Needed` and clears the label when a reply arrives | Message Received + Label name equals + Close the conversation + Remove Label where name equals |
 
-### Respond to Messages
+### Respond to messages
 
 | Template | What it does | Underlying build |
 | --- | --- | --- |
