@@ -128,10 +128,10 @@ You can insert tags in any message, template or one-off.
 
 **Contact**
 
-- `{{ ContactEmail }}` – contact’s email address
-- `{{ ContactFirstName }}` – contact’s first name
-- `{{ ContactLastName }}` – contact’s last name
-- `{{ ContactPhone }}` – contact’s phone number
+- `{{ ContactEmail }}` – contact's email address
+- `{{ ContactFirstName }}` – contact's first name
+- `{{ ContactLastName }}` – contact's last name
+- `{{ ContactPhone }}` – contact's phone number
 
 **Your user profile**
 
@@ -143,8 +143,8 @@ You can insert tags in any message, template or one-off.
 **Workspace**
 
 - `{{ WorkspaceName }}` – your MessageDesk workspace name
-- `{{ WorkspaceEmail }}` – your workspace’s primary email
-- `{{ WorkspacePhone }}` – your workspace’s primary phone
+- `{{ WorkspaceEmail }}` – your workspace's primary email
+- `{{ WorkspacePhone }}` – your workspace's primary phone
 
 **Custom fields**
 
@@ -230,11 +230,11 @@ A fallback is the default text used **when a tag has no data**. For example, whe
 
 ## Troubleshooting
 
-- **My tag didn’t resolve.**\
+- **My tag didn't resolve.**\
   Check that the contact has data for that field and that you set a **fallback**. Make sure the braces and tag name are correct (e.g., `{{ ContactFirstName }}`).
 - **My tag looks red in the preview.**\
   A red tag in the [message preview](/messaging/new-message-compose#preview-your-message-before-sending) means one of two things. Either the recipient is missing a value for that tag and you haven't set a **fallback**, or you're sending to a **label**, **assigned teammate**, or **group**. In the second case, values resolve per recipient at send time and can't be previewed individually.
-- **I can’t find a template.**\
+- **I can't find a template.**\
   Try a simpler search or confirm the template name in **Workspace Settings → Inbox Settings → Templates**.
 - **A template needs updating for everyone.**\
   Edit it from the **TT** menu (pencil icon) or from **Workspace Settings** so the change applies to all users.
