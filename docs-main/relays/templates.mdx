@@ -48,11 +48,11 @@ Each group below lists every shipped template and what it does. Where this page 
 | **Route Inbound Calls** | Labels, assigns, and drops a note on an inbound call | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls) |
 | **Comment Commands (#escalate)** | Watches internal comments for a command word like `#escalate` and routes the thread | None yet |
 | **Route a Label Namespace** | Matches every label under one prefix (for example `Region:`) with a single rule | [One rule that routes an entire namespace of labels](#route-a-whole-label-namespace) |
-| **Route by Contact Property — Part 1 (Bridge)** | First half of a two-Relay pattern: bridges a contact property change into a conversation-scoped Relay | None yet |
-| **Route by Contact Property — Part 2 (Apply Label)** | Second half: applies the matching label so your routing Relays can act on it | None yet |
+| **Route by Contact Property — Part 1 (Bridge)** | Writes the deciding contact property into a comment, so a conversation Relay can act on it | [Bridge a contact property](#bridge-a-contact-property-to-a-label-and-an-owner) |
+| **Route by Contact Property — Part 2 (Apply Label)** | Reads that comment, then labels the thread and assigns its owner | [Bridge a contact property](#bridge-a-contact-property-to-a-label-and-an-owner) |
 
 <Note>
-  **Route by Contact Property takes both halves.** Contact-property conditions live on the **Contact Updated** trigger, which is a non-conversation trigger, so it can't label or assign a conversation directly. Part 1 bridges the property change; Part 2 applies the label. Install both, or neither works. See [Relay building blocks](/relays/building-blocks#triggers) for how non-conversation triggers behave.
+  **Route by Contact Property takes both halves.** Contact triggers fire against a contact, not a conversation, so they can't label or assign on their own. Part 1 writes the property value into a comment; Part 2 reads that comment and does the labeling and assignment. Install both, or neither works. Part 2 also needs one copy per possible value. See [Bridge a contact property to a label and an owner](#bridge-a-contact-property-to-a-label-and-an-owner) for the full build.
 </Note>
 
 ### Organize Conversations & Update Status
@@ -196,6 +196,12 @@ Build one Relay per keyword to make a texted menu. `support`, `pricing`, and `sa
   **Keep a catch-all, and stop the cascade.** Order a keyword-free Relay **last** so a message that matches nothing still gets a graceful reply. Then add the **Stop Processing** action to each keyword Relay, so a specific match prevents the catch-all from firing on the same message. Ordering alone won't do it. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
 </Tip>
 
+<Note>
+  **Routing a keyword to a specific person multiplies.** A Relay matches one keyword and does one thing. It can't branch, so "route each of these five phrases to whichever of our fourteen people owns the thread" is 5 × 14 = **70 Relays**, one per pair. That's deliberate: Relays stay simple so they stay predictable.
+
+  Three ways to keep it manageable. Pick one shared keyword like `urgent` and build one Relay per person, which is 14 instead of 70. Route the keyword to a single triage owner and let them reassign. Or move the branching to [Zapier](/integrations/zapier), which handles multi-condition logic in one Zap at the cost of a separate subscription.
+</Note>
+
 #### Greet a new or anonymous contact
 
 | Field | Value |
@@ -204,6 +210,12 @@ Build one Relay per keyword to make a texted menu. `support`, `pricing`, and `sa
 | **Actions** | Reply to message (ask for a name) → Add labels to the conversation (`Lead`) → Assign teammates to the conversation |
 
 **Why it works:** Texts from unsaved numbers arrive as anonymous conversations. Asking for a name while the contact is still typing keeps your directory clean and every thread attributable. The label gives sales or intake one filter to work from. See [Anonymous, opted out & blocked](/contacts/anonymous-opt-out-blocked) for how anonymous status is determined.
+
+<Tip>
+  **Once your contact list is complete, anonymous means new.** If every existing customer, client, or candidate already exists as a contact, then an anonymous conversation is by definition someone you haven't met. That makes **Is anonymous conversation** a reliable stand-in for "new lead" with no keyword to match and nothing for the sender to remember. Add **Mark Conversation Unread** so the thread stays queued after any auto-reply, and assign it to whoever owns intake.
+
+  The reverse is also true: while contacts are still missing, this condition fires on regulars too. Finish importing before you rely on it.
+</Tip>
 
 #### Reply outside business hours
 
@@ -218,6 +230,21 @@ Keep "Reply STOP to opt out." in the reply text.
 
 <Tip>
   **One teammate can be out without silencing the line.** Add **Teammate Assigned** set to the person who's away, then add **Is unassigned conversation** with **OR** to also cover brand-new threads. The auto-reply fires only on their conversations. You don't need a dedicated line per teammate.
+</Tip>
+
+#### Cover several shift windows with one set of Relays
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Active hours, set to one window, plus **Teammate Assigned** or a line condition if the window is person-specific |
+| **Actions** | Assign teammates to the conversation → **Stop Processing** |
+
+**Why it works:** Most teams don't have one open window and one closed window. They have the hours the admin works, the evenings one group covers, the weekend another group covers, and the hours nobody works. One Relay can't express that, but one Relay per window can.
+
+Build a separate Relay for each window, each with its own **Active hours** and its own assignee. Then order them with the narrowest or highest-priority window first. Every matching Relay runs, and no Relay knows another already fired, so **Stop Processing** as the last action is what stops the later windows from also assigning. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
+
+<Tip>
+  **Put the busiest window first.** If your admin covers weekday business hours, that Relay goes at the top with Stop Processing, so the evening and weekend Relays below it never fire during her shift. The unstaffed window is the one to build last: give it an auto-reply rather than an assignee, since there's nobody to route to.
 </Tip>
 
 #### Stream every message to another system
@@ -328,9 +355,13 @@ Keep "Reply STOP to opt out." in the reply text.
 | **Conditions** | None, or scope by line or label |
 | **Actions** | Send Comment (the handoff note) → Send webhook (ping Slack or Teams) → Add labels to the conversation (`Handoff`) |
 
-**Why it works:** The new owner gets context the moment they're assigned, and the contact never sees it. The webhook covers teams who live in Slack or Teams rather than in-app notifications, and the label gives the assignee a filter for newly handed-off threads.
+**Why it works:** **MessageDesk doesn't notify anyone when they're assigned a conversation.** Assignment is silent, so a thread can sit with a new owner who has no idea it's theirs. This Relay is how the handoff actually gets noticed: the comment carries the context, and @mentioning the new owner in it fires the **@Mention in a comment** notification they do receive. The contact never sees any of it.
 
-Assigning more than one teammate works too, which is how a manager lets their team reply on their behalf. Everyone assigned [gets notified by default](/settings/my-settings/notification-preferences).
+Assigning more than one teammate works too, which is how a manager lets their team reply on their behalf. Mention each of them in the comment.
+
+<Note>
+  **Assignment isn't a notification event.** MessageDesk notifies on new messages, @mentions in comments, and finished exports and imports. Being assigned isn't on that list, and the **Only notify me about conversations assigned to me** email setting filters *new message* notifications to your threads rather than alerting you when you're assigned one. See [Notification preferences](/settings/my-settings/notification-preferences).
+</Note>
 
 ---
 
@@ -343,7 +374,7 @@ Assigning more than one teammate works too, which is how a manager lets their te
 | **Conditions** | Teammate Assigned (Any teammate), or scope by line or label |
 | **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Resolved`) → Send webhook |
 
-**Why it works:** Closing does three jobs at once. Assignment resets so the next inbound lands unassigned and your routing Relays handle it. The `Resolved` label keeps reporting clean. The webhook pushes the close event to your CRM, warehouse, or ticketing tool. Gating on **Teammate Assigned** set to Any teammate means the Relay only runs when someone's actually assigned.
+**Why it works:** Closing a conversation doesn't unassign anyone on its own, and a new inbound message reopens the thread with those assignees still attached. That's how a closed thread comes back owned by whoever handled it last, even when they're not the right owner now. This Relay resets assignment so the next message lands unassigned and your routing handles it fresh. The `Resolved` label keeps reporting clean, and the webhook pushes the close event to your CRM, warehouse, or ticketing tool. Gating on **Teammate Assigned** set to Any teammate means the Relay only runs when someone's actually assigned.
 
 ---
 
@@ -400,6 +431,58 @@ Assigning more than one teammate works too, which is how a manager lets their te
 <Note>
   **This is a non-conversation trigger.** It runs against the contact in the payload, so conversation-scoped conditions don't apply. **Add labels to the conversation** is still available. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.
 </Note>
+
+---
+
+### Contact Created, Contact Updated, and Comment Created
+
+Three triggers that work as one pattern. The two contact triggers fire against a contact rather than a conversation, so on their own they can't label or assign anything. Comment Created is what connects them to a conversation.
+
+#### Bridge a contact property to a label and an owner
+
+That's a problem when the thing deciding ownership lives in a contact property: a `Clinician`, `Account owner`, or `Territory` field.
+
+The way through is a comment. **Send Comment** creates the conversation and writes the property value into it. **Comment Created** is a conversation trigger, so it can label and assign. The comment is the bridge.
+
+**Part 1: write the property into a comment.** Build this twice, once on each trigger.
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Contact Created, then a second Relay on Contact Updated |
+| **Conditions** | None, or **Contact Property Equals** to scope which contacts qualify |
+| **Actions** | Send Comment, with **Event Data** set to the property that decides ownership |
+
+**Part 2: read the comment, then label and assign.** Build one of these per possible value.
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Comment Created |
+| **Conditions** | Comment contains text, matching one property value (a person's name, a territory, an account tier) |
+| **Actions** | Add labels to the conversation → Assign teammates to the conversation |
+
+**Why it works:** Updating one contact property does the rest. The contact Relay drops a comment carrying the value, and the matching Comment Created Relay turns that value into a label and an owner. Nobody labels or assigns by hand, and the label keeps working as a scope for every other Relay you build.
+
+<Warning>
+  **This needs a saved contact.** Contacts and conversations are separate records in MessageDesk, which is what lets an [anonymous conversation](/contacts/anonymous-opt-out-blocked) exist as a bare phone number. The bridge reads a contact property, so a conversation with no contact behind it has nothing to route on. You can still label anonymous conversations by hand, or with a Message Received Relay, but not with this pattern. Get contacts saved and their properties populated first.
+</Warning>
+
+<Note>
+  **Expect a comment every time the property changes.** The Part 1 Relay on **Contact Updated** fires on every update to that contact, so the internal comment reposts each time. That's what keeps the label correct if someone edits the field later, and the comments accumulate in the thread.
+
+  If the noise outweighs that, turn off the **Contact Updated** half and keep only **Contact Created**. The cost: a label that gets removed later won't come back on its own, and any Relay scoped to that label quietly stops matching that conversation. Contacts are visible to your team; internal comments are not visible to the contact either way.
+</Note>
+
+<Note>
+  **A Relay's comment does fire Comment Created.** It won't re-trigger the Relay that posted it, so this can't loop, but it does reach other Comment Created Relays. That's the whole mechanism. See [Comment Created](/relays/building-blocks#triggers).
+</Note>
+
+<Tip>
+  **Part 2 costs one Relay per value.** Fourteen clinicians means fourteen Comment Created Relays, each matching one name. They're near-identical, so build one and duplicate it. Keep the matched values distinct enough that **Comment contains text** can't hit two at once: `Sam Rivera` beats `Sam` when you also have a Samir.
+</Tip>
+
+<Tip>
+  **What the property and label unlock downstream.** Build a [saved filter](/contacts/saved-filters) per value and each owner can pull up their own client list, select all, and message them at once. And because a [custom role](/settings/workspace-settings/team-management#custom-roles-and-permissions) can scope someone's Inbox to specific labels, the label this Relay applies also feeds who can see the thread. Build the role by copying **Operator** and setting **Label inboxes** to Editor or Viewer on just that person's label, with No Access elsewhere. The default Operator role won't do it on its own: its label permissions govern editing labels, not restricting what shows up in the Inbox. One caveat that matters here, since this Relay assigns as well as labels: [assignment overrides label scope](/inbox/labels#faq), so an assigned teammate can see the thread even with No Access to its label.
+</Tip>
 
 ---
 
