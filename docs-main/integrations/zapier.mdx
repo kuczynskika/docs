@@ -223,7 +223,7 @@ This is the front half of the missed-call text-back recipe. Chain it with **Find
 
 Fires when a teammate posts an internal [comment](/inbox/comments-mentions) on a conversation. Use it to push escalations into Slack, or to open a ticket when someone flags a thread.
 
-It won't fire on customer-facing messages. Those are covered by Message Received and Message Sent.
+It won't fire on customer-facing messages. Message Received and Message Sent cover those.
 
 ---
 
@@ -363,7 +363,7 @@ Looks up a contact by phone number. Turn on the create option and it falls back 
 
 Looks up a conversation by phone number, optionally scoped to one of your workspace numbers.
 
-Two things make this more flexible than it sounds:
+Two details do more than the name suggests:
 
 - **It works without a contact.** MessageDesk supports anonymous conversations, so you can find or create a thread for a phone number with no contact record attached and none created.
 - **A conversation doesn't need messages.** You can create one before anyone has texted, which is useful if you label and organize threads ahead of time.
@@ -566,7 +566,7 @@ Both automate MessageDesk. They're built for different jobs.
 The two share a vocabulary on purpose. A Send Message action means the same thing in both places, so what you learn in one carries over.
 
 <Note>
-  **Why some things are Relays-only.** Zapier's actions cover programmatic tasks like sending a message, creating a contact, posting a comment, and opting someone out. Actions that mirror what a person does inside the Inbox, like assigning a conversation, changing its status, or adding and removing labels, are handled by Relays instead of duplicated in Zapier.
+  **Why some things are Relays-only.** Zapier's actions cover programmatic tasks like sending a message, creating a contact, posting a comment, and opting someone out. Relays handle actions that mirror what a person does inside the Inbox, like assigning a conversation, changing its status, or adding and removing labels. Zapier doesn't duplicate those.
 
   You can still *react* to those events in Zapier, since the corresponding triggers fire normally.
 </Note>
