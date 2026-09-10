@@ -53,7 +53,7 @@ Two more conditions are each scoped to a single trigger:
 
 One more condition matches labels by name:
 
-- **Label name equals** checks whether the conversation has a label whose name matches the text you enter. New in **v2026.09.01**. Because it matches on a typed name rather than a label you pick from a list, the condition can reference a label that doesn't exist yet. Create the label with that exact name (or edit the name in the condition) before you rely on it.
+- **Label name equals** checks whether the conversation has a label whose name matches the text you enter. New in **v2026.09.01**. It matches a name you type, not a label you pick from a list, so the condition can point at a label that doesn't exist yet. Create the label with that exact name before you rely on it, or edit the name in the condition.
 
 Conditions combine with **AND** or **OR**.
 
@@ -101,7 +101,7 @@ Some actions can insert a value from the event that triggered the Relay instead 
 Event Data is most useful with the **Inbound Webhook Received**, **Contact Updated**, and **Contact Created** triggers, where the event carries contact and payload fields.
 
 <Note>
-  **Missing values exit early.** New in **v2026.09.01b**: if the Event Data property an action uses has no value (for example, the action inserts the custom property `Favorite Color` and the contact has no `Favorite Color` value), the action exits early without running. Earlier versions threw an error on run, which could break webhook-driven flows.
+  **Missing values exit early.** New in **v2026.09.01b**: if the Event Data property an action uses has no value, the action exits early without running. Say the action inserts the custom property `Favorite Color` and the contact has no `Favorite Color` value. Nothing runs, and nothing breaks. Earlier versions threw an error, which could take down a webhook-driven flow.
 </Note>
 
 <Note>

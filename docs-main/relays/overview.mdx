@@ -14,16 +14,8 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 <iframe src="https://www.youtube.com/embed/pwKk371V8bk" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
 
 <Warning>
-  **Desktop only:** Relays are currently only available on desktop. Mobile users can't access or manage Relays at this time.
+  **Before you start.** Relays are desktop only, and they're on the **Pro** and **Enterprise** plans ([Pricing](/resources/pricing)). Only **Admins** get access by default. Admins can grant **Relay Management** to other roles in [Team Management](/settings/workspace-settings/team-management).
 </Warning>
-
-<Note>
-  **Plan required:** Relays are available on the **Pro** and **Enterprise** plans. See [Pricing](/resources/pricing) for the full comparison.
-</Note>
-
-<Note>
-  **Permissions required:** By default, only **Admin** users have access to Relays. Admins can grant **Relay Management** permissions to other user roles via **Settings → Team Management**. Learn more: [Team Management](/settings/workspace-settings/team-management).
-</Note>
 
 ![Relays Templates Pn](/images/relays-templates.png)
 
@@ -44,22 +36,17 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 
 ## What you can do with Relays
 
-1. **Out-of-office auto-reply:** Send an automatic response outside your business hours.
-2. **Keyword replies:** Trigger a preset message when a contact texts a specific keyword.
-3. **Identify unknown contacts:** Detect anonymous conversations and request name/phone/email automatically.
-4. **Auto-assign:** Assign new conversations to one or more teammates as they arrive.
-5. **Auto-label:** Apply labels (e.g., _Support_, _HR: New Hire_, _Region: West_) based on line, content, or rules.
-6. **Voice call Relays:** React to inbound calls on MessageDesk-owned numbers with the **Call Received** trigger. Label, assign, notify, or log the call in the same conversation thread.
-7. **Read/Unread control:** Force a conversation to **Unread** (keep it queued for a teammate after an auto-reply) or to **Read** (close the loop on acknowledgement flows) as part of the Relay run.
-8. **Inbound webhook Relays:** Start a Relay from an external system. Your CRM, form, or workflow tool sends a webhook to MessageDesk, and the Relay runs against the matching contact. See [Webhooks](/relays/webhooks#inbound-webhooks).
-9. **Contact property Relays:** Act on contact property changes with the **Contact Updated** trigger, for example texting a welcome the moment a lifecycle field flips to `Customer`.
-10. **New contact Relays:** Text or sync every new contact the moment they're saved with the **Contact Created** trigger. Useful for welcome messages and for pushing new contacts into an external system with **Send webhook**.
-11. **Dynamic values from the event:** Use **Event Data** to pull values from the triggering event into your messages and contact updates instead of typing fixed text. See [Event Data](/relays/building-blocks#event-data).
-12. **Opt-out follow-up Relays:** React the moment a contact opts out with the **Opt Out Created** trigger. Label the thread, assign a compliance owner, or sync the opt-out downstream. Message-sending actions aren't available on this trigger.
-13. **Custom Relays:** Combine your own conditions and actions to match your workflow.
+Relays cover four kinds of work:
+
+- **Answer without a person.** After-hours replies, keyword replies, and a first-touch question for texts from unsaved numbers.
+- **Get the thread to the right owner.** Route by phone line, keyword, label, or contact property. Assign the first teammate who replies. Reset assignment when a thread closes or reopens.
+- **Keep the Inbox honest.** Auto-label, auto-close threads nobody needs to touch, and force a thread back to **Unread** so an auto-reply doesn't look like a handled conversation.
+- **Talk to your other systems.** Push messages, closes, assignments, and opt-outs out by webhook. Let a CRM or form send a webhook in and text a contact through MessageDesk.
+
+Three triggers don't run on a conversation at all. **Contact Created**, **Contact Updated**, and **Inbound Webhook Received** fire against a contact, so you can text a welcome the moment someone is saved, or sync a property from another system. Use [Event Data](/relays/building-blocks#event-data) to pull values from the event into your messages instead of typing fixed text.
 
 <Tip>
-  All 58 Relay templates are customizable. You can adjust wording, labels, assignees, active hours, and more. Every template arrives paused, so nothing runs until you toggle it On.
+  Every template is customizable, and every one arrives paused. Nothing runs until you toggle it **On**.
 </Tip>
 
 ---
@@ -71,7 +58,7 @@ Relays are MessageDesk's workflow engine. They listen for **events**, evaluate *
 **Relays = Triggers → Conditions → Actions**
 
 - **Triggers:** When it runs.\
-  There are 14 triggers: **Message Received**, **Message Sent**, **Message Failed**, **Conversation Opened**, **Conversation Users Assigned**, **Conversation Label Applied**, **Conversation Label Removed**, **Comment Created**, **Conversation Closed**, **Call Received**, **Contact Updated**, **Inbound Webhook Received**, **Contact Created**, and **Opt Out Created**. See [Relay building blocks](/relays/building-blocks#triggers) for the full reference.
+  Fourteen triggers, from **Message Received** to **Opt Out Created**. See [Relay building blocks](/relays/building-blocks#triggers) for the full list.
 - **Conditions:** Where/when it applies.\
   _Examples:_\
   • **My phone number equals** _Support_\
@@ -91,32 +78,16 @@ You can **pause** and **resume** any Relay without deleting it.
   **Multiple Relays on one event.** When several Relays share the same trigger, **all matching Relays run** in the **Order** you set on the Relays list, top to bottom. Reorder Relays to control sequencing when conditions overlap. For example, run a specific keyword auto-reply before a generic after-hours reply. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
 </Note>
 
-<Tip>
-  For the full list of triggers, conditions, and actions (with the operator selector on **Conversation label equals** and the phone-line scoping model), see [Relay building blocks](/relays/building-blocks).
-</Tip>
-
 ---
 
 ## Relay templates
 
-MessageDesk ships **58 Relay templates**, grouped into seven outcomes on the **Relay Templates** board: Assign & Route Conversations, Organize Conversations & Update Status, Respond to Messages, Start Conversations from Contacts & Other Tools, Keep Contacts in Sync, Connect to Other Systems, and Protect: Compliance & Delivery. Outcome groups and template cards expand and collapse, so you can scan every outcome at once and open only the group you need.
-
-A few of the most common patterns:
-
-- **After-hours responder**\
-  _Trigger:_ Message Received → _Conditions:_ **Active hours** with **Trigger outside of business hours** enabled →\
-  _Actions:_ **Reply to message** with "We'll reply at 8am PT. Reply STOP to opt out."
-- **New lead triage**\
-  _Trigger:_ Message Received → _Conditions:_ **Is anonymous conversation** is true →\
-  _Actions:_ **Reply to message** with an info-capture prompt (include "Reply STOP to opt out.") → **Add labels to the conversation** (_Lead_) → **Assign teammates to the conversation** (_Sales Queue_)
-- **Phone-line-based routing**\
-  _Trigger:_ Message Received → _Conditions:_ **My phone number equals** _Dispatch Line_ →\
-  _Actions:_ **Assign teammates to the conversation** (_Dispatcher_) → **Add labels to the conversation** (_Route Change_)
+MessageDesk ships 58 templates, grouped by outcome in the app. Groups and template cards expand and collapse, so you can scan every outcome at once and open just the one you need.
 
 <Tip>
-  See [Relay templates](/relays/templates#templates-that-ship-in-the-app) for all 58 shipped templates and what each one does, plus an outcome-first library of builds covering customer service, operations and routing, and webhook integrations. For a reference of every trigger, condition, and action, see [Relay building blocks](/relays/building-blocks).
+  See [Relay templates](/relays/templates) for all 58, the builds behind them organized by trigger, and an industry-by-industry starting point. For every trigger, condition, and action, see [Relay building blocks](/relays/building-blocks).
 </Tip>
 
 <Note>
-  **Auto-replies don't mark conversations as Read.** When a Relay sends a message, the conversation moves to **Replied** status (so it leaves the Unread filter), but it stays unreviewed until a teammate opens it in the Inbox. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status).
+  **An auto-reply isn't a handled conversation.** A Relay reply moves the thread to **Replied**, which takes it out of the Unread filter, but nobody has read it yet. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status).
 </Note>
