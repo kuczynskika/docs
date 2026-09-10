@@ -43,10 +43,6 @@ Relays cover four kinds of work:
 
 Three triggers don't run on a conversation. **Contact Created**, **Contact Updated**, and **Inbound Webhook Received** fire against a contact, so you can text a welcome the moment someone is saved, or sync a property from another system. Use [Event Data](/relays/building-blocks#event-data) to pull values from the event into your messages instead of typing fixed text.
 
-<Tip>
-  Every template is customizable, and every one arrives paused. Nothing runs until you toggle it **On**.
-</Tip>
-
 ---
 
 ## How Relays work (at a glance)
@@ -55,22 +51,11 @@ Three triggers don't run on a conversation. **Contact Created**, **Contact Updat
 
 **Relays = Triggers → Conditions → Actions**
 
-- **Triggers:** When it runs.\
-  Fourteen triggers, from **Message Received** to **Opt Out Created**. See [Relay building blocks](/relays/building-blocks#triggers) for the full list.
-- **Conditions:** Where/when it applies.\
-  _Examples:_\
-  • **My phone number equals** _Support_\
-  • **Is anonymous conversation** is **true**\
-  • **Is unassigned conversation** is **true**\
-  • **Active hours** with **Trigger outside of business hours** enabled
-- **Actions:** What happens.\
-  _Examples:_\
-  • **Assign teammates to the conversation**\
-  • **Add labels to the conversation**\
-  • **Reply to message** (with templates, tags, media, and an optional Delay)\
-  • **Open the conversation** or **Close the conversation**
+- **Triggers** decide when a Relay runs. Fourteen of them, from **Message Received** to **Opt Out Created**.
+- **Conditions** decide where and when it applies: a phone line, a keyword, a label, an assignee, a time window.
+- **Actions** are what happens: reply, assign, label, open or close the thread, post an internal comment, send a webhook.
 
-You can **pause** and **resume** any Relay without deleting it.
+See [Relay building blocks](/relays/building-blocks) for every trigger, condition, and action. You can **pause** and **resume** any Relay without deleting it.
 
 <Note>
   **Multiple Relays on one event.** When several Relays share the same trigger, **all matching Relays run** in the **Order** you set on the Relays list, top to bottom. Reorder Relays to control sequencing when conditions overlap. For example, run a specific keyword auto-reply before a generic after-hours reply. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
@@ -80,10 +65,10 @@ You can **pause** and **resume** any Relay without deleting it.
 
 ## Relay templates
 
-MessageDesk ships 58 templates, grouped by outcome in the app. Groups and template cards expand and collapse, so you can scan every outcome at once and open just the one you need.
+MessageDesk ships 58 templates, grouped by outcome in the app. Every one arrives paused, so nothing runs until you turn it on.
 
 <Tip>
-  See [Relay templates](/relays/templates) for all 58, the builds behind them organized by trigger, and an industry-by-industry starting point. For every trigger, condition, and action, see [Relay building blocks](/relays/building-blocks).
+  See [Relay templates](/relays/templates) for all 58, the builds behind them organized by trigger, and an industry-by-industry starting point.
 </Tip>
 
 <Note>

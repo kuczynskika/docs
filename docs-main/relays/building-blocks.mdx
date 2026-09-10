@@ -110,6 +110,9 @@ Event Data is most useful with the **Inbound Webhook Received**, **Contact Updat
 
 ### Actions on the new triggers
 
+**Contact Created**, **Contact Updated**, **Inbound Webhook Received**, and **Opt Out Created** are non-conversation triggers. They fire against a contact rather than a conversation, so conversation-scoped conditions and actions don't apply. On these triggers, **Send Message** asks which connected phone number to send from (**Outbound Channel**), because there's no conversation to reply into. MessageDesk creates or continues a conversation with the contact on that channel, and standard compliance (opt-outs, 10DLC) still applies.
+
+
 **Message Failed** supports the following actions:
 
 - Reply to message
@@ -124,7 +127,7 @@ Event Data is most useful with the **Inbound Webhook Received**, **Contact Updat
 
 **Conversation Label Removed** supports the same set as Message Failed with one asymmetry: **Remove labels from the conversation isn't available** on this trigger. Every other action above is available.
 
-**Call Received** is a voice-only trigger. It fires when an MD-owned phone number receives an inbound call, so **Reply to message** isn't available (no inbound SMS to reply to). Use it to label, assign, notify, and log call activity in the same conversation thread. Supported actions:
+**Call Received** is a voice-only trigger. It fires when an MD-owned phone number receives an inbound call, so **Reply to message** isn't available (no inbound SMS to reply to). It doesn't fire for Twilio-connected, Telegorithm, or hosted numbers ([what's the difference?](/get-started/phone-numbers/overview)). Use it to label, assign, notify, and log call activity in the same conversation thread. Supported actions:
 
 - Assign teammates to the conversation
 - Add labels to the conversation
@@ -138,20 +141,12 @@ Event Data is most useful with the **Inbound Webhook Received**, **Contact Updat
 - Mark Conversation Read
 - Mark Conversation Unread
 
-<Note>
-  **Call Received works on MD-owned numbers only.** It doesn't fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers where voice stays with the original provider. See [Connect phone numbers](/get-started/phone-numbers/overview) for the difference between owned, hosted, and Twilio-connected lines.
-</Note>
-
-**Contact Updated** is a non-conversation trigger. It fires against a contact when a contact property changes, so there's no conversation in scope. Conversation-scoped conditions don't apply (for example, **Is unassigned conversation**, **Teammate Assigned**, **Conversation label equals**). Conversation-scoped actions don't apply either (assignment, labels, close/open, comments). Supported actions:
+**Contact Updated** fires when a contact property changes. Supported actions:
 
 - Send Message
 - Send webhook
 
-<Note>
-  **Pick the Outbound Channel on Send Message.** There's no existing conversation to reply into, so the **Send Message** action asks which connected phone number to send from. MessageDesk creates or continues a conversation with the contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
-</Note>
-
-**Inbound Webhook Received** is a non-conversation trigger. An outside system sends the payload, and the Relay runs against the contact it identifies rather than an existing conversation, so conversation-scoped conditions don't apply. It pairs well with:
+**Inbound Webhook Received** runs against the contact identified by the payload an outside system sends. It pairs well with:
 
 - Send Message (pick the **Outbound Channel** to send from)
 - Update Contact Property
@@ -164,15 +159,11 @@ See [Webhooks](/relays/webhooks#inbound-webhooks) for setup and the payload sche
   **Contact Auto-Create checkbox.** Each action on an Inbound Webhook Received Relay includes an **Auto-Create** checkbox. Check it and MessageDesk creates the contact from the payload when the phone number doesn't match a saved contact, then runs the action. Leave it unchecked and the action only runs against saved contacts. The checkbox is set per action and only appears on this trigger. See [Auto-create contacts](/relays/webhooks#auto-create-contacts).
 </Note>
 
-**Contact Created** is a non-conversation trigger. It fires when a new contact is saved in your workspace, so there's no conversation in scope. Conversation-scoped conditions and actions don't apply. Supported actions:
+**Contact Created** fires when a new contact is saved in your workspace. Supported actions:
 
 - Send Message (pick the **Outbound Channel** to send from)
 - Update Contact Property
 - Send webhook
-
-<Note>
-  **Pick the Outbound Channel on Send Message.** Because there's no existing conversation, the **Send Message** action asks which connected phone number to send from. MessageDesk creates a conversation with the new contact on that channel. Standard compliance (opt-outs, 10DLC) still applies.
-</Note>
 
 **Opt Out Created** fires when a phone number opts out of receiving your messages. What runs depends on the opt-out's scope and whether the number matches a saved contact:
 

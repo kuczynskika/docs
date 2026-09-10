@@ -12,7 +12,7 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 Every Relay follows the same flow: **Trigger → Conditions → Actions**. For a full reference of every [trigger, condition, and action](/relays/building-blocks), see the Relay building blocks page.
 
 <Note>
-  **Permissions required:** By default, only **Admin** users can access Relays. If you don't see the Relays module, ask your workspace admin to grant you **Relay Management** permissions via **Settings → Team Management**. Learn more: [Team Management](/settings/workspace-settings/team-management).
+  **Don't see the Relays module?** Relays are Admin-only by default. Ask your admin to grant **Relay Management** in [Team Management](/settings/workspace-settings/team-management). See [Relays overview](/relays/overview) for plan requirements.
 </Note>
 
 ---
@@ -21,9 +21,7 @@ Every Relay follows the same flow: **Trigger → Conditions → Actions**. For a
 
 ### 1. Visit the Relays module
 
-Your first visit to **Relays** opens the **Relay Templates** board. It holds 58 templates in seven outcome groups. Groups and template cards expand and collapse, so you can scan all seven at once and open just the one you need.
-
-Pick a template to start from, or click **Add Relay** to build from scratch. See [Relay templates](/relays/templates#starter-templates-that-ship-today) for every template and what it does.
+Your first visit to **Relays** opens the **Relay Templates** board. Pick a template to start from, or click **Add Relay** to build from scratch. See [Relay templates](/relays/templates) for all 58 and what each one does.
 
 <Frame>
   ![Relays Module 1](/images/relays-module-1.png "Relays Module 1")
@@ -96,7 +94,7 @@ Which conditions you see depends on the trigger. Eight are always available, and
 
 ### 5. Add **Actions**
 
-Actions run when the conditions match. Add one or many, in the order you want them to run. Chain them freely: **Reply**, **Assign**, and **Label** in a single Relay is a common combination.
+Actions run when the conditions match. Add one or many; they execute top-to-bottom in the order you add them. Chain them freely: **Reply**, **Assign**, and **Label** in a single Relay is a common combination.
 
 The **Add Action** menu varies by trigger, so check it for the trigger you picked. See [Relay building blocks](/relays/building-blocks#actions) for every action and which triggers it appears on.
 
@@ -172,17 +170,6 @@ If you use neither action, the default table above still applies.
 
 ---
 
-## Technical notes and behavior
-
-- **Relay order:** Within a Trigger group, Relays run top-down in the **Order** you set on the Relays list. All matching Relays run. A higher-priority Relay doesn't short-circuit later Relays. Reorder from the **Order** column using the up/down arrows or by typing the numeric value.
-- **Action order:** Actions execute top-to-bottom in the order you add them.
-- **Delays:** Units include minutes/hours. Use to prevent duplicate “fast follow” replies.
-- **Active hours:** Configure daily windows; invert to run only outside business hours.
-- **Permissions aware:** Assign/Label actions respect **Roles & Permissions**.
-- **Testing tip:** Start with a single condition/action, confirm it fires, then layer on complexity.
-
----
-
 ## Frequently asked Relay questions
 
 **Do Relays respect roles & permissions?**<br />Yes. Assign/Label actions follow your **Roles & Permissions** settings.
@@ -191,15 +178,13 @@ If you use neither action, the default table above still applies.
 
 **Can I include media in auto-replies?**<br />Yes. Keep each file **≤ 10 MB** (files **\> 500 KB** are sent as links). See [**Media**](/messaging/media).
 
-**Can I pause without losing my setup?**<br />Yes. Toggle **Off** to pause. Toggle **On** to resume.
-
 **How do I avoid duplicate automated replies?**<br />Add a **Delay** to the **Reply** action, or narrow conditions (e.g., “Is new conversation”).
 
 **Does a Relay auto-reply mark the conversation as Read?**<br />No. It moves to **Replied**, which takes it out of the **Unread** filter. Only a teammate opening it marks it **Read**. See [Relays and conversation status](#relays-and-conversation-status).
 
 **What happens if I change the trigger on an existing Relay?**<br />MessageDesk drops any conditions and Event Data inputs the new trigger can't support, and warns you before you save. See [Set a Trigger](#3-set-a-trigger).
 
-**Can I set up an out-of-office reply for just one person?**<br />Yes, even on a shared line. Add the **Teammate Assigned** condition set to the person who's out. See [Out-of-office for one teammate](/relays/templates#out-of-office-for-one-teammate-even-on-a-shared-line) for the build.
+**Can I set up an out-of-office reply for just one person?**<br />Yes, even on a shared line. Add the **Teammate Assigned** condition set to the person who's out. See [Reply outside business hours](/relays/templates#reply-outside-business-hours) for the build.
 
 ---
 
@@ -208,7 +193,7 @@ If you use neither action, the default table above still applies.
 **A Relay didn't fire**
 
 - Confirm it's **On** (not paused).
-- Verify the **Trigger** is “Message Received”.
+- Verify the **Trigger** matches the event you're testing. See [Relay building blocks](/relays/building-blocks#triggers).
 - Temporarily loosen **Conditions** (switch `AND` to `OR`, remove a filter) to test.
 
 **Auto-reply sent multiple times**
