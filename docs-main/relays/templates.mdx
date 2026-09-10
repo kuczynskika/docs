@@ -227,6 +227,56 @@ The outcomes below are the building blocks that most teams start from. Each entr
 
 ---
 
+### Bridge a contact property to a label and an owner
+
+**Contact Created** and **Contact Updated** fire against a contact rather than a conversation, so on their own they can't label or assign anything. That's a problem when the thing deciding ownership lives in a contact property: a `Clinician`, `Account owner`, or `Territory` field.
+
+The way through is a comment. **Send Comment** creates the conversation and writes the property value into it. **Comment Created** is a conversation trigger, so it can label and assign. The comment is the bridge.
+
+**Part 1: write the property into a comment.** Build this twice, once on each trigger.
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Contact Created, then a second Relay on Contact Updated |
+| **Conditions** | None, or **Contact Property Equals** to scope which contacts qualify |
+| **Actions** | Send Comment, with **Event Data** set to the property that decides ownership |
+
+**Part 2: read the comment, then label and assign.** Build one of these per possible value.
+
+| Field | Value |
+| --- | --- |
+| **Trigger** | Comment Created |
+| **Conditions** | Comment contains text, matching one property value (a person's name, a territory, an account tier) |
+| **Actions** | Add labels to the conversation → Assign teammates to the conversation |
+
+**Why it works:** Updating one contact property does the rest. The contact Relay drops a comment carrying the value, and the matching Comment Created Relay turns that value into a label and an owner. Nobody labels or assigns by hand, and the label keeps working as a scope for every other Relay you build.
+
+<Warning>
+  **This needs a saved contact.** Contacts and conversations are separate records in MessageDesk, which is what lets an [anonymous conversation](/contacts/anonymous-opt-out-blocked) exist as a bare phone number. The bridge reads a contact property, so a conversation with no contact behind it has nothing to route on. You can still label anonymous conversations by hand, or with a Message Received Relay, but not with this pattern. Get contacts saved and their properties populated first.
+</Warning>
+
+<Note>
+  **Expect a comment every time the property changes.** The Part 1 Relay on **Contact Updated** fires on every update to that contact, so the internal comment reposts each time. That's what keeps the label correct if someone edits the field later, and the comments accumulate in the thread.
+
+  If the noise outweighs that, turn off the **Contact Updated** half and keep only **Contact Created**. The cost: a label that gets removed later won't come back on its own, and any Relay scoped to that label quietly stops matching that conversation. Contacts are visible to your team; internal comments are not visible to the contact either way.
+</Note>
+
+<Note>
+  **A Relay's comment does fire Comment Created.** It won't re-trigger the Relay that posted it, so this can't loop, but it does reach other Comment Created Relays. That's the whole mechanism. See [Comment Created](/relays/building-blocks#triggers).
+</Note>
+
+<Tip>
+  **Part 2 costs one Relay per value.** Fourteen clinicians means fourteen Comment Created Relays, each matching one name. They're near-identical, so build one and duplicate it. Keep the matched values distinct enough that **Comment contains text** can't hit two at once: `Sam Rivera` beats `Sam` when you also have a Samir.
+</Tip>
+
+<Tip>
+  **What the property and label unlock downstream.** Build a [saved filter](/contacts/saved-filters) per value and each owner can pull up their own client list, select all, and message them at once. And because a [custom role](/settings/workspace-settings/team-management#custom-roles-and-permissions) can scope someone's Inbox to specific labels, the label this Relay applies also feeds who can see the thread. Build the role by copying **Operator** and setting **Label inboxes** to Editor or Viewer on just that person's label, with No Access elsewhere. The default Operator role won't do it on its own: its label permissions govern editing labels, not restricting what shows up in the Inbox. One caveat that matters here, since this Relay assigns as well as labels: [assignment overrides label scope](/inbox/labels#faq), so an assigned teammate can see the thread even with No Access to its label.
+</Tip>
+
+---
+
+---
+
 ## Vertical library
 
 The templates below are grouped by industry and by common cross-industry use cases.
