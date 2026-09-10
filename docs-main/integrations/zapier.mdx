@@ -313,10 +313,10 @@ Opts one or more phone numbers out of messaging. The result matches what a STOP 
 
 Use it when someone unsubscribes in your CRM, your helpdesk, or a preference center, and that decision needs to reach MessageDesk.
 
-Opting out a number that's already opted out succeeds quietly, so you don't need to check first. MessageDesk records the source as Zapier for your audit trail.
+Opting out a number that's already opted out succeeds quietly, so you don't need to check first. MessageDesk records the opt-out source as Zapier in your workspace audit trail.
 
 <Warning>
-  **Watch for opt-out loops.** Create Opt Out fires the Opt-Out Created trigger. If you have a Zap running in each direction, add a Zapier Filter so the trigger ignores opt-outs that came from Zapier. Otherwise the two Zaps can keep waking each other up.
+  **This action fires the Opt-Out Created trigger.** If you also run a Zap on that trigger, the two can keep waking each other up. See [Actions fire triggers](#actions-fire-triggers) before you build both directions.
 </Warning>
 
 ---
@@ -354,6 +354,69 @@ Two things worth knowing:
 
 - **Contact references can be empty.** Conversations work without contact records, so any contact reference in a payload might be null. Build your Zap to handle that.
 - **Contacts are the exception.** Contact payloads always include the custom fields map, because contacts are the one place the extra data is always worth carrying.
+
+---
+
+## Reliability and limits
+
+Here's how delivery actually behaves, so you can decide what to trust it with.
+
+### How triggers reach Zapier
+
+MessageDesk triggers use **REST hooks**, not polling. We push the event to Zapier as it happens, so there's no polling interval to wait through and no schedule that varies by Zapier plan.
+
+### We don't retry
+
+**If we can't deliver an event to Zapier, that event is gone.** There's no retry, no backoff, and no queue holding it for later.
+
+In practice this is rare, and it isn't the same as a Zap step failing. A Zap that runs and then errors on a later step can be replayed from your Zapier task history. An event that never reached Zapier at all never created a task, so there's nothing to replay.
+
+<Warning>
+  **Don't use Zapier as your system of record.** If a MessageDesk event has to reach another system every single time, without exception, Zapier alone isn't the right transport. Reconcile against MessageDesk on a schedule, or talk to us about your requirements.
+</Warning>
+
+### Duplicates and ordering
+
+- **Events don't fire twice.** Each event delivers once.
+- **There's no event ID or idempotency key** in the payload. If you need your own dedupe key, build one from fields in the payload.
+- **Order isn't guaranteed.** Two events fired moments apart can arrive out of order. It's uncommon, but don't write a Zap that depends on Contact Created landing before Contact Updated.
+
+### Rate limits
+
+MessageDesk doesn't rate limit actions coming from Zapier, and Send Broadcast Message has no volume cap beyond what your plan includes. Normal carrier throughput still applies to anything you send, and so do your plan's [broadcast entitlements](/resources/pricing).
+
+Because nothing throttles you on our side, a misconfigured Zap can do real work before you notice. See below.
+
+### Actions fire triggers
+
+**Every MessageDesk action fires the matching MessageDesk trigger.** MessageDesk is event-driven, so an action taken by a Zap looks the same as an action taken by a person.
+
+| This action | Fires this trigger |
+| --- | --- |
+| Create or Update Contact | Contact Created, Contact Updated |
+| Create Opt Out | Opt-Out Created |
+| Create Comment | Comment Created |
+| Send Message, Send Group Message, Send Broadcast Message | Message Sent |
+
+There are no loop guards on our side. If one Zap's action feeds another Zap's trigger, they'll keep triggering each other until Zapier stops them.
+
+<Warning>
+  **Don't pair a MessageDesk action with the trigger it fires.** Two-way syncs are where this bites. A Zap that pushes MessageDesk contacts into your CRM, running alongside a Zap that pushes CRM contacts back into MessageDesk, is a cycle: each write fires an update, which triggers the other Zap, which writes again.
+
+  Pick one direction and make it the authority. If you truly need both, put a Zapier Filter or Path in front of each action so a record that just arrived from the other system doesn't get written back.
+</Warning>
+
+### When something breaks
+
+- **Errors show up in Zapier**, in the Zap's task history, with whatever detail the failing step returned. Validation errors name the value we couldn't read, and a broadcast on an ineligible plan returns an entitlement error.
+- **MessageDesk has no Zapier activity view.** There's nowhere in your workspace to see Zap runs, successes, or failures. Zapier's task history is the only place to look.
+- **We don't email you when a Zap breaks.** Zapier notifies you by default, based on your Zapier account's notification settings. Check those if a silent failure would hurt.
+
+### Re-authentication
+
+Your MessageDesk connection in Zapier needs to be re-authenticated **at least every 30 days**. It can happen sooner if something revokes the token, like a password reset on the MessageDesk account that authorized the connection.
+
+A Zap with an expired connection stops running until someone reconnects it.
 
 ---
 
@@ -463,8 +526,14 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Email or Message → Comment in Thread** | Outlook, Gmail, Teams | Create an internal comment in MessageDesk when an external email or chat arrives, keeping your team aligned. |
 | **Customer Review Received → Thank You Text** | Google Reviews, Mailchimp | Automatically send a thank-you message when a customer leaves a new review or completes feedback. |
 | **Contact opts out in MessageDesk → Mark unsubscribed in CRM** | HubSpot, Salesforce | When a number opts out, flag the matching CRM record so marketing automations and sales sequences stop messaging them. |
-| **Contact unsubscribes in your CRM → Opt them out in MessageDesk** | HubSpot, Salesforce | Push unsubscribes the other direction so one opt-out covers every system. |
+| **Contact unsubscribes in your CRM → Opt them out in MessageDesk** | HubSpot, Salesforce | Push unsubscribes from your CRM into MessageDesk so one opt-out covers every system. |
 | **New Twilio BYOC Number Added → Notify Slack Channel** | Twilio, Slack | When you connect a new Twilio BYOC number to MessageDesk, post a message to a Slack channel. Admins and the support team stay in sync on phone-line changes. |
+
+<Warning>
+  **Run one direction at a time.** Two pairs above move the same data both ways: the contact sync rows, and the opt-out rows. Because [actions fire triggers](#actions-fire-triggers), running both halves of a pair creates a cycle where each Zap keeps setting off the other.
+
+  Pick the system that owns the record and sync toward the other one. If you genuinely need both directions, put a Zapier Filter or Path in front of each action so a record that just came from the other system doesn't get written straight back.
+</Warning>
 
 ---
 
@@ -474,6 +543,8 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 - ✅ **Pick the right send action:** one recipient uses **Send Message**, a small group that should see each other uses **Send Group Message**, and a list uses **Send Broadcast Message**.
 - ✅ **Test with real data** before turning on your Zap.
 - ✅ **Add a Find step when you need more than the event:** trigger payloads are intentionally small.
+- ⚠️ **Sync in one direction:** pick the system that owns the record. Running a sync both ways creates a loop, because [actions fire triggers](#actions-fire-triggers).
+- ⚠️ **Watch Zapier for failures:** MessageDesk has no Zapier activity view, so Zapier's task history and notification settings are your only warning.
 - 🧩 **Use filters and conditions:** limit your Zaps to relevant events, like only messages containing "Support."
 
 ---
@@ -490,7 +561,10 @@ Use these examples to get inspired and automate common MessageDesk tasks:
 | **Send Broadcast Message fails with a plan error** | Your plan doesn't include broadcasts, or you've hit a volume limit. MessageDesk enforces this on our side, so Zapier can't route around it. See [Pricing](/resources/pricing). |
 | **MMS doesn't attach** | The media URL has to be publicly accessible. A link behind a login, a signed URL that's expired, or a file on an internal server won't work. See [Media](/messaging/media) for supported types and size limits. |
 | **Call Received never fires** | The trigger only works on numbers where MessageDesk handles both voice and texting. Hosted numbers, where your original carrier still takes calls, won't fire it. |
-| **My opt-out Zaps keep triggering each other** | Create Opt Out fires the Opt-Out Created trigger. Add a Zapier Filter so the trigger skips opt-outs that came from Zapier. |
+| **Two of my Zaps keep triggering each other** | Every MessageDesk action fires the matching trigger, and there are no loop guards. If one Zap's action feeds the other Zap's trigger, turn one of them off and sync in a single direction. See [Actions fire triggers](#actions-fire-triggers). |
+| **My contacts keep updating in a loop** | Same cause. A MessageDesk-to-CRM sync running alongside a CRM-to-MessageDesk sync writes back and forth forever. Pick the system that owns the record and sync toward the other one. |
+| **My Zap stopped running and nothing changed** | Connections need re-authentication at least every 30 days, and sooner if a password reset revoked the token. Reconnect the MessageDesk account in Zapier. |
+| **An event never showed up in Zapier at all** | MessageDesk doesn't retry failed deliveries, so an event that didn't reach Zapier never created a task and can't be replayed. See [Reliability and limits](#reliability-and-limits). |
 | **Imported contacts didn't fire Contact Created** | That's expected. CSV imports create one bulk event instead of one per contact, and Zapier doesn't listen for it. |
 | **A search step returns nothing** | An empty result isn't an error. Add a Filter or Path to branch on it, or turn on the create option so the search makes the record. |
 | **Zap not triggering** | Verify the correct trigger and workspace setup. Send a test message to fire the event. |
