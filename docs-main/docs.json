@@ -39,7 +39,7 @@
                 "icon": "phone",
                 "pages": [
                   "get-started/phone-numbers/overview",
-                  "get-started/phone-numbers/landline-voip",
+                  "get-started/phone-numbers/host-number",
                   "get-started/phone-numbers/port-number",
                   "get-started/phone-numbers/purchase-new",
                   "get-started/phone-numbers/toll-free",
@@ -337,6 +337,10 @@
     {
       "source": "/relays/recipes",
       "destination": "/relays/templates"
+    },
+    {
+      "source": "/get-started/phone-numbers/landline-voip",
+      "destination": "/get-started/phone-numbers/host-number"
     }
   ]
 }

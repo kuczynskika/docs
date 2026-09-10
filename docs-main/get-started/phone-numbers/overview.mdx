@@ -9,7 +9,7 @@ og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c0
 
 # Learn how to connect new or existing phone numbers to MessageDesk
 
-Setting up texting is one flow that combines [**carrier registration**](/carrier-registration/overview) with **phone configuration**. You choose the number path (purchase, host, or connect), we guide you through the right steps, and you start texting.
+Setting up texting is one flow that combines [**carrier registration**](/carrier-registration/overview) with **phone configuration**. You choose the number path (add new, host, or port), we guide you through the right steps, and you start texting.
 
 ---
 
@@ -21,8 +21,8 @@ Setting up texting is one flow that combines [**carrier registration**](/carrier
 
 **3. Choose your configuration path**
 
-- [**Purchase new**](/get-started/phone-numbers/purchase-new): Search by area code and buy a local **10DLC** number
-- [**Host existing**](/get-started/phone-numbers/landline-voip): Add texting to a **landline**, **VoIP**, or local 10DLC number while your voice service stays put
+- [**Add new**](/get-started/phone-numbers/purchase-new): Search by area code and add a local **10DLC** number, included in your subscription
+- [**Host existing**](/get-started/phone-numbers/host-number): Add texting to a **landline**, **VoIP**, or local 10DLC number while your voice service stays put
 - [**Port existing**](/get-started/phone-numbers/port-number): Move **voice and texting** for a number to MessageDesk
 - [**Connect Twilio**](/get-started/phone-numbers/twilio): Plug in your Twilio numbers (see note below)
 
@@ -37,7 +37,8 @@ Setting up texting is one flow that combines [**carrier registration**](/carrier
 ## Important to know
 
 - **Registration is part of setup**: It's not a separate first step. Our flow handles it.
-- **Smart routing in the form**: The configuration form adapts to your choices (purchase vs. connect, local vs. toll-free, etc.).
+- **Smart routing in the form**: The configuration form adapts to your choices (new vs. existing number, local vs. toll-free, etc.).
+- **No per-number cost**: Adding phone lines is included in your subscription. MessageDesk bills by user seat, not by phone line. See [Pricing](/resources/pricing).
 - **Different paths for different stacks**: Twilio-connected numbers keep using your Twilio registration state.
 - **You do it yourself**: Purchasing, hosting, and porting all run in-app from **Settings → Phone Management**. You don't need to file a support request or fill out an external form to add a number.
 
@@ -70,8 +71,8 @@ MessageDesk can **text-enable** most business numbers in the U.S. and Canada.
 
 Text-enable traditional wired/legacy lines across all U.S. states and Canadian provinces.
 
-<Card title="Connect Landline and VoIP Numbers to MessageDesk" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/landline-voip">
-  Learn how to connect an existing landline or VoIP number to MessageDesk for texting.
+<Card title="Host a Landline or Local Number" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/host-number">
+  Add texting to an existing landline or local number while your voice service stays put.
 </Card>
 
 ### VoIP provider numbers
@@ -79,19 +80,19 @@ Text-enable traditional wired/legacy lines across all U.S. states and Canadian p
 Integrate numbers from common business VoIP systems (e.g., RingCentral, Dialpad, Grasshopper, Ooma, Aircall, Vonage, Nextiva, Verizon Business, AT&T Business, Zoom).
 
 <Note>
-  **Verizon One Talk isn't supported.** One Talk lines are tied to Verizon's mobile network, so you can't text-enable them with MessageDesk. See [Supported VoIP providers](/get-started/phone-numbers/landline-voip#supported-voip-providers) for alternatives.
+  **Verizon One Talk isn't supported.** One Talk lines are tied to Verizon's mobile network, so you can't text-enable them with MessageDesk. See [Supported VoIP providers](/get-started/phone-numbers/host-number#supported-voip-providers) for alternatives.
 </Note>
 
-<Card title="Connect Landline and VoIP Numbers to MessageDesk" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/landline-voip">
-  Learn how to connect an existing landline or VoIP number to MessageDesk for texting.
+<Card title="Host a VoIP Number" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/host-number">
+  Text-enable a number from your business phone system. Calling stays with your VoIP provider.
 </Card>
 
 ### Toll-free numbers
 
 Text-enable North American toll-free numbers with prefixes **800/833/844/855/866/877/888**.
 
-<Card title="Connect Landline and VoIP Numbers to MessageDesk" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/landline-voip">
-  Learn how to connect an existing landline or VoIP number to MessageDesk for texting.
+<Card title="Connect Toll-Free Numbers" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/toll-free">
+  Text-enable a toll-free number. Toll-free uses a separate verification process.
 </Card>
 
 ### Twilio numbers
@@ -138,7 +139,7 @@ We add **SMS** to your existing number. **Voice stays with your current provider
   Hosting works for traditional landlines, local 10-digit numbers, and most VoIP-connected numbers.
 </Note>
 
-<Card title="Host an Existing Landline or VoIP Number" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/landline-voip">
+<Card title="Host a Phone Number with MessageDesk" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/host-number">
   Step-by-step hosting instructions, including the in-app Letter of Authorization.
 </Card>
 
