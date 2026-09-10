@@ -1,13 +1,43 @@
 ---
-title: "Connect a Landline or VoIP Number to MessageDesk"
-description: "Text-enable your existing landline or VoIP number with MessageDesk. Step-by-step setup, supported carriers, and what to expect during the porting process."
-sidebarTitle: "Connect landline/VoIP"
-og:title: "Connect Landline or VoIP Number to MessageDesk"
-og:description: "Learn how to connect an existing landline or VoIP-connected number to MessageDesk for text messaging."
+title: "Host a Landline or VoIP Number with MessageDesk"
+description: "Text-enable an existing landline, VoIP, or local number with MessageDesk while your voice service stays with your current provider. Setup steps, supported carriers, and timelines."
+sidebarTitle: "Host a number"
+og:title: "Host a Phone Number with MessageDesk"
+og:description: "Learn how to text-enable an existing landline or VoIP number with MessageDesk while keeping your current voice provider."
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
-Hosting adds texting to a number you already own. Your voice service stays exactly where it is. You can complete the whole request yourself in MessageDesk, including signing the Letter of Authorization.
+Hosting adds texting to a number you already own. Your voice service stays exactly where it is, with the provider you use today. You can complete the whole request yourself in MessageDesk, including signing the Letter of Authorization.
+
+---
+
+## Hosting or porting?
+
+MessageDesk supports both, and they're genuinely different. Pick the one that matches what you want to happen to your phone service.
+
+| | Hosting (this page) | [Porting](/get-started/phone-numbers/port-number) |
+| --- | --- | --- |
+| **What moves to MessageDesk** | Texting only | Voice and texting |
+| **Your current provider** | Keeps handling your calls | No longer serves the number |
+| **Your phone system** | Unchanged | You leave it |
+| **Best for** | Adding texting to the setup you already have | Leaving your current provider entirely |
+
+<Tip>
+  **Most teams want hosting.** If you're happy with your current phone system and just want to text from your business number, host it. Port only when you're moving off your current provider.
+</Tip>
+
+---
+
+## What you can host
+
+Hosting works for numbers that aren't tied to a mobile device:
+
+- **Landlines** and traditional wired lines
+- **Local 10-digit numbers**
+- **VoIP numbers** from most business phone systems (see [supported providers](#supported-voip-providers))
+- **Toll-free numbers** — see [Connect toll-free numbers](/get-started/phone-numbers/toll-free) for the separate verification process
+
+You can't host **mobile numbers**, **Google Voice numbers**, or **virtual SMS app numbers**. Those have to be [ported](/get-started/phone-numbers/port-number) out of their current service first. See [Move a Google Voice Number to MessageDesk](/migration/google-voice) for that path.
 
 ---
 
@@ -31,7 +61,7 @@ Have this ready before you begin:
 
 ---
 
-## How to connect a new landline or VoIP phone number
+## How to host a phone number
 
 <Steps>
   <Step title="Navigate to Settings" iconType="regular" stepNumber={1} titleSize="h3">
@@ -39,8 +69,8 @@ Have this ready before you begin:
     - Click "Settings" from the dropdown menu
   </Step>
   <Step title="Click Phone Management" stepNumber={2} titleSize="h3">
-    - From the left-hand navigation, select "Phone Management" under Workspace Settings,
-      If you don't see `Phone Management` you may not have access. Speak with your account administrator for more details.
+    - From the left-hand navigation, select "Phone Management" under Workspace Settings
+      - If you don't see `Phone Management` you may not have access. Speak with your account administrator for more details.
   </Step>
   <Step title="Click `Add Phone Number`" stepNumber={3} titleSize="h3">
     - Click `Add Phone Number` button in the top right corner of the Phone Management screen
@@ -88,9 +118,25 @@ Track progress from the **Status** column in [Phone Management](/settings/worksp
   **Adding additional numbers later?** You'll need to complete a new LOA for each number you want to add. The same processing timeline applies.
 </Note>
 
+---
+
+## What changes once your number is hosted
+
+<Warning>
+  **Texts stop arriving in your current phone system.** After hosting, every text sent to that number lands in your MessageDesk Inbox and nowhere else. If your VoIP system shows texts today, it won't after hosting.
+
+  **Voice is unaffected.** Calls keep routing exactly as they do now, through your existing provider.
+</Warning>
+
+<Note>
+  **Moving voice later can break texting.** If you move the voice side of a hosted number to a new provider, that provider often pulls the texting side back too. This is called a snapback, and it happens because MessageDesk doesn't own the number outright. Tell your new voice provider explicitly that **SMS stays with MessageDesk**. See [Removed numbers and snapbacks](/settings/workspace-settings/phone-management#removed-numbers-and-snapbacks).
+</Note>
+
+---
+
 ## Supported VoIP providers
 
-Below is a list of all supported VoIP providers. You can text-enable and transfer phone numbers from any of these providers to MessageDesk via [phone number hosting](https://docs.messagedesk.com/get-started/phone-numbers/overview#hosting-vs-porting-what%E2%80%99s-the-difference).
+Below is a list of all supported VoIP providers. You can text-enable and transfer phone numbers from any of these providers to MessageDesk via phone number hosting.
 
 In this case, all of your calling, voice features, and service will remain with your VoIP provider. The text messaging associated with the number will move to MessageDesk. Many businesses and organizations configure their numbers in this way to get the best of both voice and text messaging features.
 
@@ -129,3 +175,22 @@ Don't see your provider? If your number is non-mobile and not tied to a mobile d
 <Warning>
   **Verizon One Talk isn't compatible with MessageDesk.** One Talk numbers are tied to Verizon's mobile network, so you can't text-enable or host them with MessageDesk. If you use One Talk today and want texting through MessageDesk, use a separate MessageDesk business number. To keep voice continuity, set up [call forwarding](/settings/workspace-settings/phone-management#call-forwarding) from that number to your One Talk line.
 </Warning>
+
+---
+
+## FAQ
+
+**Will hosting interrupt my phone service?**\
+No. Voice keeps working throughout, and there's no cutover window for calls. Only texting changes hands.
+
+**Can I undo hosting?**\
+Yes. Hosting is reversible in a way porting isn't. Texting returns to your provider if you stop hosting with MessageDesk, though you may need them to re-enable it.
+
+**Do I need a new LOA for every number?**\
+Yes. Each number needs its own Letter of Authorization, even numbers on the same account.
+
+**My number couldn't be hosted. Why?**\
+MessageDesk checks hostability before you fill out the LOA. Mobile numbers, Google Voice numbers, and some carrier configurations can't be hosted. [Contact support](/contact-us) if you think the result is wrong.
+
+**What if I want to move voice to MessageDesk too?**\
+That's a port, not a host. See [Port a phone number to MessageDesk](/get-started/phone-numbers/port-number) — and note MessageDesk doesn't provide full voice service, so you'd set up call forwarding after.
