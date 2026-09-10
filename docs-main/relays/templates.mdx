@@ -1,23 +1,21 @@
 ---
 title: "Relay templates"
-description: "A library of ready-made MessageDesk Relay templates: all 58 templates that ship in the app, plus an outcome-first library covering customer service, operations and routing, and webhook integrations."
+description: "All 58 MessageDesk Relay templates that ship in the app, the builds behind them organized by trigger, and an industry-by-industry starting point."
 sidebarTitle: "Templates"
 "og:title": "Relay templates - Ready-Made Automation Templates for MessageDesk"
-"og:description": "All 58 Relay templates that ship in the app, plus an outcome-first library of common Relay configurations."
+"og:description": "All 58 Relay templates that ship in the app, plus the builds behind them organized by trigger."
 "og:image": "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # Relay templates
 
-A library of ready-made Relay templates. MessageDesk ships **58 templates** in the app, grouped by outcome. Install one and adjust it, or build from the outcome-first library further down the page. Each library entry lists the **trigger**, any **conditions**, the **actions**, and a brief **why this works** note.
+MessageDesk ships 58 Relay templates, grouped by outcome in the app. Install one and adjust it to your workflow.
+
+This page has three parts. The **catalog** lists every shipped template. **How the builds work** shows the trigger, conditions, and actions behind each one, so you know what a template does before you turn it on. **Industry starting points** maps common situations to the right build.
 
 <Note>
-  **Every template here is a starting point.** Adjust the wording, labels, assignees, active hours, and conditions to match your team's workflow. For step-by-step instructions on building a Relay from scratch, including how to use **AND/OR** between conditions, chain actions, and add delays, see [Create and edit a Relay](/relays/create-edit). For a full reference of the available [triggers, conditions, and actions](/relays/building-blocks), see the Relay building blocks page.
+  **Every template is a starting point.** Adjust the wording, labels, assignees, active hours, and conditions to fit your team. For step-by-step instructions, including **AND/OR** between conditions, chained actions, and delays, see [Create and edit a Relay](/relays/create-edit). For every available trigger, condition, and action, see [Relay building blocks](/relays/building-blocks).
 </Note>
-
-<Tip>
-  **Stacking templates on the same Trigger?** You can build more than one Relay on the same trigger. For example, an after-hours reply and a keyword reply both on **Message Received**. Set the **Order** on the Relays list so the more specific Relay runs first. All matching Relays run in Order. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
-</Tip>
 
 ![Relay Templates 1](/images/relay-templates-1.png "Relay Templates 1")
 
@@ -25,7 +23,7 @@ A library of ready-made Relay templates. MessageDesk ships **58 templates** in t
 
 ## Templates that ship in the app
 
-MessageDesk ships **58 Relay templates**, grouped into seven outcomes on the **Relay Templates** page. Pick one, name it, and adjust the fields to match your workflow. Every template arrives **paused**, so nothing runs until you toggle it **On**.
+Seven outcome groups, 58 templates. Pick one, name it, and adjust the fields. Every template arrives **paused**, so nothing runs until you toggle it **On**.
 
 <Tip>
   **Outcome groups expand and collapse** (new in v2026.09.10b). The board opens with the outcome headings collapsed so you can scan all seven at once, then expand only the group you need. Individual template cards expand and collapse too, so you can read a template's detail without leaving the board.
@@ -37,21 +35,21 @@ Each group below lists every shipped template and what it does. Where this page 
 
 | Template | What it does | Build reference |
 | --- | --- | --- |
-| **Assign to Teammate** | Assigns new conversations to a teammate you pick | [Auto-assign](#6-auto-assign-round-robin-note) |
-| **Auto Assign to First Responder** | Assigns the conversation to the first teammate who replies | [Whoever answers a lead first owns the follow-up](#whoever-answers-a-lead-first-owns-the-follow-up) |
-| **Unassign on Close** | Clears every assignee when a conversation closes | [Reset assignees on close](#12-reset-assignees-on-close) |
-| **Route by Phone Line** | Assigns and labels based on the connected number that received the message | [Phone line routing](#4-phone-line-routing) |
-| **Route by Keyword** | Assigns the thread to the team that owns a texted keyword | [Keyword-based routing](#5-keyword-based-routing) |
-| **Escalate Urgent Texts** | Flags and routes messages that contain urgent wording | [Safety and incident texts escalate the second they land](#safety-and-incident-texts-escalate-the-second-they-land) |
-| **Escalate Complaints and Cancellations** | Routes churn-risk language to an owner who can save the account | — |
-| **Label Applied → Assign Owner** | Turns applying a label into an assignment | — |
-| **Flag Unclaimed Conversations** | Labels threads that no one has picked up | [Subcontractor and supplier texts never sit unclaimed](#subcontractor-and-supplier-texts-never-sit-unclaimed) |
-| **Re-triage Reopened Conversations** | Clears assignees and labels the thread `Reopened` when a closed conversation comes back | [Re-triage on reopen](#9-re-triage-on-reopen) |
-| **Route Inbound Calls** | Labels, assigns, and drops a note on an inbound call | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls-to-the-right-owner) |
-| **Comment Commands (#escalate)** | Watches internal comments for a command word like `#escalate` and routes the thread | — |
-| **Route a Label Namespace** | Matches every label under one prefix (for example `Region:`) with a single rule | [One rule that routes an entire namespace of labels](#one-rule-that-routes-an-entire-namespace-of-labels) |
-| **Route by Contact Property — Part 1 (Bridge)** | First half of a two-Relay pattern: bridges a contact property change into a conversation-scoped Relay | — |
-| **Route by Contact Property — Part 2 (Apply Label)** | Second half: applies the matching label so your routing Relays can act on it | — |
+| **Assign to Teammate** | Assigns new conversations to a teammate you pick | [Auto-assign](#scope-by-phone-line) |
+| **Auto Assign to First Responder** | Assigns the conversation to the first teammate who replies | [Whoever answers a lead first owns the follow-up](#assign-to-whoever-replies-first) |
+| **Unassign on Close** | Clears every assignee when a conversation closes | [Reset assignees on close](#reset-and-sync-when-a-thread-closes) |
+| **Route by Phone Line** | Assigns and labels based on the connected number that received the message | [Phone line routing](#scope-by-phone-line) |
+| **Route by Keyword** | Assigns the thread to the team that owns a texted keyword | [Keyword-based routing](#match-a-keyword) |
+| **Escalate Urgent Texts** | Flags and routes messages that contain urgent wording | [Safety and incident texts escalate the second they land](#match-a-keyword) |
+| **Escalate Complaints and Cancellations** | Routes churn-risk language to an owner who can save the account | None yet |
+| **Label Applied → Assign Owner** | Turns applying a label into an assignment | None yet |
+| **Flag Unclaimed Conversations** | Labels threads that no one has picked up | [Subcontractor and supplier texts never sit unclaimed](#flag-unclaimed-threads) |
+| **Re-triage Reopened Conversations** | Clears assignees and labels the thread `Reopened` when a closed conversation comes back | [Re-triage on reopen](#re-triage-on-reopen) |
+| **Route Inbound Calls** | Labels, assigns, and drops a note on an inbound call | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls) |
+| **Comment Commands (#escalate)** | Watches internal comments for a command word like `#escalate` and routes the thread | None yet |
+| **Route a Label Namespace** | Matches every label under one prefix (for example `Region:`) with a single rule | [One rule that routes an entire namespace of labels](#route-a-whole-label-namespace) |
+| **Route by Contact Property — Part 1 (Bridge)** | First half of a two-Relay pattern: bridges a contact property change into a conversation-scoped Relay | None yet |
+| **Route by Contact Property — Part 2 (Apply Label)** | Second half: applies the matching label so your routing Relays can act on it | None yet |
 
 <Note>
   **Route by Contact Property takes both halves.** Contact-property conditions live on the **Contact Updated** trigger, which is a non-conversation trigger, so it can't label or assign a conversation directly. Part 1 bridges the property change; Part 2 applies the label. Install both, or neither works. See [Relay building blocks](/relays/building-blocks#triggers) for how non-conversation triggers behave.
@@ -61,29 +59,29 @@ Each group below lists every shipped template and what it does. Where this page 
 
 | Template | What it does | Build reference |
 | --- | --- | --- |
-| **Identify Unknown Contacts** | Asks anonymous contacts for their name | [First-touch reply for anonymous contacts](#2-first-touch-reply-for-anonymous-contacts) |
-| **Label Conversation** | Auto-labels new conversations | — |
-| **Auto Close No Reply Needed** | Closes threads labeled `No Reply Needed` and clears the label when a reply arrives | [Auto-close conversations that don't need a reply](#auto-close-conversations-that-dont-need-a-reply) |
-| **Label After-Hours Texts** | Labels messages that land outside your operating hours | [Off-duty driver messages still get an instant acknowledgement](#off-duty-driver-messages-still-get-an-instant-acknowledgement) |
-| **Label by Phone Line** | Labels the thread by the connected number that received the message | [Phone line routing](#4-phone-line-routing) |
-| **Auto-Close on Confirmation Keyword** | Closes the thread when the contact texts a confirmation word | [Auto-close after acknowledgement](#13-auto-close-after-acknowledgement) |
-| **Handoff Note on Assignment** | Posts an internal comment with context for the new owner | [Leave an automatic handoff note for the team](#leave-an-automatic-handoff-note-for-the-team) |
-| **Resolved Label on Close** | Adds a `Resolved` label when a conversation closes | [Clean reset and system sync every time a thread closes](#clean-reset-and-system-sync-every-time-a-thread-closes) |
-| **Keep Keyword Threads Unread** | Forces matching threads back to **Unread** so a teammate still reviews them | [After-hours auto-reply](#1-after-hours-auto-reply) |
-| **Reopen on Label Removed** | Reopens the conversation when a label comes off | [When a label comes off, sync the change](#when-a-label-comes-off-sync-the-change) |
+| **Identify Unknown Contacts** | Asks anonymous contacts for their name | [First-touch reply for anonymous contacts](#greet-a-new-or-anonymous-contact) |
+| **Label Conversation** | Auto-labels new conversations | None yet |
+| **Auto Close No Reply Needed** | Closes threads labeled `No Reply Needed` and clears the label when a reply arrives | [Auto-close conversations that don't need a reply](#auto-close-threads-that-dont-need-a-reply) |
+| **Label After-Hours Texts** | Labels messages that land outside your operating hours | [Off-duty driver messages still get an instant acknowledgement](#reply-outside-business-hours) |
+| **Label by Phone Line** | Labels the thread by the connected number that received the message | [Phone line routing](#scope-by-phone-line) |
+| **Auto-Close on Confirmation Keyword** | Closes the thread when the contact texts a confirmation word | [Auto-close after acknowledgement](#auto-close-after-an-acknowledgement) |
+| **Handoff Note on Assignment** | Posts an internal comment with context for the new owner | [Leave an automatic handoff note for the team](#hand-off-with-context) |
+| **Resolved Label on Close** | Adds a `Resolved` label when a conversation closes | [Clean reset and system sync every time a thread closes](#reset-and-sync-when-a-thread-closes) |
+| **Keep Keyword Threads Unread** | Forces matching threads back to **Unread** so a teammate still reviews them | [After-hours auto-reply](#reply-outside-business-hours) |
+| **Reopen on Label Removed** | Reopens the conversation when a label comes off | [When a label comes off, sync the change](#sync-the-change-when-a-label-comes-off) |
 
 ### Respond to Messages
 
 | Template | What it does | Build reference |
 | --- | --- | --- |
-| **Out-of-Office (Away) Autoresponse** | Texts an autoresponse outside operating hours | [Out-of-office for one teammate, even on a shared line](#out-of-office-for-one-teammate-even-on-a-shared-line) |
-| **After-Hours Auto Reply** | Texts an autoresponse outside hours and keeps the thread queued for morning review | [After-hours auto-reply](#1-after-hours-auto-reply) |
-| **Respond to a Keyword** | Auto-replies when a contact texts a keyword | [Keyword-based routing](#5-keyword-based-routing) |
-| **Instant Acknowledgement (New Conversations)** | Replies to the first message on a brand-new thread | [Website-to-text intake lands in a shared, trackable inbox](#website-to-text-intake-lands-in-a-shared-trackable-inbox) |
-| **Send a Link on Keyword** | Texts a link when a contact texts the matching keyword | [Applicant first-touch that never goes cold](#applicant-first-touch-that-never-goes-cold) |
-| **Delayed Follow-Up Reply** | Sends a follow-up reply after a delay you set | — |
-| **Keyword Menu — Option 1 / 2 / 3** | A texted menu where each option gets its own reply and owner | [A texted keyword menu that routes itself](#a-texted-keyword-menu-that-routes-itself) |
-| **Broadcast Reply Tracker (ACK)** | Labels and logs every acknowledgement reply to a broadcast | [Policy and route acknowledgements get tracked, not chased](#policy-and-route-acknowledgements-get-tracked-not-chased) |
+| **Out-of-Office (Away) Autoresponse** | Texts an autoresponse outside operating hours | [Out-of-office for one teammate, even on a shared line](#reply-outside-business-hours) |
+| **After-Hours Auto Reply** | Texts an autoresponse outside hours and keeps the thread queued for morning review | [After-hours auto-reply](#reply-outside-business-hours) |
+| **Respond to a Keyword** | Auto-replies when a contact texts a keyword | [Keyword-based routing](#match-a-keyword) |
+| **Instant Acknowledgement (New Conversations)** | Replies to the first message on a brand-new thread | [Website-to-text intake lands in a shared, trackable inbox](#greet-a-new-or-anonymous-contact) |
+| **Send a Link on Keyword** | Texts a link when a contact texts the matching keyword | [Applicant first-touch that never goes cold](#match-a-keyword) |
+| **Delayed Follow-Up Reply** | Sends a follow-up reply after a delay you set | None yet |
+| **Keyword Menu — Option 1 / 2 / 3** | A texted menu where each option gets its own reply and owner | [A texted keyword menu that routes itself](#match-a-keyword) |
+| **Broadcast Reply Tracker (ACK)** | Labels and logs every acknowledgement reply to a broadcast | [Policy and route acknowledgements get tracked, not chased](#match-a-keyword) |
 
 <Note>
   **Add your own opt-out language.** Templates that send a message ship with placeholder copy. Keep "Reply STOP to opt out." in any automated outbound text so you stay aligned with carrier requirements.
@@ -93,34 +91,34 @@ Each group below lists every shipped template and what it does. Where this page 
 
 | Template | What it does | Build reference |
 | --- | --- | --- |
-| **Welcome New Contacts** | Texts a welcome the moment a contact is saved | — |
-| **Text When a Contact Property Changes** | Texts a contact when a property flips to a value you pick | — |
-| **Text from Another Tool (Inbound Webhook)** | Lets an outside system text a contact through MessageDesk | [Turn an event in another tool into a text](#turn-an-event-in-another-tool-into-a-text) |
-| **Appointment or Order Update from Your System** | Texts an appointment or order update built from a webhook payload | [Turn an event in another tool into a text](#turn-an-event-in-another-tool-into-a-text) |
-| **Log External Event as a Comment** | Records an outside event as an internal comment instead of a text | — |
-| **IVR Caller → Menu Link (Voice-to-Text)** | Texts a menu link to someone who calls in | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls-to-the-right-owner) |
+| **Welcome New Contacts** | Texts a welcome the moment a contact is saved | None yet |
+| **Text When a Contact Property Changes** | Texts a contact when a property flips to a value you pick | None yet |
+| **Text from Another Tool (Inbound Webhook)** | Lets an outside system text a contact through MessageDesk | [Turn an event in another tool into a text](#text-a-contact-from-another-tool) |
+| **Appointment or Order Update from Your System** | Texts an appointment or order update built from a webhook payload | [Turn an event in another tool into a text](#text-a-contact-from-another-tool) |
+| **Log External Event as a Comment** | Records an outside event as an internal comment instead of a text | None yet |
+| **IVR Caller → Menu Link (Voice-to-Text)** | Texts a menu link to someone who calls in | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls) |
 
 ### Keep Contacts in Sync
 
 | Template | What it does | Build reference |
 | --- | --- | --- |
-| **Sync a Contact Property from Another System** | Updates a contact property from a webhook payload | [Keep a contact property in sync from an outside system](#keep-a-contact-property-in-sync-from-an-outside-system) |
-| **Push New Contacts to Your CRM** | Sends every newly saved contact to your endpoint | — |
-| **Push Contact Changes to Your CRM** | Sends contact property changes to your endpoint | — |
+| **Sync a Contact Property from Another System** | Updates a contact property from a webhook payload | [Keep a contact property in sync from an outside system](#keep-a-contact-property-in-sync) |
+| **Push New Contacts to Your CRM** | Sends every newly saved contact to your endpoint | None yet |
+| **Push Contact Changes to Your CRM** | Sends contact property changes to your endpoint | None yet |
 
 ### Connect to Other Systems
 
 | Template | What it does | Build reference |
 | --- | --- | --- |
 | **Send Webhook** | A webhook starter you point at your own endpoint | [Send Webhook](/relays/webhooks#outbound-webhooks) |
-| **Push Inbound Messages to Your System** | Streams inbound texts to your endpoint | [Push new inbound message to an external system](#10-push-new-inbound-message-to-an-external-system) |
-| **Notify Slack/Teams on New Message** | Pings your chat tool when a message arrives | [Push new inbound message to an external system](#10-push-new-inbound-message-to-an-external-system) |
-| **Sync Conversation Close to Your CRM** | Pushes the close event downstream | [Notify an external system on conversation close](#11-notify-an-external-system-on-conversation-close) |
-| **Forward Internal Comments** | Sends internal comments to your endpoint | — |
-| **Label Applied → Update CRM Stage** | Turns applying a label into a downstream stage change | — |
-| **Label Removed → Sync the Change** | Pushes label removals downstream | [When a label comes off, sync the change](#when-a-label-comes-off-sync-the-change) |
-| **Notify on Assignment** | Pings your notifier when a conversation gets an owner | [Notify the new assignee on assignment](#8-notify-the-new-assignee-on-assignment) |
-| **Log Inbound Calls to Your System** | Sends inbound call events to your endpoint | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls-to-the-right-owner) |
+| **Push Inbound Messages to Your System** | Streams inbound texts to your endpoint | [Push new inbound message to an external system](#stream-every-message-to-another-system) |
+| **Notify Slack/Teams on New Message** | Pings your chat tool when a message arrives | [Push new inbound message to an external system](#stream-every-message-to-another-system) |
+| **Sync Conversation Close to Your CRM** | Pushes the close event downstream | [Notify an external system on conversation close](#reset-and-sync-when-a-thread-closes) |
+| **Forward Internal Comments** | Sends internal comments to your endpoint | None yet |
+| **Label Applied → Update CRM Stage** | Turns applying a label into a downstream stage change | None yet |
+| **Label Removed → Sync the Change** | Pushes label removals downstream | [When a label comes off, sync the change](#sync-the-change-when-a-label-comes-off) |
+| **Notify on Assignment** | Pings your notifier when a conversation gets an owner | [Notify the new assignee on assignment](#hand-off-with-context) |
+| **Log Inbound Calls to Your System** | Sends inbound call events to your endpoint | [Log and route inbound calls to the right owner](#log-and-route-inbound-calls) |
 
 <Note>
   **Webhook templates need an endpoint first.** Configure your webhook endpoint and signing secret in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) before you turn any of these on.
@@ -133,10 +131,10 @@ Each group below lists every shipped template and what it does. Where this page 
 | **Catch Failed Texts** | Surfaces, reopens, and assigns any text that fails to deliver | [Catch every text that fails to deliver](#catch-every-text-that-fails-to-deliver) |
 | **Flag Bad Numbers** | Labels numbers whose failures look permanent | [Branch on the reason a message failed](#branch-on-the-reason-a-message-failed) |
 | **Retry Later Queue** | Labels temporary failures that are worth retrying | [Branch on the reason a message failed](#branch-on-the-reason-a-message-failed) |
-| **Label and Close Opted-Out Conversations** | Labels an opt-out and closes the thread | [Opted-out conversation handler](#3-opted-out-conversation-handler) |
-| **Sync Opt-Outs to Your CRM** | Pushes opt-out events downstream | [Opted-out conversation handler](#3-opted-out-conversation-handler) |
-| **Archive Every Message (Retention)** | Streams inbound and outbound messages to your retention store | [Every field message is retained and auditable](#every-field-message-is-retained-and-auditable) |
-| **Assign a Compliance Owner on Opt-Out** | Puts every opt-out on a named owner to confirm you honored it | [Opted-out conversation handler](#3-opted-out-conversation-handler) |
+| **Label and Close Opted-Out Conversations** | Labels an opt-out and closes the thread | [Opted-out conversation handler](#follow-up-on-an-opt-out) |
+| **Sync Opt-Outs to Your CRM** | Pushes opt-out events downstream | [Opted-out conversation handler](#follow-up-on-an-opt-out) |
+| **Archive Every Message (Retention)** | Streams inbound and outbound messages to your retention store | [Every field message is retained and auditable](#stream-every-message-to-another-system) |
+| **Assign a Compliance Owner on Opt-Out** | Puts every opt-out on a named owner to confirm you honored it | [Opted-out conversation handler](#follow-up-on-an-opt-out) |
 
 <Note>
   **MessageDesk already blocks sending to opted-out contacts** at the workspace level. The compliance templates are for internal awareness, ownership, and audit trails, not for blocking the outbound message.
@@ -154,616 +152,308 @@ The **Custom Relay** (a blank canvas) is also available. Use it to build from sc
 
 ---
 
-## Foundational templates
+---
 
-The outcomes below are the builds behind the shipped templates, plus a few that go further than any single template does. Each entry lists the **trigger**, any **conditions**, the **actions**, and a short "Why it works." Use them to understand what a template is doing before you turn it on, or to build the outcome yourself. Adjust wording, labels, assignees, and scoping to fit your team.
+## How the builds work
+
+Every template above is one of the builds below. They're grouped by trigger, because the trigger is the first thing you pick in the app. Each build lists the **conditions**, the **actions**, and why it works. Adjust the wording, labels, assignees, and scoping to fit your team.
 
 <Note>
-  **The Add Action menu varies by trigger.** Not every action appears on every trigger. If a build below lists an action you don't see, check the **Add Action** menu for the trigger you picked. See [Relay building blocks](/relays/building-blocks#actions) for which actions are scoped to which triggers.
+  **The Add Action menu varies by trigger.** Not every action appears on every trigger. If a build lists an action you don't see, check the **Add Action** menu for the trigger you picked. See [Relay building blocks](/relays/building-blocks#actions) for which actions are scoped to which triggers.
 </Note>
 
-### Whoever answers a lead first owns the follow-up
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Sent |
-| **Conditions** | Is unassigned conversation |
-| **Actions** | Assign to sender |
-
-**Why it works:** The first teammate to reply gets assigned. The conversation is no longer unassigned, so later replies from others don't steal it. Follow-up never lands in an unclaimed pile. This is the outcome behind the shipped **Auto Assign to First Responder** template.
-
 ---
 
-### Clean reset and system sync every time a thread closes
+### Message Received
+
+The busiest trigger. Eight builds cover almost everything teams do with inbound texts.
+
+#### Scope by phone line
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Conversation Closed |
-| **Conditions** | None (or scope to a line) |
-| **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Resolved`) → Send webhook |
+| **Conditions** | My phone number equals (the line you want to target) |
+| **Actions** | Assign teammates to the conversation → Add labels to the conversation |
 
-**Why it works:** Closing resets assignment in one step and pushes the close event to your other systems. This extends the shipped **Unassign on Close** template with a `Resolved` label and an outbound webhook so your CRM, data warehouse, or ticketing tool stays in sync.
+**Why it works:** Every inbound text on a line lands with an owner and a label you can filter on. This is how a shared line replaces one person's cell phone. A dispatch line routes to that region's dispatcher. A service line routes to the advisor on duty. A front-desk line goes to whoever's covering. Add **Conversation label equals** to split one line further by region or job type.
 
----
+<Note>
+  **There's no round-robin action.** Nothing rotates to the next teammate automatically. Real round-robin takes one Relay per teammate, each scoped by a different line or label so they don't all fire on the same message. That's the supported approach.
+</Note>
 
-### Auto-close conversations that don't need a reply
+#### Match a keyword
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
+| **Conditions** | Message contains text (`HELP`, `invoice`, `incident`, `apply`, `ACK`, whatever you need) |
+| **Actions** | Reply to message → Assign teammates to the conversation → Add labels to the conversation → Send webhook |
+
+**Why it works:** Keyword matching is the fastest triage you can build. The contact gets an instant acknowledgement, the right team picks up the thread, and the label gives you a filter. Use as many or as few of those actions as the case needs: a safety keyword wants all four, a billing keyword just wants an assignee and a label.
+
+Build one Relay per keyword to make a texted menu. `support`, `pricing`, and `sales` each get their own reply and owner, all on the same number.
+
+<Tip>
+  **Keep a catch-all, and stop the cascade.** Order a keyword-free Relay **last** so a message that matches nothing still gets a graceful reply. Then add the **Stop Processing** action to each keyword Relay, so a specific match prevents the catch-all from firing on the same message. Ordering alone won't do it. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
+</Tip>
+
+#### Greet a new or anonymous contact
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Is anonymous conversation, or Is new conversation |
+| **Actions** | Reply to message (ask for a name) → Add labels to the conversation (`Lead`) → Assign teammates to the conversation |
+
+**Why it works:** Texts from unsaved numbers arrive as anonymous conversations. Asking for a name while the contact is still typing keeps your directory clean and every thread attributable. The label gives sales or intake one filter to work from. See [Anonymous, opted out & blocked](/contacts/anonymous-opt-out-blocked) for how anonymous status is determined.
+
+#### Reply outside business hours
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Active hours, with **Trigger outside of business hours** enabled to invert the window |
+| **Actions** | Reply to message → Add labels to the conversation (`After-hours`) → Mark Conversation Unread |
+
+**Why it works:** Inverting the Active hours window fires the Relay only when a text lands outside your hours, so nobody waits until morning for an acknowledgement. **Mark Conversation Unread** is the part teams miss: without it, the auto-reply moves the thread to **Replied** and out of the Unread filter, and the customer's actual question never gets reviewed. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status).
+
+Keep "Reply STOP to opt out." in the reply text.
+
+<Tip>
+  **One teammate can be out without silencing the line.** Add **Teammate Assigned** set to the person who's away, then add **Is unassigned conversation** with **OR** to also cover brand-new threads. The auto-reply fires only on their conversations. You don't need a dedicated line per teammate.
+</Tip>
+
+#### Stream every message to another system
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | None, or scope by line with My phone number equals |
+| **Actions** | Send webhook |
+
+**Why it works:** Every inbound text flows to your CRM, warehouse, ticketing tool, or retention store. Build a matching Relay on **Message Sent** to capture both directions, which is what an audit or recordkeeping requirement usually needs. Scope by line to avoid a firehose.
+
+#### Auto-close threads that don't need a reply
+
+| Field | Value |
+| --- | --- |
 | **Conditions** | Label name equals `No Reply Needed` |
 | **Actions** | Close the conversation → Remove Label where name equals `No Reply Needed` |
 
-**Why it works:** Courtesy replies like "thanks!" reopen threads that nobody needs to touch. Label a conversation `No Reply Needed` when you're done with it. The next inbound message closes the thread and clears the label, so a real follow-up later reopens it normally.
+**Why it works:** Courtesy replies like "thanks!" reopen threads nobody needs to touch. Label a conversation `No Reply Needed` when you're done, and the next inbound message closes it and clears the label. A real follow-up later reopens the thread normally.
 
-<Note>
-  **Ships as a template:** This build is available as the **Auto Close No Reply Needed** template in the Relays module. MessageDesk doesn't create the label for you. Create a label named `No Reply Needed` before turning the Relay on, or change the name in both the condition and the action to a label you already use. See [Labels](/inbox/labels). The **Label name equals** condition and **Remove Label where name equals** action are documented in [Relay building blocks](/relays/building-blocks).
-</Note>
-
----
-
-### One rule that routes an entire namespace of labels
+#### Route a whole label namespace
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
 | **Conditions** | Conversation label equals, operator **startsWith**, value `Region:` |
 | **Actions** | Send webhook → Add labels to the conversation (`Routed`) |
 
-**Why it works:** The **Conversation label equals** condition is a matcher, not a fixed equality check. A single `startsWith "Region:"` rule catches every label in a namespace at once (`Region:North`, `Region:South`, `Region:West`, etc.), so you avoid maintaining one Relay per region. See the operator-selector Note in [Relay building blocks](/relays/building-blocks) for the full operator list.
+**Why it works:** **Conversation label equals** is a matcher, not a fixed equality check. One `startsWith "Region:"` rule catches `Region:North`, `Region:South`, and every label you add later. You skip maintaining one Relay per region. See the operator list in [Relay building blocks](/relays/building-blocks#conditions).
 
----
-
-### Catch every text that fails to deliver
+#### Flag unclaimed threads
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Failed |
-| **Conditions** | None (or scope to a line with **My phone number equals**) |
-| **Actions** | Add labels to the conversation (`Delivery failed`) → Open the conversation → Assign teammates to the conversation (an owner) → Send webhook (alert a channel) |
-
-**Why it works:** A failed text is invisible today because the sender assumes it went through. This surfaces every failure immediately, reopens and flags the thread, and puts it on someone to follow up. Most valuable for time-sensitive dispatch, staffing, and safety messages.
-
----
-
-### Branch on the reason a message failed
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Failed |
-| **Conditions** | Message failure contains text (match the carrier error text for a temporary or unreachable failure) |
-| **Actions** | Add labels to the conversation (`Retry later`) → Send webhook |
-
-**Why it works:** Not all failures are equal, so matching on the failure text lets you retry what's worth retrying and clean up what isn't. Build a second Relay on the same trigger that matches a permanent-failure reason and labels it `Bad number` instead. Use provider-agnostic error wording in your matches so the Relay keeps working if the underlying carrier or provider changes.
-
-<Note>
-  **Verify before enabling.** The **Message failure contains text** condition ships with the v2026.07.15 release. If your workspace doesn't see it on the Message Failed trigger yet, hold this template until it appears.
-</Note>
-
----
-
-### Out-of-office for one teammate, even on a shared line
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Active hours (with **Trigger outside of business hours** enabled), and **Teammate Assigned** set to the teammate who's out. Optionally add **Is unassigned conversation** with **OR** to cover brand-new threads. |
-| **Actions** | Reply to message ("I'm out of the office and will follow up when I'm back. Reply STOP to opt out.") |
-
-**Why it works:** The auto-reply fires only for the conversations owned by the person who's out. One teammate can be away without silencing the whole shared line.
-
----
-
-### Leave an automatic handoff note for the team
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Conversation Users Assigned |
-| **Conditions** | None (or scope to a line) |
-| **Actions** | Send Comment (an internal note with context for the new owner, for example "Assigned by Relay. Customer texted after hours, please follow up first thing.") |
-
-**Why it works:** The new owner gets context as an internal comment the moment they're assigned, and nothing goes to the contact.
-
----
-
-### When a label comes off, sync the change
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Conversation Label Removed |
-| **Conditions** | Conversation has label (or scope by line with **My phone number equals**) |
-| **Actions** | Send webhook (update the downstream system) → Assign teammates to the conversation (as needed) → Add labels to the conversation (as needed) |
-
-**Why it works:** A label coming off often signals a state change. Firing on removal keeps your CRM or reporting in sync automatically. **Remove labels isn't an available action on this trigger**, so this Relay reacts to a removal rather than performing one.
-
----
-
-### Log and route inbound calls to the right owner
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Call Received |
-| **Conditions** | None (or **My phone number equals** to scope to a specific line) |
-| **Actions** | Add labels to the conversation (`Inbound call`) → Assign teammates to the conversation (line owner or on-call) → Send Comment (context for the assignee) → Send webhook (notify Slack, Teams, or your CRM) |
-
-**Why it works:** Voice activity now lives alongside SMS in the same conversation thread. Firing on the call itself gets an owner assigned, drops an internal note for context, and pings your notification tool the moment the phone rings, without waiting for a follow-up text.
-
-<Note>
-  **Call Received works on MD-owned numbers only.** It doesn't fire for Twilio-connected numbers, Telegorithm numbers, or hosted (text-enabled) numbers. **Reply to message** isn't available on this trigger. See [Call Received actions](/relays/building-blocks#actions-on-the-new-triggers) for the full action list.
-</Note>
-
----
-
-### Turn an event in another tool into a text
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Inbound Webhook Received |
-| **Conditions** | **Webhook Payload Field Equals** (optional, to branch on a payload value) |
-| **Actions** | Send Message (choose the outbound channel, use **Event Data** from the payload for the text, and include "Reply STOP to opt out.") |
-
-**Why it works:** Your CRM, form, or workflow tool can text a contact through MessageDesk the moment something happens, without anyone copying details by hand.
-
----
-
-### Keep a contact property in sync from an outside system
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Inbound Webhook Received |
-| **Conditions** | None, or **Webhook Payload Field Equals** |
-| **Actions** | Update Contact Property (set a property from the payload using **Event Data**) |
-
-**Why it works:** When a value changes in another system, the webhook updates the matching contact property in MessageDesk automatically. **Text** properties accept any payload value. Non-text properties (for example dropdown or date) map the matching Custom Property from the payload, and the value must pass [type validation](/relays/webhooks#custom-property-validation).
-
-<Note>
-  **Inbound Webhook Received is a non-conversation trigger.** It runs against the contact in the payload, so conversation-scoped conditions don't apply. **Add labels to the conversation** is available. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.
-</Note>
-
----
-
-## Vertical library
-
-The templates below are grouped by industry and by common cross-industry use cases.
-
-Every template uses the canonical trigger, condition, and action names. See [Relay building blocks](/relays/building-blocks) for the full reference.
-
----
-
-### Construction and dispatch
-
-#### No job stalls because one supervisor's phone went dark
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | My phone number equals (the shared main or dispatch line) |
-| **Actions** | Assign teammates to the conversation (crew or job coordinator) → Add labels to the conversation (job or crew) |
-
-**Why it works:** Inbound texts land in a shared Inbox with an owner and a job label. Threads stay covered when a supervisor is on a site or out.
-
-#### Subcontractor and supplier texts never sit unclaimed
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
 | **Conditions** | Is unassigned conversation |
 | **Actions** | Add labels to the conversation (`Needs owner`) → Send webhook |
 
-**Why it works:** Anything that slips past routing gets flagged instead of aging in the queue.
+**Why it works:** Anything that slips past your routing gets flagged instead of aging in the queue. Pair it with an Inbox filter on **Assignee = Unassigned**.
 
 ---
 
-### Logistics and trucking
+### Message Sent
 
-#### Route every driver text to the right dispatcher, no shared handset required
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | My phone number equals (dispatch line). Optionally add Conversation label equals a region. |
-| **Actions** | Add labels to the conversation (region or load type) → Assign teammates to the conversation (that region's dispatcher) |
-
-**Why it works:** Every dispatcher sees every message in one Inbox, and texts self-sort by region. That replaces the single shared phone.
-
-#### Off-duty driver messages still get an instant acknowledgement
+#### Assign to whoever replies first
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Active hours (with **Trigger outside of business hours** enabled) |
-| **Actions** | Reply to message ("Dispatch is closed. Text URGENT for the on-call line. Reply STOP to opt out.") → Add labels to the conversation (`After-hours`) |
+| **Conditions** | Is unassigned conversation |
+| **Actions** | Assign to sender |
 
-**Why it works:** An off-hours text gets an immediate acknowledgement and waits for dispatch in the morning.
-
-#### Policy and route acknowledgements get tracked, not chased
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `ACK` |
-| **Actions** | Add labels to the conversation (`Acknowledged`) → Send webhook |
-
-**Why it works:** Pair a broadcast with a keyword reply, and MessageDesk labels and logs every acknowledgement automatically.
-
----
-
-### Field operations
-
-#### Safety and incident texts escalate the second they land
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `incident` |
-| **Actions** | Reply to message ("Received. A supervisor is being notified now.") → Assign teammates to the conversation (safety lead) → Add labels to the conversation (`Incident`) → Send webhook (alert the safety channel) |
-
-**Why it works:** A field emergency routes to the safety lead and alerts the team in one step.
-
-#### Rig recruiting stops living on personal phones
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `available` |
-| **Actions** | Assign teammates to the conversation (recruiter) → Add labels to the conversation (`Available`) → Send webhook (push to your ATS) |
-
-**Why it works:** MessageDesk captures every candidate availability reply, assigns an owner, and pushes it to your system. Nobody gets called twice.
-
-#### Every field message is retained and auditable
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received (build a matching Relay on Message Sent) |
-| **Conditions** | None (or scope to field lines) |
-| **Actions** | Send webhook (to your retention or audit store) |
-
-**Why it works:** Inbound and outbound field messages stream to your system of record. MessageDesk facilitates 10DLC registration as your CSP and honors opt-outs at the workspace level.
-
----
-
-### Staffing and recruiting
-
-#### Every candidate reply gets claimed by a recruiter
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `yes` |
-| **Actions** | Assign teammates to the conversation (staffing coordinator) → Add labels to the conversation (`Shift response`) → Send webhook (sync to your ATS or CRM) |
-
-**Why it works:** After a shift-fill text, replies route to the coordinator. The fastest responder gets placed first, and MessageDesk logs the reply.
-
-#### Applicant first-touch that never goes cold
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `apply` |
-| **Actions** | Reply to message ("Thanks for your interest. Here is the quick application: [link]. Reply STOP to opt out.") → Assign teammates to the conversation (recruiter) → Add labels to the conversation (`Applicant`) |
-
-**Why it works:** An instant reply with the application link plus an assigned recruiter keeps the pipeline warm.
-
-#### Unsaved candidate numbers get named automatically
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Is anonymous conversation |
-| **Actions** | Reply to message ("Thanks for reaching out. What is your first and last name?") → Add labels to the conversation (`Unverified`) |
-
-**Why it works:** Capturing the name up front keeps the directory clean and every thread attributable.
-
----
-
-### Professional services
-
-#### Website-to-text intake lands in a shared, trackable inbox
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Is new conversation |
-| **Actions** | Reply to message ("Thanks for reaching out. What is your name and a short note on what you need help with?") → Assign teammates to the conversation (intake coordinator) → Add labels to the conversation (`Intake`) → Send webhook (create the record in your CRM) |
-
-**Why it works:** The first inbound text runs intake and creates a trackable record.
-
-#### Billing questions route straight to AR
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `invoice` |
-| **Actions** | Assign teammates to the conversation (billing) → Add labels to the conversation (`Billing`) |
-
-**Why it works:** Money questions bypass the general queue.
-
----
-
-### More industries and use cases
-
-The patterns below cover common use cases across additional industries.
-
-#### Automotive service: a shared department inbox
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | My phone number equals (the service department line) |
-| **Actions** | Assign teammates to the conversation (advisor) → Add labels to the conversation (`Service`) |
-
-**Why it works:** Status texts stop landing on one advisor's phone. Any advisor can pick up the thread, and replies can carry photos and invoice links.
-
-<Tip>
-  Pair this with an inverted **Active hours** Relay on the same line that uses **Reply to message** to acknowledge after-hours questions and set expectations for the morning.
-</Tip>
-
-#### Financial advisors: broadcast replies come back to a tracked inbox
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received (build a matching Relay on Message Sent) |
-| **Conditions** | None (or scope to the advisor line) |
-| **Actions** | Assign teammates to the conversation (the advisor) → Add labels to the conversation (`Client`) → Send webhook (to your recordkeeping system) |
-
-**Why it works:** After a broadcast, replies land with an owner and both directions stream to your records.
-
-#### Home services and emergency trades: turn an after-hours text into tomorrow's job
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Active hours (with **Trigger outside of business hours** enabled), My phone number equals (jobs or emergency line) |
-| **Actions** | Reply to message ("We received your message and will follow up first thing. If this is an active emergency, call [number]. Reply STOP to opt out.") → Add labels to the conversation (`After-hours`) → Assign teammates to the conversation (on-call coordinator) |
-
-**Why it works:** MessageDesk captures and routes the lead even when the office is dark.
-
----
-
-### Support and sales
-
-#### A texted keyword menu that routes itself
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Message contains text `support` (build parallel Relays for `pricing` and `sales`) |
-| **Actions** | Reply to message (matching acknowledgement) → Assign teammates to the conversation (matching team) → Add labels to the conversation (matching topic) |
-
-**Why it works:** One number handles support, pricing, and sales, each with its own reply and owner.
-
-<Tip>
-  Keep a keyword-free catch-all Relay ordered **last** so any message that doesn't match a keyword still gets a graceful reply and an owner. Instead of relying only on ordering, add the **Stop Processing** action to each matched Relay so a specific match stops the catch-all from also firing on the same message.
-</Tip>
-
----
-
-## Customer service
-
-### 1. After-hours auto-reply
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Condition** | Active hours: set your business hours, then toggle **Trigger outside of business hours** to invert the window |
-| **Actions** | **Reply to message:** "We'll get back to you at 8am. Reply STOP to opt out." → **Mark Conversation Unread** |
-
-**Why this works:** Inverting the Active hours window means the Relay only fires when an inbound message lands **outside** your business hours, so customers always get an immediate acknowledgement. The STOP language keeps you compliant with carrier opt-out requirements. The **Mark Conversation Unread** action (new in v2026.08.04) forces the thread back into the **Unread** filter after the auto-reply so a teammate still picks it up in the morning.
+**Why it works:** The first teammate to reply owns the follow-up. The conversation is no longer unassigned, so later replies don't steal it, and new inbound messages route to that teammate by default. Drop the condition if you want the sender to take ownership even on threads someone else already owns.
 
 <Note>
-  **This build matches the shipped After-Hours Auto Reply template.** Without the **Mark Conversation Unread** action, a Relay reply moves the conversation to **Replied** and out of the Unread filter. Including it forces the thread back to Unread so the customer's message is still queued for human review. See [Relays and conversation status](/relays/create-edit#relays-and-conversation-status).
+  **Assign to sender** only appears on the **Message Sent** trigger.
 </Note>
 
-<Tip>
-  Add a **Delay** to the Reply action to avoid sending repeat auto-replies inside a tight back-and-forth.
-</Tip>
-
----
-
-### 2. First-touch reply for anonymous contacts
+#### Auto-close after an acknowledgement
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Is anonymous conversation = **true** |
-| **Actions** | **Reply to message:** "Thanks for texting us! What's your first and last name so we know who to help? Reply STOP to opt out." → **Add labels to the conversation:** `Lead` |
+| **Conditions** | Optional: My phone number equals a specific line, or match an acknowledgement keyword |
+| **Actions** | Close the conversation → Mark Conversation Read |
 
-**Why this works:** New inbound texts from unsaved numbers come in as **anonymous conversations**. A first-touch reply captures the contact's name while it's fresh, and the `Lead` label gives sales/intake a single filter to work from. See [Anonymous, opted out & blocked](/contacts/anonymous-opt-out-blocked) for how anonymous status is determined.
+**Why it works:** One-shot confirmations (appointment reminders, delivery pings, "on my way") don't need to sit in the Inbox after they go out. Closing keeps the Inbox focused on threads that still need a person. A new inbound message reopens the thread and fires any **Conversation Opened** Relays you've built.
 
 ---
 
-### 3. Opted-out conversation handler
+### Message Failed
+
+#### Catch every text that fails to deliver
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | **Message contains text** = `STOP` (catches the opt-out keyword itself), or **Conversation label equals** `Opted Out` (routes on a label applied earlier in your workflow) |
-| **Actions** | **Add labels to the conversation:** `Opted Out` → **Assign teammates to the conversation:** support queue |
+| **Conditions** | None, or scope to a line with My phone number equals |
+| **Actions** | Add labels to the conversation (`Delivery failed`) → Open the conversation → Assign teammates to the conversation → Send webhook |
 
-**Why this works:** Match the STOP keyword on the inbound message itself, or route on an `Opted Out` label that a keyword Relay, a teammate, or an integration applied upstream. Labeling the thread keeps it visible to compliance and support. Routing it to your support queue ensures someone confirms you honored the customer's request. Once you apply `Opted Out`, downstream filters and Relays can avoid touching that contact.
+**Why it works:** A failed text is invisible, because the sender assumes it went through. This surfaces the failure, reopens and flags the thread, and puts it on someone. Most valuable for time-sensitive dispatch, staffing, and safety messages.
+
+#### Branch on the reason a message failed
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Message failure contains text (match the carrier error wording) |
+| **Actions** | Add labels to the conversation (`Retry later`) → Send webhook |
+
+**Why it works:** Not every failure is worth retrying. Matching the failure text lets you queue the temporary ones and clean up the permanent ones. Build a second Relay on the same trigger that matches a permanent-failure reason and labels it `Bad number` instead. Use provider-agnostic wording in your matches so the Relay survives a carrier change. See [Delivery status and errors](/messaging/delivery-status-errors).
+
+---
+
+### Conversation Opened
+
+#### Re-triage on reopen
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | None, or scope by line or label |
+| **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Reopened`) |
+
+**Why it works:** When a customer replies days later, the original assignee may not be the right owner anymore. Clearing assignees sends the thread back through normal triage, where your Message Received routing picks it up fresh.
+
+---
+
+### Conversation Users Assigned
+
+#### Hand off with context
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | None, or scope by line or label |
+| **Actions** | Send Comment (the handoff note) → Send webhook (ping Slack or Teams) → Add labels to the conversation (`Handoff`) |
+
+**Why it works:** The new owner gets context the moment they're assigned, and the contact never sees it. The webhook covers teams who live in Slack or Teams rather than in-app notifications, and the label gives the assignee a filter for newly handed-off threads.
+
+Assigning more than one teammate works too, which is how a manager lets their team reply on their behalf. Everyone assigned [gets notified by default](/settings/my-settings/notification-preferences).
+
+---
+
+### Conversation Closed
+
+#### Reset and sync when a thread closes
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Teammate Assigned (Any teammate), or scope by line or label |
+| **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Resolved`) → Send webhook |
+
+**Why it works:** Closing does three jobs at once. Assignment resets so the next inbound lands unassigned and your routing Relays handle it. The `Resolved` label keeps reporting clean. The webhook pushes the close event to your CRM, warehouse, or ticketing tool. Gating on **Teammate Assigned** set to Any teammate means the Relay only runs when someone's actually assigned.
+
+---
+
+### Conversation Label Removed
+
+#### Sync the change when a label comes off
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Conversation has label, or scope by line |
+| **Actions** | Send webhook → Reply to message → Open the conversation |
+
+**Why it works:** A label coming off usually signals a state change, so firing on removal keeps your CRM or reporting in sync without anyone remembering to update it. **Remove labels isn't available on this trigger**, so this Relay reacts to a removal rather than performing one.
+
+---
+
+### Call Received
+
+#### Log and route inbound calls
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | None, or My phone number equals to scope to a line |
+| **Actions** | Add labels to the conversation (`Inbound call`) → Assign teammates to the conversation → Send Comment → Send webhook |
+
+**Why it works:** Voice activity lives in the same thread as SMS. Firing on the call itself assigns an owner, drops an internal note, and pings your notifier the moment the phone rings, instead of waiting for a follow-up text.
 
 <Note>
-  MessageDesk automatically blocks sending to **opted-out contacts** at the workspace level. This Relay is for **internal awareness and audit**, not for blocking the outbound message itself.
-</Note>
-
-<Note>
-  **Prefer the dedicated trigger.** The **Opt Out Created** trigger (new in v2026.09.04) fires on the opt-out event itself, so it also catches opt-outs that don't arrive as a STOP text. Build the same labeling and routing actions on it instead of keyword-matching. Message-sending actions aren't available on that trigger, and conversation actions run only on channel-specific opt-outs. See [Opt Out Created](/relays/building-blocks#actions-on-the-new-triggers).
+  **Call Received works on MessageDesk-owned numbers only.** It doesn't fire for Twilio-connected, Telegorithm, or hosted (text-enabled) numbers. **Reply to message** isn't available on this trigger. See [Call Received actions](/relays/building-blocks#actions-on-the-new-triggers).
 </Note>
 
 ---
 
-## Operations and routing
+### Inbound Webhook Received
 
-### 4. Phone line routing
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Condition** | **My phone number equals** = the specific connected phone line |
-| **Actions** | **Assign teammates to the conversation:** designated teammate(s) → **Add labels to the conversation:** line-specific label (e.g., `Front Desk`, `Sales Line`) |
-
-**Why this works:** Teams running multiple phone lines (Front Desk, Support, Sales) want every inbound message on that line to land with the right owner immediately. Adding a line-specific label also gives you ready-made filtered views in the Inbox.
-
----
-
-### 5. Keyword-based routing
+#### Text a contact from another tool
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
-| **Condition** | **Message contains text** = `HELP` (or `SUPPORT`, `BILLING`, etc.) |
-| **Actions** | **Reply to message:** "Got it. A support teammate will be with you shortly." → **Assign teammates to the conversation:** support team |
+| **Conditions** | Webhook Payload Field Equals (optional, to branch on a payload value) |
+| **Actions** | Send Message (pick the outbound channel, build the text from **Event Data**) |
 
-**Why this works:** Keyword routing is fast triage: the customer gets an instant acknowledgement and the right team picks up the thread without manual sorting. Combine with **My phone number equals** if you want the keyword to behave differently on different lines.
+**Why it works:** Your CRM, form, or scheduling tool texts a contact through MessageDesk the moment something happens. Appointment reminders and order updates stop being a copy-paste job. Include "Reply STOP to opt out." in the message.
 
-<Tip>
-  Stack multiple keyword Relays (one per keyword) and use a default Relay without a keyword condition as a catch-all. Add the **Stop Processing** action to each keyword Relay so a specific match stops the catch-all from also firing on the same message, instead of relying only on ordering.
-</Tip>
-
----
-
-### 6. Auto-assign (round-robin note)
+#### Keep a contact property in sync
 
 | Field | Value |
 | --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | Optional: **My phone number equals** a specific line, or **Is unassigned conversation** |
-| **Actions** | **Assign teammates to the conversation:** teammate |
+| **Conditions** | None, or Webhook Payload Field Equals |
+| **Actions** | Update Contact Property (set it from the payload using **Event Data**) |
 
-**Why this works:** A single Relay assigns every inbound conversation to one teammate. **True round-robin distribution requires multiple Relays**, one per teammate, each segmented by a different **line** or **label** condition so they don't all fire on the same message. There isn't a built-in "rotate to next teammate" action today. This multi-Relay pattern is the supported workaround.
-
-<Tip>
-  Pair this with a `Triage` label and an Inbox filter on **Assignee = Unassigned** so anything that slips through is easy to spot.
-</Tip>
-
----
-
-### 7. Assign unassigned conversations to whoever replies first
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Sent |
-| **Condition** | **Is unassigned conversation** = **true** |
-| **Actions** | **Assign to sender** |
-
-**Why this works:** When a shared Inbox has no owner on a thread, the first teammate to reply usually should own the follow-up. This Relay watches outbound messages, checks that no one's assigned yet, and assigns the conversation to whoever hit send. New inbound messages on the same thread then route to that teammate by default.
+**Why it works:** When a value changes in another system, the webhook updates the matching property in MessageDesk. **Text** properties accept any payload value. Non-text properties map the matching Custom Property from the payload, and the value has to pass [type validation](/relays/webhooks#custom-property-validation).
 
 <Note>
-  **Ships as a template:** This template is available as the **Auto Assign to First Responder** template in the Relays module. Install it as-is or use the fields above to build it yourself.
+  **This is a non-conversation trigger.** It runs against the contact in the payload, so conversation-scoped conditions don't apply. **Add labels to the conversation** is still available. See [Webhooks](/relays/webhooks#inbound-webhooks) for the endpoint URL, the `X-MD-Signature` header, and the payload schema.
 </Note>
+
+---
+
+### Opt Out Created
+
+#### Follow up on an opt-out
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | None |
+| **Actions** | Add labels to the conversation (`Opted Out`) → Assign teammates to the conversation (compliance owner) → Close the conversation → Send webhook |
+
+**Why it works:** The trigger fires on the opt-out event, so it catches opt-outs that never arrive as a STOP text. Labeling keeps the thread visible to compliance, an owner confirms you honored the request, and the webhook syncs it downstream so you don't text the contact from another system.
 
 <Note>
-  The **Assign to sender** action is only available with the **Message Sent** trigger.
+  **MessageDesk already blocks sending to opted-out contacts** at the workspace level. This Relay is for awareness, ownership, and audit trails, not for blocking the message. Message-sending actions aren't available on this trigger, and conversation actions run only on channel-specific opt-outs. See [Opt Out Created](/relays/building-blocks#actions-on-the-new-triggers).
 </Note>
 
-<Tip>
-  Drop the **Is unassigned conversation** condition if you want the sender to always take ownership, even on threads someone else was already assigned to.
-</Tip>
-
 ---
 
-### 8. Notify the new assignee on assignment
+## Industry starting points
 
-| Field | Value |
-| --- | --- |
-| **Trigger** | Conversation Users Assigned |
-| **Conditions** | None (or scope by line/label) |
-| **Actions** | **Send webhook** → your Slack/Teams/notification endpoint |
+Every row below is one of the builds above with a different keyword, label, or line attached. Find the situation closest to yours, then go build it.
 
-**Why this works:** MessageDesk's in-app notifications reach assignees inside the product. Teams that live in Slack or Teams want a ping in their chat tool the moment a conversation lands in their queue. Fire a webhook on **Conversation Users Assigned** and route the payload to your notifier of choice.
-
-<Tip>
-  Pair with **Add labels to the conversation** (for example, `Handoff`) so the receiving teammate can filter their Inbox to just newly assigned threads.
-</Tip>
-
----
-
-### 9. Re-triage on reopen
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Conversation Opened |
-| **Conditions** | None (or scope by line/label) |
-| **Actions** | **Remove all teammates from the conversation** → **Add labels to the conversation:** `Reopened` |
-
-**Why this works:** When a closed conversation gets reopened (a customer replies days later, or a teammate reopens for follow-up), the original assignees may no longer be the right owners. Clearing assignees and applying a `Reopened` label sends the thread back through your normal triage so it gets picked up by the right person.
-
-<Tip>
-  Pair this with a **Message Received** Relay that auto-assigns based on line or keyword. Reopens get reset here; the next inbound gets routed there.
-</Tip>
-
----
-
-## Webhooks and integrations
+| Industry | The situation | Build | What to set |
+| --- | --- | --- | --- |
+| Construction | Texts pile up on one supervisor's phone | [Scope by phone line](#scope-by-phone-line) | The dispatch line, plus a crew or job label |
+| Construction | Subcontractor and supplier texts sit unclaimed | [Flag unclaimed threads](#flag-unclaimed-threads) | Label `Needs owner` |
+| Logistics | Driver texts need to reach the right dispatcher | [Scope by phone line](#scope-by-phone-line) | The dispatch line, plus a region label |
+| Logistics | Off-duty drivers text after dispatch closes | [Reply outside business hours](#reply-outside-business-hours) | "Text URGENT for the on-call line." |
+| Logistics | Policy and route acknowledgements go unchased | [Match a keyword](#match-a-keyword) | Keyword `ACK`, label `Acknowledged` |
+| Field operations | Safety and incident texts need to escalate now | [Match a keyword](#match-a-keyword) | Keyword `incident`, assign the safety lead, webhook the safety channel |
+| Field operations | Crew recruiting lives on personal phones | [Match a keyword](#match-a-keyword) | Keyword `available`, webhook your ATS |
+| Field operations | Every field message has to be retained | [Stream every message to another system](#stream-every-message-to-another-system) | Build the matching Message Sent Relay too |
+| Staffing | Shift-fill replies need an owner fast | [Match a keyword](#match-a-keyword) | Keyword `yes`, assign the coordinator, webhook your ATS |
+| Staffing | Applicants go cold before anyone calls | [Match a keyword](#match-a-keyword) | Keyword `apply`, reply with the application link |
+| Staffing | Candidate numbers arrive unsaved | [Greet a new or anonymous contact](#greet-a-new-or-anonymous-contact) | Label `Unverified` |
+| Professional services | Website-to-text intake needs to be trackable | [Greet a new or anonymous contact](#greet-a-new-or-anonymous-contact) | Label `Intake`, webhook your CRM |
+| Professional services | Billing questions clog the general queue | [Match a keyword](#match-a-keyword) | Keyword `invoice`, assign billing |
+| Automotive service | Status texts land on one advisor's phone | [Scope by phone line](#scope-by-phone-line) | The service line, label `Service` |
+| Financial services | Broadcast replies need an owner and a record | [Stream every message to another system](#stream-every-message-to-another-system) | Assign the advisor, webhook your recordkeeping system |
+| Home services | After-hours texts are tomorrow's jobs | [Reply outside business hours](#reply-outside-business-hours) | The jobs line, assign the on-call coordinator |
+| Support and sales | One number has to serve three teams | [Match a keyword](#match-a-keyword) | One Relay per keyword, plus a catch-all last |
 
 <Note>
-  Webhook actions require a configured webhook endpoint and signing secret. Set those up in [**Settings → Developer Tools**](/settings/workspace-settings/developer-tools) before turning on the Relays below. See [Send Webhook](/relays/webhooks#outbound-webhooks) for the full payload format, headers, and signature validation.
+  **MessageDesk facilitates 10DLC registration as your CSP and honors opt-outs at the workspace level.** That covers the compliance floor for the retention and recordkeeping rows above. It doesn't replace your own retention policy.
 </Note>
-
-### 10. Push new inbound message to an external system
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Received |
-| **Conditions** | None (or scope by line/keyword) |
-| **Actions** | **Send webhook** → your configured endpoint |
-
-**Why this works:** Streams every new inbound text to your CRM, data warehouse, ticketing tool, or notification service. Pair with **My phone number equals** to limit the firehose to a specific line, or add **Message contains text** to forward only certain keywords.
-
----
-
-### 11. Notify an external system on conversation close
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Conversation Closed |
-| **Conditions** | None (or scope by line/label) |
-| **Actions** | **Send webhook** → your configured endpoint (plus any close-out actions you want to run in-app) |
-
-**Why this works:** Use the **Conversation Closed** trigger directly. It fires whenever a teammate closes a conversation, so you can push the close event straight into a CRM, ticketing tool, or data warehouse. Add **My phone number equals** or **Conversation label equals** if you only want to forward closes from certain lines or queues. No label workaround needed.
-
----
-
-### 12. Reset assignees on close
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Conversation Closed |
-| **Conditions** | **Teammate Assigned** (Any teammate) |
-| **Actions** | **Remove all teammates from the conversation** |
-
-**Why this works:** When a conversation closes, the previous assignees usually shouldn't stay attached. Reopens or new inbound messages on the same thread often need fresh triage. The **Teammate Assigned** condition (set to Any teammate) makes sure the Relay only runs when someone's actually assigned. The **Remove all teammates from the conversation** action clears every assignee in one step. The next inbound lands unassigned, and your normal auto-assign Relays can route it.
-
-<Note>
-  **Ships as a template:** This template is available as the **Unassign on Close** template in the Relays module. Install it in one click, or build it from the fields above.
-</Note>
-
-<Tip>
-  Pair this with a **Message Received** Relay that auto-assigns based on line or keyword. Closed threads get reset here; the next inbound gets routed there.
-</Tip>
-
----
-
-### 13. Auto-close after acknowledgement
-
-| Field | Value |
-| --- | --- |
-| **Trigger** | Message Sent |
-| **Conditions** | Optional: **My phone number equals** a specific line, or match an acknowledgement template/keyword |
-| **Actions** | **Close the conversation** |
-
-**Why this works:** One-shot confirmation flows (appointment confirmations, delivery notifications, "on my way" pings) don't need to stay open in the Inbox after the outbound message goes out. The **Close the conversation** action closes the thread as soon as the confirmation is sent, keeping the Inbox focused on conversations that still need a human.
-
-<Tip>
-  MessageDesk handles reopens automatically: a new inbound message on a closed conversation reopens the thread and fires any **Conversation Opened** Relays you've configured (see [Template 9](#9-re-triage-on-reopen)).
-</Tip>
 
 ---
 
 ## See also
 
-- [Relay building blocks](/relays/building-blocks): reference for all triggers, conditions, and actions
-- [Create and edit a Relay](/relays/create-edit): step-by-step Relay building, including AND/OR conditions, delays, and active hours
+- [Relay building blocks](/relays/building-blocks): every trigger, condition, and action
+- [Create and edit a Relay](/relays/create-edit): step-by-step building, AND/OR conditions, delays, ordering, and conversation status
 - [Send Webhook](/relays/webhooks#outbound-webhooks): payload structure, signature validation, and retry behavior
 - [Developer Tools](/settings/workspace-settings/developer-tools): configure your webhook endpoint and signing secret
-- [Relays overview](/relays/overview): concepts and examples
+- [Relays overview](/relays/overview): concepts and what Relays are for
