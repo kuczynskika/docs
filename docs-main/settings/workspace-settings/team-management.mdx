@@ -156,7 +156,9 @@ Permissions let a user create, read, update, and delete information in MessageDe
 
   By default, only **Admin** users have **Owner** access to all phone lines connected to your MessageDesk workspace. **Managers** and **Operators** receive **Editor** access to phone number inboxes by default and **can't** delete messages.
 
-  To stop a user from deleting messages in a thread, make sure they **don't have Owner permission** on the phone line. Adjust their role or use a [custom role](#custom-roles-and-permissions) to grant **Editor**, **Viewer**, or **No Access** on the relevant **Phone number inboxes**.
+  To stop a user from deleting messages in a thread, make sure they **don't have Owner permission** on the phone line.
+
+  **Self-assignment can't be restricted.** Anyone with **Editor** or higher on a phone number inbox, which Operators get by default, can open a conversation and assign it to themselves. There's no permission that allows replying but blocks self-assignment. Scope what someone can see with [label or inbox permissions](#custom-roles-and-permissions) instead of trying to gate the assign button. Adjust their role or use a [custom role](#custom-roles-and-permissions) to grant **Editor**, **Viewer**, or **No Access** on the relevant **Phone number inboxes**.
 </Warning>
 
 ## Custom roles and permissions

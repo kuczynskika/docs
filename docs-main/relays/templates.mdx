@@ -232,6 +232,21 @@ Keep "Reply STOP to opt out." in the reply text.
   **One teammate can be out without silencing the line.** Add **Teammate Assigned** set to the person who's away, then add **Is unassigned conversation** with **OR** to also cover brand-new threads. The auto-reply fires only on their conversations. You don't need a dedicated line per teammate.
 </Tip>
 
+#### Cover several shift windows with one set of Relays
+
+| Field | Value |
+| --- | --- |
+| **Conditions** | Active hours, set to one window, plus **Teammate Assigned** or a line condition if the window is person-specific |
+| **Actions** | Assign teammates to the conversation → **Stop Processing** |
+
+**Why it works:** Most teams don't have one open window and one closed window. They have the hours the admin works, the evenings one group covers, the weekend another group covers, and the hours nobody works. One Relay can't express that, but one Relay per window can.
+
+Build a separate Relay for each window, each with its own **Active hours** and its own assignee. Then order them with the narrowest or highest-priority window first. Every matching Relay runs, and no Relay knows another already fired, so **Stop Processing** as the last action is what stops the later windows from also assigning. See [Order your Relays](/relays/create-edit#1a-order-your-relays).
+
+<Tip>
+  **Put the busiest window first.** If your admin covers weekday business hours, that Relay goes at the top with Stop Processing, so the evening and weekend Relays below it never fire during her shift. The unstaffed window is the one to build last: give it an auto-reply rather than an assignee, since there's nobody to route to.
+</Tip>
+
 #### Stream every message to another system
 
 | Field | Value |
@@ -359,7 +374,7 @@ Assigning more than one teammate works too, which is how a manager lets their te
 | **Conditions** | Teammate Assigned (Any teammate), or scope by line or label |
 | **Actions** | Remove all teammates from the conversation → Add labels to the conversation (`Resolved`) → Send webhook |
 
-**Why it works:** Closing does three jobs at once. Assignment resets so the next inbound lands unassigned and your routing Relays handle it. The `Resolved` label keeps reporting clean. The webhook pushes the close event to your CRM, warehouse, or ticketing tool. Gating on **Teammate Assigned** set to Any teammate means the Relay only runs when someone's actually assigned.
+**Why it works:** Closing a conversation doesn't unassign anyone on its own, and a new inbound message reopens the thread with those assignees still attached. That's how a closed thread comes back owned by whoever handled it last, even when they're not the right owner now. This Relay resets assignment so the next message lands unassigned and your routing handles it fresh. The `Resolved` label keeps reporting clean, and the webhook pushes the close event to your CRM, warehouse, or ticketing tool. Gating on **Teammate Assigned** set to Any teammate means the Relay only runs when someone's actually assigned.
 
 ---
 
@@ -447,6 +462,16 @@ The way through is a comment. **Send Comment** creates the conversation and writ
 
 **Why it works:** Updating one contact property does the rest. The contact Relay drops a comment carrying the value, and the matching Comment Created Relay turns that value into a label and an owner. Nobody labels or assigns by hand, and the label keeps working as a scope for every other Relay you build.
 
+<Warning>
+  **This needs a saved contact.** Contacts and conversations are separate records in MessageDesk, which is what lets an [anonymous conversation](/contacts/anonymous-opt-out-blocked) exist as a bare phone number. The bridge reads a contact property, so a conversation with no contact behind it has nothing to route on. You can still label anonymous conversations by hand, or with a Message Received Relay, but not with this pattern. Get contacts saved and their properties populated first.
+</Warning>
+
+<Note>
+  **Expect a comment every time the property changes.** The Part 1 Relay on **Contact Updated** fires on every update to that contact, so the internal comment reposts each time. That's what keeps the label correct if someone edits the field later, and the comments accumulate in the thread.
+
+  If the noise outweighs that, turn off the **Contact Updated** half and keep only **Contact Created**. The cost: a label that gets removed later won't come back on its own, and any Relay scoped to that label quietly stops matching that conversation. Contacts are visible to your team; internal comments are not visible to the contact either way.
+</Note>
+
 <Note>
   **A Relay's comment does fire Comment Created.** It won't re-trigger the Relay that posted it, so this can't loop, but it does reach other Comment Created Relays. That's the whole mechanism. See [Comment Created](/relays/building-blocks#triggers).
 </Note>
@@ -456,7 +481,7 @@ The way through is a comment. **Send Comment** creates the conversation and writ
 </Tip>
 
 <Tip>
-  **What the property and label unlock downstream.** Build a [saved filter](/contacts/saved-filters) per value and each owner can pull up their own client list, select all, and message them at once. And because a [custom role](/settings/workspace-settings/team-management#custom-roles-and-permissions) can scope someone's Inbox to specific labels, the label this Relay applies also decides who can see the thread at all. Assignment routes the work; the label controls visibility.
+  **What the property and label unlock downstream.** Build a [saved filter](/contacts/saved-filters) per value and each owner can pull up their own client list, select all, and message them at once. And because a [custom role](/settings/workspace-settings/team-management#custom-roles-and-permissions) can scope someone's Inbox to specific labels, the label this Relay applies also feeds who can see the thread. Build the role by copying **Operator** and setting **Label inboxes** to Editor or Viewer on just that person's label, with No Access elsewhere. The default Operator role won't do it on its own: its label permissions govern editing labels, not restricting what shows up in the Inbox. One caveat that matters here, since this Relay assigns as well as labels: [assignment overrides label scope](/inbox/labels#faq), so an assigned teammate can see the thread even with No Access to its label.
 </Tip>
 
 ---
