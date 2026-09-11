@@ -1,55 +1,92 @@
 ---
 title: "Connect Phone Lines to MessageDesk"
-description: "Compare phone number options for MessageDesk: local 10DLC, toll-free, landline, VoIP, and Twilio BYOC. Pricing, setup steps, and registration timelines."
+description: "How to get a business number texting in MessageDesk: complete carrier registration first, then add, host, or port a number. Timelines, number types, and exceptions."
 sidebarTitle: "Overview"
 og:title: "Connect Phone Lines to MessageDesk - Setup Guide"
-og:description: "Learn which phone numbers work with MessageDesk, how setup works, and what to expect with registration and configuration."
+og:description: "Carrier registration comes first, then phone setup. The full journey for US 10DLC customers, plus Twilio and Canada exceptions."
 og:image: "https://uploads-ssl.webflow.com/6349fd438ecb3a3594605225/63dd3a9bd4c06c39183e7b60_messagedesk-og-1200x630.webp"
 ---
 
 # Learn how to connect new or existing phone numbers to MessageDesk
 
-Setting up texting is one flow that combines [**carrier registration**](/carrier-registration/overview) with **phone configuration**. You choose the number path (add new, host, or port), we guide you through the right steps, and you start texting.
+Getting a business number texting in MessageDesk takes two stages, in this order: **carrier registration** first, then **phone configuration**. For most customers, registration isn't optional and it isn't something you can do afterward. MessageDesk blocks a US number from being added until your registration is approved.
+
+Register first. Adding the number afterward is the fast part.
 
 ---
 
 ## Your onboarding journey
 
-1. Complete the [Carrier Registration Questionnaire](/carrier-registration/submit)
+This is the path for a **US business texting from a local 10-digit (10DLC) number**, which is most MessageDesk customers. If you're a [Twilio](#if-you-bring-your-own-twilio-numbers) or [Canada-only](#if-your-numbers-are-canadian) customer, see the exceptions below.
 
-**2. Provide business information (if needed)** If you haven't registered yet, you'll add basic business details so we can complete **A2P 10DLC** (for local numbers) or **Toll-Free Verification**.
+<Steps>
+  <Step title="Complete carrier registration" iconType="regular" stepNumber={1} titleSize="h3">
+    Go to **Settings → Compliance Center → Registration** and submit your **brand** and **campaign**. The form takes about 10 minutes, and MessageDesk can autofill much of it from your W-9.
 
-**3. Choose your configuration path**
+    You may also need website changes first: a privacy policy, SMS terms and conditions, and a visible opt-in method. See [Submit your carrier registration](/carrier-registration/submit).
+  </Step>
 
-- [**Add new**](/get-started/phone-numbers/purchase-new): Search by area code and add a local **10DLC** number, included in your subscription
-- [**Host existing**](/get-started/phone-numbers/host-number): Add texting to a **landline**, **VoIP**, or local 10DLC number while your voice service stays put
-- [**Port existing**](/get-started/phone-numbers/port-number): Move **voice and texting** for a number to MessageDesk
-- [**Connect Twilio**](/get-started/phone-numbers/twilio): Plug in your Twilio numbers (see note below)
+  <Step title="Wait for approval" stepNumber={2} titleSize="h3">
+    MessageDesk reviews your submission within about **24 hours**, then upstream carriers review it for roughly another **48 hours**.
 
-**4. Start texting**: Once approved and connected, you're ready to message from your shared Inbox.
+    Track status in the **Compliance Center**. Corrections reset the clock, so submit carefully the first time.
+  </Step>
+
+  <Step title="Add your phone number" stepNumber={3} titleSize="h3">
+    Once your campaign is approved, add a number from **Settings → Phone Management**:
+
+    - [**Add new**](/get-started/phone-numbers/purchase-new): search by area code and add a local 10DLC number, included in your subscription
+    - [**Host existing**](/get-started/phone-numbers/host-number): add texting to a landline, VoIP, or local number while your voice service stays put
+    - [**Port existing**](/get-started/phone-numbers/port-number): move voice and texting to MessageDesk
+  </Step>
+
+  <Step title="Start texting" stepNumber={4} titleSize="h3">
+    Your number appears in Phone Management as active and campaign-associated. Message from your shared Inbox.
+  </Step>
+</Steps>
+
+<Warning>
+  **Don't wait until you need a number to start registering.** Approval takes a few business days, and MessageDesk won't let you purchase, host, or port a US number without an approved campaign. If you have a launch date, work backward from it and register well before you need the number.
+</Warning>
 
 <Note>
-  **Twilio users:** You manage registration directly with Twilio. When you connect those numbers to MessageDesk, you generally don't need to register again. Just connect and go. MessageDesk automatically sets up a Twilio [Event Streams](/get-started/phone-numbers/twilio#event-streams-integration) subscription for your Twilio numbers so messages sync.
+  **Toll-free numbers take a different review.** Toll-free uses its own verification process rather than A2P 10DLC registration. The order is the same, verification before texting, but the submission differs. See [Connect toll-free numbers](/get-started/phone-numbers/toll-free).
 </Note>
 
 ---
 
-## Important to know
+## Exceptions to registration-first
 
-- **Registration is part of setup**: It's not a separate first step. Our flow handles it.
-- **Smart routing in the form**: The configuration form adapts to your choices (new vs. existing number, local vs. toll-free, etc.).
-- **No per-number cost**: Adding phone lines is included in your subscription. MessageDesk bills by user seat, not by phone line. See [Pricing](/resources/pricing).
-- **Different paths for different stacks**: Twilio-connected numbers keep using your Twilio registration state.
-- **You do it yourself**: Purchasing, hosting, and porting all run in-app from **Settings → Phone Management**. You don't need to file a support request or fill out an external form to add a number.
+Two groups don't follow the path above. If neither describes you, skip this section.
+
+### If you bring your own Twilio numbers
+
+You handle registration inside Twilio, not MessageDesk. Connect your numbers and go. MessageDesk sets up a Twilio [Event Streams](/get-started/phone-numbers/twilio#event-streams-integration) subscription automatically so messages sync.
+
+The two-per-day add limit doesn't apply to Twilio numbers either, since you connect them through your own account.
+
+<Card title="Connect Twilio Numbers to MessageDesk" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/twilio">
+  Connect numbers you already own in Twilio.
+</Card>
+
+### If your numbers are Canadian
+
+Canada doesn't use the A2P 10DLC system, so you can add a Canadian number without an approved campaign.
 
 <Warning>
-  **US numbers require an approved carrier registration campaign.** MessageDesk checks for an approved campaign before letting you purchase, host, or port a US number. Without one, the flow stops and prompts you to finish [carrier registration](/carrier-registration/submit) first.
-
-  **Canadian numbers are exempt**, because Canada doesn't use the A2P 10DLC registration system. A Canadian number added without a campaign can only text **Canadian recipients** until you register and associate it with an approved campaign.
+  **A Canadian number added this way can only text Canadian recipients.** To text US numbers from it, complete [carrier registration](/carrier-registration/submit) and associate the number with an approved campaign.
 </Warning>
 
+---
+
+## Good to know
+
+- **No per-number cost.** Adding phone lines is included in your subscription. MessageDesk bills by user seat, not by phone line. See [Pricing](/resources/pricing).
+- **You do it yourself.** Purchasing, hosting, and porting all run in-app from **Settings → Phone Management**. No support request, no external form.
+- **One registration covers your lines.** You don't register each number separately. Your approved campaign applies to every local number you connect. Toll-free and Twilio lines are the exceptions.
+
 <Warning>
-  **MessageDesk caps daily number-adds at two per workspace.** To protect against number-rotation scams, MessageDesk limits how many numbers you can add through **purchase**, **hosting**, or **porting** to **two per day** per workspace. If you hit the cap, the UI blocks additional adds until the next day. Need to add more in one day? [Contact support](/contact-us). This cap doesn't apply to **Twilio (BYOC)** numbers, which you connect through your own Twilio account.
+  **MessageDesk caps daily number-adds at two per workspace.** To protect against number-rotation scams, MessageDesk limits how many numbers you can add through **purchase**, **hosting**, or **porting** to **two per day** per workspace. If you hit the cap, the UI blocks additional adds until the next day. Need to add more in one day? [Contact support](/contact-us). This cap doesn't apply to **Twilio (BYOC)** numbers.
 </Warning>
 
 ---
@@ -97,11 +134,7 @@ Text-enable North American toll-free numbers with prefixes **800/833/844/855/866
 
 ### Twilio numbers
 
-Use your Twilio numbers within MessageDesk's shared team Inbox.
-
-<Card title="Connect Twilio Numbers to MessageDesk" icon="phone-intercom" iconType="solid" color="#683cb5" href="/get-started/phone-numbers/twilio">
-  Learn how to connect your Twilio numbers to MessageDesk.
-</Card>
+Use your Twilio numbers within MessageDesk's shared team Inbox. Registration stays in Twilio. See [If you bring your own Twilio numbers](#if-you-bring-your-own-twilio-numbers).
 
 ---
 
@@ -176,13 +209,13 @@ You can connect **up to 48 phone lines** to a single workspace and manage all Co
 
 ---
 
-## Registration and deliverability essentials
+## Deliverability after you're approved
 
-- **A2P 10DLC (local)**: Required for most U.S. local business texting. It improves throughput and reduces filtering.
-- **Toll-Free Verification**: Recommended or required for higher volume and better deliverability on toll-free.
-- **Twilio**: Registration stays in Twilio. Just connect your numbers to MessageDesk.
-- **Timing**: Registration can take time to approve. Plan ahead for campaigns.
-- **Content**: Avoid generic short links and spammy phrasing. Include opt-out language when appropriate.
+Registration gets you permission to text. These keep your messages landing:
+
+- **Write like a business, not a spammer.** Avoid generic short links and all-caps urgency. Carriers filter on content.
+- **Include opt-out language** where appropriate, and honor every opt-out.
+- **Match your traffic to your campaign.** Carriers compare what you send against the use case you registered.
 
 Learn more: [**Carrier Registration Overview**](/carrier-registration/overview)
 
@@ -196,8 +229,9 @@ Up to **48** phone numbers per workspace.
 
 ### How soon can I start texting?
 
-- **Outbound**: After your number is connected **and** registration (10DLC or toll-free) is approved.
-- **Inbound**: As soon as the number is connected, inbound texts appear in your Inbox.
+For most US customers, carrier registration is the long pole. Approval takes a few business days, and you can't add a US number until it's done. Once your number is connected and active, you can text immediately.
+
+Inbound texts arrive as soon as the number is connected, even while outbound is still gated.
 
 ### Does every teammate see every conversation?
 
