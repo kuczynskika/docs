@@ -37,7 +37,7 @@ Hosting works for numbers that aren't tied to a mobile device:
 - **VoIP numbers** from most business phone systems (see [supported providers](#supported-voip-providers))
 - **Toll-free numbers** — see [Connect toll-free numbers](/get-started/phone-numbers/toll-free) for the separate verification process
 
-You can't host **mobile numbers**, **Google Voice numbers**, or **virtual SMS app numbers**. Those have to be [ported](/get-started/phone-numbers/port-number) out of their current service first. See [Move a Google Voice Number to MessageDesk](/migration/google-voice) for that path.
+You can't host **mobile numbers**, **Google Voice numbers**, or **virtual SMS app numbers**. You must [port those](https://docs.messagedesk.com/get-started/phone-numbers/port-number) out of their current service first. See [Move a Google Voice Number to MessageDesk](/migration/google-voice) for that path.
 
 ---
 
@@ -48,7 +48,7 @@ You can't host **mobile numbers**, **Google Voice numbers**, or **virtual SMS ap
 </Warning>
 
 <Note>
-  **Canadian numbers are the exception.** Numbers with a Canadian area code can be hosted without an approved campaign. Canada doesn't run on the A2P 10DLC registration system that US numbers require.
+  **Canadian numbers are the exception.** You can host numbers with a Canadian area code without an approved campaign. Canada doesn't run on the A2P 10DLC registration system that US numbers require.
 
   A Canadian number added this way can only text **Canadian recipients** until you complete [carrier registration](/carrier-registration/submit) and associate it with an approved campaign.
 </Note>
@@ -63,6 +63,8 @@ Have this ready before you begin:
 
 ## How to host a phone number
 
+![Host Number](/images/host-number.png "Host Number")
+
 <Steps>
   <Step title="Navigate to Settings" iconType="regular" stepNumber={1} titleSize="h3">
     - Click your profile image in the top right of MessageDesk
@@ -76,43 +78,45 @@ Have this ready before you begin:
     - Click `Add Phone Number` button in the top right corner of the Phone Management screen
     - Select **Host existing phone number**
   </Step>
-  <Step title="Enter the number you want to host" stepNumber={4} titleSize="h3">
-    - Enter the phone number
+  <Step title="Enter the numbers you want to host" stepNumber={4} titleSize="h3">
+    - Enter the phone numbers and the current provider they're tied to.
     - MessageDesk checks whether the number can be hosted before you go any further. If it isn't hostable, you'll be told at this step rather than after submitting.
   </Step>
   <Step title="Fill out the Letter of Authorization" stepNumber={5} titleSize="h3">
-    - Complete the account and authorized-signer fields
-    - MessageDesk generates a **PDF Letter of Authorization** from what you enter
+    - A letter of authorization (LOA) grants MessageDesk permission to connect the texting associated with your phone line to MessageDesk
+    - Add your information to complete  your LOA
   </Step>
   <Step title="Sign and submit" stepNumber={6} titleSize="h3">
     - Sign the LOA using the signature field
     - Submit the request
   </Step>
+  <Step title="What happens next" stepNumber={6} titleSize="h3">
+    - MessageDesk generates a **PDF Letter of Authorization** for you and submits it on your behalf to the carrier network.
+    - In some cases, number hosting completes in minutes, but for many, it can take up to **72 hours** to complete configuration.
+    - Once MessageDesk submits the request, we have to wait for your existing provider to release the text messaging side of your phone line to MessageDesk. 
+    - Durring this time, no action is required.
+    - Once MessageDesk receives the number, texting will be enabled automatically.
+    - We recommend logging in and checking your account periodically to monitor the number hosting process.
+  </Step>
 </Steps>
 
-![Settings Phone Management](/images/settings-phone-management.png)
-
-After clicking, `Add Phone Number` you'll see the following dialog. Select **Host existing phone number**.
-
-![Host Existing](/images/host-existing.png)
-
 <Warning>
-  **You can add at most 2 numbers per day** through hosting, porting, or purchase combined, per workspace. This is a fraud-prevention limit against number-rotation scams. If you need to host or port more numbers in a day, [contact support](/contact-us).
+  **You can add at most 2 numbers per day** per workspace through hosting, porting, or purchase combined. This fraud-prevention limit prevents number-rotation scams. If you need to host or port more numbers in a day, [contact support](/contact-us).
 </Warning>
 
 ## If you haven't already completed carrier registration
 
 [Carrier registration](/carrier-registration/overview) is required for texting with MessageDesk. If you haven't already completed this process, you'll be prompted to do so first.
 
-Learn how to [submit your carrier registration submission](/carrier-registration/submit).
+Learn how to [submit your carrier registration](/carrier-registration/submit).
 
 ## Processing time
 
-After you submit your Letter of Authorization (LOA), the hosting request goes to the carrier for processing. Processing time varies by provider:
+After you submit your Letter of Authorization (LOA), the carrier processes the hosting request. Processing time varies by provider:
 
 - **Typical timeline:** 5 minutes to 72 hours
 
-Track progress from the **Status** column in [Phone Management](/settings/workspace-settings/phone-management#what-the-phone-management-table-shows). The number moves from pending to active once the carrier completes the transfer, and MessageDesk associates it with your campaign automatically.
+Track progress in the **Status** column in [Phone Management](/settings/workspace-settings/phone-management#what-the-phone-management-table-shows). The number moves from pending to active once the carrier completes the transfer, and MessageDesk automatically associates it with your campaign.
 
 <Note>
   **Adding additional numbers later?** You'll need to complete a new LOA for each number you want to add. The same processing timeline applies.
@@ -123,7 +127,7 @@ Track progress from the **Status** column in [Phone Management](/settings/worksp
 ## What changes once your number is hosted
 
 <Warning>
-  **Texts stop arriving in your current phone system.** After hosting, every text sent to that number lands in your MessageDesk Inbox and nowhere else. If your VoIP system shows texts today, it won't after hosting.
+  **Texts stop arriving in your current phone system.** After hosting successfully completes, every text sent to that number will land in your MessageDesk Inbox and nowhere else. If your VoIP system shows texts today, it won't after hosting.
 
   **Voice is unaffected.** Calls keep routing exactly as they do now, through your existing provider.
 </Warning>
@@ -140,7 +144,7 @@ Below is a list of all supported VoIP providers. You can text-enable and transfe
 
 In this case, all of your calling, voice features, and service will remain with your VoIP provider. The text messaging associated with the number will move to MessageDesk. Many businesses and organizations configure their numbers in this way to get the best of both voice and text messaging features.
 
-Don't see your provider? If your number is non-mobile and not tied to a mobile device, in most cases, you can still transfer it to MessageDesk and text-enable it.
+Don't see your provider? If your number is non-mobile and not tied to a mobile device, you can usually still transfer it to MessageDesk and enable texting.
 
 - Microsoft Teams Phone
 - Cisco Webex Calling
@@ -193,4 +197,4 @@ Yes. Each number needs its own Letter of Authorization, even numbers on the same
 MessageDesk checks hostability before you fill out the LOA. Mobile numbers, Google Voice numbers, and some carrier configurations can't be hosted. [Contact support](/contact-us) if you think the result is wrong.
 
 **What if I want to move voice to MessageDesk too?**\
-That's a port, not a host. See [Port a phone number to MessageDesk](/get-started/phone-numbers/port-number) — and note MessageDesk doesn't provide full voice service, so you'd set up call forwarding after.
+That's a port, not a host. See [Port a phone number to MessageDesk](/get-started/phone-numbers/port-number) — and note that MessageDesk doesn't provide full voice service, so you'd set up call forwarding after.
